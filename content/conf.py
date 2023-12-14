@@ -39,7 +39,7 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx.ext.graphviz",
     "sphinx_tabs.tabs",
-    "nbsphinx"
+#    "nbsphinx"
 ]
 
 # Settings for myst_nb:
