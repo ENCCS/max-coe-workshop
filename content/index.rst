@@ -1,26 +1,95 @@
-LESSON NAME
-===========
+Efficient materials modelling on HPC with Quantum ESPRESSO, Siesta and Yambo
+============================================================================
 
-Intro
+In recent years, computing technologies underlying materials modelling and 
+electronic structure calculation have evolved rapidly. High-performance 
+computing (HPC) is transitioning from petascale to exascale, while individual 
+compute nodes are increasingly based on heterogeneous architectures that every 
+year become more diversified due to different vendor choices. In this environment, 
+electronic structure codes also have to evolve fast in order to adapt to new 
+hardware facilities. Nowadays, state-of-the-art electronic structure codes based 
+on modern density functional theory (DFT) methods allow treating realistic 
+molecular systems with a very high accuracy. However, due to the increased 
+complexity of the codes, some extra skills are required from users in order to 
+fully exploit their potential.  
 
+This training material gives a broad overview of important fundamental concepts 
+for molecular and materials modelling on HPC, with a focus on three of the most 
+modern codes for electronic structure calculations (QUANTUM ESPRESSO, SIESTA and Yambo). 
+Theory sections are interleaved with practical demonstrations and hands-on exercises.
+
+`QUANTUM ESPRESSO <https://www.quantum-espresso.org/>`__ is one of the most 
+popular suites of computer codes for electronic-structure calculations and 
+materials modelling at the nanoscale, based on density-functional theory, plane 
+waves, and pseudopotentials. It is able to predict and give fundamental insights 
+about many properties of materials, molecular systems, micro and nanodevices, 
+biological systems, in many fields, providing a huge amount of data for 
+data-driven science applications.
+
+`SIESTA <http://www.max-centre.eu/codes-max/siesta>`__ is a pseudopotential-based DFT software whose strength lies in its use of atomic-like strictly-localised basis sets: the use of a "good first approximation" to the full problem decreases the number of basis functions needed to achieve a given accuracy, and the finite support of the orbitals leads to sparsity in the Hamiltonian and overlap matrices, thus enabling the use of reduced-scaling methods. The functionalities of SIESTA include, amongst others, the calculation of energies and forces, molecular-dynamics simulations, band structures, densities of states, spin-orbit couplings, van der Waals functionals, hybrid functionals, DFT+U for correlated systems, real-time TDDFT, and density-functional perturbation theory.
+
+`YAMBO <http://www.yambo-code.eu/>`__ is an open-source code implementing 
+first-principles methods based on Green’s function (GF) theory to describe 
+excited-state properties of realistic materials. These methods include the GW 
+approximation, the Bethe Salpeter equation, nonequilibrium GF (NEGF) and TDDFT, 
+allowing for the prediction of accurate quasiparticle energies (e.g. ARPES band 
+structures), linear and non-linear optical properties, capturing the physics of 
+excitons, plasmons, and magnons. It is also possible to calculate 
+temperature-dependent electronic and optical properties via electron-phonon 
+coupling and nonequilibrium and non-linear optical properties via NEGF real-time 
+simulations (pump-probe experiments, etc).
+
+`MAX (MAterials design at the eXascale) <http://www.max-centre.eu/>`__ is a 
+European Centre of Excellence which enables materials modelling, simulations, 
+discovery and design at the frontiers of the current and future High-Performance 
+Computing (HPC), High Throughput Computing (HTC) and data analytics technologies.  
+MaX's challenge lies in bringing the most successful and widely used open-source, 
+community codes in quantum simulations of materials towards exascale and extreme 
+scaling performance and make them available for a large and growing base of 
+researchers in the materials' domain.
 
 
 .. prereq::
 
-   prerequisites
+   - Some familiarity with density functional theory (DFT), self-consistent 
+     field (SCF) calculations and plane wave basis sets is desirable as the 
+     workshop will not cover the fundamental theory of these topics.
+   - Familiarity with working in a Linux environment and some experience with 
+     working on an HPC system is needed to participate in the hands-on exercises.
 
 
+Who is the course for?
+----------------------
 
-.. csv-table::
-   :widths: auto
-   :delim: ;
-
-   20 min ; :doc:`filename`
+This workshop is aimed towards researchers and engineers who already have some 
+previous experience with materials modelling and electronic structure calculations.
 
 
 .. toctree::
    :maxdepth: 1
-   :caption: The lesson
+   :caption: Day 1 - Quantum ESPRESSO I
+
+   
+   
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Day 2 - Quantum ESPRESSO II 
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Day 3 - Siesta I
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Day 4 - Siesta II
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Day 5 - Yambo
 
 
 .. toctree::
@@ -30,13 +99,12 @@ Intro
    quick-reference
    guide
 
+.. toctree::
+   :maxdepth: 1
+   :caption: About
 
-
-.. _learner-personas:
-
-Who is the course for?
-----------------------
-
+   All lessons <https://enccs.se/lessons/>
+   ENCCS <https://enccs.se/>
 
 
 
@@ -44,20 +112,123 @@ Who is the course for?
 About the course
 ----------------
 
+In this workshop, participants will learn how to launch the most common 
+types of calculations  (e.g. scf, phonons, quasi-particle energies, 
+time-dependent properties) using QE, Yambo and BigDFT, how to prepare input 
+files and how to read output files in order to extract the desired properties.
+
+Best practices for efficient exploitation of HPC resources will be discussed, 
+with particular emphasis on how to use the different schemes of data 
+distribution (e.g. plane waves, pools, images) in combination with the different 
+parallelization and acceleration schemes (MPI, OpenMP, GPU-offload) available in 
+QE. 
+
+Schedule for 4 half-day workshop
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Day 1, QUANTUM ESPRESSO**
+
++------------+-------------------------------------------------------+
+| Time       | Section                                               | 
++============+=======================================================+
+|09:00-09:15 | Welcome and introduction to ENCCS                     |
++------------+-------------------------------------------------------+
+|09:15-09:30 | Introduction to Max-CoE and MaX flagship codes        |
++------------+-------------------------------------------------------+
+|09:30-10:00 | Overview of the QE suite of codes, and main features  |
++------------+-------------------------------------------------------+
+|10:00-10:20 | Coffee break                                          |
++------------+-------------------------------------------------------+
+|10:20-13:00 | PWSCF for HPC and GPU                                 |
++------------+-------------------------------------------------------+
 
 
+**Day 2, QUANTUM ESPRESSO and AiiDA**
+
++------------+----------------------------------------------------------------------+
+| Time       | Section                                                              | 
++============+======================================================================+
+|09:00-09:45 | Introduction to Density Functional Perturbation Theory               |
++------------+----------------------------------------------------------------------+
+|09:45-10:15 | Introduction to Time Dependent Density Functional Perturbation Theory|
++------------+----------------------------------------------------------------------+
+|10:15-10:25 | Coffee break                                                         |
++------------+----------------------------------------------------------------------+
+|10:25-12:15 | Phonons and time dependent properties on HPC and GPU                 |
++------------+----------------------------------------------------------------------+
+|12:15-13:00 | Introduction to AiiDA for HPC                                        |
++------------+----------------------------------------------------------------------+
+
+**Day 3, Yambo**
+
++------------+------------------------------------------------------------------+
+| Time       | Section                                                          | 
++============+==================================================================+
+|09:00-09:20 | Overview of the Yambo code and its main features and performance |
++------------+------------------------------------------------------------------+
+|09:20-10:00 | Introduction to the GW approximation                             |
++------------+------------------------------------------------------------------+
+|10:00-10:20 | Coffee break                                                     |
++------------+------------------------------------------------------------------+
+|10:20-13:00 | Hands-on tutorial: A guided tour through GW simulations          |
++------------+------------------------------------------------------------------+
+
+**Day 4, BigDFT**
+
++------------+-------------------------------------------------------+
+| Time       | Section                                               | 
++============+=======================================================+
+|09:00-09:30 | Introduction to BigDFT                                |
++------------+-------------------------------------------------------+
+|09:30-10:00 | Introduction to PyBigDFT: System Manipulation         |
++------------+-------------------------------------------------------+
+|10:00-10:30 | Remote Runner (Presentation & Walkthrough/Hands-on)   |
++------------+-------------------------------------------------------+
+|10:30 - 11:00 | Coffee break                                        |
++------------+-------------------------------------------------------+
+|11:00 - 12:00 | Cubic Scaling BigDFT (Hands-on)                     |
++------------+-------------------------------------------------------+
+|12:00 - 13:00 | Linear Scaling BigDFT (Hands-on)                    |
++------------+-------------------------------------------------------+
 
 
 
 See also
 --------
 
+- ENCCS: https://enccs.se/
+- MAX-CoE: http://www.max-centre.eu/
+- Follow ENCCS on `LinkedIn <https://www.linkedin.com/company/enccs>`__, or `Twitter <https://twitter.com/EuroCC_Sweden>`__
+- Follow MAX-CoE on `LinkedIn <https://www.linkedin.com/company/max-centre/>`__, or `Twitter <https://twitter.com/max_center2>`__.
 
-
+.. math::
 
 
 Credits
 -------
+
+Contributors to this workshop:
+
+- Daniele Varsano, CNR-NANO
+- Andrea Ferretti, CNR-NANO
+- Pietro Delugas, SISSA
+- Ivan Carnimeo, SISSA 
+- Fabrizio Ferrari Ruffino, CNR-IOM
+- Stefano Baroni, SISSA
+- Iurii Timrov, EPFL CH
+- Laura Bellentani, CINECA
+- Oscar Baseggio, SISSA
+- Tommaso Gorni, CINECA
+- Francisco Ramirez, EPFL
+- Davide Sangalli CNR-ISM
+- Fulvio Paleari, CNR-NANO
+- Ignacio Alliati, Univ. Bellfast
+- Martina Stella, ICTP
+- Nicola Spallanzani, CNR-NANO
+- Laura Ratcliff, Univ. of Bristol
+- Luigi Genovese, CEA Grenoble
+- Louis Beal, CEA Grenoble
+- Samuel Dechamps, CEA Grenoble 
 
 The lesson file structure and browsing layout is inspired by and derived from
 `work <https://github.com/coderefinery/sphinx-lesson>`__ by `CodeRefinery
