@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workpackages>
+  <workpackage id="0">
+    <step iteration="0" cycle="0">submit</step>
+    <parameterset>
+      <parameter name="starter" type="string" separator="," duplicate="none" mode="text">
+        <value>srun</value>
+      </parameter>
+      <parameter name="mapping" type="string" separator="," duplicate="none" update_mode="step" mode="python">
+        <value>{ &quot;srun&quot;    :  &quot;--cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK&quot;,
+               &quot;mpirun&quot;  :  &quot;--map-by socket:PE=$pe --rank-by core&quot; }[&quot;$starter&quot;]</value>
+        <selection>--cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK</selection>
+      </parameter>
+      <parameter name="args_starter" type="string" separator="," duplicate="none" update_mode="step" mode="python">
+        <value>{ &quot;srun&quot;   : &quot;-n $tasks $mapping&quot;,
+               &quot;mpirun&quot; : &quot;-np $tasks $mapping&quot;}[&quot;$starter&quot;]</value>
+        <selection>-n 4 --cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK</selection>
+      </parameter>
+      <parameter name="submit" type="string" separator="," duplicate="none" mode="text">
+        <value>sbatch</value>
+      </parameter>
+      <parameter name="submit_script" type="string" separator="," duplicate="none" mode="text">
+        <value>submit.job</value>
+      </parameter>
+      <parameter name="shared_folder" type="string" separator="," duplicate="none" mode="text">
+        <value>shared</value>
+      </parameter>
+      <parameter name="shared_job_info" type="string" separator="," duplicate="none" mode="text">
+        <value>${shared_folder}/jobid</value>
+        <selection>shared/jobid</selection>
+      </parameter>
+      <parameter name="ready_file" type="string" separator="," duplicate="none" mode="text">
+        <value>ready</value>
+      </parameter>
+      <parameter name="preprocess" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="postprocess" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="wrapname" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="wrappre" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="wrappost" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="modules" type="string" separator="," duplicate="none" mode="text">
+        <value>module load profile/chem-phys quantum-espresso/7.2--openmpi--4.1.4--nvhpc--23.1-openblas-cuda-11.8</value>
+      </parameter>
+      <parameter name="measurement" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="executable" type="string" separator="," duplicate="none" mode="text">
+        <value>ph.x</value>
+      </parameter>
+      <parameter name="images" type="string" separator="," duplicate="none" mode="python">
+        <value>[2,5,5][$combos]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="pools" type="string" separator="," duplicate="none" mode="python">
+        <value>[2,1,2][$combos]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="args_executable" type="string" separator="," duplicate="none" mode="text">
+        <value>-ni $images -nk $pools -input $fin &gt; $fout</value>
+        <selection>-ni 2 -nk 2 -input ph.CnSnI3.in &gt; out.0_0</selection>
+      </parameter>
+      <parameter name="casename" type="string" separator="," duplicate="none" mode="text">
+        <value>ph.CnSnI3</value>
+      </parameter>
+      <parameter name="fin" type="string" separator="," duplicate="none" mode="text">
+        <value>$casename.in</value>
+        <selection>ph.CnSnI3.in</selection>
+      </parameter>
+      <parameter name="fout" type="string" separator="," duplicate="none" mode="text">
+        <value>out.0_0</value>
+      </parameter>
+      <parameter name="dirin" type="string" separator="," duplicate="none" mode="text">
+        <value>inputfiles</value>
+      </parameter>
+      <parameter name="timelimit" type="string" separator="," duplicate="none" mode="text">
+        <value>00:10:00</value>
+      </parameter>
+      <parameter name="nodes" type="int" separator="," duplicate="none" mode="python">
+        <value>[1,2,3][$combos]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="taskspernode" type="int" separator="," duplicate="none" mode="text">
+        <value>4</value>
+      </parameter>
+      <parameter name="nsocket" type="int" separator="," duplicate="none" mode="text">
+        <value>1</value>
+      </parameter>
+      <parameter name="ncpus" type="int" separator="," duplicate="none" mode="text">
+        <value>32</value>
+      </parameter>
+      <parameter name="ncores" type="int" separator="," duplicate="none" mode="text">
+        <value>32</value>
+      </parameter>
+      <parameter name="threadspertask" type="string" separator="," duplicate="none" mode="text">
+        <value>8</value>
+      </parameter>
+      <parameter name="threads" type="int" separator="," duplicate="none" mode="python">
+        <value>$threadspertask*$taskspernode</value>
+        <selection>32</selection>
+      </parameter>
+      <parameter name="cpuspertask" type="string" separator="," duplicate="none" mode="text">
+        <value>8</value>
+      </parameter>
+      <parameter name="queue" type="string" separator="," duplicate="none" mode="text">
+        <value>boost_usr_prod</value>
+      </parameter>
+      <parameter name="qos" type="string" separator="," duplicate="none" update_mode="step" mode="python">
+        <value>{ False : &quot;normal&quot; ,
+		  True  : &quot;boost_qos_bprod&quot; }[bool($nodes&gt;32)]</value>
+        <selection>normal</selection>
+      </parameter>
+      <parameter name="env" type="string" separator=";" duplicate="none" mode="text">
+        <value>$jube_wp_envstr</value>
+        <selection/>
+      </parameter>
+      <parameter name="ngpus" type="string" separator=";" duplicate="none" mode="python">
+        <value>int(min(4,$taskspernode))</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="gres" type="string" separator=";" duplicate="none" mode="text">
+        <value>gpu:$ngpus</value>
+        <selection>gpu:4</selection>
+      </parameter>
+      <parameter name="pe" type="string" separator="," duplicate="none" mode="text">
+        <value>8</value>
+      </parameter>
+      <parameter name="tasks" type="int" separator="," duplicate="none" mode="python">
+        <value>[4,5,10][$combos]</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="memnodemachine" type="int" separator="," duplicate="none" mode="text">
+        <value>330000</value>
+      </parameter>
+      <parameter name="minmem" type="int" separator="," duplicate="none" mode="python">
+        <value>$memnodemachine</value>
+        <selection>330000</selection>
+      </parameter>
+      <parameter name="combos" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2</value>
+        <selection idx="0">0</selection>
+      </parameter>
+      <parameter name="accountno" type="string" separator="," duplicate="none" mode="text">
+        <value>cin_staff</value>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>0</iteration_siblings>
+    <environment>
+      <env name="SHLVL">'3'</env>
+      <env name="BASH_FUNC_module%%">'() {  local _mlredir=1;\n if [ -n &quot;${MODULES_REDIRECT_OUTPUT+x}&quot; ]; then\n if [ &quot;$MODULES_REDIRECT_OUTPUT&quot; = \'0\' ]; then\n _mlredir=0;\n else\n if [ &quot;$MODULES_REDIRECT_OUTPUT&quot; = \'1\' ]; then\n _mlredir=1;\n fi;\n fi;\n fi;\n case &quot; $@ &quot; in\n *\' --no-redirect \'*)\n _mlredir=0\n ;;\n *\' --redirect \'*)\n _mlredir=1\n ;;\n esac;\n if [ $_mlredir -eq 0 ]; then\n _module_raw &quot;$@&quot;;\n else\n _module_raw &quot;$@&quot; 2&gt;&amp;1;\n fi\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="1">
+    <step iteration="0" cycle="0">submit</step>
+    <parameterset>
+      <parameter name="starter" type="string" separator="," duplicate="none" mode="text">
+        <value>srun</value>
+      </parameter>
+      <parameter name="mapping" type="string" separator="," duplicate="none" update_mode="step" mode="python">
+        <value>{ &quot;srun&quot;    :  &quot;--cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK&quot;,
+               &quot;mpirun&quot;  :  &quot;--map-by socket:PE=$pe --rank-by core&quot; }[&quot;$starter&quot;]</value>
+        <selection>--cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK</selection>
+      </parameter>
+      <parameter name="args_starter" type="string" separator="," duplicate="none" update_mode="step" mode="python">
+        <value>{ &quot;srun&quot;   : &quot;-n $tasks $mapping&quot;,
+               &quot;mpirun&quot; : &quot;-np $tasks $mapping&quot;}[&quot;$starter&quot;]</value>
+        <selection>-n 5 --cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK</selection>
+      </parameter>
+      <parameter name="submit" type="string" separator="," duplicate="none" mode="text">
+        <value>sbatch</value>
+      </parameter>
+      <parameter name="submit_script" type="string" separator="," duplicate="none" mode="text">
+        <value>submit.job</value>
+      </parameter>
+      <parameter name="shared_folder" type="string" separator="," duplicate="none" mode="text">
+        <value>shared</value>
+      </parameter>
+      <parameter name="shared_job_info" type="string" separator="," duplicate="none" mode="text">
+        <value>${shared_folder}/jobid</value>
+        <selection>shared/jobid</selection>
+      </parameter>
+      <parameter name="ready_file" type="string" separator="," duplicate="none" mode="text">
+        <value>ready</value>
+      </parameter>
+      <parameter name="preprocess" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="postprocess" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="wrapname" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="wrappre" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="wrappost" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="modules" type="string" separator="," duplicate="none" mode="text">
+        <value>module load profile/chem-phys quantum-espresso/7.2--openmpi--4.1.4--nvhpc--23.1-openblas-cuda-11.8</value>
+      </parameter>
+      <parameter name="measurement" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="executable" type="string" separator="," duplicate="none" mode="text">
+        <value>ph.x</value>
+      </parameter>
+      <parameter name="images" type="string" separator="," duplicate="none" mode="python">
+        <value>[2,5,5][$combos]</value>
+        <selection>5</selection>
+      </parameter>
+      <parameter name="pools" type="string" separator="," duplicate="none" mode="python">
+        <value>[2,1,2][$combos]</value>
+        <selection>1</selection>
+      </parameter>
+      <parameter name="args_executable" type="string" separator="," duplicate="none" mode="text">
+        <value>-ni $images -nk $pools -input $fin &gt; $fout</value>
+        <selection>-ni 5 -nk 1 -input ph.CnSnI3.in &gt; out.0_0</selection>
+      </parameter>
+      <parameter name="casename" type="string" separator="," duplicate="none" mode="text">
+        <value>ph.CnSnI3</value>
+      </parameter>
+      <parameter name="fin" type="string" separator="," duplicate="none" mode="text">
+        <value>$casename.in</value>
+        <selection>ph.CnSnI3.in</selection>
+      </parameter>
+      <parameter name="fout" type="string" separator="," duplicate="none" mode="text">
+        <value>out.0_0</value>
+      </parameter>
+      <parameter name="dirin" type="string" separator="," duplicate="none" mode="text">
+        <value>inputfiles</value>
+      </parameter>
+      <parameter name="timelimit" type="string" separator="," duplicate="none" mode="text">
+        <value>00:10:00</value>
+      </parameter>
+      <parameter name="nodes" type="int" separator="," duplicate="none" mode="python">
+        <value>[1,2,3][$combos]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="taskspernode" type="int" separator="," duplicate="none" mode="text">
+        <value>4</value>
+      </parameter>
+      <parameter name="nsocket" type="int" separator="," duplicate="none" mode="text">
+        <value>1</value>
+      </parameter>
+      <parameter name="ncpus" type="int" separator="," duplicate="none" mode="text">
+        <value>32</value>
+      </parameter>
+      <parameter name="ncores" type="int" separator="," duplicate="none" mode="text">
+        <value>32</value>
+      </parameter>
+      <parameter name="threadspertask" type="string" separator="," duplicate="none" mode="text">
+        <value>8</value>
+      </parameter>
+      <parameter name="threads" type="int" separator="," duplicate="none" mode="python">
+        <value>$threadspertask*$taskspernode</value>
+        <selection>32</selection>
+      </parameter>
+      <parameter name="cpuspertask" type="string" separator="," duplicate="none" mode="text">
+        <value>8</value>
+      </parameter>
+      <parameter name="queue" type="string" separator="," duplicate="none" mode="text">
+        <value>boost_usr_prod</value>
+      </parameter>
+      <parameter name="qos" type="string" separator="," duplicate="none" update_mode="step" mode="python">
+        <value>{ False : &quot;normal&quot; ,
+		  True  : &quot;boost_qos_bprod&quot; }[bool($nodes&gt;32)]</value>
+        <selection>normal</selection>
+      </parameter>
+      <parameter name="env" type="string" separator=";" duplicate="none" mode="text">
+        <value>$jube_wp_envstr</value>
+        <selection/>
+      </parameter>
+      <parameter name="ngpus" type="string" separator=";" duplicate="none" mode="python">
+        <value>int(min(4,$taskspernode))</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="gres" type="string" separator=";" duplicate="none" mode="text">
+        <value>gpu:$ngpus</value>
+        <selection>gpu:4</selection>
+      </parameter>
+      <parameter name="pe" type="string" separator="," duplicate="none" mode="text">
+        <value>8</value>
+      </parameter>
+      <parameter name="tasks" type="int" separator="," duplicate="none" mode="python">
+        <value>[4,5,10][$combos]</value>
+        <selection>5</selection>
+      </parameter>
+      <parameter name="memnodemachine" type="int" separator="," duplicate="none" mode="text">
+        <value>330000</value>
+      </parameter>
+      <parameter name="minmem" type="int" separator="," duplicate="none" mode="python">
+        <value>$memnodemachine</value>
+        <selection>330000</selection>
+      </parameter>
+      <parameter name="combos" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2</value>
+        <selection idx="1">1</selection>
+      </parameter>
+      <parameter name="accountno" type="string" separator="," duplicate="none" mode="text">
+        <value>cin_staff</value>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>1</iteration_siblings>
+    <environment>
+      <env name="SHLVL">'3'</env>
+      <env name="BASH_FUNC_module%%">'() {  local _mlredir=1;\n if [ -n &quot;${MODULES_REDIRECT_OUTPUT+x}&quot; ]; then\n if [ &quot;$MODULES_REDIRECT_OUTPUT&quot; = \'0\' ]; then\n _mlredir=0;\n else\n if [ &quot;$MODULES_REDIRECT_OUTPUT&quot; = \'1\' ]; then\n _mlredir=1;\n fi;\n fi;\n fi;\n case &quot; $@ &quot; in\n *\' --no-redirect \'*)\n _mlredir=0\n ;;\n *\' --redirect \'*)\n _mlredir=1\n ;;\n esac;\n if [ $_mlredir -eq 0 ]; then\n _module_raw &quot;$@&quot;;\n else\n _module_raw &quot;$@&quot; 2&gt;&amp;1;\n fi\n}'</env>
+    </environment>
+  </workpackage>
+  <workpackage id="2">
+    <step iteration="0" cycle="0">submit</step>
+    <parameterset>
+      <parameter name="starter" type="string" separator="," duplicate="none" mode="text">
+        <value>srun</value>
+      </parameter>
+      <parameter name="mapping" type="string" separator="," duplicate="none" update_mode="step" mode="python">
+        <value>{ &quot;srun&quot;    :  &quot;--cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK&quot;,
+               &quot;mpirun&quot;  :  &quot;--map-by socket:PE=$pe --rank-by core&quot; }[&quot;$starter&quot;]</value>
+        <selection>--cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK</selection>
+      </parameter>
+      <parameter name="args_starter" type="string" separator="," duplicate="none" update_mode="step" mode="python">
+        <value>{ &quot;srun&quot;   : &quot;-n $tasks $mapping&quot;,
+               &quot;mpirun&quot; : &quot;-np $tasks $mapping&quot;}[&quot;$starter&quot;]</value>
+        <selection>-n 10 --cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK</selection>
+      </parameter>
+      <parameter name="submit" type="string" separator="," duplicate="none" mode="text">
+        <value>sbatch</value>
+      </parameter>
+      <parameter name="submit_script" type="string" separator="," duplicate="none" mode="text">
+        <value>submit.job</value>
+      </parameter>
+      <parameter name="shared_folder" type="string" separator="," duplicate="none" mode="text">
+        <value>shared</value>
+      </parameter>
+      <parameter name="shared_job_info" type="string" separator="," duplicate="none" mode="text">
+        <value>${shared_folder}/jobid</value>
+        <selection>shared/jobid</selection>
+      </parameter>
+      <parameter name="ready_file" type="string" separator="," duplicate="none" mode="text">
+        <value>ready</value>
+      </parameter>
+      <parameter name="preprocess" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="postprocess" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="wrapname" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="wrappre" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="wrappost" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="modules" type="string" separator="," duplicate="none" mode="text">
+        <value>module load profile/chem-phys quantum-espresso/7.2--openmpi--4.1.4--nvhpc--23.1-openblas-cuda-11.8</value>
+      </parameter>
+      <parameter name="measurement" type="string" separator="," duplicate="none" mode="text">
+        <value/>
+      </parameter>
+      <parameter name="executable" type="string" separator="," duplicate="none" mode="text">
+        <value>ph.x</value>
+      </parameter>
+      <parameter name="images" type="string" separator="," duplicate="none" mode="python">
+        <value>[2,5,5][$combos]</value>
+        <selection>5</selection>
+      </parameter>
+      <parameter name="pools" type="string" separator="," duplicate="none" mode="python">
+        <value>[2,1,2][$combos]</value>
+        <selection>2</selection>
+      </parameter>
+      <parameter name="args_executable" type="string" separator="," duplicate="none" mode="text">
+        <value>-ni $images -nk $pools -input $fin &gt; $fout</value>
+        <selection>-ni 5 -nk 2 -input ph.CnSnI3.in &gt; out.0_0</selection>
+      </parameter>
+      <parameter name="casename" type="string" separator="," duplicate="none" mode="text">
+        <value>ph.CnSnI3</value>
+      </parameter>
+      <parameter name="fin" type="string" separator="," duplicate="none" mode="text">
+        <value>$casename.in</value>
+        <selection>ph.CnSnI3.in</selection>
+      </parameter>
+      <parameter name="fout" type="string" separator="," duplicate="none" mode="text">
+        <value>out.0_0</value>
+      </parameter>
+      <parameter name="dirin" type="string" separator="," duplicate="none" mode="text">
+        <value>inputfiles</value>
+      </parameter>
+      <parameter name="timelimit" type="string" separator="," duplicate="none" mode="text">
+        <value>00:10:00</value>
+      </parameter>
+      <parameter name="nodes" type="int" separator="," duplicate="none" mode="python">
+        <value>[1,2,3][$combos]</value>
+        <selection>3</selection>
+      </parameter>
+      <parameter name="taskspernode" type="int" separator="," duplicate="none" mode="text">
+        <value>4</value>
+      </parameter>
+      <parameter name="nsocket" type="int" separator="," duplicate="none" mode="text">
+        <value>1</value>
+      </parameter>
+      <parameter name="ncpus" type="int" separator="," duplicate="none" mode="text">
+        <value>32</value>
+      </parameter>
+      <parameter name="ncores" type="int" separator="," duplicate="none" mode="text">
+        <value>32</value>
+      </parameter>
+      <parameter name="threadspertask" type="string" separator="," duplicate="none" mode="text">
+        <value>8</value>
+      </parameter>
+      <parameter name="threads" type="int" separator="," duplicate="none" mode="python">
+        <value>$threadspertask*$taskspernode</value>
+        <selection>32</selection>
+      </parameter>
+      <parameter name="cpuspertask" type="string" separator="," duplicate="none" mode="text">
+        <value>8</value>
+      </parameter>
+      <parameter name="queue" type="string" separator="," duplicate="none" mode="text">
+        <value>boost_usr_prod</value>
+      </parameter>
+      <parameter name="qos" type="string" separator="," duplicate="none" update_mode="step" mode="python">
+        <value>{ False : &quot;normal&quot; ,
+		  True  : &quot;boost_qos_bprod&quot; }[bool($nodes&gt;32)]</value>
+        <selection>normal</selection>
+      </parameter>
+      <parameter name="env" type="string" separator=";" duplicate="none" mode="text">
+        <value>$jube_wp_envstr</value>
+        <selection/>
+      </parameter>
+      <parameter name="ngpus" type="string" separator=";" duplicate="none" mode="python">
+        <value>int(min(4,$taskspernode))</value>
+        <selection>4</selection>
+      </parameter>
+      <parameter name="gres" type="string" separator=";" duplicate="none" mode="text">
+        <value>gpu:$ngpus</value>
+        <selection>gpu:4</selection>
+      </parameter>
+      <parameter name="pe" type="string" separator="," duplicate="none" mode="text">
+        <value>8</value>
+      </parameter>
+      <parameter name="tasks" type="int" separator="," duplicate="none" mode="python">
+        <value>[4,5,10][$combos]</value>
+        <selection>10</selection>
+      </parameter>
+      <parameter name="memnodemachine" type="int" separator="," duplicate="none" mode="text">
+        <value>330000</value>
+      </parameter>
+      <parameter name="minmem" type="int" separator="," duplicate="none" mode="python">
+        <value>$memnodemachine</value>
+        <selection>330000</selection>
+      </parameter>
+      <parameter name="combos" type="int" separator="," duplicate="none" mode="text">
+        <value>0,1,2</value>
+        <selection idx="2">2</selection>
+      </parameter>
+      <parameter name="accountno" type="string" separator="," duplicate="none" mode="text">
+        <value>cin_staff</value>
+      </parameter>
+    </parameterset>
+    <iteration_siblings>2</iteration_siblings>
+    <environment>
+      <env name="SHLVL">'3'</env>
+      <env name="BASH_FUNC_module%%">'() {  local _mlredir=1;\n if [ -n &quot;${MODULES_REDIRECT_OUTPUT+x}&quot; ]; then\n if [ &quot;$MODULES_REDIRECT_OUTPUT&quot; = \'0\' ]; then\n _mlredir=0;\n else\n if [ &quot;$MODULES_REDIRECT_OUTPUT&quot; = \'1\' ]; then\n _mlredir=1;\n fi;\n fi;\n fi;\n case &quot; $@ &quot; in\n *\' --no-redirect \'*)\n _mlredir=0\n ;;\n *\' --redirect \'*)\n _mlredir=1\n ;;\n esac;\n if [ $_mlredir -eq 0 ]; then\n _module_raw &quot;$@&quot;;\n else\n _module_raw &quot;$@&quot; 2&gt;&amp;1;\n fi\n}'</env>
+    </environment>
+  </workpackage>
+</workpackages>

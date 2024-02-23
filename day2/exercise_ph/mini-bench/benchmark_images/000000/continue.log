@@ -1,0 +1,637 @@
+[2024-02-20 12:42:08,030]:INFO: ######################################################################
+[2024-02-20 12:42:08,030]:INFO: # benchmark: ph-enccs
+[2024-02-20 12:42:08,030]:INFO: # id: 0
+[2024-02-20 12:42:08,030]:INFO: #
+[2024-02-20 12:42:08,030]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-20 12:42:08,030]:INFO: ######################################################################
+[2024-02-20 12:42:08,030]:DEBUG: ----- submit ( iter:0 | id:0 | parents: | cycle:0 | procs:1 ) -----
+[2024-02-20 12:42:08,032]:DEBUG:   available parameter:
+[2024-02-20 12:42:08,032]:DEBUG:          | parameter             | value                                    |
+[2024-02-20 12:42:08,032]:DEBUG:          |-----------------------|------------------------------------------|
+[2024-02-20 12:42:08,032]:DEBUG:          | accountno             | cin_staff                                |
+[2024-02-20 12:42:08,032]:DEBUG:          | args_executable       | -ni 1 -nk 1 -input ph.CnSnI3.in >        |
+[2024-02-20 12:42:08,032]:DEBUG:          |                       | out.0_0                                  |
+[2024-02-20 12:42:08,032]:DEBUG:          | args_starter          | -n 1 --cpu-bind=cores --cpus-per-        |
+[2024-02-20 12:42:08,032]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-20 12:42:08,032]:DEBUG:          | casename              | ph.CnSnI3                                |
+[2024-02-20 12:42:08,032]:DEBUG:          | cpuspertask           | 32                                       |
+[2024-02-20 12:42:08,032]:DEBUG:          | dirin                 | inputfiles                               |
+[2024-02-20 12:42:08,032]:DEBUG:          | env                   |                                          |
+[2024-02-20 12:42:08,032]:DEBUG:          | executable            | ph.x                                     |
+[2024-02-20 12:42:08,032]:DEBUG:          | fin                   | ph.CnSnI3.in                             |
+[2024-02-20 12:42:08,032]:DEBUG:          | fout                  | out.0_0                                  |
+[2024-02-20 12:42:08,032]:DEBUG:          | gres                  | gpu:1                                    |
+[2024-02-20 12:42:08,033]:DEBUG:          | images                | 1                                        |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_benchmark_home   | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | bench                                    |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_benchmark_name   | ph-enccs                                 |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_benchmark_rundir | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | bench/benchmark_images/000000            |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_benchmark_start  | 2024-02-20T11:49:15                      |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_step_name        | submit                                   |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_wp_abspath       | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-ben |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | ch/benchmark_images/000000/000000_submit |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | _N1np1omp8/work                          |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_wp_envlist       |                                          |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_wp_envstr        |                                          |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_wp_id            | 0                                        |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_wp_padid         | 000000                                   |
+[2024-02-20 12:42:08,033]:DEBUG:          | jube_wp_relpath       | benchmark_images/000000/000000_submit_N1 |
+[2024-02-20 12:42:08,033]:DEBUG:          |                       | np1omp8/work                             |
+[2024-02-20 12:42:08,033]:DEBUG:          | mapping               | --cpu-bind=cores --cpus-per-             |
+[2024-02-20 12:42:08,034]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-20 12:42:08,034]:DEBUG:          | measurement           |                                          |
+[2024-02-20 12:42:08,034]:DEBUG:          | memnodemachine        | 330000                                   |
+[2024-02-20 12:42:08,034]:DEBUG:          | minmem                | 330000                                   |
+[2024-02-20 12:42:08,034]:DEBUG:          | modules               | module load profile/chem-phys quantum-   |
+[2024-02-20 12:42:08,034]:DEBUG:          |                       | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-20 12:42:08,034]:DEBUG:          |                       | 23.1-openblas-cuda-11.8                  |
+[2024-02-20 12:42:08,034]:DEBUG:          | ncores                | 32                                       |
+[2024-02-20 12:42:08,034]:DEBUG:          | ncpus                 | 32                                       |
+[2024-02-20 12:42:08,034]:DEBUG:          | ngpus                 | 1                                        |
+[2024-02-20 12:42:08,034]:DEBUG:          | nodes                 | 1                                        |
+[2024-02-20 12:42:08,034]:DEBUG:          | nsocket               | 1                                        |
+[2024-02-20 12:42:08,034]:DEBUG:          | pe                    | 32                                       |
+[2024-02-20 12:42:08,034]:DEBUG:          | pool                  | 1                                        |
+[2024-02-20 12:42:08,034]:DEBUG:          | postprocess           |                                          |
+[2024-02-20 12:42:08,034]:DEBUG:          | preprocess            |                                          |
+[2024-02-20 12:42:08,034]:DEBUG:          | qos                   | normal                                   |
+[2024-02-20 12:42:08,034]:DEBUG:          | queue                 | boost_usr_prod                           |
+[2024-02-20 12:42:08,034]:DEBUG:          | ready_file            | ready                                    |
+[2024-02-20 12:42:08,034]:DEBUG:          | shared_folder         | shared                                   |
+[2024-02-20 12:42:08,034]:DEBUG:          | shared_job_info       | shared/jobid                             |
+[2024-02-20 12:42:08,034]:DEBUG:          | starter               | srun                                     |
+[2024-02-20 12:42:08,034]:DEBUG:          | submit                | sbatch                                   |
+[2024-02-20 12:42:08,034]:DEBUG:          | submit_script         | submit.job                               |
+[2024-02-20 12:42:08,034]:DEBUG:          | tasks                 | 1                                        |
+[2024-02-20 12:42:08,034]:DEBUG:          | taskspernode          | 1                                        |
+[2024-02-20 12:42:08,034]:DEBUG:          | threads               | 8                                        |
+[2024-02-20 12:42:08,034]:DEBUG:          | threadspertask        | 8                                        |
+[2024-02-20 12:42:08,034]:DEBUG:          | timelimit             | 00:10:00                                 |
+[2024-02-20 12:42:08,034]:DEBUG:          | wrapname              |                                          |
+[2024-02-20 12:42:08,034]:DEBUG:          | wrappost              |                                          |
+[2024-02-20 12:42:08,034]:DEBUG:          | wrappre               |                                          |
+[2024-02-20 12:42:08,037]:DEBUG: >>> rm -rf $dirout
+[2024-02-20 12:42:08,037]:DEBUG:     stdout: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_images/000000/000000_submit_N1np1omp8/work/stdout
+[2024-02-20 12:42:08,037]:DEBUG:     stderr: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_images/000000/000000_submit_N1np1omp8/work/stderr
+[2024-02-20 12:42:08,053]:DEBUG: Create new workpackages for workpackage submit(0)
+[2024-02-20 12:42:08,053]:DEBUG:   0 new workpackages created
+[2024-02-20 12:42:08,066]:DEBUG: ----- submit ( iter:0 | id:1 | parents: | cycle:0 | procs:1 ) -----
+[2024-02-20 12:42:08,068]:DEBUG:   available parameter:
+[2024-02-20 12:42:08,068]:DEBUG:          | parameter             | value                                    |
+[2024-02-20 12:42:08,068]:DEBUG:          |-----------------------|------------------------------------------|
+[2024-02-20 12:42:08,068]:DEBUG:          | accountno             | cin_staff                                |
+[2024-02-20 12:42:08,068]:DEBUG:          | args_executable       | -ni 2 -nk 1 -input ph.CnSnI3.in >        |
+[2024-02-20 12:42:08,068]:DEBUG:          |                       | out.0_0                                  |
+[2024-02-20 12:42:08,068]:DEBUG:          | args_starter          | -n 2 --cpu-bind=cores --cpus-per-        |
+[2024-02-20 12:42:08,068]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-20 12:42:08,068]:DEBUG:          | casename              | ph.CnSnI3                                |
+[2024-02-20 12:42:08,068]:DEBUG:          | cpuspertask           | 16                                       |
+[2024-02-20 12:42:08,068]:DEBUG:          | dirin                 | inputfiles                               |
+[2024-02-20 12:42:08,068]:DEBUG:          | env                   |                                          |
+[2024-02-20 12:42:08,068]:DEBUG:          | executable            | ph.x                                     |
+[2024-02-20 12:42:08,068]:DEBUG:          | fin                   | ph.CnSnI3.in                             |
+[2024-02-20 12:42:08,068]:DEBUG:          | fout                  | out.0_0                                  |
+[2024-02-20 12:42:08,069]:DEBUG:          | gres                  | gpu:2                                    |
+[2024-02-20 12:42:08,069]:DEBUG:          | images                | 2                                        |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_benchmark_home   | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | bench                                    |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_benchmark_name   | ph-enccs                                 |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_benchmark_rundir | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | bench/benchmark_images/000000            |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_benchmark_start  | 2024-02-20T11:49:15                      |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_step_name        | submit                                   |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_wp_abspath       | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-ben |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | ch/benchmark_images/000000/000001_submit |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | _N1np2omp8/work                          |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_wp_envlist       |                                          |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_wp_envstr        |                                          |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_wp_id            | 1                                        |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_wp_padid         | 000001                                   |
+[2024-02-20 12:42:08,069]:DEBUG:          | jube_wp_relpath       | benchmark_images/000000/000001_submit_N1 |
+[2024-02-20 12:42:08,069]:DEBUG:          |                       | np2omp8/work                             |
+[2024-02-20 12:42:08,070]:DEBUG:          | mapping               | --cpu-bind=cores --cpus-per-             |
+[2024-02-20 12:42:08,070]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-20 12:42:08,070]:DEBUG:          | measurement           |                                          |
+[2024-02-20 12:42:08,070]:DEBUG:          | memnodemachine        | 330000                                   |
+[2024-02-20 12:42:08,070]:DEBUG:          | minmem                | 330000                                   |
+[2024-02-20 12:42:08,070]:DEBUG:          | modules               | module load profile/chem-phys quantum-   |
+[2024-02-20 12:42:08,070]:DEBUG:          |                       | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-20 12:42:08,070]:DEBUG:          |                       | 23.1-openblas-cuda-11.8                  |
+[2024-02-20 12:42:08,070]:DEBUG:          | ncores                | 32                                       |
+[2024-02-20 12:42:08,070]:DEBUG:          | ncpus                 | 32                                       |
+[2024-02-20 12:42:08,070]:DEBUG:          | ngpus                 | 2                                        |
+[2024-02-20 12:42:08,070]:DEBUG:          | nodes                 | 1                                        |
+[2024-02-20 12:42:08,070]:DEBUG:          | nsocket               | 1                                        |
+[2024-02-20 12:42:08,070]:DEBUG:          | pe                    | 16                                       |
+[2024-02-20 12:42:08,070]:DEBUG:          | pool                  | 1                                        |
+[2024-02-20 12:42:08,070]:DEBUG:          | postprocess           |                                          |
+[2024-02-20 12:42:08,070]:DEBUG:          | preprocess            |                                          |
+[2024-02-20 12:42:08,070]:DEBUG:          | qos                   | normal                                   |
+[2024-02-20 12:42:08,070]:DEBUG:          | queue                 | boost_usr_prod                           |
+[2024-02-20 12:42:08,070]:DEBUG:          | ready_file            | ready                                    |
+[2024-02-20 12:42:08,070]:DEBUG:          | shared_folder         | shared                                   |
+[2024-02-20 12:42:08,070]:DEBUG:          | shared_job_info       | shared/jobid                             |
+[2024-02-20 12:42:08,070]:DEBUG:          | starter               | srun                                     |
+[2024-02-20 12:42:08,070]:DEBUG:          | submit                | sbatch                                   |
+[2024-02-20 12:42:08,070]:DEBUG:          | submit_script         | submit.job                               |
+[2024-02-20 12:42:08,070]:DEBUG:          | tasks                 | 2                                        |
+[2024-02-20 12:42:08,070]:DEBUG:          | taskspernode          | 2                                        |
+[2024-02-20 12:42:08,070]:DEBUG:          | threads               | 16                                       |
+[2024-02-20 12:42:08,070]:DEBUG:          | threadspertask        | 8                                        |
+[2024-02-20 12:42:08,070]:DEBUG:          | timelimit             | 00:10:00                                 |
+[2024-02-20 12:42:08,070]:DEBUG:          | wrapname              |                                          |
+[2024-02-20 12:42:08,070]:DEBUG:          | wrappost              |                                          |
+[2024-02-20 12:42:08,070]:DEBUG:          | wrappre               |                                          |
+[2024-02-20 12:42:08,073]:DEBUG: >>> rm -rf $dirout
+[2024-02-20 12:42:08,073]:DEBUG:     stdout: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_images/000000/000001_submit_N1np2omp8/work/stdout
+[2024-02-20 12:42:08,073]:DEBUG:     stderr: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_images/000000/000001_submit_N1np2omp8/work/stderr
+[2024-02-20 12:42:08,087]:DEBUG: Create new workpackages for workpackage submit(1)
+[2024-02-20 12:42:08,087]:DEBUG:   0 new workpackages created
+[2024-02-20 12:42:08,099]:DEBUG: ----- submit ( iter:0 | id:2 | parents: | cycle:0 | procs:1 ) -----
+[2024-02-20 12:42:08,100]:DEBUG:   available parameter:
+[2024-02-20 12:42:08,100]:DEBUG:          | parameter             | value                                    |
+[2024-02-20 12:42:08,100]:DEBUG:          |-----------------------|------------------------------------------|
+[2024-02-20 12:42:08,100]:DEBUG:          | accountno             | cin_staff                                |
+[2024-02-20 12:42:08,100]:DEBUG:          | args_executable       | -ni 3 -nk 1 -input ph.CnSnI3.in >        |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | out.0_0                                  |
+[2024-02-20 12:42:08,101]:DEBUG:          | args_starter          | -n 3 --cpu-bind=cores --cpus-per-        |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-20 12:42:08,101]:DEBUG:          | casename              | ph.CnSnI3                                |
+[2024-02-20 12:42:08,101]:DEBUG:          | cpuspertask           | 10                                       |
+[2024-02-20 12:42:08,101]:DEBUG:          | dirin                 | inputfiles                               |
+[2024-02-20 12:42:08,101]:DEBUG:          | env                   |                                          |
+[2024-02-20 12:42:08,101]:DEBUG:          | executable            | ph.x                                     |
+[2024-02-20 12:42:08,101]:DEBUG:          | fin                   | ph.CnSnI3.in                             |
+[2024-02-20 12:42:08,101]:DEBUG:          | fout                  | out.0_0                                  |
+[2024-02-20 12:42:08,101]:DEBUG:          | gres                  | gpu:3                                    |
+[2024-02-20 12:42:08,101]:DEBUG:          | images                | 3                                        |
+[2024-02-20 12:42:08,101]:DEBUG:          | jube_benchmark_home   | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | bench                                    |
+[2024-02-20 12:42:08,101]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2024-02-20 12:42:08,101]:DEBUG:          | jube_benchmark_name   | ph-enccs                                 |
+[2024-02-20 12:42:08,101]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2024-02-20 12:42:08,101]:DEBUG:          | jube_benchmark_rundir | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | bench/benchmark_images/000000            |
+[2024-02-20 12:42:08,101]:DEBUG:          | jube_benchmark_start  | 2024-02-20T11:49:15                      |
+[2024-02-20 12:42:08,101]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2024-02-20 12:42:08,101]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2024-02-20 12:42:08,101]:DEBUG:          | jube_step_name        | submit                                   |
+[2024-02-20 12:42:08,101]:DEBUG:          | jube_wp_abspath       | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,101]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,102]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-ben |
+[2024-02-20 12:42:08,102]:DEBUG:          |                       | ch/benchmark_images/000000/000002_submit |
+[2024-02-20 12:42:08,102]:DEBUG:          |                       | _N1np3omp8/work                          |
+[2024-02-20 12:42:08,102]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2024-02-20 12:42:08,102]:DEBUG:          | jube_wp_envlist       |                                          |
+[2024-02-20 12:42:08,102]:DEBUG:          | jube_wp_envstr        |                                          |
+[2024-02-20 12:42:08,102]:DEBUG:          | jube_wp_id            | 2                                        |
+[2024-02-20 12:42:08,102]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2024-02-20 12:42:08,102]:DEBUG:          | jube_wp_padid         | 000002                                   |
+[2024-02-20 12:42:08,102]:DEBUG:          | jube_wp_relpath       | benchmark_images/000000/000002_submit_N1 |
+[2024-02-20 12:42:08,102]:DEBUG:          |                       | np3omp8/work                             |
+[2024-02-20 12:42:08,102]:DEBUG:          | mapping               | --cpu-bind=cores --cpus-per-             |
+[2024-02-20 12:42:08,102]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-20 12:42:08,102]:DEBUG:          | measurement           |                                          |
+[2024-02-20 12:42:08,102]:DEBUG:          | memnodemachine        | 330000                                   |
+[2024-02-20 12:42:08,102]:DEBUG:          | minmem                | 330000                                   |
+[2024-02-20 12:42:08,102]:DEBUG:          | modules               | module load profile/chem-phys quantum-   |
+[2024-02-20 12:42:08,102]:DEBUG:          |                       | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-20 12:42:08,102]:DEBUG:          |                       | 23.1-openblas-cuda-11.8                  |
+[2024-02-20 12:42:08,102]:DEBUG:          | ncores                | 32                                       |
+[2024-02-20 12:42:08,102]:DEBUG:          | ncpus                 | 32                                       |
+[2024-02-20 12:42:08,102]:DEBUG:          | ngpus                 | 3                                        |
+[2024-02-20 12:42:08,102]:DEBUG:          | nodes                 | 1                                        |
+[2024-02-20 12:42:08,102]:DEBUG:          | nsocket               | 1                                        |
+[2024-02-20 12:42:08,102]:DEBUG:          | pe                    | 10                                       |
+[2024-02-20 12:42:08,102]:DEBUG:          | pool                  | 1                                        |
+[2024-02-20 12:42:08,102]:DEBUG:          | postprocess           |                                          |
+[2024-02-20 12:42:08,102]:DEBUG:          | preprocess            |                                          |
+[2024-02-20 12:42:08,102]:DEBUG:          | qos                   | normal                                   |
+[2024-02-20 12:42:08,102]:DEBUG:          | queue                 | boost_usr_prod                           |
+[2024-02-20 12:42:08,102]:DEBUG:          | ready_file            | ready                                    |
+[2024-02-20 12:42:08,102]:DEBUG:          | shared_folder         | shared                                   |
+[2024-02-20 12:42:08,102]:DEBUG:          | shared_job_info       | shared/jobid                             |
+[2024-02-20 12:42:08,102]:DEBUG:          | starter               | srun                                     |
+[2024-02-20 12:42:08,103]:DEBUG:          | submit                | sbatch                                   |
+[2024-02-20 12:42:08,103]:DEBUG:          | submit_script         | submit.job                               |
+[2024-02-20 12:42:08,103]:DEBUG:          | tasks                 | 3                                        |
+[2024-02-20 12:42:08,103]:DEBUG:          | taskspernode          | 3                                        |
+[2024-02-20 12:42:08,103]:DEBUG:          | threads               | 24                                       |
+[2024-02-20 12:42:08,103]:DEBUG:          | threadspertask        | 8                                        |
+[2024-02-20 12:42:08,103]:DEBUG:          | timelimit             | 00:10:00                                 |
+[2024-02-20 12:42:08,103]:DEBUG:          | wrapname              |                                          |
+[2024-02-20 12:42:08,103]:DEBUG:          | wrappost              |                                          |
+[2024-02-20 12:42:08,103]:DEBUG:          | wrappre               |                                          |
+[2024-02-20 12:42:08,105]:DEBUG: >>> rm -rf $dirout
+[2024-02-20 12:42:08,105]:DEBUG:     stdout: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_images/000000/000002_submit_N1np3omp8/work/stdout
+[2024-02-20 12:42:08,105]:DEBUG:     stderr: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_images/000000/000002_submit_N1np3omp8/work/stderr
+[2024-02-20 12:42:08,119]:DEBUG: Create new workpackages for workpackage submit(2)
+[2024-02-20 12:42:08,119]:DEBUG:   0 new workpackages created
+[2024-02-20 12:42:08,141]:DEBUG: ----- submit ( iter:0 | id:3 | parents: | cycle:0 | procs:1 ) -----
+[2024-02-20 12:42:08,143]:DEBUG:   available parameter:
+[2024-02-20 12:42:08,143]:DEBUG:          | parameter             | value                                    |
+[2024-02-20 12:42:08,143]:DEBUG:          |-----------------------|------------------------------------------|
+[2024-02-20 12:42:08,143]:DEBUG:          | accountno             | cin_staff                                |
+[2024-02-20 12:42:08,143]:DEBUG:          | args_executable       | -ni 4 -nk 1 -input ph.CnSnI3.in >        |
+[2024-02-20 12:42:08,143]:DEBUG:          |                       | out.0_0                                  |
+[2024-02-20 12:42:08,143]:DEBUG:          | args_starter          | -n 4 --cpu-bind=cores --cpus-per-        |
+[2024-02-20 12:42:08,143]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-20 12:42:08,143]:DEBUG:          | casename              | ph.CnSnI3                                |
+[2024-02-20 12:42:08,143]:DEBUG:          | cpuspertask           | 8                                        |
+[2024-02-20 12:42:08,144]:DEBUG:          | dirin                 | inputfiles                               |
+[2024-02-20 12:42:08,144]:DEBUG:          | env                   |                                          |
+[2024-02-20 12:42:08,144]:DEBUG:          | executable            | ph.x                                     |
+[2024-02-20 12:42:08,144]:DEBUG:          | fin                   | ph.CnSnI3.in                             |
+[2024-02-20 12:42:08,144]:DEBUG:          | fout                  | out.0_0                                  |
+[2024-02-20 12:42:08,144]:DEBUG:          | gres                  | gpu:4                                    |
+[2024-02-20 12:42:08,144]:DEBUG:          | images                | 4                                        |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_benchmark_home   | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | bench                                    |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_benchmark_name   | ph-enccs                                 |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_benchmark_rundir | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | bench/benchmark_images/000000            |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_benchmark_start  | 2024-02-20T11:49:15                      |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_step_name        | submit                                   |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_wp_abspath       | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-ben |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | ch/benchmark_images/000000/000003_submit |
+[2024-02-20 12:42:08,144]:DEBUG:          |                       | _N1np4omp8/work                          |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2024-02-20 12:42:08,144]:DEBUG:          | jube_wp_envlist       |                                          |
+[2024-02-20 12:42:08,145]:DEBUG:          | jube_wp_envstr        |                                          |
+[2024-02-20 12:42:08,145]:DEBUG:          | jube_wp_id            | 3                                        |
+[2024-02-20 12:42:08,145]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2024-02-20 12:42:08,145]:DEBUG:          | jube_wp_padid         | 000003                                   |
+[2024-02-20 12:42:08,145]:DEBUG:          | jube_wp_relpath       | benchmark_images/000000/000003_submit_N1 |
+[2024-02-20 12:42:08,145]:DEBUG:          |                       | np4omp8/work                             |
+[2024-02-20 12:42:08,145]:DEBUG:          | mapping               | --cpu-bind=cores --cpus-per-             |
+[2024-02-20 12:42:08,145]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-20 12:42:08,145]:DEBUG:          | measurement           |                                          |
+[2024-02-20 12:42:08,145]:DEBUG:          | memnodemachine        | 330000                                   |
+[2024-02-20 12:42:08,145]:DEBUG:          | minmem                | 330000                                   |
+[2024-02-20 12:42:08,145]:DEBUG:          | modules               | module load profile/chem-phys quantum-   |
+[2024-02-20 12:42:08,145]:DEBUG:          |                       | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-20 12:42:08,145]:DEBUG:          |                       | 23.1-openblas-cuda-11.8                  |
+[2024-02-20 12:42:08,145]:DEBUG:          | ncores                | 32                                       |
+[2024-02-20 12:42:08,145]:DEBUG:          | ncpus                 | 32                                       |
+[2024-02-20 12:42:08,145]:DEBUG:          | ngpus                 | 4                                        |
+[2024-02-20 12:42:08,145]:DEBUG:          | nodes                 | 1                                        |
+[2024-02-20 12:42:08,145]:DEBUG:          | nsocket               | 1                                        |
+[2024-02-20 12:42:08,145]:DEBUG:          | pe                    | 8                                        |
+[2024-02-20 12:42:08,145]:DEBUG:          | pool                  | 1                                        |
+[2024-02-20 12:42:08,145]:DEBUG:          | postprocess           |                                          |
+[2024-02-20 12:42:08,145]:DEBUG:          | preprocess            |                                          |
+[2024-02-20 12:42:08,145]:DEBUG:          | qos                   | normal                                   |
+[2024-02-20 12:42:08,145]:DEBUG:          | queue                 | boost_usr_prod                           |
+[2024-02-20 12:42:08,145]:DEBUG:          | ready_file            | ready                                    |
+[2024-02-20 12:42:08,145]:DEBUG:          | shared_folder         | shared                                   |
+[2024-02-20 12:42:08,145]:DEBUG:          | shared_job_info       | shared/jobid                             |
+[2024-02-20 12:42:08,145]:DEBUG:          | starter               | srun                                     |
+[2024-02-20 12:42:08,145]:DEBUG:          | submit                | sbatch                                   |
+[2024-02-20 12:42:08,145]:DEBUG:          | submit_script         | submit.job                               |
+[2024-02-20 12:42:08,145]:DEBUG:          | tasks                 | 4                                        |
+[2024-02-20 12:42:08,145]:DEBUG:          | taskspernode          | 4                                        |
+[2024-02-20 12:42:08,146]:DEBUG:          | threads               | 32                                       |
+[2024-02-20 12:42:08,146]:DEBUG:          | threadspertask        | 8                                        |
+[2024-02-20 12:42:08,146]:DEBUG:          | timelimit             | 00:10:00                                 |
+[2024-02-20 12:42:08,146]:DEBUG:          | wrapname              |                                          |
+[2024-02-20 12:42:08,146]:DEBUG:          | wrappost              |                                          |
+[2024-02-20 12:42:08,146]:DEBUG:          | wrappre               |                                          |
+[2024-02-20 12:42:08,148]:DEBUG: >>> rm -rf $dirout
+[2024-02-20 12:42:08,148]:DEBUG:     stdout: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_images/000000/000003_submit_N1np4omp8/work/stdout
+[2024-02-20 12:42:08,148]:DEBUG:     stderr: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_images/000000/000003_submit_N1np4omp8/work/stderr
+[2024-02-20 12:42:08,163]:DEBUG: Create new workpackages for workpackage submit(3)
+[2024-02-20 12:42:08,163]:DEBUG:   0 new workpackages created
+[2024-02-20 12:42:08,184]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-20 12:42:08,184]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-20 12:42:08,184]:INFO:   |   submit |   4 |    0 |    0 |     0 |    4 |
+[2024-02-20 12:42:08,184]:INFO: 
+[2024-02-20 12:42:08,184]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-20 12:42:08,185]:INFO: >>>>       id: 0
+[2024-02-20 12:42:08,185]:INFO: >>>>   handle: benchmark_images
+[2024-02-20 12:42:08,185]:INFO: >>>>      dir: benchmark_images/000000
+[2024-02-20 12:42:08,185]:INFO: >>>>  analyse: jube analyse benchmark_images --id 0
+[2024-02-20 12:42:08,185]:INFO: >>>>   result: jube result benchmark_images --id 0
+[2024-02-20 12:42:08,185]:INFO: >>>>     info: jube info benchmark_images --id 0
+[2024-02-20 12:42:08,185]:INFO: >>>>      log: jube log benchmark_images --id 0
+[2024-02-20 12:42:08,185]:INFO: ######################################################################
+[2024-02-20 12:44:40,140]:INFO: ######################################################################
+[2024-02-20 12:44:40,140]:INFO: # benchmark: ph-enccs
+[2024-02-20 12:44:40,140]:INFO: # id: 0
+[2024-02-20 12:44:40,140]:INFO: #
+[2024-02-20 12:44:40,140]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-20 12:44:40,140]:INFO: ######################################################################
+[2024-02-20 12:44:40,141]:DEBUG: Create new workpackages for workpackage submit(0)
+[2024-02-20 12:44:40,141]:DEBUG:   0 new workpackages created
+[2024-02-20 12:44:40,154]:DEBUG: Create new workpackages for workpackage submit(1)
+[2024-02-20 12:44:40,154]:DEBUG:   0 new workpackages created
+[2024-02-20 12:44:40,166]:DEBUG: Create new workpackages for workpackage submit(2)
+[2024-02-20 12:44:40,166]:DEBUG:   0 new workpackages created
+[2024-02-20 12:44:40,177]:DEBUG: Create new workpackages for workpackage submit(3)
+[2024-02-20 12:44:40,177]:DEBUG:   0 new workpackages created
+[2024-02-20 12:44:40,197]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-20 12:44:40,197]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-20 12:44:40,197]:INFO:   |   submit |   4 |    0 |    0 |     0 |    4 |
+[2024-02-20 12:44:40,197]:INFO: 
+[2024-02-20 12:44:40,197]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-20 12:44:40,197]:INFO: >>>>       id: 0
+[2024-02-20 12:44:40,197]:INFO: >>>>   handle: benchmark_images
+[2024-02-20 12:44:40,197]:INFO: >>>>      dir: benchmark_images/000000
+[2024-02-20 12:44:40,197]:INFO: >>>>  analyse: jube analyse benchmark_images --id 0
+[2024-02-20 12:44:40,197]:INFO: >>>>   result: jube result benchmark_images --id 0
+[2024-02-20 12:44:40,198]:INFO: >>>>     info: jube info benchmark_images --id 0
+[2024-02-20 12:44:40,198]:INFO: >>>>      log: jube log benchmark_images --id 0
+[2024-02-20 12:44:40,198]:INFO: ######################################################################
+[2024-02-22 07:51:28,798]:INFO: ######################################################################
+[2024-02-22 07:51:28,889]:INFO: # benchmark: ph-enccs
+[2024-02-22 07:51:28,889]:INFO: # id: 0
+[2024-02-22 07:51:28,889]:INFO: #
+[2024-02-22 07:51:28,889]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-22 07:51:28,889]:INFO: ######################################################################
+[2024-02-22 07:51:28,891]:DEBUG: Create new workpackages for workpackage submit(0)
+[2024-02-22 07:51:28,891]:DEBUG:   0 new workpackages created
+[2024-02-22 07:51:28,905]:DEBUG: Create new workpackages for workpackage submit(1)
+[2024-02-22 07:51:28,905]:DEBUG:   0 new workpackages created
+[2024-02-22 07:51:28,919]:DEBUG: Create new workpackages for workpackage submit(2)
+[2024-02-22 07:51:28,920]:DEBUG:   0 new workpackages created
+[2024-02-22 07:51:28,939]:DEBUG: Create new workpackages for workpackage submit(3)
+[2024-02-22 07:51:28,939]:DEBUG:   0 new workpackages created
+[2024-02-22 07:51:29,007]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-22 07:51:29,007]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-22 07:51:29,007]:INFO:   |   submit |   4 |    0 |    0 |     0 |    4 |
+[2024-02-22 07:51:29,007]:INFO: 
+[2024-02-22 07:51:29,007]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-22 07:51:29,007]:INFO: >>>>       id: 0
+[2024-02-22 07:51:29,007]:INFO: >>>>   handle: benchmark_images
+[2024-02-22 07:51:29,007]:INFO: >>>>      dir: benchmark_images/000000
+[2024-02-22 07:51:29,007]:INFO: >>>>  analyse: jube analyse benchmark_images --id 0
+[2024-02-22 07:51:29,008]:INFO: >>>>   result: jube result benchmark_images --id 0
+[2024-02-22 07:51:29,008]:INFO: >>>>     info: jube info benchmark_images --id 0
+[2024-02-22 07:51:29,008]:INFO: >>>>      log: jube log benchmark_images --id 0
+[2024-02-22 07:51:29,008]:INFO: ######################################################################
+[2024-02-22 07:52:35,203]:INFO: ######################################################################
+[2024-02-22 07:52:35,203]:INFO: # benchmark: ph-enccs
+[2024-02-22 07:52:35,203]:INFO: # id: 0
+[2024-02-22 07:52:35,203]:INFO: #
+[2024-02-22 07:52:35,203]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-22 07:52:35,203]:INFO: ######################################################################
+[2024-02-22 07:52:35,203]:DEBUG: Create new workpackages for workpackage submit(0)
+[2024-02-22 07:52:35,203]:DEBUG:   0 new workpackages created
+[2024-02-22 07:52:35,216]:DEBUG: Create new workpackages for workpackage submit(1)
+[2024-02-22 07:52:35,216]:DEBUG:   0 new workpackages created
+[2024-02-22 07:52:35,228]:DEBUG: Create new workpackages for workpackage submit(2)
+[2024-02-22 07:52:35,228]:DEBUG:   0 new workpackages created
+[2024-02-22 07:52:35,239]:DEBUG: Create new workpackages for workpackage submit(3)
+[2024-02-22 07:52:35,239]:DEBUG:   0 new workpackages created
+[2024-02-22 07:52:35,258]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-22 07:52:35,258]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-22 07:52:35,258]:INFO:   |   submit |   4 |    0 |    0 |     0 |    4 |
+[2024-02-22 07:52:35,258]:INFO: 
+[2024-02-22 07:52:35,258]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-22 07:52:35,258]:INFO: >>>>       id: 0
+[2024-02-22 07:52:35,258]:INFO: >>>>   handle: benchmark_images
+[2024-02-22 07:52:35,258]:INFO: >>>>      dir: benchmark_images/000000
+[2024-02-22 07:52:35,258]:INFO: >>>>  analyse: jube analyse benchmark_images --id 0
+[2024-02-22 07:52:35,258]:INFO: >>>>   result: jube result benchmark_images --id 0
+[2024-02-22 07:52:35,258]:INFO: >>>>     info: jube info benchmark_images --id 0
+[2024-02-22 07:52:35,258]:INFO: >>>>      log: jube log benchmark_images --id 0
+[2024-02-22 07:52:35,259]:INFO: ######################################################################
+[2024-02-22 08:04:40,911]:INFO: ######################################################################
+[2024-02-22 08:04:40,911]:INFO: # benchmark: ph-enccs
+[2024-02-22 08:04:40,911]:INFO: # id: 0
+[2024-02-22 08:04:40,912]:INFO: #
+[2024-02-22 08:04:40,912]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-22 08:04:40,912]:INFO: ######################################################################
+[2024-02-22 08:04:40,912]:DEBUG: Create new workpackages for workpackage submit(0)
+[2024-02-22 08:04:40,912]:DEBUG:   0 new workpackages created
+[2024-02-22 08:04:40,925]:DEBUG: Create new workpackages for workpackage submit(1)
+[2024-02-22 08:04:40,925]:DEBUG:   0 new workpackages created
+[2024-02-22 08:04:40,936]:DEBUG: Create new workpackages for workpackage submit(2)
+[2024-02-22 08:04:40,936]:DEBUG:   0 new workpackages created
+[2024-02-22 08:04:40,947]:DEBUG: Create new workpackages for workpackage submit(3)
+[2024-02-22 08:04:40,947]:DEBUG:   0 new workpackages created
+[2024-02-22 08:04:40,966]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-22 08:04:40,966]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-22 08:04:40,966]:INFO:   |   submit |   4 |    0 |    0 |     0 |    4 |
+[2024-02-22 08:04:40,966]:INFO: 
+[2024-02-22 08:04:40,966]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-22 08:04:40,966]:INFO: >>>>       id: 0
+[2024-02-22 08:04:40,966]:INFO: >>>>   handle: benchmark_images
+[2024-02-22 08:04:40,966]:INFO: >>>>      dir: benchmark_images/000000
+[2024-02-22 08:04:40,967]:INFO: >>>>  analyse: jube analyse benchmark_images --id 0
+[2024-02-22 08:04:40,967]:INFO: >>>>   result: jube result benchmark_images --id 0
+[2024-02-22 08:04:40,967]:INFO: >>>>     info: jube info benchmark_images --id 0
+[2024-02-22 08:04:40,967]:INFO: >>>>      log: jube log benchmark_images --id 0
+[2024-02-22 08:04:40,967]:INFO: ######################################################################
+[2024-02-22 09:02:37,510]:INFO: ######################################################################
+[2024-02-22 09:02:37,512]:INFO: # benchmark: ph-enccs
+[2024-02-22 09:02:37,512]:INFO: # id: 0
+[2024-02-22 09:02:37,512]:INFO: #
+[2024-02-22 09:02:37,512]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-22 09:02:37,512]:INFO: ######################################################################
+[2024-02-22 09:02:37,513]:DEBUG: Create new workpackages for workpackage submit(0)
+[2024-02-22 09:02:37,513]:DEBUG:   0 new workpackages created
+[2024-02-22 09:02:37,526]:DEBUG: Create new workpackages for workpackage submit(1)
+[2024-02-22 09:02:37,526]:DEBUG:   0 new workpackages created
+[2024-02-22 09:02:37,537]:DEBUG: Create new workpackages for workpackage submit(2)
+[2024-02-22 09:02:37,537]:DEBUG:   0 new workpackages created
+[2024-02-22 09:02:37,548]:DEBUG: Create new workpackages for workpackage submit(3)
+[2024-02-22 09:02:37,548]:DEBUG:   0 new workpackages created
+[2024-02-22 09:02:37,568]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-22 09:02:37,568]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-22 09:02:37,568]:INFO:   |   submit |   4 |    0 |    0 |     0 |    4 |
+[2024-02-22 09:02:37,568]:INFO: 
+[2024-02-22 09:02:37,568]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-22 09:02:37,568]:INFO: >>>>       id: 0
+[2024-02-22 09:02:37,568]:INFO: >>>>   handle: benchmark_images
+[2024-02-22 09:02:37,568]:INFO: >>>>      dir: benchmark_images/000000
+[2024-02-22 09:02:37,568]:INFO: >>>>  analyse: jube analyse benchmark_images --id 0
+[2024-02-22 09:02:37,568]:INFO: >>>>   result: jube result benchmark_images --id 0
+[2024-02-22 09:02:37,568]:INFO: >>>>     info: jube info benchmark_images --id 0
+[2024-02-22 09:02:37,568]:INFO: >>>>      log: jube log benchmark_images --id 0
+[2024-02-22 09:02:37,568]:INFO: ######################################################################
+[2024-02-22 09:03:07,593]:INFO: ######################################################################
+[2024-02-22 09:03:07,593]:INFO: # benchmark: ph-enccs
+[2024-02-22 09:03:07,593]:INFO: # id: 0
+[2024-02-22 09:03:07,593]:INFO: #
+[2024-02-22 09:03:07,593]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-22 09:03:07,593]:INFO: ######################################################################
+[2024-02-22 09:03:07,593]:DEBUG: Create new workpackages for workpackage submit(0)
+[2024-02-22 09:03:07,593]:DEBUG:   0 new workpackages created
+[2024-02-22 09:03:07,606]:DEBUG: Create new workpackages for workpackage submit(1)
+[2024-02-22 09:03:07,606]:DEBUG:   0 new workpackages created
+[2024-02-22 09:03:07,618]:DEBUG: Create new workpackages for workpackage submit(2)
+[2024-02-22 09:03:07,618]:DEBUG:   0 new workpackages created
+[2024-02-22 09:03:07,629]:DEBUG: Create new workpackages for workpackage submit(3)
+[2024-02-22 09:03:07,629]:DEBUG:   0 new workpackages created
+[2024-02-22 09:03:07,649]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-22 09:03:07,649]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-22 09:03:07,649]:INFO:   |   submit |   4 |    0 |    0 |     0 |    4 |
+[2024-02-22 09:03:07,649]:INFO: 
+[2024-02-22 09:03:07,649]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-22 09:03:07,649]:INFO: >>>>       id: 0
+[2024-02-22 09:03:07,649]:INFO: >>>>   handle: benchmark_images
+[2024-02-22 09:03:07,649]:INFO: >>>>      dir: benchmark_images/000000
+[2024-02-22 09:03:07,649]:INFO: >>>>  analyse: jube analyse benchmark_images --id 0
+[2024-02-22 09:03:07,649]:INFO: >>>>   result: jube result benchmark_images --id 0
+[2024-02-22 09:03:07,649]:INFO: >>>>     info: jube info benchmark_images --id 0
+[2024-02-22 09:03:07,649]:INFO: >>>>      log: jube log benchmark_images --id 0
+[2024-02-22 09:03:07,649]:INFO: ######################################################################
+[2024-02-22 10:48:23,351]:INFO: ######################################################################
+[2024-02-22 10:48:23,367]:INFO: # benchmark: ph-enccs
+[2024-02-22 10:48:23,367]:INFO: # id: 0
+[2024-02-22 10:48:23,367]:INFO: #
+[2024-02-22 10:48:23,367]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-22 10:48:23,367]:INFO: ######################################################################
+[2024-02-22 10:48:23,382]:DEBUG: Create new workpackages for workpackage submit(0)
+[2024-02-22 10:48:23,382]:DEBUG:   0 new workpackages created
+[2024-02-22 10:48:23,397]:DEBUG: Create new workpackages for workpackage submit(1)
+[2024-02-22 10:48:23,397]:DEBUG:   0 new workpackages created
+[2024-02-22 10:48:23,408]:DEBUG: Create new workpackages for workpackage submit(2)
+[2024-02-22 10:48:23,408]:DEBUG:   0 new workpackages created
+[2024-02-22 10:48:23,419]:DEBUG: Create new workpackages for workpackage submit(3)
+[2024-02-22 10:48:23,419]:DEBUG:   0 new workpackages created
+[2024-02-22 10:48:23,439]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-22 10:48:23,439]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-22 10:48:23,439]:INFO:   |   submit |   4 |    0 |    0 |     0 |    4 |
+[2024-02-22 10:48:23,439]:INFO: 
+[2024-02-22 10:48:23,439]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-22 10:48:23,439]:INFO: >>>>       id: 0
+[2024-02-22 10:48:23,439]:INFO: >>>>   handle: benchmark_images
+[2024-02-22 10:48:23,439]:INFO: >>>>      dir: benchmark_images/000000
+[2024-02-22 10:48:23,439]:INFO: >>>>  analyse: jube analyse benchmark_images --id 0
+[2024-02-22 10:48:23,439]:INFO: >>>>   result: jube result benchmark_images --id 0
+[2024-02-22 10:48:23,439]:INFO: >>>>     info: jube info benchmark_images --id 0
+[2024-02-22 10:48:23,439]:INFO: >>>>      log: jube log benchmark_images --id 0
+[2024-02-22 10:48:23,439]:INFO: ######################################################################
+[2024-02-22 11:45:44,580]:INFO: ######################################################################
+[2024-02-22 11:45:44,594]:INFO: # benchmark: ph-enccs
+[2024-02-22 11:45:44,594]:INFO: # id: 0
+[2024-02-22 11:45:44,594]:INFO: #
+[2024-02-22 11:45:44,594]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-22 11:45:44,594]:INFO: ######################################################################
+[2024-02-22 11:45:44,594]:DEBUG: Create new workpackages for workpackage submit(0)
+[2024-02-22 11:45:44,594]:DEBUG:   0 new workpackages created
+[2024-02-22 11:45:44,609]:DEBUG: Create new workpackages for workpackage submit(1)
+[2024-02-22 11:45:44,609]:DEBUG:   0 new workpackages created
+[2024-02-22 11:45:44,622]:DEBUG: Create new workpackages for workpackage submit(2)
+[2024-02-22 11:45:44,622]:DEBUG:   0 new workpackages created
+[2024-02-22 11:45:44,634]:DEBUG: Create new workpackages for workpackage submit(3)
+[2024-02-22 11:45:44,634]:DEBUG:   0 new workpackages created
+[2024-02-22 11:45:44,656]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-22 11:45:44,656]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-22 11:45:44,656]:INFO:   |   submit |   4 |    0 |    0 |     0 |    4 |
+[2024-02-22 11:45:44,657]:INFO: 
+[2024-02-22 11:45:44,657]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-22 11:45:44,657]:INFO: >>>>       id: 0
+[2024-02-22 11:45:44,657]:INFO: >>>>   handle: benchmark_images
+[2024-02-22 11:45:44,657]:INFO: >>>>      dir: benchmark_images/000000
+[2024-02-22 11:45:44,657]:INFO: >>>>  analyse: jube analyse benchmark_images --id 0
+[2024-02-22 11:45:44,657]:INFO: >>>>   result: jube result benchmark_images --id 0
+[2024-02-22 11:45:44,657]:INFO: >>>>     info: jube info benchmark_images --id 0
+[2024-02-22 11:45:44,657]:INFO: >>>>      log: jube log benchmark_images --id 0
+[2024-02-22 11:45:44,657]:INFO: ######################################################################
+[2024-02-22 14:24:03,116]:INFO: ######################################################################
+[2024-02-22 14:24:03,125]:INFO: # benchmark: ph-enccs
+[2024-02-22 14:24:03,125]:INFO: # id: 0
+[2024-02-22 14:24:03,125]:INFO: #
+[2024-02-22 14:24:03,125]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-22 14:24:03,125]:INFO: ######################################################################
+[2024-02-22 14:24:03,126]:DEBUG: Create new workpackages for workpackage submit(0)
+[2024-02-22 14:24:03,126]:DEBUG:   0 new workpackages created
+[2024-02-22 14:24:03,141]:DEBUG: Create new workpackages for workpackage submit(1)
+[2024-02-22 14:24:03,141]:DEBUG:   0 new workpackages created
+[2024-02-22 14:24:03,152]:DEBUG: Create new workpackages for workpackage submit(2)
+[2024-02-22 14:24:03,152]:DEBUG:   0 new workpackages created
+[2024-02-22 14:24:03,163]:DEBUG: Create new workpackages for workpackage submit(3)
+[2024-02-22 14:24:03,163]:DEBUG:   0 new workpackages created
+[2024-02-22 14:24:03,183]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-22 14:24:03,183]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-22 14:24:03,183]:INFO:   |   submit |   4 |    0 |    0 |     0 |    4 |
+[2024-02-22 14:24:03,183]:INFO: 
+[2024-02-22 14:24:03,183]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-22 14:24:03,183]:INFO: >>>>       id: 0
+[2024-02-22 14:24:03,183]:INFO: >>>>   handle: benchmark_images
+[2024-02-22 14:24:03,183]:INFO: >>>>      dir: benchmark_images/000000
+[2024-02-22 14:24:03,183]:INFO: >>>>  analyse: jube analyse benchmark_images --id 0
+[2024-02-22 14:24:03,183]:INFO: >>>>   result: jube result benchmark_images --id 0
+[2024-02-22 14:24:03,184]:INFO: >>>>     info: jube info benchmark_images --id 0
+[2024-02-22 14:24:03,184]:INFO: >>>>      log: jube log benchmark_images --id 0
+[2024-02-22 14:24:03,184]:INFO: ######################################################################
+[2024-02-23 22:12:11,217]:INFO: ######################################################################
+[2024-02-23 22:12:11,235]:INFO: # benchmark: ph-enccs
+[2024-02-23 22:12:11,235]:INFO: # id: 0
+[2024-02-23 22:12:11,235]:INFO: #
+[2024-02-23 22:12:11,236]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-23 22:12:11,236]:INFO: ######################################################################
+[2024-02-23 22:12:11,237]:DEBUG: Create new workpackages for workpackage submit(0)
+[2024-02-23 22:12:11,237]:DEBUG:   0 new workpackages created
+[2024-02-23 22:12:11,251]:DEBUG: Create new workpackages for workpackage submit(1)
+[2024-02-23 22:12:11,251]:DEBUG:   0 new workpackages created
+[2024-02-23 22:12:11,263]:DEBUG: Create new workpackages for workpackage submit(2)
+[2024-02-23 22:12:11,263]:DEBUG:   0 new workpackages created
+[2024-02-23 22:12:11,273]:DEBUG: Create new workpackages for workpackage submit(3)
+[2024-02-23 22:12:11,274]:DEBUG:   0 new workpackages created
+[2024-02-23 22:12:11,292]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-23 22:12:11,292]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-23 22:12:11,292]:INFO:   |   submit |   4 |    0 |    0 |     0 |    4 |
+[2024-02-23 22:12:11,292]:INFO: 
+[2024-02-23 22:12:11,293]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-23 22:12:11,293]:INFO: >>>>       id: 0
+[2024-02-23 22:12:11,293]:INFO: >>>>   handle: benchmark_images
+[2024-02-23 22:12:11,293]:INFO: >>>>      dir: benchmark_images/000000
+[2024-02-23 22:12:11,293]:INFO: >>>>  analyse: jube analyse benchmark_images --id 0
+[2024-02-23 22:12:11,293]:INFO: >>>>   result: jube result benchmark_images --id 0
+[2024-02-23 22:12:11,293]:INFO: >>>>     info: jube info benchmark_images --id 0
+[2024-02-23 22:12:11,293]:INFO: >>>>      log: jube log benchmark_images --id 0
+[2024-02-23 22:12:11,293]:INFO: ######################################################################

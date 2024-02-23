@@ -1,0 +1,64 @@
+
+     Program DYNMAT v.7.1 starts on  4Nov2022 at 23: 2:22 
+        Git branch: develop_bands
+        Last git commit: 816aee40db40e6b706df606a62b57acfcd26b4df
+        Last git commit date: Fri Oct 21 11:20:44 2022 +0200
+        Last git commit subject: improvement for magnons
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI & OpenMP), running on       1 processor cores
+     Number of MPI processes:                 1
+     Threads/MPI process:                     1
+
+     MPI processes distributed on     1 nodes
+     488507 MiB available memory on the printing compute node when the environment starts
+ 
+
+     Reading Dynamical Matrix from file harmdyn_support
+     ...Force constants read
+     ...epsilon and Z* not read (not found on file)
+     Acoustic Sum Rule: || Z*(ASR) - Z*(orig)|| =    0.000000E+00
+     Acoustic Sum Rule: ||dyn(ASR) - dyn(orig)||=    9.509352E-04
+     A direction for q was not specified:TO-LO splitting will be absent
+
+     Polarizability (A^3 units)
+     multiply by 1.000000 for Clausius-Mossotti correction
+         0.000000    0.000000    0.000000
+         0.000000    0.000000    0.000000
+         0.000000    0.000000    0.000000
+
+     IR activities are in (D/A)^2/amu units
+
+# mode   [cm-1]    [THz]      IR
+    1     -0.00   -0.0000    0.0000
+    2      0.00    0.0000    0.0000
+    3      0.00    0.0000    0.0000
+    4      8.07    0.2419    0.0000
+    5      8.07    0.2419    0.0000
+    6      8.07    0.2419    0.0000
+    7     23.16    0.6943    0.0000
+    8     23.16    0.6943    0.0000
+    9     23.16    0.6943    0.0000
+   10     38.68    1.1597    0.0000
+   11     38.68    1.1597    0.0000
+   12     38.68    1.1597    0.0000
+   13     78.20    2.3443    0.0000
+   14     78.20    2.3443    0.0000
+   15     78.20    2.3443    0.0000
+ 
+     DYNMAT       :      0.00s CPU      0.06s WALL
+
+ 
+   This run was terminated on:  23: 2:22   4Nov2022            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=

@@ -1,0 +1,28 @@
+#!/bin/bash
+#SBATCH --nodes=#NODES#                    
+#SBATCH --ntasks-per-node=#TASKSPERNODE#   
+#SBATCH --cpus-per-task=#THREADSPERTASK#
+#SBATCH --gres=#GRES#
+#SBATCH --time=#TIMELIMIT#
+#SBATCH --exclusive
+#SBATCH --account=#ACCOUNT_NO#              
+#SBATCH --partition=#QUEUE#              
+#SBATCH --qos=#QOS#
+
+module purge
+#MODULES#
+export OMP_NUM_THREADS=#THREADSPERTASK#
+
+scontrol show jobid -dd $SLURM_JOB_ID > scontrol.out
+
+#PREPROCESS#
+
+#WRAPPRE#
+#MEASUREMENT# #STARTER# #ARGS_STARTER# #WRAPNAME# #EXECUTABLE# #ARGS_EXECUTABLE#
+#WRAPPOST#
+
+#POSTPROCESS#
+
+sacct -j $SLURM_JOB_ID --long > sacct.out
+
+touch #READY#

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jube>
+    <parameterset name="compileset">
+        <parameter name="make">make</parameter>
+        <parameter name="cc">gcc</parameter>
+        <parameter name="cflags"></parameter>
+        <parameter name="mpi_cc">mpicc</parameter>
+        <parameter name="mpi_cxx">mpic++</parameter>
+        <parameter name="mpi_f90">mpif90</parameter>
+        <parameter name="mpi_f77">mpif77</parameter>
+    </parameterset>
+
+    <parameterset name="libs">
+        <parameter name="load_module">module load</parameter>
+    </parameterset>
+
+<!-- parameterset for the submission -->  
+    <parameterset name="executeset">
+       <parameter name="starter">mpirun</parameter>
+       <parameter name="mapping" mode="python" update_mode="step">
+             { "srun"    :  "--cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK",
+               "mpirun"  :  "--map-by socket:PE=$pe --rank-by core" }["$starter"]</parameter>
+       <parameter name="args_starter" mode="python" update_mode="step">
+             { "srun"   : "-n $tasks $mapping",
+               "mpirun" : "-np $tasks $mapping"}["$starter"]</parameter>
+        <parameter name="submit">sbatch</parameter>
+        <parameter name="submit_script">submit.job</parameter>
+        <parameter name="shared_folder">shared</parameter>
+        <parameter name="shared_job_info">${shared_folder}/jobid</parameter>
+        <parameter name="ready_file">ready</parameter>
+	<parameter name="preprocess"></parameter>
+	<parameter name="postprocess"></parameter>
+	<parameter name="wrapname"></parameter>
+	<parameter name="wrappre"></parameter>
+	<parameter name="wrappost"></parameter>
+	<parameter name="modules"></parameter>
+	<parameter name="measurement"></parameter>
+    </parameterset>
+
+<!-- default parameters for the scheduler -->
+    <parameterset name="systemParameter">
+        <parameter name="timelimit" update_mode="step">24:00:00</parameter>
+        <parameter name="nodes" update_mode="step">1</parameter>
+        <parameter name="taskspernode" type="int">1</parameter>
+	<parameter name="nsocket" type="int">1</parameter>
+	<parameter name="ncpus" type="int">32</parameter>
+	<parameter name="ncores" type="int">32</parameter>
+	<parameter name="threadspertask" type="int">1</parameter>
+	<parameter name="threads" mode="python" type="int">$threadspertask*$taskspernode</parameter>
+	<parameter name="cpuspertask" mode="python" type="int">max(1,int($ncpus/$taskspernode))</parameter>
+	<parameter name="queue">boost_usr_prod</parameter>
+	<parameter name="qos"  mode="python" update_mode="step">
+		{ False : "normal" ,
+		  True  : "boost_qos_bprod" }[bool($nodes>32)]
+        </parameter>
+	<parameter name="env" separator=";">$jube_wp_envstr</parameter>
+	<parameter name="ngpus" separator=";" mode="python">int(min(4,$taskspernode))</parameter>
+        <parameter name="gres" separator=";">gpu:$ngpus</parameter>
+        <parameter name="pe" mode="python" type="int">
+          int($ncores/$taskspernode)
+        </parameter><!-- da adattare -->
+        <parameter name="tasks" mode="python" type="int" update_mode="step">
+          $nodes * $taskspernode
+        </parameter>
+	<parameter name="memnodemachine" type="int">330000</parameter><!-- da adattare -->
+	<parameter name="minmem" mode="python" type="int">$memnodemachine</parameter>
+    </parameterset>
+
+<!-- replacements from the specific application xml -->
+    <substituteset name="executesub">
+        <iofile in="$submit_script" out="$submit_script" />
+        <sub source="#BENCHNAME#" dest="$jube_benchmark_name" />
+        <sub source="#QUEUE#" dest="$queue" />
+        <sub source="#TIMELIMIT#" dest="$timelimit" />
+        <sub source="#PREPROCESS#" dest="" />
+        <sub source="#POSTPROCESS#" dest="" />
+        <sub source="#STARTER#" dest="$starter" />
+        <sub source="#ARGS_STARTER#" dest="$args_starter" />
+        <sub source="#MEASUREMENT#" dest="$measurement" />
+        <sub source="#STDOUTLOGFILE#" dest="$outlogfile" />
+        <sub source="#STDERRLOGFILE#" dest="$errlogfile" />
+        <sub source="#EXECUTABLE#" dest="$executable" />
+        <sub source="#ARGS_EXECUTABLE#" dest="$args_executable" />
+        <sub source="#FLAG#" dest="touch $done_file" />
+        <sub source="#NODES#" dest="$nodes" />
+        <sub source="#THREADSPERTASK#" dest="$threadspertask" />
+        <sub source="#TASKSPERNODE#" dest="$taskspernode" />
+        <sub source="#TASKSPERSOCKET#" dest="$taskspersocket" />
+        <sub source="#CPUSPERTASK#" dest="$cpuspertask" />
+        <sub source="#PE" dest="$pe" />
+        <sub source="#GRES#" dest="$gres" />
+        <sub source="#ACCOUNT_NO#" dest="$accountno" />
+        <sub source="#QOS#" dest="$qos" />
+        <sub source="#MODULES#" dest="$modules" />
+        <sub source="#PREPROCESS#" dest="$preprocess" />
+        <sub source="#POSTPROCESS#" dest="$postprocess" />
+        <sub source="#WRAPNAME#" dest="$wrapname" />
+        <sub source="#WRAPPRE#" dest="$wrappre" />
+        <sub source="#WRAPPOST#" dest="$wrappost" />
+        <sub source="#READY#" dest="$ready_file" />
+    </substituteset>
+
+    <substituteset name="chainsub">
+    </substituteset>
+
+<!-- copy of the template for the submission from the root into the local dir --> 
+    <fileset name="jobfiles">
+        <copy>$submit_script</copy>
+    </fileset>
+
+</jube>

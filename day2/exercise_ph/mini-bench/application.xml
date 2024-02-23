@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jube>
+
+   <parameterset name="applicationParameter">
+     <parameter name="executable"> ph.x</parameter>
+     <parameter name="images">1</parameter>
+     <parameter name="pools">1</parameter>
+     <parameter name="args_executable"> -ni $images -nk $pools -input $fin > $fout </parameter>
+   </parameterset>
+
+   <patternset name="pattern">
+       <pattern name="dynmat0" type="float">dynmat0\s+:\s+${jube_pat_nfp}s CPU\s+${jube_pat_fp}s</pattern>
+       <pattern name="electrons" type="float">electrons\s+:\s+${jube_pat_nfp}s CPU\s+${jube_pat_fp}s</pattern>
+       <pattern name="cgsolve" type="float">cgsolve\s+:\s+${jube_pat_nfp}s CPU\s+${jube_pat_fp}s</pattern>
+       <pattern name="ortho" type="float">ortho\s+:\s+${jube_pat_nfp}s CPU\s+${jube_pat_fp}s</pattern>
+       <pattern name="solve_linter" type="float">solve_linter\s+:\s+${jube_pat_nfp}s CPU\s+${jube_pat_fp}s</pattern>
+       <pattern name="ch_psi" type="float">ch_psi\s+:\s+${jube_pat_nfp}s CPU\s+${jube_pat_fp}s</pattern>
+       <pattern name="incdrhoscf" type="float">incdrhoscf\s+:\s+${jube_pat_nfp}s CPU\s+${jube_pat_fp}s</pattern>
+       <pattern name="phqscf" type="float">phqscf\s+:\s+${jube_pat_nfp}s CPU\s+${jube_pat_fp}s</pattern>
+    </patternset>
+
+    <table name="result" style="csv" sort="install,nodes" separator=";">
+        <column title="Nodes">nodes</column>
+	<column title="Tasks">tasks</column>
+	<column title="omp">threadspertask</column>
+        <column format=".2f" title="cgsolve">cgsolve_max</column>
+        <column format=".2f" title="solve_linter">solve_linter_max</column>
+        <column format=".2f" title="ortho">ortho_max</column>
+        <column format=".2f" title="solve_linter">solve_linter_max</column>
+	<column format=".2f" title="ch_psi">ch_psi_max</column>
+	<column format=".2f" title="incdrhoscf">incdrhoscf_max</column>
+        <column format=".2f" title="phqscf">phqscf_max</column>
+    </table>
+
+</jube>

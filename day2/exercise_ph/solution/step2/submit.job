@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --nodes 1
+#SBATCH --time=00:10:00
+#SBATCH --partition=boost_usr_prod
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=8
+#SBATCH --gres=gpu:1
+#SBATCH --job-name=phstep1
+#SBATCH --error=err.job-%j
+#SBATCH --output=out.job-%j
+
+module purge
+module load profile/chem-phys 
+module load quantum-espresso/7.2--openmpi--4.1.4--nvhpc--23.1-openblas-cuda-11.8
+
+export OMP_NUM_THREADS=8
+export OMP_PLACES=cores; export OMP_PROC_BIND=close
+export ESPRESSO_PSEUDO=../../../pseudo
+
+srun -n 1 --cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK ph.x -ni 1 -nk 1 -i ph.CnSnI3.in > ph.CnSnI3.out 
+

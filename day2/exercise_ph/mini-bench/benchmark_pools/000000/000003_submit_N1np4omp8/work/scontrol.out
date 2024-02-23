@@ -1,0 +1,32 @@
+JobId=3216139 JobName=submit.job
+   UserId=lbellen1(33678) GroupId=interactive(25200) MCS_label=N/A
+   Priority=144548 Nice=0 Account=cin_staff QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=00:00:02 TimeLimit=00:10:00 TimeMin=N/A
+   SubmitTime=2024-02-22T07:56:06 EligibleTime=2024-02-22T07:56:06
+   AccrueTime=2024-02-22T07:56:06
+   StartTime=2024-02-22T07:56:09 EndTime=2024-02-22T08:06:09 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2024-02-22T07:56:09 Scheduler=Main
+   Partition=boost_usr_prod AllocNode:Sid=10-99-0-1:292272
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=lrdn1615
+   BatchHost=lrdn1615
+   NumNodes=1 NumCPUs=32 NumTasks=4 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   TRES=cpu=32,mem=492800M,node=1,billing=32,gres/gpu=4
+   Socks/Node=* NtasksPerN:B:S:C=4:0:*:* CoreSpec=*
+   JOB_GRES=gpu:a100:4
+     Nodes=lrdn1615 CPU_IDs=0-31 Mem=492800 GRES=gpu:a100:4(IDX:0-3)
+   MinCPUsNode=32 MinMemoryCPU=15400M MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) Network=(null)
+   Command=/leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000003_submit_N1np4omp8/work/submit.job
+   WorkDir=/leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000003_submit_N1np4omp8/work
+   StdErr=/leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000003_submit_N1np4omp8/work/slurm-3216139.out
+   StdIn=/dev/null
+   StdOut=/leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000003_submit_N1np4omp8/work/slurm-3216139.out
+   Power=
+   TresPerNode=gres:gpu:4
+   
+

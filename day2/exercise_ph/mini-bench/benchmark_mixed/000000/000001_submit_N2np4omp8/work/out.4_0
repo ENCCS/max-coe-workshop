@@ -1,0 +1,291 @@
+
+     Program PHONON v.7.2 starts on 22Feb2024 at 14:44: 4 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI & OpenMP), running on      40 processor cores
+     Number of MPI processes:                 5
+     Threads/MPI process:                     8
+
+     MPI processes distributed on     2 nodes
+     path-images division:  nimage    =       5
+     503690 MiB available memory on the printing compute node when the environment starts
+ 
+      Title line not specified: using 'default'.
+
+     Reading xml data from directory:
+
+     ./out/pwscf.save/
+ 
+     Subspace diagonalization in iterative solution of the eigenvalue problem:
+     a serial algorithm will be used
+
+
+     IMPORTANT: XC functional enforced from input :
+     Exchange-correlation= PBESOL
+                           (   1   4  10   8   0   0   0)
+     Any further DFT definition will be discarded
+     Please, verify this is what you really want
+
+ 
+     G-vector sticks info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Sum        3405    3405    941               150165   150165   21559
+ 
+     Using Slab Decomposition
+ 
+     Reading collected, re-writing distributed wavefunctions in ./out/
+
+      Image parallelization. There are  5 images and     5 representations
+      The estimated total work is    16 self-consistent (scf) runs
+      I am image number     4 and my work is about    3 scf runs. I calculate: 
+      q point number     1, representations:
+       5
+
+     Calculation of q =    0.0000000   0.0000000   0.0000000
+
+     GPU acceleration is ACTIVE.
+     GPU-aware MPI enabled
+
+
+     default                                                                    
+
+     bravais-lattice index     =            0
+     lattice parameter (alat)  =      11.6825  a.u.
+     unit-cell volume          =    1555.1879 (a.u.)^3
+     number of atoms/cell      =            5
+     number of atomic types    =            3
+     kinetic-energy cut-off    =      80.0000  Ry
+     charge density cut-off    =     320.0000  Ry
+     convergence threshold     =      1.0E-16
+     beta                      =       0.7000
+     number of iterations used =            4
+     Exchange-correlation= PBESOL
+                           (   1   4  10   8   0   0   0)
+
+
+     celldm(1)=   11.68251  celldm(2)=    0.00000  celldm(3)=    0.00000
+     celldm(4)=    0.00000  celldm(5)=    0.00000  celldm(6)=    0.00000
+
+     crystal axes: (cart. coord. in units of alat)
+               a(1) = (  0.9917  0.0000  0.0000 )  
+               a(2) = (  0.0000  0.9917  0.0000 )  
+               a(3) = (  0.0000  0.0000  0.9917 )  
+
+     reciprocal axes: (cart. coord. in units 2 pi/alat)
+               b(1) = (  1.0083  0.0000  0.0000 )  
+               b(2) = (  0.0000  1.0083  0.0000 )  
+               b(3) = (  0.0000  0.0000  1.0083 )  
+
+
+     Atoms inside the unit cell: 
+
+     Cartesian axes
+
+     site n.  atom      mass           positions (alat units)
+        1     Cs 132.9055   tau(    1) = (    0.49586    0.49586    0.49586  )
+        2     Sn 118.7100   tau(    2) = (    0.00000    0.00000    0.00000  )
+        3     I  126.9045   tau(    3) = (    0.49586    0.00000    0.00000  )
+        4     I  126.9045   tau(    4) = (    0.00000    0.00000    0.49586  )
+        5     I  126.9045   tau(    5) = (    0.00000    0.49586    0.00000  )
+
+     Computing dynamical matrix for 
+                    q = (   0.0000000   0.0000000   0.0000000 )
+ 
+     49 Sym.Ops. (with q -> -q+G )
+
+
+     G cutoff = 1106.2746  ( 150165 G-vectors)     FFT grid: ( 72, 72, 72)
+     number of k points=    20
+                       cart. coord. in units 2pi/alat
+        k(    1) = (   0.0630215   0.0630215   0.0630215), wk =   0.0312500
+        k(    2) = (   0.0630215   0.0630215   0.1890645), wk =   0.0937500
+        k(    3) = (   0.0630215   0.0630215   0.3151075), wk =   0.0937500
+        k(    4) = (   0.0630215   0.0630215   0.4411505), wk =   0.0937500
+        k(    5) = (   0.0630215   0.1890645   0.1890645), wk =   0.0937500
+        k(    6) = (   0.0630215   0.1890645   0.3151075), wk =   0.1875000
+        k(    7) = (   0.0630215   0.1890645   0.4411505), wk =   0.1875000
+        k(    8) = (   0.0630215   0.3151075   0.3151075), wk =   0.0937500
+        k(    9) = (   0.0630215   0.3151075   0.4411505), wk =   0.1875000
+        k(   10) = (   0.0630215   0.4411505   0.4411505), wk =   0.0937500
+        k(   11) = (   0.1890645   0.1890645   0.1890645), wk =   0.0312500
+        k(   12) = (   0.1890645   0.1890645   0.3151075), wk =   0.0937500
+        k(   13) = (   0.1890645   0.1890645   0.4411505), wk =   0.0937500
+        k(   14) = (   0.1890645   0.3151075   0.3151075), wk =   0.0937500
+        k(   15) = (   0.1890645   0.3151075   0.4411505), wk =   0.1875000
+        k(   16) = (   0.1890645   0.4411505   0.4411505), wk =   0.0937500
+        k(   17) = (   0.3151075   0.3151075   0.3151075), wk =   0.0312500
+        k(   18) = (   0.3151075   0.3151075   0.4411505), wk =   0.0937500
+        k(   19) = (   0.3151075   0.4411505   0.4411505), wk =   0.0937500
+        k(   20) = (   0.4411505   0.4411505   0.4411505), wk =   0.0312500
+
+     PseudoPot. # 1 for Cs read from file:
+     ../../../pseudo/Cs-nc-pbesol.upf
+     MD5 check sum: 9d2f2206a14dc5b3b3f3fbfae186bed4
+     Pseudo is Norm-conserving + core correction, Zval =  9.0
+     Generated using ONCVPSP code by D. R. Hamann
+     Using radial grid of 2384 points,  8 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+                l(3) =   1
+                l(4) =   1
+                l(5) =   2
+                l(6) =   2
+                l(7) =   3
+                l(8) =   3
+
+     PseudoPot. # 2 for Sn read from file:
+     ../../../pseudo/Sn-nc-pbesol.upf
+     MD5 check sum: c2995d571af40102bfea7461443d92cf
+     Pseudo is Norm-conserving + core correction, Zval = 14.0
+     Generated using ONCVPSP code by D. R. Hamann
+     Using radial grid of 1628 points,  6 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+                l(3) =   1
+                l(4) =   1
+                l(5) =   2
+                l(6) =   2
+
+     PseudoPot. # 3 for I  read from file:
+     ../../../pseudo/I-nc-pbesol.upf
+     MD5 check sum: 80ed5ceb2eb9c553cfb6760a299d9c5b
+     Pseudo is Norm-conserving + core correction, Zval =  7.0
+     Generated using ONCVPSP code by D. R. Hamann
+     Using radial grid of 1182 points,  6 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+                l(3) =   1
+                l(4) =   1
+                l(5) =   2
+                l(6) =   2
+
+     Mode symmetry, O_h (m-3m)  point group:
+
+
+     Atomic displacements:
+     There are    5 irreducible representations
+
+     Representation     1      3 modes -  Not done in this run
+
+     Representation     2      3 modes -  Not done in this run
+
+     Representation     3      3 modes -  Not done in this run
+
+     Representation     4      3 modes -  Not done in this run
+
+     Representation     5      3 modes -  To be done
+
+     Compute atoms:     3,    4,    5,
+
+
+     PHONON       :      3.26s CPU      5.58s WALL
+
+
+
+     Representation #   5 modes #  13  14  15
+
+     Self-consistent Calculation
+
+      iter #   1 total cpu time :    11.9 secs   av.it.:   5.0
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.152E-09
+
+      iter #   2 total cpu time :    19.6 secs   av.it.:  15.9
+      thresh= 8.457E-06 alpha_mix =  0.700 |ddv_scf|^2 =  8.354E-10
+
+      iter #   3 total cpu time :    27.3 secs   av.it.:  16.4
+      thresh= 2.890E-06 alpha_mix =  0.700 |ddv_scf|^2 =  6.588E-12
+
+      iter #   4 total cpu time :    35.0 secs   av.it.:  16.0
+      thresh= 2.567E-07 alpha_mix =  0.700 |ddv_scf|^2 =  7.284E-14
+
+      iter #   5 total cpu time :    42.5 secs   av.it.:  15.6
+      thresh= 2.699E-08 alpha_mix =  0.700 |ddv_scf|^2 =  5.019E-16
+
+      iter #   6 total cpu time :    50.2 secs   av.it.:  16.7
+      thresh= 2.240E-09 alpha_mix =  0.700 |ddv_scf|^2 =  9.648E-18
+
+     End of self-consistent calculation
+
+     Convergence has been achieved 
+
+     Stopping because representation    0 is not done
+ 
+     PHONON       :     55.29s CPU     50.97s WALL
+
+     INITIALIZATION: 
+     phq_setup    :      0.01s CPU      0.02s WALL (       1 calls)
+     phq_init     :      2.59s CPU      3.74s WALL (       1 calls)
+ 
+     phq_init     :      2.59s CPU      3.74s WALL (       1 calls)
+     set_drhoc    :      1.09s CPU      1.09s WALL (       1 calls)
+     init_vloc    :      0.01s CPU      0.01s WALL (       1 calls)
+     init_us_1    :      0.02s CPU      0.02s WALL (       1 calls)
+     init_us_2    :      0.22s CPU      0.23s WALL (     180 calls)
+ 
+     DYNAMICAL MATRIX:
+     phqscf       :     52.03s CPU     45.28s WALL (       1 calls)
+     dynmatrix    :      0.00s CPU      0.11s WALL (       1 calls)
+ 
+     phqscf       :     52.03s CPU     45.28s WALL (       1 calls)
+     solve_linter :     51.73s CPU     45.01s WALL (       1 calls)
+     sth_kernel   :     34.01s CPU     35.26s WALL (       6 calls)
+     h_prec       :      1.63s CPU      0.24s WALL (     120 calls)
+     apply_dpot_b :      1.73s CPU      1.82s WALL (     300 calls)
+     ortho        :      1.38s CPU      1.40s WALL (     360 calls)
+     cgsolve      :     26.37s CPU     27.03s WALL (     360 calls)
+     incdrhoscf   :      1.75s CPU      1.83s WALL (     360 calls)
+                                        1.82s GPU  (     360 calls)
+     dv_of_drho   :      2.06s CPU      0.68s WALL (      18 calls)
+     mix_pot      :      0.24s CPU      0.43s WALL (       6 calls)
+     drhodv       :      0.30s CPU      0.24s WALL (       1 calls)
+     psymdvscf    :      5.60s CPU      5.63s WALL (       6 calls)
+ 
+     dvqpsi_us    :      7.23s CPU      1.44s WALL (      60 calls)
+                                        1.44s GPU  (      60 calls)
+     dvqpsi_us_on :      6.84s CPU      1.03s WALL (      60 calls)
+ 
+     add_vuspsi   :      0.82s CPU      1.19s WALL (    7222 calls)
+                                        1.14s GPU  (    7222 calls)
+ 
+ 
+      General routines
+     calbec       :      0.68s CPU      1.73s WALL (   14764 calls)
+     fft          :      2.32s CPU      0.76s WALL (     302 calls)
+                                        0.04s GPU  (      14 calls)
+     ffts         :      0.05s CPU      0.01s WALL (      75 calls)
+                                        0.00s GPU  (      60 calls)
+     fftw         :      0.38s CPU      9.13s WALL (   54196 calls)
+                                        8.73s GPU  (   54196 calls)
+     davcio       :      0.53s CPU      3.06s WALL (    1358 calls)
+     write_rec    :      0.00s CPU      0.12s WALL (       7 calls)
+ 
+      Additional routines
+     ch_psi       :     16.02s CPU     16.36s WALL (    7222 calls)
+     last         :      1.87s CPU      1.91s WALL (    7222 calls)
+     Hesh         :      0.11s CPU      0.11s WALL (    7222 calls)
+     ch_psi_all_k :      1.65s CPU      1.74s WALL (    7222 calls)
+                                        1.69s GPU  (    7222 calls)
+     ch_psi_calbe :      0.08s CPU      0.51s WALL (    7222 calls)
+                                        0.46s GPU  (    7222 calls)
+     h_psi_bgrp   :     13.60s CPU     13.98s WALL (    7222 calls)
+                                       13.93s GPU  (    7222 calls)
+     h_psi        :     13.52s CPU     13.89s WALL (    7222 calls)
+                                       13.84s GPU  (    7222 calls)
+     h_psi:pot    :     13.29s CPU     13.66s WALL (    7222 calls)
+                                       13.60s GPU  (    7222 calls)
+     h_psi:calbec :      0.18s CPU      0.64s WALL (    7222 calls)
+                                        0.58s GPU  (    7222 calls)
+     s_psi_bgrp   :      0.05s CPU      0.28s WALL (   14804 calls)
+                                        0.18s GPU  (   14804 calls)
+ 
+     PHONON       :     55.29s CPU     50.97s WALL
+
