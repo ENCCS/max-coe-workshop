@@ -214,11 +214,12 @@ Contributors to this workshop:
 - Pietro Delugas, SISSA
 - Ivan Carnimeo, SISSA 
 - Fabrizio Ferrari Ruffino, CNR-IOM
-- Stefano Baroni, SISSA
-- Iurii Timrov, EPFL CH
+- Paolo Giannozzi, CNR-IOM, UniUD
+- Iurii Timrov, Paul Scherrer Institut
 - Laura Bellentani, CINECA
 - Oscar Baseggio, SISSA
 - Tommaso Gorni, CINECA
+- Aurora Ponzi, CNR-IOM
 - Francisco Ramirez, EPFL
 - Davide Sangalli CNR-ISM
 - Fulvio Paleari, CNR-NANO
