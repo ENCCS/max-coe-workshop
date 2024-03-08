@@ -345,8 +345,6 @@ From the above discussion you can easily guess that many-body perturbation theor
 
 ---
 
-**TEXT FIXED UP TO THIS POINT**
-
 ## The first run
 
 We will start by running a single GW calculation. Here we will focus on the magnitude of the quasiparticle gap. This means that we only need to calculate two quasi-particle corrections, i.e., valence and conduction bands at the k-point where the minimum gap occurs. This information can be found by inspecting the report file `r_setup` produced when the `SAVE` folder was initialised. Just search for the string 'Direct Gap' and you'll see that the latter occurs at k-point 7 between bands 13 and 14:
@@ -397,30 +395,32 @@ DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g")
 7|7|13|14|
 %
 ```
-We are now ready to run this calculation. Since you should never run a Yambo calculation on the login node, we will need a submission script to add our job to the queue. A minimal submission script is provided:
-```
+We are now ready to run this calculation. Since you should never run a Yambo calculation on the login node, we will need a submission script to add our job to the queue. A submission script optimized for Leonardo Booster (running on GPUs) is provided as an example. __Modify it to suit your specific machine__.
+```console
 vim run_first_job.sh
 ```
-```bash
+```console
 #!/bin/bash
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=16
-#SBATCH --cpus-per-task=1
-#SBATCH --partition=cpu
-#SBATCH --time=0:30:00
-#SBATCH --account=d2021-135-users
-#SBATCH --mem-per-cpu=2000MB
-#SBATCH --job-name=mos2
-#SBATCH --reservation=maxcpu
+#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=8
+#SBATCH --partition=boost_usr_prod
+#SBATCH --time=0:05:00
+#SBATCH --gres=gpu:2
+#SBATCH --account=EUHPC_TD02_030
+#SBATCH --job-name=first_job
 
-# load yambo and dependencies
-module purge
-module use /ceph/hpc/data/d2021-135-users/modules
-module load YAMBO/5.1.1-FOSS-2022a
-export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
+export OMP_NUM_THREADS=8
+export OMP_PLACES=cores
+export OMP_PROC_BIND=close
+
+# load yambo
+module load profile/chem-phys
+module load yambo/5.2.0--openmpi--4.1.4--nvhpc--23.1
 
 # run yambo
-srun --mpi=pmix -n ${SLURM_NTASKS} yambo -F gw.in -J job_00_first_run -C out_00_first_run
+mpirun -np ${SLURM_NTASKS} --map-by socket:PE=8 --rank-by core \
+        yambo -F gw.in -J job_00_first_run -C out_00_first_run
 ```
 We will ignore all details regarding parallelization, as it will be covered in the next section. Since there are no lowercase flags after `yambo`, it is not going to generate an input file, but rather, run the one specified by `-F`. Now, go ahead an submit this job
 ```console
@@ -433,7 +433,7 @@ squeue -u $USER        # to inspect the status of jobs
 scancel <jobid>        # to delete jobs in the queue
 ```
 
-The newly generated databases will be stored in the job directory, as specified by `-J`, while the report, log and output files will be stored in the communications directory (`-C`). As this is your first `yambo` run, take a moment to inspect the report and log files, which you can find inside the `-C` directory. In these report and log files, you can see the steps performed by `yambo`. For instance, the code calculates the screening at every k-point and stores it in the PPA database. By opening the report
+The newly generated databases will be stored in the job directory, as specified by `-J`, while the report, log and output files will be stored in the communications directory (`-C`). As this is your first `yambo` run, take a moment to inspect the report and log files, which you can find inside the `-C` directory. In these report and log files, you can see the steps performed by `yambo`. For instance, the code calculates the screening at every k-point and stores it in the PPA database called `ndb.pp`. By opening the report
 ```console
 vim out_00_first_run/r-job_00_first_run_HF_and_locXC_gw0_dyson_rim_cut_em1d_ppa
 ```
@@ -444,8 +444,8 @@ you will see
 
  [WR./job_00_first_run//ndb.pp]-------------------------------
 ```
-Then, the actual GW section will use this screening to construct the correlation part of the self-energy:
-```
+Then, the actual GW section will use this calculated dielectric screening to construct the correlation part of the self-energy:
+```bash=
 [09.01] G0W0 (W PPA)
   ====================
 
@@ -472,7 +472,6 @@ vim out_00_first_run/o-job_00_first_run.qp
          7                 13                 0.000000          -0.025594           0.544159
          7                 14                 1.858370           3.495889          -0.417727
 # 
-# 11/11/2022 at 08:31 yambo @ cn0343 [start]
 ```
 In this file, `Eo` is our starting point (DFT) while `E-Eo` shows the GW correction one should apply to obtain the quasi-particle energies. In order to calculate the gap (automatically from the command line), we'll use some simple commands. First, we get everything that is not a `#` symbol `grep -v '#'` and we pass that to another command with a "pipe" `|`. Then, `tail -n 1`/`head -n 1` will retain the first/last line, and `awk '{print $3+$4}'` will get us the sum of the third and fourth columns. Altogether, this would be as follows
 
@@ -483,9 +482,11 @@ grep -v '#' out_00_first_run/o-job_00_first_run.qp|tail -n 1| awk '{print $3+$4}
 5.35426
 ```
 
-These two command give us the quasiparticle energies we've calculated - their difference is the GW-corrected optical gap.
+These two commands give us the quasiparticle energies we've calculated - their difference is the GW-corrected optical gap.
 
 ---
+
+**TEXT FIXED UP TO THIS POINT**
 
 ## GW convergence
 
