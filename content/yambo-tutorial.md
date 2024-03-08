@@ -4,68 +4,13 @@
 
 - __Please download the directory containing the tutorial [HERE]([MoS2_HPC_tutorial.tar.gz](https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial_Leonardo.tar.gz))__ and copy it in your user directory.
 
-````{solution} Yambo input gw.in
-```{literalinclude} code/yambo/gw.in
-:language: bash
-```
-````
-
-````{solution} Batch script run_first_job.sh
-```{literalinclude} code/yambo/run_first_job.sh
-:language: bash
-```
-````
-
-````{solution} Batch script gpu_job.sh
-```{literalinclude} code/yambo/gpu_job.sh
-:language: bash
-```
-````
-
-````{solution} Batch script run01_converge_pol.sh
-```{literalinclude} code/yambo/run01_converge_pol.sh 
-:language: bash
-```
-````
-
-````{solution} Batch script job_parallel.sh
-```{literalinclude} code/yambo/job_parallel.sh
-:language: bash
-```
-````
-
-````{solution} Plotting script plot-01.py
-```{literalinclude} code/yambo/plot-01.py
-:language: Python
-```
-````
-
-````{solution} Plotting script plot-02.py
-```{literalinclude} code/yambo/plot-02.py
-:language: Python
-```
-````
-
-````{solution} Analysis script parse-ytiming.py
-```{literalinclude} code/yambo/parse-ytiming.py
-:language: Python
-```
-````
-
-````{solution} Plotting script plot_bands.py
-```{literalinclude} code/yambo/plot_bands.py
-:language: Python
-```
-````
-
-
 In this tutorial you will learn how to run a GW simulation using Yambo on a HPC machine.
 
 You will compute the quasiparticle corrections to the band structure of a free-standing single layer of MoS2 while learning about convergence studies, parallel strategies, and GPU calculations.
 
 In the end, you will obtain a quasiparticle band structure based on the simulations, the first step towards the reproduction of an ARPES spectrum. Beware: we won't use fully converged parameters, so the final result should not be considered very accurate.
  
-```{figure} img/mos2.png
+```{figure}img/mos2.png
 :scale: 40%
 ```
 
@@ -77,11 +22,11 @@ We want to describe the electronic energy levels using a better description of e
 
 Essentially, we want to solve the non-linear quasiparticle equation at first order in the GW self-energy {math}`Σ`:
 
-```{math}
+```math
 E^{QP}_{nk}=\epsilon_{nk}+Z_{nk}[\Sigma]\langle\psi_{nk}|\Sigma(\epsilon_{nk})-V_{xc}|\psi_{nk}\rangle
 ```
 
-Here {math}`\epsilon_{nk}` and {math}`\psi_{nk}` are the Kohn-Sham energies and wavefunctions, respectively, while {math}`V_{xc}` is the DFT exchange-correlation potential.
+Here {math}`$\epsilon_{nk}$` and {math}`\psi_{nk}` are the Kohn-Sham energies and wavefunctions, respectively, while {math}`V_{xc}` is the DFT exchange-correlation potential.
 
 For each electronic state _nk_, the self-energy can be separated into two components: a static, gap-opening term called the exchange self-energy ({math}`\Sigma^x`), and an energy-dependent, usually gap-closing term called the correlation self-energy ({math}`\Sigma^c`). These contributions are tackled separately by the code:
 
