@@ -135,15 +135,15 @@ Schedule for 4 half-day workshop
 +------------+-------------------------------------------------------+
 |09:15-09:30 | Introduction to Max-CoE and MaX flagship codes        |
 +------------+-------------------------------------------------------+
-|09:30-10:00 | Overview of the QE suite of codes, and main features  |
+|09:30-10:00 | Overview of the QE suite of codes and main features  |
 +------------+-------------------------------------------------------+
-|10:00-10:20 | Coffee break                                          |
+|10:00-10:25 | Coffee break                                          |
 +------------+-------------------------------------------------------+
-|10:20-13:00 | PWSCF for HPC and GPU                                 |
+|10:25-13:00 | PWSCF for HPC and GPU                                 |
 +------------+-------------------------------------------------------+
 
 
-**Day 2, QUANTUM ESPRESSO and AiiDA**
+**Day 2, QUANTUM ESPRESSO**
 
 +------------+----------------------------------------------------------------------+
 | Time       | Section                                                              | 
@@ -152,11 +152,9 @@ Schedule for 4 half-day workshop
 +------------+----------------------------------------------------------------------+
 |09:45-10:15 | Introduction to Time Dependent Density Functional Perturbation Theory|
 +------------+----------------------------------------------------------------------+
-|10:15-10:25 | Coffee break                                                         |
+|10:15-10:30 | Coffee break                                                         |
 +------------+----------------------------------------------------------------------+
-|10:25-12:15 | Phonons and time dependent properties on HPC and GPU                 |
-+------------+----------------------------------------------------------------------+
-|12:15-13:00 | Introduction to AiiDA for HPC                                        |
+|10:30-13:00 | Phonons and time dependent properties on HPC and GPU                 |
 +------------+----------------------------------------------------------------------+
 
 **Day 3, Yambo**
