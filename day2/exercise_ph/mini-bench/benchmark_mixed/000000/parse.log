@@ -1,0 +1,137 @@
+[2024-02-22 14:25:24,623]:DEBUG: Command: jube run benchmark_mixed.xml
+[2024-02-22 14:25:24,623]:DEBUG: Version: 2.5.1
+[2024-02-22 14:25:24,624]:DEBUG: Parsing benchmark_mixed.xml
+[2024-02-22 14:25:24,624]:DEBUG:   --> Preprocess run 1 <--
+[2024-02-22 14:25:24,624]:DEBUG:   Remove invalid tags
+[2024-02-22 14:25:24,625]:DEBUG:     Available tags: 
+[2024-02-22 14:25:24,625]:DEBUG:   Remove invalid tags
+[2024-02-22 14:25:24,625]:DEBUG:     Available tags: 
+[2024-02-22 14:25:24,625]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2024-02-22 14:25:24,625]:DEBUG:   Preprocess xml tree
+[2024-02-22 14:25:24,625]:DEBUG:     path: .
+[2024-02-22 14:25:24,638]:DEBUG:   New tags might be included, start additional include-preprocess run.
+[2024-02-22 14:25:24,639]:DEBUG:   --> Preprocess run 2 <--
+[2024-02-22 14:25:24,639]:DEBUG:   Remove invalid tags
+[2024-02-22 14:25:24,639]:DEBUG:     Available tags: 
+[2024-02-22 14:25:24,639]:DEBUG:   Remove invalid tags
+[2024-02-22 14:25:24,639]:DEBUG:     Available tags: 
+[2024-02-22 14:25:24,639]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2024-02-22 14:25:24,639]:DEBUG:   Preprocess xml tree
+[2024-02-22 14:25:24,639]:DEBUG:     path: .
+[2024-02-22 14:25:24,639]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2024-02-22 14:25:24,639]:DEBUG:   Remove invalid tags
+[2024-02-22 14:25:24,639]:DEBUG:     Available tags: 
+[2024-02-22 14:25:24,639]:DEBUG:   Preprocess done
+[2024-02-22 14:25:24,639]:DEBUG:   Preprocess benchmark xml tree
+[2024-02-22 14:25:24,639]:DEBUG:     Searching for type of "inputfiles" in workload.xml
+[2024-02-22 14:25:24,652]:DEBUG:     Created new <fileset>: jube_a9c0db086eefbee7b0e550fe098364b6_inputfiles
+[2024-02-22 14:25:24,652]:DEBUG:     Searching for type of "testcaseset" in workload.xml
+[2024-02-22 14:25:24,652]:DEBUG:     Created new <parameterset>: jube_a9c0db086eefbee7b0e550fe098364b6_testcaseset
+[2024-02-22 14:25:24,653]:DEBUG:     Searching for type of "executesub" in platform.xml
+[2024-02-22 14:25:24,660]:DEBUG:     Created new <substituteset>: jube_7eb2e6be0c6f3a7f6875c2ab5a3ffcbe_executesub
+[2024-02-22 14:25:24,660]:DEBUG:     Searching for type of "jobfiles" in platform.xml
+[2024-02-22 14:25:24,660]:DEBUG:     Created new <fileset>: jube_7eb2e6be0c6f3a7f6875c2ab5a3ffcbe_jobfiles
+[2024-02-22 14:25:24,660]:DEBUG:     Searching for type of "pattern" in application.xml
+[2024-02-22 14:25:24,661]:DEBUG:     Created new <patternset>: jube_df4acc9ce0cb77ce9b16fca6b6e42b42_pattern
+[2024-02-22 14:25:24,661]:DEBUG:   Parsing <parameterset name="systemParameter">
+[2024-02-22 14:25:24,661]:DEBUG:     Searching for <parameterset name="systemParameter"> in platform.xml
+[2024-02-22 14:25:24,662]:DEBUG:   Parsing <parameterset name="applicationParameter">
+[2024-02-22 14:25:24,662]:DEBUG:     Searching for <parameterset name="applicationParameter"> in application.xml
+[2024-02-22 14:25:24,663]:DEBUG:   Parsing <parameterset name="executeset">
+[2024-02-22 14:25:24,663]:DEBUG:     Searching for <parameterset name="executeset"> in platform.xml
+[2024-02-22 14:25:24,664]:DEBUG:   Parsing <parameterset name="jube_a9c0db086eefbee7b0e550fe098364b6_testcaseset">
+[2024-02-22 14:25:24,664]:DEBUG:     Searching for <parameterset name="testcaseset"> in workload.xml
+[2024-02-22 14:25:24,664]:DEBUG:   Parsing <substituteset name="jube_7eb2e6be0c6f3a7f6875c2ab5a3ffcbe_executesub">
+[2024-02-22 14:25:24,664]:DEBUG:     Searching for <substituteset name="executesub"> in platform.xml
+[2024-02-22 14:25:24,665]:DEBUG:   Parsing <fileset name="jube_a9c0db086eefbee7b0e550fe098364b6_inputfiles">
+[2024-02-22 14:25:24,665]:DEBUG:     Searching for <fileset name="inputfiles"> in workload.xml
+[2024-02-22 14:25:24,665]:DEBUG:   Parsing <fileset name="jube_7eb2e6be0c6f3a7f6875c2ab5a3ffcbe_jobfiles">
+[2024-02-22 14:25:24,666]:DEBUG:     Searching for <fileset name="jobfiles"> in platform.xml
+[2024-02-22 14:25:24,666]:DEBUG:   Parsing <patternset name="jube_df4acc9ce0cb77ce9b16fca6b6e42b42_pattern">
+[2024-02-22 14:25:24,666]:DEBUG:     Searching for <patternset name="pattern"> in application.xml
+[2024-02-22 14:25:24,667]:DEBUG:   Parsing <step name="submit">
+[2024-02-22 14:25:24,667]:DEBUG:   Parsing <analyser name="analyse">
+[2024-02-22 14:25:24,667]:DEBUG: Start consistency check
+[2024-02-22 14:25:24,667]:DEBUG: Create benchmark directory
+[2024-02-23 22:12:13,950]:DEBUG: Command: jube continue ./benchmark_mixed --id all
+[2024-02-23 22:12:13,960]:DEBUG: Version: 2.5.1
+[2024-02-23 22:12:13,961]:DEBUG: Parsing ./benchmark_mixed/000000/configuration.xml
+[2024-02-23 22:12:13,975]:DEBUG:   --> Preprocess run 1 <--
+[2024-02-23 22:12:13,975]:DEBUG:   Remove invalid tags
+[2024-02-23 22:12:13,975]:DEBUG:     Available tags: 
+[2024-02-23 22:12:13,975]:DEBUG:   Remove invalid tags
+[2024-02-23 22:12:13,975]:DEBUG:     Available tags: 
+[2024-02-23 22:12:13,975]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2024-02-23 22:12:13,976]:DEBUG:   Preprocess xml tree
+[2024-02-23 22:12:13,976]:DEBUG:     path: ./benchmark_mixed/000000
+[2024-02-23 22:12:13,976]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2024-02-23 22:12:13,976]:DEBUG:   Remove invalid tags
+[2024-02-23 22:12:13,976]:DEBUG:     Available tags: 
+[2024-02-23 22:12:13,976]:DEBUG:   Preprocess done
+[2024-02-23 22:12:13,976]:DEBUG:   Preprocess benchmark xml tree
+[2024-02-23 22:12:13,976]:DEBUG:   Parsing <parameterset name="systemParameter">
+[2024-02-23 22:12:13,977]:DEBUG:   Parsing <parameterset name="applicationParameter">
+[2024-02-23 22:12:13,977]:DEBUG:   Parsing <parameterset name="executeset">
+[2024-02-23 22:12:13,977]:DEBUG:   Parsing <parameterset name="jube_a9c0db086eefbee7b0e550fe098364b6_testcaseset">
+[2024-02-23 22:12:13,977]:DEBUG:   Parsing <substituteset name="jube_7eb2e6be0c6f3a7f6875c2ab5a3ffcbe_executesub">
+[2024-02-23 22:12:13,977]:DEBUG:   Parsing <fileset name="jube_a9c0db086eefbee7b0e550fe098364b6_inputfiles">
+[2024-02-23 22:12:13,977]:DEBUG:   Parsing <fileset name="jube_7eb2e6be0c6f3a7f6875c2ab5a3ffcbe_jobfiles">
+[2024-02-23 22:12:13,977]:DEBUG:   Parsing <patternset name="jube_df4acc9ce0cb77ce9b16fca6b6e42b42_pattern">
+[2024-02-23 22:12:13,977]:DEBUG:   Parsing <step name="submit">
+[2024-02-23 22:12:13,977]:DEBUG:   Parsing <analyser name="analyse">
+[2024-02-23 22:12:13,978]:DEBUG: Parsing ./benchmark_mixed/000000/workpackages.xml
+[2024-02-23 22:12:14,501]:DEBUG: Command: jube analyse ./benchmark_mixed --id all
+[2024-02-23 22:12:14,501]:DEBUG: Version: 2.5.1
+[2024-02-23 22:12:14,501]:DEBUG: Parsing ./benchmark_mixed/000000/configuration.xml
+[2024-02-23 22:12:14,503]:DEBUG:   --> Preprocess run 1 <--
+[2024-02-23 22:12:14,503]:DEBUG:   Remove invalid tags
+[2024-02-23 22:12:14,503]:DEBUG:     Available tags: 
+[2024-02-23 22:12:14,503]:DEBUG:   Remove invalid tags
+[2024-02-23 22:12:14,503]:DEBUG:     Available tags: 
+[2024-02-23 22:12:14,503]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2024-02-23 22:12:14,503]:DEBUG:   Preprocess xml tree
+[2024-02-23 22:12:14,503]:DEBUG:     path: ./benchmark_mixed/000000
+[2024-02-23 22:12:14,504]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2024-02-23 22:12:14,504]:DEBUG:   Remove invalid tags
+[2024-02-23 22:12:14,504]:DEBUG:     Available tags: 
+[2024-02-23 22:12:14,504]:DEBUG:   Preprocess done
+[2024-02-23 22:12:14,504]:DEBUG:   Preprocess benchmark xml tree
+[2024-02-23 22:12:14,504]:DEBUG:   Parsing <parameterset name="systemParameter">
+[2024-02-23 22:12:14,504]:DEBUG:   Parsing <parameterset name="applicationParameter">
+[2024-02-23 22:12:14,504]:DEBUG:   Parsing <parameterset name="executeset">
+[2024-02-23 22:12:14,505]:DEBUG:   Parsing <parameterset name="jube_a9c0db086eefbee7b0e550fe098364b6_testcaseset">
+[2024-02-23 22:12:14,505]:DEBUG:   Parsing <substituteset name="jube_7eb2e6be0c6f3a7f6875c2ab5a3ffcbe_executesub">
+[2024-02-23 22:12:14,505]:DEBUG:   Parsing <fileset name="jube_a9c0db086eefbee7b0e550fe098364b6_inputfiles">
+[2024-02-23 22:12:14,505]:DEBUG:   Parsing <fileset name="jube_7eb2e6be0c6f3a7f6875c2ab5a3ffcbe_jobfiles">
+[2024-02-23 22:12:14,505]:DEBUG:   Parsing <patternset name="jube_df4acc9ce0cb77ce9b16fca6b6e42b42_pattern">
+[2024-02-23 22:12:14,505]:DEBUG:   Parsing <step name="submit">
+[2024-02-23 22:12:14,505]:DEBUG:   Parsing <analyser name="analyse">
+[2024-02-23 22:12:14,506]:DEBUG: Parsing ./benchmark_mixed/000000/workpackages.xml
+[2024-02-23 22:12:15,222]:DEBUG: Command: jube result ./benchmark_mixed --id all
+[2024-02-23 22:12:15,222]:DEBUG: Version: 2.5.1
+[2024-02-23 22:12:15,222]:DEBUG: Parsing ./benchmark_mixed/000000/configuration.xml
+[2024-02-23 22:12:15,224]:DEBUG:   --> Preprocess run 1 <--
+[2024-02-23 22:12:15,224]:DEBUG:   Remove invalid tags
+[2024-02-23 22:12:15,224]:DEBUG:     Available tags: 
+[2024-02-23 22:12:15,224]:DEBUG:   Remove invalid tags
+[2024-02-23 22:12:15,224]:DEBUG:     Available tags: 
+[2024-02-23 22:12:15,224]:DEBUG:   Read $JUBE_INCLUDE_PATH
+[2024-02-23 22:12:15,225]:DEBUG:   Preprocess xml tree
+[2024-02-23 22:12:15,225]:DEBUG:     path: ./benchmark_mixed/000000
+[2024-02-23 22:12:15,225]:DEBUG:   No preprocessing changes were detected, stop additional include-preprocess runs.
+[2024-02-23 22:12:15,225]:DEBUG:   Remove invalid tags
+[2024-02-23 22:12:15,225]:DEBUG:     Available tags: 
+[2024-02-23 22:12:15,225]:DEBUG:   Preprocess done
+[2024-02-23 22:12:15,225]:DEBUG:   Preprocess benchmark xml tree
+[2024-02-23 22:12:15,225]:DEBUG:   Parsing <parameterset name="systemParameter">
+[2024-02-23 22:12:15,225]:DEBUG:   Parsing <parameterset name="applicationParameter">
+[2024-02-23 22:12:15,226]:DEBUG:   Parsing <parameterset name="executeset">
+[2024-02-23 22:12:15,226]:DEBUG:   Parsing <parameterset name="jube_a9c0db086eefbee7b0e550fe098364b6_testcaseset">
+[2024-02-23 22:12:15,226]:DEBUG:   Parsing <substituteset name="jube_7eb2e6be0c6f3a7f6875c2ab5a3ffcbe_executesub">
+[2024-02-23 22:12:15,226]:DEBUG:   Parsing <fileset name="jube_a9c0db086eefbee7b0e550fe098364b6_inputfiles">
+[2024-02-23 22:12:15,226]:DEBUG:   Parsing <fileset name="jube_7eb2e6be0c6f3a7f6875c2ab5a3ffcbe_jobfiles">
+[2024-02-23 22:12:15,226]:DEBUG:   Parsing <patternset name="jube_df4acc9ce0cb77ce9b16fca6b6e42b42_pattern">
+[2024-02-23 22:12:15,226]:DEBUG:   Parsing <step name="submit">
+[2024-02-23 22:12:15,227]:DEBUG:   Parsing <analyser name="analyse">
+[2024-02-23 22:12:15,227]:DEBUG: Parsing ./benchmark_mixed/000000/workpackages.xml
+[2024-02-23 22:12:15,255]:DEBUG: Parsing ./benchmark_mixed/000000/analyse.xml
