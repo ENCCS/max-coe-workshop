@@ -10,7 +10,7 @@ You will compute the quasiparticle corrections to the band structure of a free-s
 
 In the end, you will obtain a quasiparticle band structure based on the simulations, the first step towards the reproduction of an ARPES spectrum. Beware: we won't use fully converged parameters, so the final result should not be considered very accurate.
  
-```{figure}img/mos2.png
+```{figure} img/mos2.png
 :scale: 40%
 ```
 
@@ -20,23 +20,23 @@ In the end, you will obtain a quasiparticle band structure based on the simulati
 
 We want to describe the electronic energy levels using a better description of electron-electron interactions than DFT is capable of.
 
-Essentially, we want to solve the non-linear quasiparticle equation at first order in the GW self-energy {math}`Σ`:
+Essentially, we want to solve the non-linear quasiparticle equation at first order in the GW self-energy $\Sigma$:
 
 ```math
 E^{QP}_{nk}=\epsilon_{nk}+Z_{nk}[\Sigma]\langle\psi_{nk}|\Sigma(\epsilon_{nk})-V_{xc}|\psi_{nk}\rangle
 ```
 
-Here {math}`$\epsilon_{nk}$` and {math}`\psi_{nk}` are the Kohn-Sham energies and wavefunctions, respectively, while {math}`V_{xc}` is the DFT exchange-correlation potential.
+Here $\epsilon_{nk}$ and $\psi_{nk}$ are the Kohn-Sham energies and wavefunctions, respectively, while $V_{xc}$ is the DFT exchange-correlation potential.
 
-For each electronic state _nk_, the self-energy can be separated into two components: a static, gap-opening term called the exchange self-energy ({math}`\Sigma^x`), and an energy-dependent, usually gap-closing term called the correlation self-energy ({math}`\Sigma^c`). These contributions are tackled separately by the code:
+For each electronic state $nk$, the self-energy can be separated into two components: a static, gap-opening term called the exchange self-energy ($\Sigma^x$), and an energy-dependent, usually gap-closing term called the correlation self-energy ($\Sigma^c$). These contributions are tackled separately by the code:
 
-```{math}
+```math
 \Sigma_{nk}(\omega)=\Sigma_{nk}^x+\Sigma^c_{nk}(\omega)
 ```
 
-The energy-dependent dynamical electronic screening {math}`\varepsilon^{-1}(\omega)` is included in {math}`\Sigma^c` and must therefore be calculated as well.
+The energy-dependent dynamical electronic screening $\varepsilon^{-1}(\omega)$ is included in $\Sigma^c$ and must therefore be calculated as well.
 
-In this way, we can compute the "quasiparticle" corrections {math}`E^{QP}_{nk}` to the single-particle Kohn-Sham eigenvalues {math}`\epsilon_{nk}`.
+In this way, we can compute the "quasiparticle" corrections $E^{QP}_{nk}$ to the single-particle Kohn-Sham eigenvalues $\epsilon_{nk}$.
 The typical workflow for a GW calculation is: 
 
 ```{figure} img/gwflow.png
@@ -253,7 +253,7 @@ VXCRLvcs=  37965           RL    # [XC] XCpotential RL components
 Recall that we have, for the exchange self-energy:
 
 ```math
-$\Sigma^x_{nk} = - \sum_G\sum_v \int \frac{d^3q}{2\pi^3} v(q+G)|\rho_{nv}(k,q,G)|^2f_{vk-q}$
+\Sigma^x_{nk} = - \sum_G\sum_v \int \frac{d^3q}{2\pi^3} v(q+G)|\rho_{nv}(k,q,G)|^2f_{vk-q}
 ```
 
 ```{callout} Exchange self-energy
@@ -266,9 +266,9 @@ Let us now have a look at the parameters for the calculation of the correlation 
 $\Sigma^c_{nk} = i \sum_m \int \frac{d^3q}{2\pi^3} \sum_{GG'} v(q+G) \rho_{nmk}(q,G) \rho^*_{nmk}(q,G') \int d\omega' G^0_{mk-q}(\omega-\omega')\varepsilon^{-1}_{GG'}(q,\omega')$
 ```
 
-(Here, the {math}`\rho`-terms represent the screening matrix elements which are computed separately by yambo and stored in their own database.)
+(Here, the $\rho$-terms represent the screening matrix elements which are computed separately by yambo and stored in their own database.)
 
-The calculation is divided in two steps. First, the response function in the plasmon pole approximation (`em1d ppa`), under the keywords `[X]` and `[Xp]`, i.e., {math}`\varepsilon^{-1}_{GG'}(q,\omega)`.
+The calculation is divided in two steps. First, the response function in the plasmon pole approximation (`em1d ppa`), under the keywords `[X]` and `[Xp]`, i.e., $\varepsilon^{-1}_{GG'}(q,\omega)$.
 
 ```
 Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
