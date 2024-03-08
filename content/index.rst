@@ -135,7 +135,7 @@ Schedule for 4 half-day workshop
 +------------+-------------------------------------------------------+
 |09:15-09:30 | Introduction to Max-CoE and MaX flagship codes        |
 +------------+-------------------------------------------------------+
-|09:30-10:00 | Overview of the QE suite of codes and main features  |
+|09:30-10:00 | Overview of the QE suite of codes and main features   |
 +------------+-------------------------------------------------------+
 |10:00-10:25 | Coffee break                                          |
 +------------+-------------------------------------------------------+
