@@ -5,8 +5,8 @@
 #SBATCH --time=00:20:00
 #SBATCH --partition=boost_usr_prod
 #SBATCH --qos=boost_qos_dbg
-#SBATCH --ntasks-per-node= ... 
-#SBATCH --cpus-per-task= ...
+#SBATCH --ntasks-per-node=... 
+#SBATCH --cpus-per-task=...
 #SBATCH --output=sysout.out
 #SBATCH --error=syserr.err
 #SBATCH --account=EUHPC_TD02_030
@@ -19,7 +19,7 @@ export EXDIR=${PWD}/..
 export INDIR=${EXDIR}/inputs
 export ESPRESSO_PSEUDO=${EXDIR}/../pseudo
 
-export OMP_NUM_THREADS= ...
+export OMP_NUM_THREADS=...
 
 mpirun -np ... ${ESPRESSO_DIR}/pw.x -npool 4 -i ${INDIR}/pw.CuO.scf.in > pw_run...mpix...omp.out
 
