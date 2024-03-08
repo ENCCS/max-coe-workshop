@@ -26,7 +26,16 @@ about many properties of materials, molecular systems, micro and nanodevices,
 biological systems, in many fields, providing a huge amount of data for 
 data-driven science applications.
 
-`SIESTA <http://www.max-centre.eu/codes-max/siesta>`__ is a pseudopotential-based DFT software whose strength lies in its use of atomic-like strictly-localised basis sets: the use of a "good first approximation" to the full problem decreases the number of basis functions needed to achieve a given accuracy, and the finite support of the orbitals leads to sparsity in the Hamiltonian and overlap matrices, thus enabling the use of reduced-scaling methods. The functionalities of SIESTA include, amongst others, the calculation of energies and forces, molecular-dynamics simulations, band structures, densities of states, spin-orbit couplings, van der Waals functionals, hybrid functionals, DFT+U for correlated systems, real-time TDDFT, and density-functional perturbation theory.
+`SIESTA <https://siesta-project.org/siesta/>`__ is a pseudopotential-based
+DFT software whose strength lies in its use of atomic-like strictly-localised
+basis sets: the use of a "good first approximation" to the full problem
+decreases the number of basis functions needed to achieve a given accuracy, and
+the finite support of the orbitals leads to sparsity in the Hamiltonian and
+overlap matrices, thus enabling the use of reduced-scaling methods. The
+functionalities of SIESTA include, amongst others, the calculation of energies
+and forces, molecular-dynamics simulations, band structures, densities of
+states, spin-orbit couplings, van der Waals functionals, DFT+U for correlated
+systems, real-time TDDFT, and non-equilibrium calculations with TranSIESTA.
 
 `YAMBO <http://www.yambo-code.eu/>`__ is an open-source code implementing 
 first-principles methods based on Green’s function (GF) theory to describe 
@@ -81,10 +90,14 @@ previous experience with materials modelling and electronic structure calculatio
    :maxdepth: 1
    :caption: Day 3 - Siesta I
 
+   day3/index
+
 
 .. toctree::
    :maxdepth: 1
    :caption: Day 4 - Siesta II
+
+   day4/index
 
 
 .. toctree::
@@ -114,22 +127,23 @@ About the course
 
 In this workshop, participants will learn how to launch the most common 
 types of calculations  (e.g. scf, phonons, quasi-particle energies, 
-time-dependent properties) using QE, Yambo and BigDFT, how to prepare input 
+time-dependent properties) using QE, SIESTA and Yambo, how to prepare input 
 files and how to read output files in order to extract the desired properties.
 
-Best practices for efficient exploitation of HPC resources will be discussed, 
-with particular emphasis on how to use the different schemes of data 
+Best practices for efficient exploitation of HPC resources will be discussed.
+On the QE days, there will be particular emphasis on how to use the different schemes of data
 distribution (e.g. plane waves, pools, images) in combination with the different 
-parallelization and acceleration schemes (MPI, OpenMP, GPU-offload) available in 
-QE. 
+parallelization and acceleration schemes (MPI, OpenMP, GPU-offload) available.
+Regarding SIESTA, participants will learn about its algorithmic efficiency,
+and they will be able to explore its accelerated and massively parallel solvers.
 
-Schedule for 4 half-day workshop
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Schedule
+^^^^^^^^
 
 **Day 1, QUANTUM ESPRESSO**
 
 +------------+-------------------------------------------------------+
-| Time       | Section                                               | 
+| Time       | Section                                               |
 +============+=======================================================+
 |09:00-09:15 | Welcome and introduction to ENCCS                     |
 +------------+-------------------------------------------------------+
@@ -146,7 +160,7 @@ Schedule for 4 half-day workshop
 **Day 2, QUANTUM ESPRESSO**
 
 +------------+----------------------------------------------------------------------+
-| Time       | Section                                                              | 
+| Time       | Section                                                              |
 +============+======================================================================+
 |09:00-09:45 | Introduction to Density Functional Perturbation Theory               |
 +------------+----------------------------------------------------------------------+
@@ -157,10 +171,46 @@ Schedule for 4 half-day workshop
 |10:30-13:00 | Phonons and time dependent properties on HPC and GPU                 |
 +------------+----------------------------------------------------------------------+
 
-**Day 3, Yambo**
+
+**Day 3, SIESTA**
+
++------------+-------------------------------------------------------------------------------------+
+| Time       | Section                                                                             |
++============+=====================================================================================+
+|09:00-09:45 | SIESTA basics                                                                       |
++------------+-------------------------------------------------------------------------------------+
+|09:45-10:30 | Hands-on tutorial: A first contact with SIESTA: inputs, execution and outputs       |
++------------+-------------------------------------------------------------------------------------+
+|10:30-10:45 | Break                                                                               |
++------------+-------------------------------------------------------------------------------------+
+|10:45-11:30 | Hands-on tutorial: Convergence (k points, mesh, mixing)                             |
++------------+-------------------------------------------------------------------------------------+
+|11:30-12:00 | Basis sets                                                                          |
++------------+-------------------------------------------------------------------------------------+
+|12:00-13:00 | Hands-on tutorial: Basis set optimization                                           |
++------------+-------------------------------------------------------------------------------------+
+
+**Day 4, SIESTA**
+
++------------+-------------------------------------------------------------------------------------------------+
+| Time       | Section                                                                                         |
++============+=================================================================================================+
+|09:00-10:00 | Hands-on tutorial: Moving atoms: geometry optimisation and beyond                               |
++------------+-------------------------------------------------------------------------------------------------+
+|10:30-11:00 | Hands-on tutorial: Analysis tools                                                               |
++------------+-------------------------------------------------------------------------------------------------+
+|11:00-11:15 | Break                                                                                           |
++------------+-------------------------------------------------------------------------------------------------+
+|11:15-11:45 | Features available in SIESTA: spin-orbit couplings, TranSIESTA, and others                      |
++------------+-------------------------------------------------------------------------------------------------+
+|11:45-13:00 | Hands-on tutorial: Pushing the boundaries of SIESTA: accelerated and massively parallel solvers |
++------------+-------------------------------------------------------------------------------------------------+
+
+
+**Day 5, Yambo**
 
 +------------+------------------------------------------------------------------+
-| Time       | Section                                                          | 
+| Time       | Section                                                          |
 +============+==================================================================+
 |09:00-09:20 | Overview of the Yambo code and its main features and performance |
 +------------+------------------------------------------------------------------+
@@ -170,25 +220,6 @@ Schedule for 4 half-day workshop
 +------------+------------------------------------------------------------------+
 |10:20-13:00 | Hands-on tutorial: A guided tour through GW simulations          |
 +------------+------------------------------------------------------------------+
-
-**Day 4, BigDFT**
-
-+------------+-------------------------------------------------------+
-| Time       | Section                                               | 
-+============+=======================================================+
-|09:00-09:30 | Introduction to BigDFT                                |
-+------------+-------------------------------------------------------+
-|09:30-10:00 | Introduction to PyBigDFT: System Manipulation         |
-+------------+-------------------------------------------------------+
-|10:00-10:30 | Remote Runner (Presentation & Walkthrough/Hands-on)   |
-+------------+-------------------------------------------------------+
-|10:30 - 11:00 | Coffee break                                        |
-+------------+-------------------------------------------------------+
-|11:00 - 12:00 | Cubic Scaling BigDFT (Hands-on)                     |
-+------------+-------------------------------------------------------+
-|12:00 - 13:00 | Linear Scaling BigDFT (Hands-on)                    |
-+------------+-------------------------------------------------------+
-
 
 
 See also
@@ -224,10 +255,17 @@ Contributors to this workshop:
 - Ignacio Alliati, Univ. Bellfast
 - Martina Stella, ICTP
 - Nicola Spallanzani, CNR-NANO
-- Laura Ratcliff, Univ. of Bristol
-- Luigi Genovese, CEA Grenoble
-- Louis Beal, CEA Grenoble
-- Samuel Dechamps, CEA Grenoble 
+- Emilio Artacho, CIC NanoGUNE and University of Cambridge
+- Catalina Coll, ICN2
+- José Mª Escartín, ICN2
+- Roberta Farris, ICN2
+- Ernane de Freitas, ICN2
+- Alberto García, ICMAB-CSIC
+- Arnold Kole, Utrecht University
+- Nick Papior, DTU
+- Federico Pedron, ICN2
+- Miguel Pruneda, CINN-CSIC
+- José Ángel Silva Guillén, IMDEA Nanociencia
 
 The lesson file structure and browsing layout is inspired by and derived from
 `work <https://github.com/coderefinery/sphinx-lesson>`__ by `CodeRefinery
