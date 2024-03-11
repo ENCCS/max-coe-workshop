@@ -1,4 +1,4 @@
-# DAY-2, EXERCISE - Electron energy-loss spectroscopy (EELS) for bulk silicon 
+## DAY-2, EXERCISE - Electron energy-loss spectroscopy (EELS) for bulk silicon 
 
 1. Run the SCF ground-state calculation with `pw.x`
    ```bash

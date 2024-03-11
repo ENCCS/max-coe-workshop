@@ -1,4 +1,4 @@
-# DAY-2, EXERCISE - Dynamical magnetic susceptibility of bulk iron
+## DAY-2, EXERCISE - Dynamical magnetic susceptibility of bulk iron
 
 1. Run the SCF ground-state calculation with `pw.x`
    ```bash
