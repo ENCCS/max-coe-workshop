@@ -1,14 +1,4 @@
-
-..  
-   _day5-yambo:
-
 # Yambo tutorial: Quasiparticles in the GW approximation
-
-..
-   **Useful info for the tutorial:**
-
-..
-   - __Please download the directory containing the tutorial [HERE]([MoS2_HPC_tutorial.tar.gz](https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial_Leonardo.tar.gz))__ and copy it in your user directory.
 
 In this tutorial you will learn how to run a GW simulation using Yambo on a HPC machine.
 
@@ -26,27 +16,27 @@ In the end, you will obtain a quasiparticle band structure based on the simulati
 
 We want to describe the electronic energy levels using a better description of electron-electron interactions than DFT is capable of.
 
-Essentially, we want to solve the non-linear quasiparticle equation at first order in the GW self-energy {math}`Σ`:
+Essentially, we want to solve the non-linear quasiparticle equation at first order in the GW self-energy {math}`\Sigma`:
 
 ```{math}
 E^{QP}_{nk}=\epsilon_{nk}+Z_{nk}[\Sigma]\langle\psi_{nk}|\Sigma(\epsilon_{nk})-V_{xc}|\psi_{nk}\rangle
 ```
 
-Here {math}`\epsilon_{nk}` and {math}`\psi_{nk}` are the Kohn-Sham energies and wavefunctions, respectively, while $V_{xc}$ is the DFT exchange-correlation potential.
+Here {math}`\epsilon_{nk}` and {math}`\psi_{nk}` are the Kohn-Sham energies and wavefunctions, respectively, while {math}`V_{xc}` is the DFT exchange-correlation potential.
 
-For each electronic state $nk$, the self-energy can be separated into two components: a static, gap-opening term called the exchange self-energy ($\Sigma^x$), and an energy-dependent, usually gap-closing term called the correlation self-energy ($\Sigma^c$). These contributions are tackled separately by the code:
+For each electronic state {math}`nk`, the self-energy can be separated into two components: a static, gap-opening term called the exchange self-energy ({math}`\Sigma^x`), and an energy-dependent, usually gap-closing term called the correlation self-energy ({math}`\Sigma^c`). These contributions are tackled separately by the code:
 
-```math
+```{math}
 \Sigma_{nk}(\omega)=\Sigma_{nk}^x+\Sigma^c_{nk}(\omega)
 ```
 
-The energy-dependent dynamical electronic screening $\varepsilon^{-1}(\omega)$ is included in $\Sigma^c$ and must therefore be calculated as well.
+The energy-dependent dynamical electronic screening {math}`\varepsilon^{-1}(\omega)` is included in {math}`\Sigma^c` and must therefore be calculated as well.
 
-In this way, we can compute the "quasiparticle" corrections $E^{QP}_{nk}$ to the single-particle Kohn-Sham eigenvalues $\epsilon_{nk}$.
+In this way, we can compute the "quasiparticle" corrections {math}`E^{QP}_{nk}` to the single-particle Kohn-Sham eigenvalues {math}`\epsilon_{nk}`.
 The typical workflow for a GW calculation is: 
 
 ```{figure} img/gwflow.png
-:scale: 40%
+:scale: 60%
 ```
 
 ## Set up a Yambo calculation
@@ -54,7 +44,7 @@ The typical workflow for a GW calculation is:
 Go to your user work directory and download the materials for the tutorial (1.2GB, it may take a couple of minutes):
 ```console
 wget https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial_Leonardo.tar.gz
-tar -xvzf MoS2_HPC_tutorial.tar.gz 
+tar -xvzf MoS2_HPC_tutorial_Leonardo.tar.gz
 ```
 
 You can now enter the tutorial directory
@@ -64,9 +54,9 @@ cd MoS2_HPC_tutorial_Leonardo
 
 ### Yambo `SAVE` folder
 
-First of all, we need to convert some of the data produced in a previous non-self-consistent DFT calculation (using Quantum ESPRESSO) into a convenient format for Yambo.
+First of all, we need to convert some of the data produced in a previous non-self-consistent DFT calculation (in this case using Quantum ESPRESSO) into a convenient format for Yambo.
 
-The QE save folder for MoS$_2$ is already present at `00_QE-DFT`. We should move inside it and then run the `p2y` executable to generate the uninitialised `SAVE`. 
+The QE save folder for MoS{math}`_2` is already present at `00_QE-DFT`. We should move inside it and then run the `p2y` executable to generate the uninitialised `SAVE`. 
 
 But first, we need to access a node interactively:
 ```console
@@ -91,7 +81,7 @@ Now, we need to run the initialization step. Every Yambo run **must** start with
 mpirun -np 1 yambo
 ```
 
-and then check the yambo log called `l_setup`. The initialization step determines the $G$-vector shells and the $k$- and $q$-point grids based on the DFT calculations. If you check inside the `SAVE` you will see two types of databases. The static ones, starting with `ns.*`, are directly converted in the `p2y` step, while the dynamical ones, `ndb.*` are generated during the initialisation.
+and then check the yambo log called `l_setup`. The initialization step determines the {math}`G`-vector shells and the {math}`k`- and {math}`q`-point grids based on the DFT calculation. If you check inside the `SAVE` you will see two types of databases. The static ones, starting with `ns.*`, are directly converted in the `p2y` step, while the dynamical ones, `ndb.*` are generated during the initialisation.
 
 ```console
 ls SAVE/
