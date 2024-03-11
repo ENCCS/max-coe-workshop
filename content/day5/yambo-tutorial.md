@@ -1,4 +1,3 @@
-:sequential_nav: next
 
 ..  _day5-yambo:
 
@@ -49,15 +48,15 @@ The typical workflow for a GW calculation is:
 
 ## Set up a Yambo calculation
 
-Go to your user work directory and download the materials for the tutorial:
+Go to your user work directory and download the materials for the tutorial (1.2GB, it may take a couple of minutes):
 ```console
-wget https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial.tar.gz
-tar -xvzf MoS2_HPC_tutorial_Leonardo.tar.gz YAMBO_TUTORIAL
+wget https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial_Leonardo.tar.gz
+tar -xvzf MoS2_HPC_tutorial.tar.gz 
 ```
 
 You can now enter the tutorial directory
 ```console
-cd YAMBO_TUTORIAL
+cd MoS2_HPC_tutorial_Leonardo
 ```
 
 ### Yambo `SAVE` folder
