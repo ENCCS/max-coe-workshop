@@ -1,3 +1,7 @@
+:sequential_nav: next
+
+..  _day5-yambo:
+
 # Yambo tutorial: Quasiparticles in the GW approximation
 
 **Useful info for the tutorial:**

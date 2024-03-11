@@ -104,6 +104,7 @@ previous experience with materials modelling and electronic structure calculatio
    :maxdepth: 1
    :caption: Day 5 - Yambo
 
+   day5/yambo-tutorial
 
 .. toctree::
    :maxdepth: 1
