@@ -231,12 +231,12 @@ em1d                             # [R][X] Dynamically Screened Interaction
 
 ```{callout} Runlevels
 - The **[R]** keyword refers to the runlevels: these flag tell Yambo which parts of the code should be executed. Each runlevel enables its own set of input variables. In particular here we have:
--- `el_el_corr` and `gw0`: Yambo learns that it has to run a GW calculation (enables [GW] variables).
--- `rim_cut`: Coulomb potential Random Integration Method, a long-range averaging technique, and low-dimensional cutoff (enables [RIM] and [CUT] variables).
--- `HF_and_locXC`: calculation of exchange part of the self-energy $\Sigma^x$ (i.e., Hartree-Fock approximation).
--- `em1d`: enables the calculation of the dynamical screening of the electrons, i.e. the dielectric matrix ([X] variables). In this way Yambo can go beyond Hartree-Fock and eventually compute $\Sigma^c$.
--- `ppa`: tells Yambo that the dynamical screening should be computed in the plasmon pole approximation ([Xp] variables).
--- `dyson`: Yambo will solve the Dyson-like quasiparticle equation.
+  - `rim_cut`: Coulomb potential random integration method and cutoff (enables [RIM] and [CUT] variables).
+  - `gw0`: Yambo learns that it has to run a GW calculation (enables [GW] variables).
+  - `HF_and_locXC`: calculation of exchange part of the self-energy {math}`\Sigma^x` (i.e., Hartree-Fock approximation).
+  - `em1d`: enables the calculation of the dynamical screening of the electrons, i.e. the dielectric matrix ([X] variables). In this way Yambo can go beyond Hartree-Fock and compute {math}`\Sigma^c`.
+  - `ppa`: tells Yambo that the dynamical screening should be computed in the plasmon pole approximation ([Xp] variables).
+  - `dyson`: Yambo will solve the Dyson-like quasiparticle equation.
 ```
 
 Going through the file we find:
@@ -248,7 +248,7 @@ VXCRLvcs=  37965           RL    # [XC] XCpotential RL components
 
 Recall that we have, for the exchange self-energy:
 
-```math
+```{math}
 \Sigma^x_{nk} = - \sum_G\sum_v \int \frac{d^3q}{2\pi^3} v(q+G)|\rho_{nv}(k,q,G)|^2f_{vk-q}
 ```
 
@@ -258,13 +258,13 @@ Recall that we have, for the exchange self-energy:
 
 Let us now have a look at the parameters for the calculation of the correlation part of the self-energy. Recall that we have:
 
-```math
+```{math}
 $\Sigma^c_{nk} = i \sum_m \int \frac{d^3q}{2\pi^3} \sum_{GG'} v(q+G) \rho_{nmk}(q,G) \rho^*_{nmk}(q,G') \int d\omega' G^0_{mk-q}(\omega-\omega')\varepsilon^{-1}_{GG'}(q,\omega')$
 ```
 
-(Here, the $\rho$-terms represent the screening matrix elements which are computed separately by yambo and stored in their own database.)
+(Here, the ${math}`\rho`-terms represent the screening matrix elements which are computed separately by yambo and stored in their own database.)
 
-The calculation is divided in two steps. First, the response function in the plasmon pole approximation (`em1d ppa`), under the keywords `[X]` and `[Xp]`, i.e., $\varepsilon^{-1}_{GG'}(q,\omega)$.
+The calculation is divided in two steps. First, the response function in the plasmon pole approximation (`em1d ppa`), under the keywords `[X]` and `[Xp]`, i.e., {math}`\varepsilon^{-1}_{GG'}(q,\omega)`.
 
 ```
 Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
@@ -280,9 +280,9 @@ XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
 ```
 ```{callout} Response function
 - `Chimod= "Hartree"` indicates that we compute the response function in the Random Phase Approximation (RPA).
-- `BndsRnXp` represents the electronic states included in the response function $\varepsilon$, and is a convergence parameter.
-- `NGsBlkXp` is the number of G-vectors used to calculate the RPA response function $\varepsilon^{-1}_{GG'}$. It is a convergence parameter and can be expressed in number of reciprocal lattice vectors (RL) or energy (Ry, suggested).
-- `LongDrXp` represents the direction of the long-range auxiliary external electric field used to compute $\varepsilon^{-1}_{GG'}(q)$ at $q,G\rightarrow 0$. In general you have to be mindful of the system symmetries. In our case, we will put `1 | 1 | 1` to cover all directions.
+- `BndsRnXp` represents the electronic states included in the response function {math}`\varepsilon`, and is a convergence parameter.
+- `NGsBlkXp` is the number of G-vectors used to calculate the RPA response function {math}`\varepsilon^{-1}_{GG'}`. It is a convergence parameter and can be expressed in number of reciprocal lattice vectors (RL) or energy (Ry, suggested).
+- `LongDrXp` represents the direction of the long-range auxiliary external electric field used to compute {math}`\varepsilon^{-1}_{GG'}(q)` at {math}`q,G\rightarrow 0`. In general you have to be mindful of the system symmetries. In our case, we will put `1 | 1 | 1` to cover all directions.
 - `PPAPntXp= 27.21138 eV` is the energy of the plasmon pole. We don't normally change this.
 - `XTermKind` is used to specify a "terminator": this accelerates numerical convergence with respect to the number of bands `BndsRnXp`.
 ```
@@ -301,7 +301,7 @@ DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g")
 ```{callout} Correlation self-energy
 - `GbndRnge` is the number of bands used to build the correlation self-energy. It is a convergence parameter and can be accelerated with the terminator `GTermKind`.
 - `DysSolver="n"` specifies the method used to solve the linearised quasiparticle equation. In most cases, we use the Newton method `"n"`.
--  `QPkrange` indicates the range of electronic (nk) states for which the GW correction $\Sigma_{nk}$ is computed. The first pair of numbers represents the range of k-point indices, the second pair the range of band indices. 
+-  `QPkrange` indicates the range of electronic (nk) states for which the GW correction {math}`\Sigma_{nk}` is computed. The first pair of numbers represents the range of k-point indices, the second pair the range of band indices. 
 ```
 
 We now take a look at the parameters relative to the Coulomb interaction at small momenta and for 2D systems, which we should __edit now once and for all__.
@@ -312,8 +312,8 @@ RandGvec= 100                RL    # [RIM] Coulomb interaction RS components
 CUTGeo= "slab z"                   # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
 ```
 ```{callout} Coulomb potential
-- The **[RIM]** keyword refers to a Monte Carlo random integration method performed to avoid numerical instabilities close to $q=0$ and $G=0$ in the $q$-integration of the bare Coulomb interaction - i.e. $4\pi/(q+G)^2$ - for 2D systems.
-- The **[CUT]** keyword refers to the truncation of the Coulomb interaction to avoid spurious interaction between periodically repeated copies of the simulation supercell along the $z$-direction (we are working with a plane-wave code). Keep in mind that the vacuum space between two copies of the system should be converged: here we are using 20 bohr but a value of 40 bohr would be more realistic.
+- The **[RIM]** keyword refers to a Monte Carlo random integration method performed to avoid numerical instabilities close to {math}`q=0` and {math}`G=0` in the {math}`q`-integration of the bare Coulomb interaction - i.e. {math}`4\pi/(q+G)^2` - for 2D systems.
+- The **[CUT]** keyword refers to the truncation of the Coulomb interaction to avoid spurious interaction between periodically repeated copies of the simulation supercell along the {math}`z`-direction (we are working with a plane-wave code). Keep in mind that the vacuum space between two copies of the system should be converged: here we are using 20 bohr but a value of 40 bohr would be more realistic.
 ```
 
 Finally, we have the parallel parameters. We are going to discuss them at the end of the parallel section, we can skip them for now.
