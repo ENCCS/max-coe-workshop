@@ -1,13 +1,14 @@
 
 ..  
-  _day5-yambo:
+   _day5-yambo:
 
 # Yambo tutorial: Quasiparticles in the GW approximation
 
 ..
-  **Useful info for the tutorial:**
+   **Useful info for the tutorial:**
 
-  - __Please download the directory containing the tutorial [HERE]([MoS2_HPC_tutorial.tar.gz](https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial_Leonardo.tar.gz))__ and copy it in your user directory.
+..
+   - __Please download the directory containing the tutorial [HERE]([MoS2_HPC_tutorial.tar.gz](https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial_Leonardo.tar.gz))__ and copy it in your user directory.
 
 In this tutorial you will learn how to run a GW simulation using Yambo on a HPC machine.
 
@@ -25,13 +26,13 @@ In the end, you will obtain a quasiparticle band structure based on the simulati
 
 We want to describe the electronic energy levels using a better description of electron-electron interactions than DFT is capable of.
 
-Essentially, we want to solve the non-linear quasiparticle equation at first order in the GW self-energy $\Sigma$:
+Essentially, we want to solve the non-linear quasiparticle equation at first order in the GW self-energy {math}`Σ`:
 
-```math
+```{math}
 E^{QP}_{nk}=\epsilon_{nk}+Z_{nk}[\Sigma]\langle\psi_{nk}|\Sigma(\epsilon_{nk})-V_{xc}|\psi_{nk}\rangle
 ```
 
-Here $\epsilon_{nk}$ and $\psi_{nk}$ are the Kohn-Sham energies and wavefunctions, respectively, while $V_{xc}$ is the DFT exchange-correlation potential.
+Here {math}`\epsilon_{nk}` and {math}`\psi_{nk}` are the Kohn-Sham energies and wavefunctions, respectively, while $V_{xc}$ is the DFT exchange-correlation potential.
 
 For each electronic state $nk$, the self-energy can be separated into two components: a static, gap-opening term called the exchange self-energy ($\Sigma^x$), and an energy-dependent, usually gap-closing term called the correlation self-energy ($\Sigma^c$). These contributions are tackled separately by the code:
 
