@@ -1,11 +1,13 @@
 
-..  _day5-yambo:
+..  
+  _day5-yambo:
 
 # Yambo tutorial: Quasiparticles in the GW approximation
 
-**Useful info for the tutorial:**
+..
+  **Useful info for the tutorial:**
 
-- __Please download the directory containing the tutorial [HERE]([MoS2_HPC_tutorial.tar.gz](https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial_Leonardo.tar.gz))__ and copy it in your user directory.
+  - __Please download the directory containing the tutorial [HERE]([MoS2_HPC_tutorial.tar.gz](https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial_Leonardo.tar.gz))__ and copy it in your user directory.
 
 In this tutorial you will learn how to run a GW simulation using Yambo on a HPC machine.
 
