@@ -2,15 +2,15 @@
 
 In this tutorial you will learn how to run a GW simulation using Yambo on a HPC machine.
 
-You will compute the quasiparticle corrections to the band structure of a free-standing single layer of MoS2 while learning about convergence studies, parallel strategies, and GPU calculations.
+You will compute the quasiparticle corrections to the band structure of a free-standing single layer of MoS{math}`_2` while learning about convergence studies, parallel strategies, and GPU calculations.
 
-In the end, you will obtain a quasiparticle band structure based on the simulations, the first step towards the reproduction of an ARPES spectrum. Beware: we won't use fully converged parameters, so the final result should not be considered very accurate.
+In the end, you will obtain a quasiparticle band structure based on the simulations, the first step towards the reproduction of an ARPES spectrum. Beware: we will not use fully converged parameters, so the final result should not be considered very accurate.
  
 ```{figure} img/mos2.png
 :scale: 40%
 ```
 
-*MoS2 monolayer (top and side views). Gray: Mo atoms, yellow: S atoms.*
+*MoS{math}`_2` monolayer (top and side views). Gray: Mo atoms, yellow: S atoms.*
 
 ## Many-body corrections to the DFT band gap
 
@@ -259,7 +259,7 @@ Recall that we have, for the exchange self-energy:
 Let us now have a look at the parameters for the calculation of the correlation part of the self-energy. Recall that we have:
 
 ```{math}
-$\Sigma^c_{nk} = i \sum_m \int \frac{d^3q}{2\pi^3} \sum_{GG'} v(q+G) \rho_{nmk}(q,G) \rho^*_{nmk}(q,G') \int d\omega' G^0_{mk-q}(\omega-\omega')\varepsilon^{-1}_{GG'}(q,\omega')$
+\Sigma^c_{nk} = i \sum_m \int \frac{d^3q}{2\pi^3} \sum_{GG'} v(q+G) \rho_{nmk}(q,G) \rho^*_{nmk}(q,G') \int d\omega' G^0_{mk-q}(\omega-\omega')\varepsilon^{-1}_{GG'}(q,\omega')
 ```
 
 (Here, the ${math}`\rho`-terms represent the screening matrix elements which are computed separately by yambo and stored in their own database.)
@@ -350,7 +350,7 @@ We will start by running a single GW calculation. Here we will focus on the magn
   [X] Direct Gap                                    :  1.858370 [eV]
   [X] Direct Gap localized at k                     :  7
 ```
-In addition, we'll set the number of bands in `BndsRnXp` and `GbndRnge` to a small value, just to have it run fast. Hence, we modify the input file accordingly (check `BndsRnXp`, `GbndRnge`, `LongDrXp`, `QPkrange`):
+In addition, we will set the number of bands in `BndsRnXp` and `GbndRnge` to a small value, just to have it run fast. Hence, we modify the input file accordingly (check `BndsRnXp`, `GbndRnge`, `LongDrXp`, `QPkrange`):
 ```
 rim_cut                          # [R] Coulomb potential
 gw0                              # [R] GW approximation
@@ -465,30 +465,28 @@ vim out_00_first_run/o-job_00_first_run.qp
 #
 #    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
 #
-         7                 13                 0.000000          -0.025594           0.544159
-         7                 14                 1.858370           3.495889          -0.417727
+         7                 13                 0.000000          -0.025774           0.543987
+         7                 14                 1.858370           3.496193          -0.417555
 # 
 ```
 In this file, `Eo` is our starting point (DFT) while `E-Eo` shows the GW correction one should apply to obtain the quasi-particle energies. In order to calculate the gap (automatically from the command line), we'll use some simple commands. First, we get everything that is not a `#` symbol `grep -v '#'` and we pass that to another command with a "pipe" `|`. Then, `tail -n 1`/`head -n 1` will retain the first/last line, and `awk '{print $3+$4}'` will get us the sum of the third and fourth columns. Altogether, this would be as follows
 
 ```console
 grep -v '#' out_00_first_run/o-job_00_first_run.qp|head -n 1| awk '{print $3+$4}'
--0.025594
+-0.025774
 grep -v '#' out_00_first_run/o-job_00_first_run.qp|tail -n 1| awk '{print $3+$4}'
-5.35426
+5.35456
 ```
 
 These two commands give us the quasiparticle energies we've calculated - their difference is the GW-corrected optical gap.
 
 ---
 
-**TEXT FIXED UP TO THIS POINT**
-
 ## GW convergence
 
-In this part of the tutorial, we will study convergence with respect to some of the parameters mentioned above. In order to complete this tutorial within a single hands-on session, we will restrict ourselves to a very coarse $k$-point grid. 
-Hence, we'll perform our convergence studies on top of a DFT calculation done with a 6 $\times$ 6 $\times$ 1 k-point grid and without spin-orbit coupling: the `SAVE` we generated earlier. 
-While this will speed up calculations and require few CPU cores, you should be aware that such coarse sampling of the BZ is severely underconverged and should only be used for educational purposes.
+In this part of the tutorial, we will study convergence with respect to some of the parameters mentioned above. In order to complete this tutorial within a single hands-on session, we will restrict ourselves to a very coarse {math}`k`-point grid. 
+Hence, we will perform our convergence studies on top of a DFT calculation done with a {math}`6 \times 6 \times 1` k-point grid and without spin-orbit coupling: the `SAVE` we generated earlier. 
+While this will speed up calculations and could be run even on a single GPU card, you should be aware that such coarse sampling of the BZ is significantly underconverged and should only be used for educational purposes. In addition, spin-orbit interaction is extremely relevant for the valley physics of MoS2 and should not be neglected in realistic calculations.
 Let's move into the appropriate directory
 ```console
 cd ../02_GW_convergence
@@ -505,7 +503,7 @@ and check that you have:
 %
 ```
 
-Since we need to run `yambo` for several values of `NGsBlkXp` and `BndsRnXp`, it makes sense to use two nested loops. That is exactly what we did in the submission script [`run01_converge_pol.sh`](https://hackmd.io/h7Rfne3KR4-0W2yJX0yEfA#Slurm-submission-for-convergence-tutorial). Since this will take a few minutes, save time by submitting it straight away and we'll have a look at it while it runs:
+Since we need to run `yambo` for several values of `NGsBlkXp` and `BndsRnXp`, it makes sense to use two nested loops. That is exactly what we did in the submission script `run01_converge_pol.sh`. Since this will take a few minutes, save time by submitting it straight away and we will have a look at it while it runs:
 ```console
 sbatch run01_converge_pol.sh
 ```
@@ -520,20 +518,20 @@ and also by checking the files created in your folder
 ls -ltr
 ```
 ```console
--rw-rw-r-- 1 enccs035 enccs035  2995 15 nov 13.57 i01-GW_Xp_20_bands_6_Ry
-drwxrwxr-x 2 enccs035 enccs035  4096 15 nov 13.57 job_Xp_20_bands_6_Ry
-drwxrwxr-x 3 enccs035 enccs035  4096 15 nov 13.57 out_Xp_20_bands_6_Ry
--rw-rw-r-- 1 enccs035 enccs035  2995 15 nov 13.57 i01-GW_Xp_20_bands_8_Ry
-drwxrwxr-x 3 enccs035 enccs035  4096 15 nov 13.57 out_Xp_20_bands_8_Ry
-drwxrwxr-x 2 enccs035 enccs035  4096 15 nov 13.57 job_Xp_20_bands_8_Ry
--rw-rw-r-- 1 enccs035 enccs035  2996 15 nov 13.58 i01-GW_Xp_20_bands_10_Ry
-drwxrwxr-x 3 enccs035 enccs035  4096 15 nov 13.58 out_Xp_20_bands_10_Ry
-drwxrwxr-x 2 enccs035 enccs035  4096 15 nov 13.58 job_Xp_20_bands_10_Ry
--rw-rw-r-- 1 enccs035 enccs035  2996 15 nov 13.58 i01-GW_Xp_20_bands_12_Ry
-drwxrwxr-x 3 enccs035 enccs035  4096 15 nov 13.58 out_Xp_20_bands_12_Ry
-drwxrwxr-x 2 enccs035 enccs035  4096 15 nov 13.58 job_Xp_20_bands_12_Ry
--rw-rw-r-- 1 enccs035 enccs035   195 15 nov 13.58 summary_01_20bands.txt
--rw-rw-r-- 1 enccs035 enccs035  2995 15 nov 13.58 i01-GW_Xp_40_bands_6_Ry
+i01-GW_Xp_20_bands_6_Ry
+job_Xp_20_bands_6_Ry
+out_Xp_20_bands_6_Ry
+i01-GW_Xp_20_bands_8_Ry
+out_Xp_20_bands_8_Ry
+job_Xp_20_bands_8_Ry
+i01-GW_Xp_20_bands_10_Ry
+out_Xp_20_bands_10_Ry
+job_Xp_20_bands_10_Ry
+i01-GW_Xp_20_bands_12_Ry
+out_Xp_20_bands_12_Ry
+job_Xp_20_bands_12_Ry
+summary_01_20bands.txt
+i01-GW_Xp_40_bands_6_Ry
 ...
 ```
 Finally you can monitor how runs are proceeding by looking into the log files
@@ -589,8 +587,8 @@ done
 done
 ```
 
-Inside the loops, we generate some useful labels which will come in handy to distinguish between runs. Then, we pass the variables from the loops to the `sed` command, in order to generate new files in an automated way - `sed` replaces any matching string with whatever is provided by the loop variable. Next, we run `yambo` using the labels to specify different job `-J` and communications `-C` directories every time. Finally, we get the quasiparticle energies with `grep` commands as shown before and append a new line to the summary file. So, inside each loop, we have
-```console
+Inside the loops, we generate some useful labels which will come in handy to distinguish between runs. Then, we pass the variables from the loops to the `sed` command, in order to generate new files in an automated way (`sed` replaces any matching string with whatever is provided by the loop variable). Next, we run `yambo` using the labels to specify different job `-J` and communication `-C` directories every time. Finally, we get the quasiparticle energies with `grep` commands as shown before and append a new line to the summary file. So, inside each loop, we have
+```bash
 label=Xp_${POL_BANDS}_bands_${NGsBlkXp_Ry}_Ry
 jdir=job_${label}
 cdir=out_${label}
@@ -600,41 +598,42 @@ sed "s/NGsBlkXp=.*/NGsBlkXp=${NGsBlkXp_Ry} Ry/;
       /% BndsRnXp/{n;s/.*/  1 |  ${POL_BANDS} |/}" $file0 > $filein
 
 # run yambo
-srun --mpi=pmix -n ${SLURM_NTASKS} yambo -F $filein -J $jdir -C $cdir
+mpirun -np ${SLURM_NTASKS} --map-by socket:PE=8 --rank-by core yambo -F $filein -J $jdir -C $cdir
 
 E_GW_v=`grep -v '#' ${cdir}/o-${jdir}.qp|head -n 1| awk '{print $3+$4}'`
 E_GW_c=`grep -v '#' ${cdir}/o-${jdir}.qp|tail -n 1| awk '{print $3+$4}'`
 
-
-echo ${NGsBlkXp_Ry} '        ' ${E_GW_v} '        ' ${E_GW_c} >> summary_01_${POL_BANDS}bands.txt
+echo ${NGsBlkXp_Ry} '        ' ${E_GW_v} '        ' ${E_GW_c}  >> summary_01_${POL_BANDS}bands.txt
 ```
 
 Finally, let us plot this data. First, check that the job has finished with
 ```console
 squeue -u $USER
 ```
-```shell
-[$USER@vglogin0005 02_GW_convergence]$ squeue -u enccs035
+```console
+[$USER@login01 02_GW_convergence]$ squeue -u $USER
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-[$USER@vglogin0005 02_GW_convergence]$ 
+[$USER@login01 02_GW_convergence]$ 
 ```
 and verify that the energies were extracted correctly by inspecting the summary files. Remember to load the python module if you haven't done so yet, and then plot:
 ```console
-module purge
-module load matplotlib/3.2.1-foss-2020a-Python-3.8.2
+module load anaconda3/2023.03
 python plot-01.py
 ```
 The plot will produce a `fig-01.png` file. 
 You can copy and open it in your local machine with something like
 ```
-[WARNING: run this on another terminal in your local machine, fixing $USER]
-scp $USER@login.vega.izum.si:/exa5/data/d2021-135-users/$USER/YAMBO_TUTORIAL/02_GW_convergence/fig-01.png ./
+[Run this on another terminal in your local machine, fixing $USER, $LOGIN and $TUTORIALPATH]
+scp $USER@$LOGIN:$TUTORIALPATH/MoS2_HPC_tutorial_Leonardo/02_GW_convergence/fig-01.png ./
 ```
 
-![](img/directgap_bands.png)
+You should get:
+```{figure} img/convergence01.png
+:scale: 50%
+```
 
 
-For the purpose of the tutorial, we will choose 80 bands and 10 Ry as our converged parameters and move on. This would imply an acceptable error of 7 meV. To retain the chosen variables, we'll make a copy of the corresponding input file:
+For the purpose of the tutorial, we will choose 80 bands and 10 Ry as our converged parameters and move on. An error within 10 meV is usually acceptable. To retain the chosen variables, we'll make a copy of the corresponding input file:
 ```
 cp i01-GW_Xp_80_bands_10_Ry i02-GW
 ```
@@ -642,28 +641,28 @@ cp i01-GW_Xp_80_bands_10_Ry i02-GW
 ### Self-energy {math}`\Sigma^c` - Bands
 
 We will now proceed to converge the number of bands for the correlation part of the self-energy, i.e., `GbndRnge`. This step is actually simpler, since it only involves one loop. This is coded in the provided script `run02_converge_Gbnds.noBG.sh`. You can look into it
-```console
+```
 vim run02_converge_Gbnds.noBG.sh
 ```
 and go ahead and submit it.
-```console
+```
 sbatch run02_converge_Gbnds.noBG.sh
 ```
 
 ````{solution} [OPTIONAL]: Use the terminator to accelerate convergence
+
 While that runs, we'll have a look at the so-called Bruneval-Gonze (BG) terminator, which is a method to accelerate convergence with respect to empty bands. The variable that controls this for the bands in the correlation self-energy is `GTermKind`. This is currently set to "none" in `i02-GW`, so create a new input file `i02-GW_BG` and set this variable to "BG". We can do this in the command line by simply typing
-```console
+```
 sed 's/GTermKind=.*/GTermKind= "BG"/' i02-GW > i02-GW_BG
 ```
-
 Note that `XTermKind` also offers the same terminator for the sum over bands of the polarization function (we just chose not to use it in the previous section of this excercise, and we'll keep it as "none"). Now, copy the last submission script and edit it to run the same convergence test using the BG terminator.
-```console
+```
 cp run02_converge_Gbnds.noBG.sh run03_converge_Gbnds.BG.sh
 ```
 Try and do this yourself first, and then continue reading to check your understanding.
 You'll have to change the input file template, i.e., use `i02-GW_BG` where the terminator has been activated. Modify also the name of the newly generated input files in order to avoid overwriting. Change the name of the summary file for the same reason and, finally, modify the communications and job directories of `yambo`. Make sure you've done all the changes as outlined below.
 
-```console
+```bash
 file0='i02-GW_BG'
 summaryfile=summary_03_BG.txt
 
@@ -685,66 +684,64 @@ For a visual result, proceed to plot them with
 python plot-02.py
 ```
 You should get
-![](img/BG_vs_noBG.png)
-
-You can copy and open it in your local machine with something like
-```
-[WARNING: run this on another terminal in your local machine, fixing $USER]
-scp $USER@login.vega.izum.si:/exa5/data/d2021-135-users/$USER/YAMBO_TUTORIAL/02_GW_convergence/fig-02.png ./
+```{figure} img/BG_noBG.png
+:scale: 50%
 ```
 
 
 ```{solution} OPTIONAL
 If you also did the optional step, you can compare `summary_02_noBG.txt` with `summary_03_BG.txt` once `run03_converge_Gbnds.BG.sh` has finished - you'll see the effect of the terminator immediately. 
 Just open the `plot-02.py` script and uncomment the line `#list_of_files = ['summary_02_noBG.txt','summary_03_BG.txt']`, then rerun it with `python plot-02.py`.
-You can see that the terminator does a great job at accelerating convergence, and it allows us to use 60 bands incurring an error of only 3 meV (while the latter would have been larger than 0.1 eV had we not used the terminator). 
+You can see that the terminator does a great job at accelerating convergence, and it allows us to use 60 bands incurring an error of only 3 meV (while the latter would have been larger than 0.1 eV had we not used the terminator).
 ```
 
+We'll end the convergence part of the tutorial with an important point about k-points convergence. The latter is the most cumbersome and computationally intensive among the various convergence tests, and it involves re-running the DFT step. For this reason (and for this reason only) it was ignored in this tutorial. However, it absolutely cannot be overlooked since it is crucial for the accuracy of the calculated GW corrections. You can read about {math}`k`-points convergence in GW and, importantly, a very efficient workaround for 2D systems in a recent publication ([here](https://www.nature.com/articles/s41524-023-00989-7)). MoS{math}`_2` was one of the materials studied there, and it shows that our result, obtained with a {math}`6 \times 6 \times 1` k-grid, is simply *off the chart* (blue line).
 
-We'll end the convergence part of the tutorial with an important point about k-points convergence. The latter is the most cumbersome and computationally intensive among the various convergence test, and it involves re-running the DFT step. For this reason (and for this reason only) it was ignored in this tutorial. However, it absolutely cannot be overlooked since it is crucial for the accuracy of the calculated GW corrections. You can read about $k$-points convergence in GW and, importantly, a very efficient workaround for 2D systems in a recent publication ([here](https://arxiv.org/abs/2205.11946)). MoS$_2$ was one of the materials studied there, and it shows that our result, obtained with a 6x6x1 k-grid, is simply *off the chart* (blue line).
-
-![](img/Guandalini_etal.png)
-_Guandalini, D’Amico, Ferretti & Varsano. ArXiv:2205.11946v2_
+```{figure} img/ref-Guandalini.png
+:scale: 50%
+```
+_Guandalini, D’Amico, Ferretti & Varsano. npj Comput Mater 9_
 
 ````{solution} [OPTIONAL]: Use the RIM-W accelerator
-
 However you can try to get a reasonable correction via the RIM-W approach.
-```console
+```
 cp i02-GW_80_Gbands  i04-GW_80_Gbands_rimw
 vim i04-GW_80_Gbands_rimw
 ```
 Then, you just need to add the following two variables to the input file
-```
+```bash=
 RIM_W
 RandGvecW= 15           RL
 ```
 and prepare a submission script
-```console
+```
 cp  run02_converge_Gbnds.noBG.sh  run04_converge_rimw.sh
 vim run04_converge_rimw.sh
 ```    
 and edit it, by removing the loop and changin the input file and jobname
-```bash
+```bash=
 #!/bin/bash
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=16
-#SBATCH --cpus-per-task=1
-#SBATCH --partition=cpu
-#SBATCH --time=0:30:00
-#SBATCH --account=d2021-135-users
-#SBATCH --mem-per-cpu=2000MB
+#SBATCH --ntasks-per-node=4
+#SBATCH --cpus-per-task=8
+#SBATCH --partition=boost_usr_prod
+#SBATCH --time=0:10:00
+#SBATCH --gres=gpu:4
+#SBATCH --account=EUHPC_TD02_030
 #SBATCH --job-name=mos2
-#SBATCH --reservation=maxcpu
 
-# load yambo and dependencies
-module purge
-module use /ceph/hpc/data/d2021-135-users/modules
-module load YAMBO/5.1.1-FOSS-2022a
-export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
+export OMP_NUM_THREADS=8
+export OMP_PLACES=cores
+export OMP_PROC_BIND=close
 
+# load yambo
+module load profile/chem-phys
+module load yambo/5.2.0--openmpi--4.1.4--nvhpc--23.1
+
+file0='i02-GW'
 summaryfile=summary_04_rimw.txt
 
-echo 'E_vale [eV]        E_cond [eV]      GAP [eV]' > $summaryfile
+echo 'G bands     E_vale [eV]        E_cond [eV]      GAP [eV]' > $summaryfile
 
 G_BANDS=80
 
@@ -754,17 +751,17 @@ cdir=out_${label}
 filein=i04-GW_${G_BANDS}_Gbands_rimw
 
 # run yambo
-srun --mpi=pmix -n ${SLURM_NTASKS} yambo -F $filein -J $jdir -C $cdir
+mpirun -np ${SLURM_NTASKS} --map-by socket:PE=8 --rank-by core yambo -F $filein -J $jdir -C $cdir
 
 E_GW_v=`grep -v '#' ${cdir}/o-${jdir}.qp|head -n 1| awk '{print $3+$4}'`
 E_GW_c=`grep -v '#' ${cdir}/o-${jdir}.qp|tail -n 1| awk '{print $3+$4}'`
 
 GAP_GW=`echo $E_GW_c - $E_GW_v |bc`
 
-echo ${E_GW_v} '        ' ${E_GW_c} '        ' ${GAP_GW} >> $summaryfile
+echo ${G_BANDS} '        ' ${E_GW_v} '        ' ${E_GW_c} '        ' ${GAP_GW} >> $summaryfile
 ```
 and then run
-```console
+```
 sbatch run04_converge_rimw.sh
 ```    
 How much do you get for the band gap ?
@@ -972,7 +969,7 @@ You may then check how speed, memory and load balance between the CPUs are affec
 
 ### Running on GPUs
 
-This is the final section of the tutorial, in which we want to compute the full correction to the band structure of single-layer MoS2. In order to get somewhat realistic results, we will use the larger values for the convergence parameters we have identified in the convergence section. In addition, we also increased the vacuum separation (to 30 au) and the k-point mesh (to 18x18x1) in the DFT calculation, and of course we consider spin-orbit coupling.
+This is the final section of the tutorial, in which we want to compute the full correction to the band structure of single-layer MoS{math}`_2`. In order to get somewhat realistic results, we will use the larger values for the convergence parameters we have identified in the convergence section. In addition, we also increased the vacuum separation (to 30 au) and the k-point mesh (to 18x18x1) in the DFT calculation, and of course we consider spin-orbit coupling.
 ```console
 cd ../04_GW_bands
 ```
