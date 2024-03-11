@@ -36,7 +36,7 @@ In this way, we can compute the "quasiparticle" corrections {math}`E^{QP}_{nk}` 
 The typical workflow for a GW calculation is: 
 
 ```{figure} img/gwflow.png
-:scale: 60%
+:scale: 70%
 ```
 
 ## Set up a Yambo calculation
@@ -685,7 +685,7 @@ python plot-02.py
 ```
 You should get
 ```{figure} img/BG_noBG.png
-:scale: 50%
+:scale: 70%
 ```
 
 
@@ -709,7 +709,7 @@ cp i02-GW_80_Gbands  i04-GW_80_Gbands_rimw
 vim i04-GW_80_Gbands_rimw
 ```
 Then, you just need to add the following two variables to the input file
-```bash=
+```bash
 RIM_W
 RandGvecW= 15           RL
 ```
@@ -719,7 +719,7 @@ cp  run02_converge_Gbnds.noBG.sh  run04_converge_rimw.sh
 vim run04_converge_rimw.sh
 ```    
 and edit it, by removing the loop and changin the input file and jobname
-```bash=
+```bash
 #!/bin/bash
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
@@ -773,17 +773,17 @@ How much do you get for the band gap ?
 ### MPI parallelization
 
 For this section, let us enter the `03_GW_parallel` directory. If you were in the `02_GW_convegence` folder just do
-```console
+```
 cd ../03_GW_parallel
 ```
 and inspect the input `gw.in`. You will see that we set low values for most of the convergence parameters except bands:
 
-```console
+```
 vim gw.in
 ```
 
 ```
-FFTGvecs= 20       Ry    # [FFT] Plane-waves
+FFTGvecs= 40       Ry    # [FFT] Plane-waves
 EXXRLvcs= 2        Ry    # [XX] Exchange RL components
 VXCRLvcs= 2        Ry    # [XC] XCpotential RL components
 % BndsRnXp
@@ -801,111 +801,129 @@ Note that we also added `FFTGvecs` to reduce the size of the Fourier transforms 
 
 In addition, we have deleted all the parallel parameters since we will be setting them via the submission script.
 
-Actually we are now dealing with a heavier system than before: as you can see from the `QPkrange` values, we have switched to a 12x12x1 $k$-point grid - having 19 points in the irreducible Brillouin zone - and turned spin-orbit coupling on in the DFT calculation - now the top valence band is number 26 instead of 13 because the bands are spin-polarized.
+Actually we are now dealing with a heavier system than before: as you can see from the `QPkrange` values, we have switched to a 12x12x1 k-point grid - having 19 points in the irreducible Brillouin zone - and turned spin-orbit coupling on in the DFT calculation (now the top valence band is number 26 instead of 13 because the bands are spin-polarized).
 
-The inspected file should look like [this one](https://hackmd.io/@palful/HkU0xblHj#GW-input-file-for-parallel-section).
-
-For this part of the tutorial, we will be using the `slurm` submission script [`job_parallel.sh`](https://hackmd.io/@palful/HkU0xblHj#Slurm-submission-script-on-VEGA), which is available in the calculation directory. 
+For this part of the tutorial, we will be using the `slurm` submission script `job_parallel.sh`, which is available in the calculation directory. 
 If you inspect it, you will see that the script adds additional variables to the yambo input file.
 These variables control the parallel execution of the code:
-```
-DIP_CPU= "1 $ncpu 1"       # [PARALLEL] CPUs for each role
+```bash
+DIP_CPU= "1 $ngpu 1"       # [PARALLEL] CPUs for each role
 DIP_ROLEs= "k c v"         # [PARALLEL] CPUs roles (k,c,v)
 DIP_Threads=  0            # [OPENMP/X] Number of threads for dipoles
-X_CPU= "1 1 1 $ncpu 1"     # [PARALLEL] CPUs for each role
-X_ROLEs= "q g k c v"       # [PARALLEL] CPUs roles (q,g,k,c,v)
-X_nCPU_LinAlg_INV= 1   # [PARALLEL] CPUs for Linear Algebra
+X_and_IO_CPU= "1 1 1 $ngpu 1"     # [PARALLEL] CPUs for each role
+X_and_IO_ROLEs= "q g k c v"       # [PARALLEL] CPUs roles (q,g,k,c,v)
+X_and_IO_nCPU_LinAlg_INV= 1   # [PARALLEL] CPUs for Linear Algebra
 X_Threads=  0              # [OPENMP/X] Number of threads for response functions
-SE_CPU= " 1 $ncpu 1"       # [PARALLEL] CPUs for each role
+SE_CPU= " 1 $ngpu 1"       # [PARALLEL] CPUs for each role
 SE_ROLEs= "q qp b"         # [PARALLEL] CPUs roles (q,qp,b)
 SE_Threads=  0             # [OPENMP/GW] Number of threads for self-energy
 ```
-The keyword `DIP` refers to the calculations of the screening matrix elements (also called "dipoles") needed for the screening function, `X` is the screening function (it stands for $\chi$ since it is a response function), `SE` the self-energy.
+The keyword `DIP` refers to the calculations of the screening matrix elements (also called "dipoles") needed for the screening function, `X` is the screening function itself (it stands for {math}`\chi` since it is a response function), `SE` the self-energy.
 These three sections of the code can be parallelised independently.
 
+We are running on GPUs. In particular, each node hosts four GPU cards. Yambo is coded in such a way that each MPI _task_ is run on a single card, therefore `ntasks=ngpu`.
+
 ```{callout} Note
-- In this subsection we are mainly concerned with the **[PARALLEL]** variables which refer to MPI _tasks_.
-- We will see later an example of **[OPENMP]** parallelisation (i.e., adding _threads_).
+- In this subsection we are mainly concerned with the **[PARALLEL]** variables which refer to MPI _tasks_ (distributed memory).
+- What about **[OPENMP]** parallelisation (i.e., adding _threads_ with shared memory)? When Yambo is run on GPUs, the explicit threading that you can set in the input and submission script only applies to the very few sections of the code that are *not* run on GPU cards, but stay on the CPUs. Therefore, in a GPU calculation, CPU-only threads are not going to be a relevant factor in the performance of the code. We keep them fixed to 8 since on Leonardo Booster (32 CPUs and 4 GPUs per node) the best hybrid parallel setup *for CPUs* is 4 tasks times 8 threads. We will see an example of the impact of threads in a CPU-only calculation later.
 ```
 
 
-We start by calculating the QP corrections using 16 MPI tasks and a single openMP thread. Therefore, edit the submission script as:
+We start by calculating the QP corrections using 4 MPI tasks / GPUs. We leave the number of openMP threads at 8, the optimized value for Yambo on Leonardo. Therefore, edit the submission script as:
 
-```bash
+```bash 
 #!/bin/bash
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=16
-#SBATCH --cpus-per-task=1
+#SBATCH --ntasks-per-node=4
+...
+#SBATCH --gres=gpu:4
 ```
 and submit the job
-```console
+```
 sbatch job_parallel.sh
 ```
 
 This will create a new input file and run it. The calculation databases and the human-readable files will be put in separate directories. Check the location of the report `r-*` file and the log `l-*` files, and inspect them while the calculation runs.
 For simplicity you could just type
-```console
-tail -f run_MPI16_OMP1.out/LOG/l-*_CPU_1
+```
+tail -f run_MPI4_OMP8.out/LOG/l-*_CPU_1
 ```
 to monitor the progress in the master thread (`Ctrl+C` to exit).
 As you can see, the run takes some time, even though we are using minimal parameters.
 
-Meanwhile, we can run other jobs increasing the parallelisation. Let's employ 128 CPUs (i.e., half a CPU node on Vega). We'll use 128 MPI tasks, still with a single openMP thread. To this end modify the `job_parallel.sh` script changing
+Meanwhile, we can run other jobs increasing the parallelisation. Let's employ 16 MPI tasks / GPUs (i.e., 4 nodes on Leonardo). To this end modify the `job_parallel.sh` script changing
 
 ```bash
 #!/bin/bash
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=128
-#SBATCH --cpus-per-task=1
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=4
+...
+#SBATCH --gres=gpu:4
 ```
 
-This time the code should be much faster. Once the run is over, try to run the simulation also on 32 and 64 MPI tasks. Each time, change`ntasks-per-node` to this number. Finally, you can try to produce a scaling plot.
+This time the code should be much faster. Once the run is over, try to run the simulation also on 8 MPI tasks by changing `nodes` appropriately. Finally, you can try to produce a scaling plot.
 
 The timings are contained in the `r-*` report files. You can already have a look at them typing
-```console
+```
 grep Time-Profile run_MPI*/r-*
 ```
 
-The python script [`parse_ytiming.py`](https://hackmd.io/@palful/HkU0xblHj#parse_ytiming.py) is useful for the post-processing of report files. You can already find it in the directory, together with the reports for the longer calculations with 1, 2, 4 and 8 MPI tasks which have been provided.
+The python script `parse_ytiming.py` is useful for the post-processing of report files. You can already find it in the directory, together with the reports for the longer calculations with 1 and 2 MPI tasks which have been provided.
 
 If you didn't do so already, load the python module
-```console
-module purge
-module load matplotlib/3.2.1-foss-2020a-Python-3.8.2
+```
+module load anaconda3/2023.03
 ```
 
 Then, after your jobs have finished, run the script as
 ```
 python parse_ytiming.py run_MPI
 ```
-to look for a report file in each `run_MPI*.out` folder. Make sure you have only one report file per folder. 
-You can also play with the script to make it print detailed timing information, however you should already see that it produced a png plot showing times-to-completion on y axis against number of MPI tasks on the x axis.
+to look for a report file in each `run_MPI*.out` folder. **Make sure you have only one report file per folder.** 
+You can also play with the script to make it print detailed timing information, however you should already see that it produced a png plot showing times-to-completion on y axis against number of MPI tasks (i.e., GPUs in this case) on the x axis.
 
-![](img/scaling.png)
+```{figure} img/gw_scaling.png
+:scale: 70%
+```
 
 What can we learn from this plot? In particular, try to answer the following questions:
-- Up to which number of MPI tasks our system efficiently scales? At which point adding more threads starts to become a waste of resources?
-- How could we change our parallelisation strategy to improve the scaling even more?  
+- Up to which number of MPI tasks our system efficiently scales? 
+- How can we decide at which point adding more nodes to the calculation becomes a waste of resources?  
 
 ```{callout} Note
 Keep in mind that the MPI scaling we are seeing here is not the true yambo scaling, but depends on the small size of our tutorial system. In a realistic calculation for a large-sized system, __yambo has been shown to scale well up to tens of thousands of MPI tasks__!
 ```
 
-### Hybrid parallelization strategy
+### [OPTIONAL] Comparison with CPU calculation with hybrid parallelization strategy
 
-It turns out that for this system it's not a good idea to use more than 32 MPI tasks. But we still have 128 CPUs available for this run. How to optimize the calaculation even more? We can try using OpenMP threads.
+We have run the same calculation using a version of Yambo compiled in order to run on CPUs. This is not the preferred approach in an accelerator-based machine like Leonardo, but it can be instructive.
 
-This is turned on by modifying `cpus-per-task` in the submission file. The product of the number of OpenMP threads and MPI tasks is equal to the total number of CPUs. 
-Therefore, we can distribute 128 cpus with 32 MPI tasks (efficient MPI scaling, see above) and then use 4 OpenMP threads: 
+For a CPU calculation, we can use a hybrid parallel structure with threads. The OPENMP threads are controlled by modifying `cpus-per-task` and `OMP_NUM_THREADS` in the submission file. The product of the number of OpenMP threads and MPI tasks is equal to the total number of CPUs. 
 
-```bash
+We have adopted two strategies. First, run 4 MPI tasks per node like in the GPU case, while adding also 8 OPENMP threads (`ntasks*nthreads=ncpu=4*8=32`).
+Second, run 32 MPI tasks per node with no multiple threads (`ntasks*nthreads=ncpu=32*1=32`). 
+
+
+For example, in the first case we have:
+```bash= 
 #!/bin/bash
-#SBATCH --nodes=1
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=4
+#SBATCH --cpus-per-task=8
+...
+export OMP_NUM_THREADS=8
+```
+while in the second case we have:
+```bash= 
+#!/bin/bash
+#SBATCH --nodes=4
 #SBATCH --ntasks-per-node=32
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=1
+...
+export OMP_NUM_THREADS=1
 ```
 
-Actually, we don't need to change the related openMP variables for the yambo input, since the value `0` means "use the value of `OMP_NUM_THREADS`" and we have now set this environment variable to `4` via our script.
+Actually, we don't need to change the related openMP variables for the yambo input, since the value `0` means "use the value of `OMP_NUM_THREADS`" and we have now set this environment variable to our liking via the submission script.
 Otherwise, any positive number can directly specify the number of threads to be used in each section of the code.
 
 ```
@@ -916,22 +934,17 @@ X_Threads=  0       # [OPENMP/X] Number of threads for response functions
 SE_Threads=  0      # [OPENMP/GW] Number of threads for self-energy
 ```
 
-You can try to run this calculation and check if it is faster than the pure 128 MPI one from before. 
-You should find a massive gain: in our case, the pure `MPI128_OMP1` took 01m-02s, while the hybrid `MPI32_OMP4` took just 37s, a 40% speedup. 
+You can try to run these calculations and compare the timings with the previous GPU-based runs. 
 
-You can also try any other thread combinations including the pure openMP scaling, and compare the timings.
+**FIGURE AND EXPLANATION**
 
 ```{callout} Note
-- In real-life calculations running on $n_{cores} > 100$, as we have seen, it may be a good idea to adopt a hybrid approach. 
-- The most efficient scaling can depend both on your system and on the HPC facility you're running on. For a full CPU node on Vega (256 cores), using a large-scale system, we have found that 16 tasks times 16 threads gives the best performance.
-- OpenMP can help lower memory requirements within a node. You can try to increase the OpenMP share of threads if getting Out Of Memory errors.
+- In real-life CPU-based calculations running on {math}`n_{cores} > 100`, as we have seen, it may be a good idea to adopt a hybrid approach. 
+- The most efficient scaling can depend both on your system and on the HPC facility you're running on. For a full CPU node on Leonardo (32 cores), using a large-scale system, we have found that 4 tasks times 8 threads gives the best performance.
+- OpenMP can help lower memory requirements within a node. You can try to increase the OpenMP share of threads if you are getting Out Of Memory errors.
 ```
 
-As mentioned above, we can conclude that the "best" parallelisation strategy is in general both system-dependent and cluster-dependent. If working on massive systems, it may be well worth your while to do preliminary parallel tests in order to work out the most efficient way to run these jobs.
-
-### [OPTIONAL]: Comparing different parallelisation schemes
-
-<details>
+````{solution} [OPTIONAL]: Comparing different parallelisation schemes
 
 Up to now we always parallelised over a single parameter, i.e. `c` or `qp`. However, Yambo allows for tuning the parallelisation scheme over several parameters broadly corresponding to "loops" (i.e., summations or discrete integrations) in the code. 
 
@@ -952,30 +965,33 @@ SE_Threads=  0              # [OPENMP/GW] Number of threads for self-energy
 
 You can try different parallelization schemes and check the performances of Yambo. In doing so, you should also change the jobname `label=MPI${ncpu}_OMP${nthreads}` in the `run_parallel.sh` script to avoid confusion with previous calculations.
 
-You may then check how speed, memory and load balance between the CPUs are affected. You could modify the script [`parse_ytiming.py`](https://hackmd.io/@palful/HkU0xblHj#parse_ytiming.py) to parse the new data, read and distinguish between more file names, new parallelisation options, etc.
+You may then check how speed, memory and load balance between the CPUs are affected. You could modify the script `parse_ytiming.py` to parse the new data, read and distinguish between more file names, new parallelisation options, etc.
 
 ```{callout} Note
 - The product of the numbers entering each variable (i.e. `X_CPU` and `SE_CPU`) times the number of threads should always match the total number of cores (unless you want to overload the cores taking advantage of multi-threads).
 - Using the `X_Threads` and `SE_Threads` variables you can think about setting different hybrid schemes between the screening and the self-energy runlevels.
 - Memory scales better if you parallelize on bands (`c v b`).
-- Parallelization on $k$-points performs similarly to parallelization on bands, but requires more memory.
-- Parallelization on $q$-points requires much less communication between the MPI tasks. It may be useful if you run on more than one node and the inter-node connection is slow.
+- Parallelization on k-points performs similarly to parallelization on bands, but requires more memory.
+- Parallelization on q-points requires much less communication between the MPI tasks. It may be useful if you run on more than one node and the inter-node connection is slow.
 ```
-</details>
+````
 
 ---
 
 ## Full GW band structure
 
-### Running on GPUs
+This is the final section of the tutorial, in which we want to compute the full correction to the band structure of single-layer MoS{math}`_2`. 
 
-This is the final section of the tutorial, in which we want to compute the full correction to the band structure of single-layer MoS{math}`_2`. In order to get somewhat realistic results, we will use the larger values for the convergence parameters we have identified in the convergence section. In addition, we also increased the vacuum separation (to 30 au) and the k-point mesh (to 18x18x1) in the DFT calculation, and of course we consider spin-orbit coupling.
-```console
+This is a massive calculation, so run it right now and we'll discuss it in the meantime:
+```
 cd ../04_GW_bands
+sbatch gpu_job.sh
 ```
 
+In order to get somewhat realistic results, we will use the larger values for the convergence parameters we have identified in the convergence section. In addition, we also increased the vacuum separation (to 30 au) and the k-point mesh (to 18x18x1) in the DFT calculation, and of course we consider spin-orbit coupling.
+
 Now we have a heavier calculation, and we have to do it not just for the band gap, but the entire band structure which includes 37 kpoints in the irreducible Brillouin zone, two spin-orbit-split valence bands, and two spin-orbit-split conduction bands. Let us check the new input:
-```console
+```
 vim gw.in
 ```
 
@@ -984,52 +1000,33 @@ vim gw.in
 1|37|25|28|
 %
 ```
-This is a massive calculation, so run it right now and we'll discuss it in the meantime:
-```console
-sbatch gpu_job.sh
-```
-As you might have guessed from the name of the submission script, we are here using yet another capability of yambo: running on GPUs instead of CPUs. This usually leads to extreme speedups in the calculations. Fortunately, the Vega cluster also has some GPU nodes!
 
-As you can see from the submission script,
-```console
-vim gpu_job.sh
-```
-```bash
-#!/bin/bash
-#SBATCH --nodes=2
-#SBATCH --ntasks-per-node=4
-#SBATCH --ntasks-per-socket=2
-#SBATCH --cpus-per-task=64
-#SBATCH --gres=gpu:4
-```
-each GPU node contains four GPUs (`gres=gpu:4`). In yambo, each GPU corresponds to a single MPI task, therefore we have `ntasks-per-node=4`. OpenMP threading is allowed - but not too much, otherwise we lose efficiency - and in fact, even though we are filling all CPUs of the node (`ntasks-per-socket=64`), we are using just `export OMP_NUM_THREADS=8`.
-
-In addition, you will see that in order to run on GPUs we are now using a different executable than before, obtained with a GPU-specific compilation of the code, which is loaded with a different module: `module load YAMBO/5.1.1-OMPI-4.0.5-NVHPC-21.2-CUDA-11.2.1`.
-
-We are also, for the first time, using more than one node (`nodes=2`). In conclusion, we are running over 8 GPU cards, distributed with 8 MPI tasks, and using 8 threads.
-
-### The results
 
 After about 6 minutes the calculation should be over and the results collected in folder `GW_bnds`. The quasiparticle corrections are stored in human-readable form in the file `o-GW_bnds.QP`, and in netCDF format in the quasiparticle database `ndb.QP`. 
 
 In order to visualize the results in the form of a GW band structure, we will first interpolate the calculated points - recall that we have just 37 points, few of which lie on high-symmetry lines - with `ypp`, the yambo pre- and post-processing executable.
 
 ```{callout} Note
-We also have a python-based interface for advanced treatment of all the Yambo databases, called Yambopy. You can check it out on the [yambo wiki](https://www.yambo-code.eu/wiki/index.php/First_steps_in_Yambopy).
+We also have a python-based interface for advanced treatment of all the Yambo databases, called Yambopy. You can check it out [here](https://www.yambo-code.eu/wiki/index.php/First_steps_in_Yambopy) on the Yambo wiki.
 ```
 
-Let us load the yambo module if needed
-```console
-module purge
-module use /ceph/hpc/data/d2021-135-users/modules
-module load YAMBO/5.1.1-FOSS-2022a
+Let us enter a computing node interactively
+
 ```
+srun --nodes=1 --ntasks-per-node=1 --gres=gpu:1 --cpus-per-task=8 --mem=490000 --account=EUHPC_TD02_030 --partition=boost_usr_prod --qos=boost_qos_dbg --time=0:30:00 --pty /bin/bash
+```
+and load the yambo module:
+```
+module load profile/chem-phys
+module load yambo/5.2.0--openmpi--4.1.4--nvhpc--23.1
+```
+
 We can review the options with `ypp -h` and generate an input file for band structure interpolation with
-```console
+```
 ypp -s b -F ypp_bands.in
 ```
-Let us modify the resulting input file by selecting the 'boltztrap' approach to interpolation, the last two valence and first two conduction bands, and a path in the Brillouin zone along the the points $\Gamma$-M-K-$\Gamma$. We also set 100 points for each high-symmetry line.
-```
+Let us modify the resulting input file by selecting the 'boltztrap' approach to interpolation, the last two valence and first two conduction bands, and a path in the Brillouin zone along the the points {math}`\Gamma-M-K-\Gamma`. We also set 100 points for each high-symmetry line.
+```bash=
 electrons                        # [R] Electronic properties
 bnds                             # [R] Bands
 PROJECT_mode= "none"             # Instruct ypp how to project the DOS. ATOM, LINE, PLANE.
@@ -1054,18 +1051,18 @@ BANDS_steps= 100                  # Number of divisions
 %
 ```
 Now, let's run ypp:
-```console
-ypp -F ypp_bands.in
+```
+mpirun -np 1 ypp -F ypp_bands.in
 ```
 This run will produce the file `o.bands_interpolated`. You can inspect it and see that it contains a plottable band structure, but beware: these are the DFT eigevalues! We didn't tell `ypp` where to look for the quasiparticle corrections, so it went into the `SAVE` folder and interpolated the DFT data.
 Let's rename the output:
-```console
+```
 mv o.bands_interpolated o.DFT_bands
 mkdir DFT_bands
 mv o.spin* o.magn* DFT_bands/
 ```
 In order to interpolate the quasiparticle database, we append its location to the `ypp` input:
-```console
+```
 vim ypp_bands.in
 ```
 add this line at the end
@@ -1074,45 +1071,47 @@ add this line at the end
 GfnQPdb= "E < ./GW_bnds/ndb.QP"
 ```
 and run `ypp` again. 
-```console
-ypp -F ypp_bands.in
+```
+mpirun -np 1 ypp -F ypp_bands.in
 ```
 
 When it's done, let's rename the new output as
-```console
+```
 mv o.bands_interpolated o.GW_bands
 mkdir GW_bands
 mv o.spin* o.magn* GW_bands/
 ```
 
-Now we are ready to visualize the band structures. In order to do so, you can use the script [`plot_bands.py`](code/yambo/plot_bands.py) that should be already available in the directory.
+Now we are ready to visualize the band structures. In order to do so, you can use the script `plt_bands.py` that should be already available in the directory.
 
 We load the python module
-```console
-module purge
-module load matplotlib/3.2.1-foss-2020a-Python-3.8.2
+```
+module load anaconda3/2023.03
 ```
 
 and run the script as
-```console
+```
 python plt_bands.py o.DFT_bands o.GW_bands 4
 ```
-It should produce a `GW_bands.png` file containing the following visualization.
 
-![](img/GW_bands.png)
-You can copy and open it in your local machine with something like
-```console
-#[WARNING: run this on another terminal in your local machine, fixing $USER]
-scp $USER@login.vega.izum.si:/exa5/data/d2021-135-users/$USER/YAMBO_TUTORIAL/04_GW_bands/gw_bands.png ./
+Now we can also exit the computing node
+```
+exit
 ```
 
-You may compare this plot with a converged result from [this paper](https://arxiv.org/abs/1606.03017) (also done with Yambo):
+The python script should have produced a `GW_bands.png` file containing the following visualization, which you can copy and open it in your local machine using `scp`:
 
-![](img/GW_bands_converged.png)
+```{figure} img/gw_bands.png
+:scale: 70%
+```
+
+You may compare this plot with a converged result from [this paper](https://doi.org/10.1016/j.surfrep.2015.10.001) (also done with Yambo):
+
+```{figure} img/gw_bands_ref.png
+:scale: 70%
+```
 _Dashed lines: DFT, thick lines: GW._
 
-As you can see, the general result is not too bad, but there are some differences both at the DFT and GW levels. The magnitude of the band gap is too large, and the relative energy of the two conduction band minima is not correct. One obvious issue is the lack of convergence of our tutorial calculations. As we know, we should include more vacuum space and many, many more $k$-points. Additionally, this is a transition metal dichalcogenide: for this class of systems, the details of the band structure can strongly depend on small variations in the lattice parameters and on the type of pseudopotential used. A great deal of care must be taken when performing these calculations!
+As you can see, the general result is not too bad, but there are some differences both at the DFT and GW levels. The magnitude of the band gap is too large, and the relative energy of the two conduction band minima is not correct. One obvious issue is the lack of convergence of our tutorial calculations. As we know, we should include more vacuum space and many, many more k-points. Additionally, this is a transition metal dichalcogenide: for this class of systems, the details of the band structure can strongly depend on small variations in the lattice parameters and on the type of pseudopotential used. A great deal of care must be taken when performing these calculations!
 
-## See also
-
-In order to learn more about Yambo, we suggest visiting the [Yambo wiki](https://www.yambo-code.eu/wiki/index.php/Main_Page). If you have issues and questions about installing and running the code, you can write them on the [Yambo forum](https://www.yambo-code.eu/forum/index.php).
+In order to learn more about Yambo, we suggest visiting the [Yambo website](https://www.yambo-code.eu/). For technical information and tutorials, you can check ou the [Yambo wiki](https://www.yambo-code.eu/wiki/index.php/Main_Page). If you have issues and questions about installing and running the code, you can write them on the [Yambo forum](https://www.yambo-code.eu/forum/index.php).
