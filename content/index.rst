@@ -238,34 +238,35 @@ Credits
 
 Contributors to this workshop:
 
-- Daniele Varsano, CNR-NANO
-- Andrea Ferretti, CNR-NANO
-- Pietro Delugas, SISSA
-- Ivan Carnimeo, SISSA 
-- Fabrizio Ferrari Ruffino, CNR-IOM
-- Paolo Giannozzi, CNR-IOM, UniUD
-- Iurii Timrov, Paul Scherrer Institut
-- Laura Bellentani, CINECA
-- Oscar Baseggio, SISSA
-- Tommaso Gorni, CINECA
-- Aurora Ponzi, CNR-IOM
-- Francisco Ramirez, EPFL
-- Davide Sangalli CNR-ISM
-- Fulvio Paleari, CNR-NANO
-- Ignacio Alliati, Univ. Bellfast
-- Martina Stella, ICTP
-- Nicola Spallanzani, CNR-NANO
-- Emilio Artacho, CIC NanoGUNE and University of Cambridge
-- Catalina Coll, ICN2
-- José Mª Escartín, ICN2
-- Roberta Farris, ICN2
-- Ernane de Freitas, ICN2
-- Alberto García, ICMAB-CSIC
-- Arnold Kole, Utrecht University
-- Nick Papior, DTU
-- Federico Pedron, ICN2
-- Miguel Pruneda, CINN-CSIC
-- José Ángel Silva Guillén, IMDEA Nanociencia
+- Pietro Davide Delugas (SISSA)
+- Ivan Carnimeo (SISSA)
+- Oscar Baseggio (SISSA)
+- Fabrizio Ferrari Ruffino (CNR-IOM)
+- Paolo Giannozzi (CNR-IOM, UniUD)
+- Iurii Timrov (Paul Scherrer Institut)
+- Laura Bellentani (CINECA)
+- Tommaso Gorni (CINECA)
+- Aurora Ponzi (CNR-IOM)
+- Emilio Artacho (CIC NanoGUNE and University of Cambridge)
+- Catalina Coll (ICN2)
+- José Mª Escartín (ICN2)
+- Roberta Farris (ICN2)
+- Ernane de Freitas (ICN2)
+- Alberto García (ICMAB-CSIC)
+- Arnold Kole (Utrecht University)
+- Nick Papior (DTU)
+- Federico Pedron (ICN2)
+- Miguel Pruneda (CINN-CSIC)
+- José Ángel Silva Guillén (IMDEA Nanociencia)
+- D. Varsano (CNR-NANO)
+- A. Ferretti (CNR-NANO)
+- D. Sangalli (CNR-ISM)
+- A. Guandalini (Univ. of Rome, La Sapienza)
+- F. Paleari (CNR-NANO)
+- M. D’Alessio (Univ. Modena and Reggio Emilia, CNR-NANO)
+- G. Sesti (CNR-NANO)
+- N. Spallanzani (CNR-NANO)
+
 
 The lesson file structure and browsing layout is inspired by and derived from
 `work <https://github.com/coderefinery/sphinx-lesson>`__ by `CodeRefinery
