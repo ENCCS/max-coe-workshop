@@ -1,5 +1,5 @@
 
-     Program PHONON v.7.2 starts on 11Mar2024 at 12:22:36 
+     Program PHONON v.7.2 starts on 11Mar2024 at 12:29:58 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -10,14 +10,14 @@
      in publications or presentations arising from this work. More details at
      http://www.quantum-espresso.org/quote
 
-     Parallel version (MPI & OpenMP), running on       8 processor cores
-     Number of MPI processes:                 1
+     Parallel version (MPI & OpenMP), running on      32 processor cores
+     Number of MPI processes:                 4
      Threads/MPI process:                     8
 
      MPI processes distributed on     1 nodes
-     504820 MiB available memory on the printing compute node when the environment starts
+     path-images division:  nimage    =       4
+     503316 MiB available memory on the printing compute node when the environment starts
  
-     Reading input from ph.CnSnI3.recover.in
       Title line not specified: using 'default'.
 
      Reading xml data from directory:
@@ -43,18 +43,18 @@
      Using Slab Decomposition
  
      Reading collected, re-writing distributed wavefunctions in ./out/
-        1 /   1 q-points for this run, from  1 to  1:
-       N       xq(1)         xq(2)         xq(3) 
-       1   0.000000000   0.000000000   0.000000000
- 
+
+      Image parallelization. There are  4 images and     5 representations
+      The estimated total work is    16 self-consistent (scf) runs
+      I am image number     2 and my work is about    3 scf runs. I calculate: 
+      q point number     1, representations:
+       3
 
      Calculation of q =    0.0000000   0.0000000   0.0000000
 
      GPU acceleration is ACTIVE.
      GPU-aware MPI enabled
 
-
-     Restart in Phonon calculation
 
      default                                                                    
 
@@ -174,84 +174,35 @@
      Atomic displacements:
      There are    5 irreducible representations
 
-     Representation     1      3 modes -  Done
+     Representation     1      3 modes -  Not done in this run
 
-     Representation     2      3 modes -  Done
+     Representation     2      3 modes -  Not done in this run
 
-     Representation     3      3 modes -  Done
+     Representation     3      3 modes -  To be done
 
-     Representation     4      3 modes -  Done
+     Representation     4      3 modes -  Not done in this run
 
-     Representation     5      3 modes -  Done
+     Representation     5      3 modes -  Not done in this run
+
+     Compute atoms:     1,
 
 
-     PHONON       :      0.68s CPU      0.71s WALL
+     PHONON       :      3.41s CPU      4.75s WALL
 
- 
-     Number of q in the star =    1
-     List of q in the star:
-          1   0.000000000   0.000000000   0.000000000
 
-     Diagonalizing the dynamical matrix
 
-     q = (    0.000000000   0.000000000   0.000000000 ) 
+     Representation #   3 modes #   7   8   9
 
- **************************************************************************
-     freq (    1) =      -0.154653 [THz] =      -5.158658 [cm-1]
-     freq (    2) =      -0.154653 [THz] =      -5.158658 [cm-1]
-     freq (    3) =      -0.154653 [THz] =      -5.158658 [cm-1]
-     freq (    4) =       0.242573 [THz] =       8.091352 [cm-1]
-     freq (    5) =       0.242573 [THz] =       8.091352 [cm-1]
-     freq (    6) =       0.242573 [THz] =       8.091352 [cm-1]
-     freq (    7) =       0.693998 [THz] =      23.149277 [cm-1]
-     freq (    8) =       0.693998 [THz] =      23.149277 [cm-1]
-     freq (    9) =       0.693998 [THz] =      23.149277 [cm-1]
-     freq (   10) =       1.159416 [THz] =      38.673946 [cm-1]
-     freq (   11) =       1.159416 [THz] =      38.673946 [cm-1]
-     freq (   12) =       1.159416 [THz] =      38.673946 [cm-1]
-     freq (   13) =       2.344153 [THz] =      78.192524 [cm-1]
-     freq (   14) =       2.344153 [THz] =      78.192524 [cm-1]
-     freq (   15) =       2.344153 [THz] =      78.192524 [cm-1]
- **************************************************************************
+     Self-consistent Calculation
 
-     Mode symmetry, O_h (m-3m)  point group:
+      iter #   1 total cpu time :    10.7 secs   av.it.:   4.1
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  3.426E-08
 
-     freq (   1-   3) =         -5.2  [cm-1]   --> T_1u G_15  G_4- I  
-     freq (   4-   6) =          8.1  [cm-1]   --> T_1u G_15  G_4- I  
-     freq (   7-   9) =         23.1  [cm-1]   --> T_2u G_25  G_5-    
-     freq (  10-  12) =         38.7  [cm-1]   --> T_1u G_15  G_4- I  
-     freq (  13-  15) =         78.2  [cm-1]   --> T_1u G_15  G_4- I  
- 
-     PHONON       :      0.69s CPU      0.73s WALL
+      iter #   2 total cpu time :    60.1 secs   av.it.:  16.9
+      thresh= 1.851E-05 alpha_mix =  0.700 |ddv_scf|^2 =  2.051E-08
 
-     INITIALIZATION: 
-     phq_setup    :      0.01s CPU      0.02s WALL (       1 calls)
- 
-     init_vloc    :      0.01s CPU      0.01s WALL (       1 calls)
-     init_us_1    :      0.02s CPU      0.02s WALL (       1 calls)
- 
-     DYNAMICAL MATRIX:
-     phqscf       :      0.00s CPU      0.00s WALL (       1 calls)
-     dynmatrix    :      0.01s CPU      0.00s WALL (       1 calls)
- 
-     phqscf       :      0.00s CPU      0.00s WALL (       1 calls)
- 
- 
- 
- 
-      General routines
-     fft          :      0.01s CPU      0.01s WALL (      14 calls)
-                                        0.01s GPU  (      14 calls)
-     davcio       :      0.00s CPU      0.05s WALL (      20 calls)
- 
-      Additional routines
- 
- 
-     PHONON       :      0.69s CPU      0.73s WALL
+      iter #   3 total cpu time :   114.9 secs   av.it.:  16.9
+      thresh= 1.432E-05 alpha_mix =  0.700 |ddv_scf|^2 =  7.182E-10
 
- 
-   This run was terminated on:  12:22:37  11Mar2024            
-
-=------------------------------------------------------------------------------=
-   JOB DONE.
-=------------------------------------------------------------------------------=
+      iter #   4 total cpu time :   169.3 secs   av.it.:  17.1
+      thresh= 2.680E-06 alpha_mix =  0.700 |ddv_scf|^2 =  1.509E-11
