@@ -1,0 +1,15 @@
+ &lr_input
+   prefix = 'Femag',
+   outdir = './tempdir',
+   restart_step = 200,
+   restart = .false.
+ /
+&lr_control
+    itermax          = 5000,
+    q1               = 0.1d0,
+    q2               = 0.1d0,
+    q3               = 0.0d0,
+    pseudo_hermitian = .true.
+    ipol = 2
+/
+
