@@ -1,5 +1,6 @@
 &CONTROL
 	calculation = ''
+	prefix = ''
         outdir = './out'
 /
 &SYSTEM

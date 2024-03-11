@@ -5,5 +5,5 @@
         amass(2) = 
         amass(3) = 
 	tr2_ph = 1d-16
-        outdir = './out'
+        outdir = ''
 /
