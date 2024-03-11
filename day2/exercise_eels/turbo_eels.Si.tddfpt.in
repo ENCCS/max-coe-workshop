@@ -1,0 +1,15 @@
+ &lr_input
+   prefix = 'Sieels',
+   outdir = './tempdir',
+   restart_step = 200,
+   restart = .false.
+/
+ &lr_control
+   calculator = 'lanczos',
+   itermax = 2000,
+   q1 = 0.866,
+   q2 = 0.000,
+   q3 = 0.000
+ /
+
+
