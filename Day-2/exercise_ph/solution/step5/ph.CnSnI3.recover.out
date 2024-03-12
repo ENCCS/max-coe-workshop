@@ -1,5 +1,5 @@
 
-     Program PHONON v.7.2 starts on 11Mar2024 at 12:22:36 
+     Program PHONON v.7.2 starts on 12Mar2024 at 10: 4:25 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -15,7 +15,7 @@
      Threads/MPI process:                     8
 
      MPI processes distributed on     1 nodes
-     504820 MiB available memory on the printing compute node when the environment starts
+     503001 MiB available memory on the printing compute node when the environment starts
  
      Reading input from ph.CnSnI3.recover.in
       Title line not specified: using 'default'.
@@ -128,7 +128,7 @@
         k(   20) = (   0.4411505   0.4411505   0.4411505), wk =   0.0312500
 
      PseudoPot. # 1 for Cs read from file:
-     ../pseudo/Cs-nc-pbesol.upf
+     ../../pseudo/Cs-nc-pbesol.upf
      MD5 check sum: 9d2f2206a14dc5b3b3f3fbfae186bed4
      Pseudo is Norm-conserving + core correction, Zval =  9.0
      Generated using ONCVPSP code by D. R. Hamann
@@ -143,7 +143,7 @@
                 l(8) =   3
 
      PseudoPot. # 2 for Sn read from file:
-     ../pseudo/Sn-nc-pbesol.upf
+     ../../pseudo/Sn-nc-pbesol.upf
      MD5 check sum: c2995d571af40102bfea7461443d92cf
      Pseudo is Norm-conserving + core correction, Zval = 14.0
      Generated using ONCVPSP code by D. R. Hamann
@@ -156,7 +156,7 @@
                 l(6) =   2
 
      PseudoPot. # 3 for I  read from file:
-     ../pseudo/I-nc-pbesol.upf
+     ../../pseudo/I-nc-pbesol.upf
      MD5 check sum: 80ed5ceb2eb9c553cfb6760a299d9c5b
      Pseudo is Norm-conserving + core correction, Zval =  7.0
      Generated using ONCVPSP code by D. R. Hamann
@@ -185,7 +185,7 @@
      Representation     5      3 modes -  Done
 
 
-     PHONON       :      0.68s CPU      0.71s WALL
+     PHONON       :      0.64s CPU      0.70s WALL
 
  
      Number of q in the star =    1
@@ -222,7 +222,7 @@
      freq (  10-  12) =         38.7  [cm-1]   --> T_1u G_15  G_4- I  
      freq (  13-  15) =         78.2  [cm-1]   --> T_1u G_15  G_4- I  
  
-     PHONON       :      0.69s CPU      0.73s WALL
+     PHONON       :      0.65s CPU      0.72s WALL
 
      INITIALIZATION: 
      phq_setup    :      0.01s CPU      0.02s WALL (       1 calls)
@@ -247,10 +247,10 @@
       Additional routines
  
  
-     PHONON       :      0.69s CPU      0.73s WALL
+     PHONON       :      0.65s CPU      0.72s WALL
 
  
-   This run was terminated on:  12:22:37  11Mar2024            
+   This run was terminated on:  10: 4:26  12Mar2024            
 
 =------------------------------------------------------------------------------=
    JOB DONE.
