@@ -945,6 +945,7 @@ You can try to run these calculations and compare the timings with the previous 
 ```
 ````
 
+.
 ````{solution} [OPTIONAL]: Comparing different parallelisation schemes
 
 Up to now we always parallelised over a single parameter, i.e. `c` or `qp`. However, Yambo allows for tuning the parallelisation scheme over several parameters broadly corresponding to "loops" (i.e., summations or discrete integrations) in the code. 
