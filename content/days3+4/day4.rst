@@ -5,8 +5,8 @@
 Day 4: SIESTA II
 ================
 
-A first contact with SIESTA: inputs, execution and outputs
------------------------------------------------------------
+Molecular Dynamics with SIESTA
+------------------------------
 
 Practical session led by Dr. Ernane de Freitas (ICN2).
 
@@ -17,6 +17,9 @@ Tutorials covered:
 
 Introductory slides available here: (TBA).
 
+Files for the tutorial::
+
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/01-MolecularDynamics
 
 Analysis tools
 --------------
@@ -28,6 +31,10 @@ Tutorials covered:
 - `Analysis tools <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/analysis-tools/index.html>`_
 
 Introductory slides available here: (TBA).
+
+Files for the tutorial::
+
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/02-Analysis
 
 
 Features available in SIESTA: spin-orbit couplings, TranSIESTA, and others
@@ -48,3 +55,7 @@ Tutorials covered:
 - TBA
 
 Introductory slides available here: (TBA).
+
+Files for the tutorial::
+
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/03-SiestaSolvers

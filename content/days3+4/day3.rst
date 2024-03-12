@@ -25,6 +25,10 @@ Tutorials covered:
 
 Introductory slides available here: (TBA).
 
+Files for the tutorial::
+
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/01-FirstEncounter_I
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/02-FirstEncounter_II
 
 Basis sets
 ----------
@@ -47,6 +51,10 @@ Tutorials covered:
 Introductory slides available here: (TBA).
 
 
+Files for the tutorial::
+
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/03-BasisSets
+
 Convergence (k points, mesh, mixing)
 ------------------------------------
 
@@ -59,3 +67,10 @@ Tutorials covered:
 - `The self-consistent-field cycle <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/scf-convergence/index.html>`_
 
 Introductory slides available here: (TBA).
+
+
+Files for the tutorial::
+
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/04a-GridConvergence
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/04b-KPointConvergence
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/04c-SCF
