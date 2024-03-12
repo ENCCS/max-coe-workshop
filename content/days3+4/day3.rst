@@ -10,7 +10,7 @@ SIESTA basics
 
 Lecture by Prof. Emilio Artacho (CIC NanoGUNE, Ikerbasque, and University of Cambridge).
 
-Slides available here: (TBA).
+Slides available here: :download:`SIESTA-Intro.pdf </_static/siesta/SIESTA-Intro.pdf>`.
 
 
 A first contact with SIESTA: inputs, execution and outputs
@@ -35,7 +35,7 @@ Basis sets
 
 Lecture by Dr. Miguel Pruneda (CINN-CSIC).
 
-Slides available here: :download:`Basis_sets.pdf </_static/siesta/SIESTA-Basis_sets.pdf>`
+Slides available here: :download:`SIESTA-Basis_sets.pdf </_static/siesta/SIESTA-Basis_sets.pdf>`
 
 
 Basis set optimization
@@ -52,7 +52,7 @@ Files for the tutorial::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/03-BasisSets
 
-Introductory slides available here: (TBA).
+Introductory slides available here: :download:`SIESTA-Basis_set_optimization.pdf </_static/siesta/SIESTA-Basis_set_optimization.pdf>`.
 
 Convergence (k points, mesh, mixing)
 ------------------------------------
