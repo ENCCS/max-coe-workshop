@@ -19,5 +19,5 @@ export OMP_NUM_THREADS=8
 export OMP_PLACES=cores; export OMP_PROC_BIND=close
 export ESPRESSO_PSEUDO=../../pseudo
 
-srun -n 4 --cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK ph.x -ni <nimages> -nk 1 -i ph.CnSnI3.in > ph.CnSnI3.out
+srun -n 4 --cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK ph.x -ni <nimages> -nk 1 -i ph.CnSnI3.in > out.0_0
 srun -n 1 --cpu-bind=cores --cpus-per-task=$SLURM_CPUS_PER_TASK ph.x -ni 1 -nk 1 -i ph.CnSnI3.recover.in > ph.CnSnI3.recover.out
