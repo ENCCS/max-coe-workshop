@@ -31,7 +31,7 @@ Basis sets
 
 Lecture by Dr. Miguel Pruneda (CINN-CSIC).
 
-Slides available here: (TBA).
+Slides available here: :download:`Basis_sets.pdf </_static/siesta/SIESTA-Basis_sets.pdf>`
 
 
 Basis set optimization
