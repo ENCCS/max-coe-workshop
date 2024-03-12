@@ -21,6 +21,7 @@ Files for the tutorial::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/01-MolecularDynamics
 
+
 Analysis tools
 --------------
 
@@ -28,13 +29,11 @@ Practical session led by Dr. Miguel Pruneda (CINN-CSIC).
 
 Tutorials covered:
 
-- `Analysis tools <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/analysis-tools/index.html>`_
-
-Introductory slides available here: (TBA).
-
-Files for the tutorial::
+- `Analysis tools <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/analysis-tools/index.html>`_. Files available at::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/02-Analysis
+
+Introductory slides available here: (TBA).
 
 
 Features available in SIESTA: spin-orbit couplings, TranSIESTA, and others
@@ -52,10 +51,9 @@ Practical session led by Dr. Alberto García (ICMAB-CSIC)
 
 Tutorials covered:
 
-- TBA
+- TBA. Files avilable at::
+
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/03-SiestaSolvers
 
 Introductory slides available here: (TBA).
 
-Files for the tutorial::
-
-    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/03-SiestaSolvers
