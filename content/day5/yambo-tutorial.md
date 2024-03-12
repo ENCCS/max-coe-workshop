@@ -36,7 +36,7 @@ In this way, we can compute the "quasiparticle" corrections {math}`E^{QP}_{nk}` 
 The typical workflow for a GW calculation is: 
 
 ```{figure} img/gwflow.png
-:scale: 80%
+:scale: 40%
 ```
 
 ## Set up a Yambo calculation
@@ -44,6 +44,8 @@ The typical workflow for a GW calculation is:
 Go to your user work directory and download the materials for the tutorial (1.2GB, it may take a couple of minutes):
 ```console
 wget https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial_Leonardo.tar.gz
+```
+```console
 tar -xvzf MoS2_HPC_tutorial_Leonardo.tar.gz
 ```
 
@@ -63,7 +65,7 @@ But first, we need to access a node interactively:
 srun --nodes=1 --ntasks-per-node=1 --gres=gpu:1 --cpus-per-task=8 --mem=490000 --account=EUHPC_TD02_030 --partition=boost_usr_prod --qos=boost_qos_dbg --time=0:30:00 --pty /bin/bash
 ```
 
-The, we need to load the yambo-specific modules in in the cluster. On Leonardo Booster, we have
+Then we need to load the yambo-specific modules in in the cluster. On Leonardo Booster, we have
 ```console
 module load profile/chem-phys
 module load yambo/5.2.0--openmpi--4.1.4--nvhpc--23.1
@@ -262,7 +264,7 @@ Let us now have a look at the parameters for the calculation of the correlation 
 \Sigma^c_{nk} = i \sum_m \int \frac{d^3q}{2\pi^3} \sum_{GG'} v(q+G) \rho_{nmk}(q,G) \rho^*_{nmk}(q,G') \int d\omega' G^0_{mk-q}(\omega-\omega')\varepsilon^{-1}_{GG'}(q,\omega')
 ```
 
-(Here, the ${math}`\rho`-terms represent the screening matrix elements which are computed separately by yambo and stored in their own database.)
+(Here, the {math}`\rho`-terms represent the screening matrix elements which are computed separately by yambo and stored in their own database.)
 
 The calculation is divided in two steps. First, the response function in the plasmon pole approximation (`em1d ppa`), under the keywords `[X]` and `[Xp]`, i.e., {math}`\varepsilon^{-1}_{GG'}(q,\omega)`.
 
@@ -395,7 +397,7 @@ We are now ready to run this calculation. Since you should never run a Yambo cal
 ```console
 vim run_first_job.sh
 ```
-```console
+```bash
 #!/bin/bash
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=2
@@ -423,7 +425,7 @@ We will ignore all details regarding parallelization, as it will be covered in t
 sbatch run_first_job.sh
 ```
 The status of the jobs can be monitored via:
-```console
+```
 squeue -u $USER        # to inspect the status of jobs 
                        # (hint: make a unix alias, if you like)
 scancel <jobid>        # to delete jobs in the queue
@@ -655,12 +657,12 @@ While that runs, we'll have a look at the so-called Bruneval-Gonze (BG) terminat
 ```
 sed 's/GTermKind=.*/GTermKind= "BG"/' i02-GW > i02-GW_BG
 ```
-Note that `XTermKind` also offers the same terminator for the sum over bands of the polarization function (we just chose not to use it in the previous section of this excercise, and we'll keep it as "none"). Now, copy the last submission script and edit it to run the same convergence test using the BG terminator.
+Note that `XTermKind` also offers the same terminator for the sum over bands of the polarization function (we just chose not to use it in the previous section of this excercise, and we will keep it as "none"). Now, copy the last submission script and edit it to run the same convergence test using the BG terminator.
 ```
 cp run02_converge_Gbnds.noBG.sh run03_converge_Gbnds.BG.sh
 ```
 Try and do this yourself first, and then continue reading to check your understanding.
-You'll have to change the input file template, i.e., use `i02-GW_BG` where the terminator has been activated. Modify also the name of the newly generated input files in order to avoid overwriting. Change the name of the summary file for the same reason and, finally, modify the communications and job directories of `yambo`. Make sure you've done all the changes as outlined below.
+You will have to change the input file template, i.e., use `i02-GW_BG` where the terminator has been activated. Modify also the name of the newly generated input files in order to avoid overwriting. Change the name of the summary file for the same reason and, finally, modify the communications and job directories of `yambo`. Make sure you've done all the changes as outlined below.
 
 ```bash
 file0='i02-GW_BG'
@@ -695,21 +697,21 @@ Just open the `plot-02.py` script and uncomment the line `#list_of_files = ['sum
 You can see that the terminator does a great job at accelerating convergence, and it allows us to use 60 bands incurring an error of only 3 meV (while the latter would have been larger than 0.1 eV had we not used the terminator).
 ```
 
-We'll end the convergence part of the tutorial with an important point about k-points convergence. The latter is the most cumbersome and computationally intensive among the various convergence tests, and it involves re-running the DFT step. For this reason (and for this reason only) it was ignored in this tutorial. However, it absolutely cannot be overlooked since it is crucial for the accuracy of the calculated GW corrections. You can read about {math}`k`-points convergence in GW and, importantly, a very efficient workaround for 2D systems in a recent publication ([here](https://www.nature.com/articles/s41524-023-00989-7)). MoS{math}`_2` was one of the materials studied there, and it shows that our result, obtained with a {math}`6 \times 6 \times 1` k-grid, is simply *off the chart* (blue line).
+We will end the convergence part of the tutorial with an important consideration about k-points convergence. The latter is the most cumbersome and computationally intensive among the various convergence tests, and it involves re-running the DFT step. For this reason (and for this reason only) it was ignored in this tutorial. However, it absolutely cannot be overlooked since it is crucial for the accuracy of the calculated GW corrections. You can read about k-points convergence in GW and, importantly, a very efficient workaround for 2D systems in a recent publication ([here](https://www.nature.com/articles/s41524-023-00989-7)). MoS{math}`_2` was one of the materials studied there, and it shows that our result, obtained with a {math}`6 \times 6 \times 1` k-grid, is simply *off the chart* (blue line).
 
 ```{figure} img/ref-Guandalini.png
-:scale: 50%
+:scale: 40%
 ```
 _Guandalini, D’Amico, Ferretti & Varsano. npj Comput Mater 9_
 
 ````{solution} [OPTIONAL]: Use the RIM-W accelerator
-However you can try to get a reasonable correction via the RIM-W approach.
+However you can try to get a reasonable correction via the RIM-W approach. Create a new input file copying a suitable one:
 ```
 cp i02-GW_80_Gbands  i04-GW_80_Gbands_rimw
 vim i04-GW_80_Gbands_rimw
 ```
-Then, you just need to add the following two variables to the input file
-```bash
+Then, you just need to add the following two variables to the input file (for example just after the runlevel keywords)
+```
 RIM_W
 RandGvecW= 15           RL
 ```
@@ -718,7 +720,7 @@ and prepare a submission script
 cp  run02_converge_Gbnds.noBG.sh  run04_converge_rimw.sh
 vim run04_converge_rimw.sh
 ```    
-and edit it, by removing the loop and changin the input file and jobname
+Edit it by removing the loop and changing `summaryfile`, `label` and `filein`
 ```bash
 #!/bin/bash
 #SBATCH --nodes=1
