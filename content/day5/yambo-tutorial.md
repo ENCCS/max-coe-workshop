@@ -943,7 +943,7 @@ You can try to run these calculations and compare the timings with the previous 
 - The most efficient scaling can depend both on your system and on the HPC facility you're running on. For a full CPU node on Leonardo (32 cores), using a large-scale system, we have found that 4 tasks times 8 threads gives the best performance.
 - OpenMP can help lower memory requirements within a node. You can try to increase the OpenMP share of threads if you are getting Out Of Memory errors.
 ```
-```
+````
 
 ````{solution} [OPTIONAL]: Comparing different parallelisation schemes
 
