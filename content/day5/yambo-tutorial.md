@@ -1005,7 +1005,7 @@ vim gw.in
 ```
 
 
-After about 6 minutes the calculation should be over and the results collected in folder `GW_bnds`. The quasiparticle corrections are stored in human-readable form in the file `o-GW_bnds.QP`, and in netCDF format in the quasiparticle database `ndb.QP`. 
+After about 3 minutes the calculation should be over and the results collected in folder `GW_bnds`. The quasiparticle corrections are stored in human-readable form in the file `o-GW_bnds.QP`, and in netCDF format in the quasiparticle database `ndb.QP`. 
 
 In order to visualize the results in the form of a GW band structure, we will first interpolate the calculated points - recall that we have just 37 points, few of which lie on high-symmetry lines - with `ypp`, the yambo pre- and post-processing executable.
 
