@@ -6,6 +6,7 @@
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:30:00
+#SBATCH --account=EUHPC_TD02_030
 
 module purge
 module load intel-oneapi-compilers
