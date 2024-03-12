@@ -12,14 +12,11 @@ Practical session led by Dr. Ernane de Freitas (ICN2).
 
 Tutorials covered:
 
-- `Structural optimization using forces and stresses <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/structure-optimization/index.html>`_
-- `Molecular Dynamics <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/advanced/molecular-dynamics/index.html>`_
-
-Introductory slides available here: (TBA).
-
-Files for the tutorial::
+- `Molecular Dynamics <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/advanced/molecular-dynamics/index.html>`_. Files available at::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/01-MolecularDynamics
+
+Introductory slides available here: (TBA).
 
 
 Analysis tools
