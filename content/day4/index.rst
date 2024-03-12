@@ -2,8 +2,8 @@
 
 ..  _day4-siesta2:
 
-Day 4: SIESTA I
-===============
+Day 4: SIESTA II
+================
 
 A first contact with SIESTA: inputs, execution and outputs
 -----------------------------------------------------------
