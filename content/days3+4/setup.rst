@@ -58,10 +58,10 @@ installed. Some are redundant, and will depend on your own preferences.
 
 
 
-SIESTA source code
-------------------
-If you want to try your own SIESTA compilation, have a look at this `SIESTA
-compilation how-to <https://docs.siesta-project.org/projects/siesta/en/latest/installation/quick-install.html>`_ .
-Be sure to have all dependencies beforehand. Note that we will not be answering
-questions regarding compilation or other installations during the school.
-
+..
+  SIESTA source code
+  ------------------
+  If you want to try your own SIESTA compilation, have a look at this `SIESTA
+  compilation how-to <https://docs.siesta-project.org/projects/siesta/en/latest/installation/quick-install.html>`_ .
+  Be sure to have all dependencies beforehand. Note that we will not be answering
+  questions regarding compilation or other installations during the school.
