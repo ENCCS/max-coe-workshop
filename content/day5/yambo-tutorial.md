@@ -809,16 +809,16 @@ For this part of the tutorial, we will be using the `slurm` submission script `j
 If you inspect it, you will see that the script adds additional variables to the yambo input file.
 These variables control the parallel execution of the code:
 ```bash
-DIP_CPU= "1 $ngpu 1"       # [PARALLEL] CPUs for each role
-DIP_ROLEs= "k c v"         # [PARALLEL] CPUs roles (k,c,v)
-DIP_Threads=  0            # [OPENMP/X] Number of threads for dipoles
-X_and_IO_CPU= "1 1 1 $ngpu 1"     # [PARALLEL] CPUs for each role
-X_and_IO_ROLEs= "q g k c v"       # [PARALLEL] CPUs roles (q,g,k,c,v)
-X_and_IO_nCPU_LinAlg_INV= 1   # [PARALLEL] CPUs for Linear Algebra
-X_Threads=  0              # [OPENMP/X] Number of threads for response functions
-SE_CPU= " 1 $ngpu 1"       # [PARALLEL] CPUs for each role
-SE_ROLEs= "q qp b"         # [PARALLEL] CPUs roles (q,qp,b)
-SE_Threads=  0             # [OPENMP/GW] Number of threads for self-energy
+DIP_CPU= "1 $ngpu 1"          # [PARALLEL] CPUs for each role
+DIP_ROLEs= "k c v"            # [PARALLEL] CPUs roles (k,c,v)
+DIP_Threads=  0               # [OPENMP/X] Number of threads for dipoles
+X_and_IO_CPU= "1 1 1 $ngpu 1" # [PARALLEL] CPUs for each role
+X_and_IO_ROLEs= "q g k c v"   # [PARALLEL] CPUs roles (q,g,k,c,v)
+X_and_IO_nCPU_LinAlg_INV=1    # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+X_Threads=  0                 # [OPENMP/X] Number of threads for response functions
+SE_CPU= "1 $ngpu 1"           # [PARALLEL] CPUs for each role
+SE_ROLEs= "q qp b"            # [PARALLEL] CPUs roles (q,qp,b)
+SE_Threads=  0                # [OPENMP/GW] Number of threads for self-energy
 ```
 The keyword `DIP` refers to the calculations of the screening matrix elements (also called "dipoles") needed for the screening function, `X` is the screening function itself (it stands for {math}`\chi` since it is a response function), `SE` the self-energy.
 These three sections of the code can be parallelised independently.
@@ -829,7 +829,6 @@ We are running on GPUs. In particular, each node hosts four GPU cards. Yambo is 
 - In this subsection we are mainly concerned with the **[PARALLEL]** variables which refer to MPI _tasks_ (distributed memory).
 - What about **[OPENMP]** parallelisation (i.e., adding _threads_ with shared memory)? When Yambo is run on GPUs, the explicit threading that you can set in the input and submission script only applies to the very few sections of the code that are *not* run on GPU cards, but stay on the CPUs. Therefore, in a GPU calculation, CPU-only threads are not going to be a relevant factor in the performance of the code. We keep them fixed to 8 since on Leonardo Booster (32 CPUs and 4 GPUs per node) the best hybrid parallel setup *for CPUs* is 4 tasks times 8 threads. We will see an example of the impact of threads in a CPU-only calculation later.
 ```
-
 
 We start by calculating the QP corrections using 4 MPI tasks / GPUs. We leave the number of openMP threads at 8, the optimized value for Yambo on Leonardo. Therefore, edit the submission script as:
 
@@ -846,11 +845,11 @@ sbatch job_parallel.sh
 ```
 
 This will create a new input file and run it. The calculation databases and the human-readable files will be put in separate directories. Check the location of the report `r-*` file and the log `l-*` files, and inspect them while the calculation runs.
-For simplicity you could just type
+For simplicity you can just type
 ```
 tail -f run_MPI4_OMP8.out/LOG/l-*_CPU_1
 ```
-to monitor the progress in the master thread (`Ctrl+C` to exit).
+to monitor the progress in the master thread (`Ctrl+c` to exit).
 As you can see, the run takes some time, even though we are using minimal parameters.
 
 Meanwhile, we can run other jobs increasing the parallelisation. Let's employ 16 MPI tasks / GPUs (i.e., 4 nodes on Leonardo). To this end modify the `job_parallel.sh` script changing
@@ -889,11 +888,11 @@ You can also play with the script to make it print detailed timing information, 
 ```
 
 What can we learn from this plot? In particular, try to answer the following questions:
-- Up to which number of MPI tasks our system efficiently scales? 
+- Up to which number of MPI tasks our system scales efficiently? 
 - How can we decide at which point adding more nodes to the calculation becomes a waste of resources?  
 
 ```{callout} Note
-Keep in mind that the MPI scaling we are seeing here is not the true yambo scaling, but depends on the small size of our tutorial system. In a realistic calculation for a large-sized system, __yambo has been shown to scale well up to tens of thousands of MPI tasks__!
+Keep in mind that the MPI scaling we are seeing here is not the true Yambo scaling, but depends on the small size of our tutorial system. In a realistic calculation for a large-sized system, __Yambo has been shown to scale well up to tens of thousands of MPI tasks__!
 ```
 
 ````{solution} [OPTIONAL] Comparison with CPU calculation with hybrid parallelization strategy
@@ -1030,7 +1029,7 @@ We can review the options with `ypp -h` and generate an input file for band stru
 ypp -s b -F ypp_bands.in
 ```
 Let us modify the resulting input file by selecting the 'boltztrap' approach to interpolation, the last two valence and first two conduction bands, and a path in the Brillouin zone along the the points {math}`\Gamma-M-K-\Gamma`. We also set 100 points for each high-symmetry line.
-```bash=
+```
 electrons                        # [R] Electronic properties
 bnds                             # [R] Bands
 PROJECT_mode= "none"             # Instruct ypp how to project the DOS. ATOM, LINE, PLANE.
@@ -1112,7 +1111,7 @@ The python script should have produced a `GW_bands.png` file containing the foll
 You may compare this plot with a converged result from [this paper](https://doi.org/10.1016/j.surfrep.2015.10.001) (also done with Yambo):
 
 ```{figure} img/gw_bands_ref.png
-:scale: 70%
+:scale: 50%
 ```
 _Dashed lines: DFT, thick lines: GW._
 
