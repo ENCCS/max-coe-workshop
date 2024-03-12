@@ -3,7 +3,7 @@
 #SBATCH --partition=boost_usr_prod
 #SBATCH --qos=boost_qos_dbg
 #SBATCH --nodes=1
-#SBATCH --ntasks=16
+#SBATCH --ntasks=32
 #SBATCH --cpus-per-task=1
 #SBATCH --time=00:30:00
 
@@ -22,5 +22,5 @@ export ESPRESSO_DIR=/leonardo_work/EUHPC_TD02_030/builds/qe7.2/bin
 
 export OMP_NUM_THREADS=1
 
-mpirun -np 16 ${ESPRESSO_DIR}/turbo_magnon.x -nk 16 -i turbo_magnon.Fe.tddfpt.in > turbo_magnon.Fe.tddfpt.out
+mpirun -np 32 ${ESPRESSO_DIR}/turbo_magnon.x -nk 32 -i turbo_magnon.Fe.tddfpt.in > turbo_magnon.Fe.tddfpt.out
 
