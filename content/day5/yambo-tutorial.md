@@ -36,7 +36,7 @@ In this way, we can compute the "quasiparticle" corrections {math}`E^{QP}_{nk}` 
 The typical workflow for a GW calculation is: 
 
 ```{figure} img/gwflow.png
-:scale: 70%
+:scale: 80%
 ```
 
 ## Set up a Yambo calculation
@@ -629,7 +629,7 @@ scp $USER@$LOGIN:$TUTORIALPATH/MoS2_HPC_tutorial_Leonardo/02_GW_convergence/fig-
 
 You should get:
 ```{figure} img/convergence01.png
-:scale: 50%
+:scale: 80%
 ```
 
 
@@ -685,7 +685,7 @@ python plot-02.py
 ```
 You should get
 ```{figure} img/BG_noBG.png
-:scale: 70%
+:scale: 80%
 ```
 
 
@@ -883,7 +883,7 @@ to look for a report file in each `run_MPI*.out` folder. **Make sure you have on
 You can also play with the script to make it print detailed timing information, however you should already see that it produced a png plot showing times-to-completion on y axis against number of MPI tasks (i.e., GPUs in this case) on the x axis.
 
 ```{figure} img/gw_scaling.png
-:scale: 70%
+:scale: 80%
 ```
 
 What can we learn from this plot? In particular, try to answer the following questions:
@@ -894,7 +894,7 @@ What can we learn from this plot? In particular, try to answer the following que
 Keep in mind that the MPI scaling we are seeing here is not the true yambo scaling, but depends on the small size of our tutorial system. In a realistic calculation for a large-sized system, __yambo has been shown to scale well up to tens of thousands of MPI tasks__!
 ```
 
-### [OPTIONAL] Comparison with CPU calculation with hybrid parallelization strategy
+````{solution} [OPTIONAL] Comparison with CPU calculation with hybrid parallelization strategy
 
 We have run the same calculation using a version of Yambo compiled in order to run on CPUs. This is not the preferred approach in an accelerator-based machine like Leonardo, but it can be instructive.
 
@@ -942,6 +942,7 @@ You can try to run these calculations and compare the timings with the previous 
 - In real-life CPU-based calculations running on {math}`n_{cores} > 100`, as we have seen, it may be a good idea to adopt a hybrid approach. 
 - The most efficient scaling can depend both on your system and on the HPC facility you're running on. For a full CPU node on Leonardo (32 cores), using a large-scale system, we have found that 4 tasks times 8 threads gives the best performance.
 - OpenMP can help lower memory requirements within a node. You can try to increase the OpenMP share of threads if you are getting Out Of Memory errors.
+```
 ```
 
 ````{solution} [OPTIONAL]: Comparing different parallelisation schemes
@@ -1102,7 +1103,7 @@ exit
 The python script should have produced a `GW_bands.png` file containing the following visualization, which you can copy and open it in your local machine using `scp`:
 
 ```{figure} img/gw_bands.png
-:scale: 70%
+:scale: 80%
 ```
 
 You may compare this plot with a converged result from [this paper](https://doi.org/10.1016/j.surfrep.2015.10.001) (also done with Yambo):
