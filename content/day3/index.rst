@@ -26,20 +26,6 @@ Tutorials covered:
 Introductory slides available here: (TBA).
 
 
-Convergence (k points, mesh, mixing)
-------------------------------------
-
-Practical session led by Dr. Catalina Coll (ICN2).
-
-Tutorials covered:
-
-- `The real-space grid <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/grid-convergence/index.html>`_
-- `Sampling of the BZ with k-points <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/kpoint-convergence/index.html>`_
-- `The self-consistent-field cycle <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/scf-convergence/index.html>`_
-
-Introductory slides available here: (TBA).
-
-
 Basis sets
 ----------
 
@@ -57,5 +43,19 @@ Tutorials covered:
 
 - `Basis set optimization <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/basis-optimization/index.html>`_
 - `Basis sets - Tips and tricks <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/basis-sets/index.html>`_
+
+Introductory slides available here: (TBA).
+
+
+Convergence (k points, mesh, mixing)
+------------------------------------
+
+Practical session led by Dr. Catalina Coll (ICN2).
+
+Tutorials covered:
+
+- `The real-space grid <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/grid-convergence/index.html>`_
+- `Sampling of the BZ with k-points <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/kpoint-convergence/index.html>`_
+- `The self-consistent-field cycle <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/scf-convergence/index.html>`_
 
 Introductory slides available here: (TBA).
