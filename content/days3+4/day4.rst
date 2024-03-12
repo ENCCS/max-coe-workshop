@@ -2,18 +2,19 @@
 
 ..  _day4-siesta2:
 
-Day 4: SIESTA I
-===============
+Day 4: SIESTA II
+================
 
-A first contact with SIESTA: inputs, execution and outputs
------------------------------------------------------------
+Molecular Dynamics with SIESTA
+------------------------------
 
 Practical session led by Dr. Ernane de Freitas (ICN2).
 
 Tutorials covered:
 
-- `Structural optimization using forces and stresses <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/structure-optimization/index.html>`_
-- `Molecular Dynamics <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/advanced/molecular-dynamics/index.html>`_
+- `Molecular Dynamics <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/advanced/molecular-dynamics/index.html>`_. Files available at::
+
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/01-MolecularDynamics
 
 Introductory slides available here: (TBA).
 
@@ -25,7 +26,9 @@ Practical session led by Dr. Miguel Pruneda (CINN-CSIC).
 
 Tutorials covered:
 
-- TBA
+- `Analysis tools <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/analysis-tools/index.html>`_. Files available at::
+
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/02-Analysis
 
 Introductory slides available here: (TBA).
 
@@ -45,6 +48,9 @@ Practical session led by Dr. Alberto García (ICMAB-CSIC)
 
 Tutorials covered:
 
-- TBA
+- TBA. Files avilable at::
+
+    /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/03-SiestaSolvers
 
 Introductory slides available here: (TBA).
+
