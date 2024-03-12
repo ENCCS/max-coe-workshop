@@ -88,17 +88,11 @@ previous experience with materials modelling and electronic structure calculatio
 
 .. toctree::
    :maxdepth: 1
-   :caption: Day 3 - Siesta I
+   :caption: Days 3 and 4 - Siesta
 
-   day3/index
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Day 4 - Siesta II
-
-   day4/index
-
+   days3+4/setup
+   days3+4/day3
+   days3+4/day4
 
 .. toctree::
    :maxdepth: 1
