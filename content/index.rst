@@ -275,10 +275,17 @@ The lesson file structure and browsing layout is inspired by and derived from
 <http://opensource.org/licenses/mit-license.html>`__. We have copied and adapted
 most of their license text.
 
-Instructional Material
-^^^^^^^^^^^^^^^^^^^^^^
+Licenses
+--------
 
-This instructional material is made available under the
+General
+^^^^^^^
+
+Instructional Material
+~~~~~~~~~~~~~~~~~~~~~~
+
+Except where otherwise noted,
+this instructional material is made available under the
 `Creative Commons Attribution license (CC-BY-4.0) <https://creativecommons.org/licenses/by/4.0/>`__.
 The following is a human-readable summary of (and not a substitute for) the
 `full legal text of the CC-BY-4.0 license
@@ -293,7 +300,7 @@ The licensor cannot revoke these freedoms as long as you follow these license te
 
 - **Attribution** - You must give appropriate credit (mentioning that your work
   is derived from work that is Copyright (c) ENCCS and individual contributors and, where practical, linking
-  to `<https://enccs.github.io/sphinx-lesson-template>`_), provide a `link to the license
+  to `<https://enccs.github.io/max-coe-workshop>`_), provide a `link to the license
   <https://creativecommons.org/licenses/by/4.0/>`__, and indicate if changes were
   made. You may do so in any reasonable manner, but not in any way that suggests
   the licensor endorses you or your use.
@@ -312,8 +319,14 @@ With the understanding that:
 
 
 Software
-^^^^^^^^
+~~~~~~~~
 
 Except where otherwise noted, the example programs and other software provided
 with this repository are made available under the `OSI <http://opensource.org/>`__-approved
 `MIT license <https://opensource.org/licenses/mit-license.html>`__.
+
+SIESTA
+^^^^^^
+
+At the moment, unless otherwise stated, the contents of the SIESTA tutorials are
+copyrighted - all rights reserved.
