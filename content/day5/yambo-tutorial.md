@@ -927,14 +927,14 @@ SE_Threads=  0      # [OPENMP/GW] Number of threads for self-energy
 
 You can try to run these calculations and compare the timings with the previous GPU-based runs. 
 
-```{figure} img/CPU_scaling.png
+```{figure} img/CPU_scaling.jpeg
 :scale: 80%
 ```
 
 We can see that already for this reasonably small and half-converged system the GPU calculation easily reaches a speedup of 2x. The speedup increases enormously in larger systems where the calculations are more demanding, as you can see from the scaling tests below (run on the Juwels Booster machine) on a graphene-cobalt interface supercell.
 
 ```{figure} img/grCo_scaling.png
-:scale: 80%
+:scale: 50%
 ```
 _Scaling comparison of graphene@Co(0001) interface on CPU (left, 48 cpus per node) and GPU (right, 4 GPUs per node). Tests done by Nicola Spallanzani. Data available at: http://www.gitlab.com/max-centre/Benchmarks_
 
