@@ -16,7 +16,7 @@ Tutorials covered:
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/01-MolecularDynamics
 
-Introductory slides available here: (TBA).
+Introductory slides available here: :download:`SIESTA-MD.pdf </_static/siesta/SIESTA-MD.pdf>`.
 
 
 Analysis tools
