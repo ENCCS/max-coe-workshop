@@ -901,17 +901,17 @@ We have run the same calculation using a version of Yambo compiled in order to r
 
 For a CPU calculation, we can use a hybrid parallel structure with threads. The OPENMP threads are controlled by modifying `cpus-per-task` and `OMP_NUM_THREADS` in the submission file. The product of the number of OpenMP threads and MPI tasks is equal to the total number of CPUs. 
 
-For our test, we have used larger convergence parameters than in the previous run, and selected a hybrid parallel scheme with 8 MPI tasks per node, with 2 OPENMP threads (`ntasks*nthreads=ncpu=8*2=32`), since it gives the best scaling in this case.
+For our test, we have used larger convergence parameters than in the previous run, and selected a hybrid parallel scheme with 16 MPI tasks per node, with 2 OPENMP threads (`ntasks*nthreads=ncpu=16*2=32`), since it gives the best scaling in this case.
 
 ```{callout} Note
-In general (for larger systems) we have tested that the best CPU scaling on Leonardo is 4 MPI tasks times 8 OPENMP threads.
+In general (for larger systems) we have tested that the best CPU scaling on Leonardo is actually 4 MPI tasks times 8 OPENMP threads.
 ```
 
 Therefore, in the new CPU submission script we have:
 ```bash= 
 #!/bin/bash
 #SBATCH --nodes=4
-#SBATCH --ntasks-per-node=8
+#SBATCH --ntasks-per-node=16
 #SBATCH --cpus-per-task=2
 ...
 export OMP_NUM_THREADS=2
