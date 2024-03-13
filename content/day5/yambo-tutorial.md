@@ -892,7 +892,7 @@ What can we learn from this plot? In particular, try to answer the following que
 - How can we decide at which point adding more nodes to the calculation becomes a waste of resources?  
 
 ```{callout} Note
-Keep in mind that the MPI scaling we are seeing here is not the true Yambo scaling, but depends on the small size of our tutorial system. In a realistic calculation for a large-sized system, __Yambo has been shown to scale well up to tens of thousands of MPI tasks__!
+Keep in mind that the MPI scaling we are seeing here is not the true Yambo scaling, but depends on the small size of our tutorial system. In a realistic calculation for a large-sized system, __Yambo has been shown to scale well up to tens of thousands of MPI tasks__! (See the next optional box for an example)
 ```
 
 ````{solution} [OPTIONAL] Comparison with CPU calculation with hybrid parallelization strategy
@@ -902,7 +902,10 @@ We have run the same calculation using a version of Yambo compiled in order to r
 For a CPU calculation, we can use a hybrid parallel structure with threads. The OPENMP threads are controlled by modifying `cpus-per-task` and `OMP_NUM_THREADS` in the submission file. The product of the number of OpenMP threads and MPI tasks is equal to the total number of CPUs. 
 
 For our test, we have used larger convergence parameter than in the previous run, and selected a hybrid parallel scheme with 8 MPI tasks per node, with 2 OPENMP threads (`ntasks*nthreads=ncpu=8*2=32`), since it gives the best scaling in this case.
-**Keep in mind that for a larger system, we have tested that the best CPU scaling on Leonardo is 4 MPI tasks times 8 OPENMP threads!**
+
+```{callout} Note
+In general (for larger systems) we have tested that the best CPU scaling on Leonardo is 4 MPI tasks times 8 OPENMP threads.
+```
 
 Therefore, in the new CPU submission script we have:
 ```bash= 
@@ -1116,4 +1119,4 @@ _Dashed lines: DFT, thick lines: GW._
 
 As you can see, the general result is not too bad, but there are some differences both at the DFT and GW levels. The magnitude of the band gap is too large, and the relative energy of the two conduction band minima is not correct. One obvious issue is the lack of convergence of our tutorial calculations. As we know, we should include more vacuum space and many, many more k-points. Additionally, this is a transition metal dichalcogenide: for this class of systems, the details of the band structure can strongly depend on small variations in the lattice parameters and on the type of pseudopotential used. A great deal of care must be taken when performing these calculations!
 
-In order to learn more about Yambo, we suggest visiting the [Yambo website](https://www.yambo-code.eu/). For technical information and tutorials, you can check ou the [Yambo wiki](https://www.yambo-code.eu/wiki/index.php/Main_Page). If you have issues and questions about installing and running the code, you can write them on the [Yambo forum](https://www.yambo-code.eu/forum/index.php).
+In order to learn more about Yambo, we suggest visiting the [Yambo website](https://www.yambo-code.eu/). For technical information and tutorials, you can check out the [Yambo wiki](https://www.yambo-code.eu/wiki/index.php/Main_Page). If you have issues and questions about installing and running the code, you can write about them on the [Yambo forum](https://www.yambo-code.eu/forum/index.php).
