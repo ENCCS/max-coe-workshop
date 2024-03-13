@@ -901,7 +901,7 @@ We have run the same calculation using a version of Yambo compiled in order to r
 
 For a CPU calculation, we can use a hybrid parallel structure with threads. The OPENMP threads are controlled by modifying `cpus-per-task` and `OMP_NUM_THREADS` in the submission file. The product of the number of OpenMP threads and MPI tasks is equal to the total number of CPUs. 
 
-For our test, we have used larger convergence parameter than in the previous run, and selected a hybrid parallel scheme with 8 MPI tasks per node, with 2 OPENMP threads (`ntasks*nthreads=ncpu=8*2=32`), since it gives the best scaling in this case.
+For our test, we have used larger convergence parameters than in the previous run, and selected a hybrid parallel scheme with 8 MPI tasks per node, with 2 OPENMP threads (`ntasks*nthreads=ncpu=8*2=32`), since it gives the best scaling in this case.
 
 ```{callout} Note
 In general (for larger systems) we have tested that the best CPU scaling on Leonardo is 4 MPI tasks times 8 OPENMP threads.
@@ -928,16 +928,16 @@ X_Threads=  0       # [OPENMP/X] Number of threads for response functions
 SE_Threads=  0      # [OPENMP/GW] Number of threads for self-energy
 ```
 
-You can try to run these calculations and compare the timings with the previous GPU-based runs. 
+Actively looking for the best scaling on both GPU and CPU for our enlarged MoS2 system we find: 
 
 ```{figure} img/CPU_scaling.jpeg
 :scale: 80%
 ```
 
-We can see that already for this reasonably small and half-converged system the GPU calculation easily reaches a speedup of 2x. The speedup increases enormously in larger systems where the calculations are more demanding, as you can see from the scaling tests below (run on the Juwels Booster machine) on a graphene-cobalt interface supercell.
+We can see that already for this reasonably small and half-converged system run on a few nodes the GPU calculation easily reaches a speedup of 2x. The speedup vastly increases in larger systems where the calculations are more demanding, as you can see from the scaling tests below (run on the Juwels Booster machine) on a graphene-cobalt interface supercell.
 
 ```{figure} img/grCo_scaling.png
-:scale: 50%
+:scale: 40%
 ```
 _Scaling comparison of graphene@Co(0001) interface on CPU (left, 48 cpus per node) and GPU (right, 4 GPUs per node). Tests done by Nicola Spallanzani. Data available at: http://www.gitlab.com/max-centre/Benchmarks_
 
