@@ -901,30 +901,20 @@ We have run the same calculation using a version of Yambo compiled in order to r
 
 For a CPU calculation, we can use a hybrid parallel structure with threads. The OPENMP threads are controlled by modifying `cpus-per-task` and `OMP_NUM_THREADS` in the submission file. The product of the number of OpenMP threads and MPI tasks is equal to the total number of CPUs. 
 
-We have adopted two strategies. First, run 4 MPI tasks per node like in the GPU case, while adding also 8 OPENMP threads (`ntasks*nthreads=ncpu=4*8=32`).
-Second, run 32 MPI tasks per node with no multiple threads (`ntasks*nthreads=ncpu=32*1=32`). 
+For our test, we have used larger convergence parameter than in the previous run, and selected a hybrid parallel scheme with 8 MPI tasks per node, with 2 OPENMP threads (`ntasks*nthreads=ncpu=8*2=32`), since it gives the best scaling in this case.
+**Keep in mind that for a larger system, we have tested that the best CPU scaling on Leonardo is 4 MPI tasks times 8 OPENMP threads!**
 
-
-For example, in the first case we have:
+Therefore, in the new CPU submission script we have:
 ```bash= 
 #!/bin/bash
 #SBATCH --nodes=4
-#SBATCH --ntasks-per-node=4
-#SBATCH --cpus-per-task=8
+#SBATCH --ntasks-per-node=8
+#SBATCH --cpus-per-task=2
 ...
-export OMP_NUM_THREADS=8
-```
-while in the second case we have:
-```bash= 
-#!/bin/bash
-#SBATCH --nodes=4
-#SBATCH --ntasks-per-node=32
-#SBATCH --cpus-per-task=1
-...
-export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=2
 ```
 
-Actually, we don't need to change the related openMP variables for the yambo input, since the value `0` means "use the value of `OMP_NUM_THREADS`" and we have now set this environment variable to our liking via the submission script.
+Actually, we don't need to change the openMP-related variables appearing in the yambo input, since the value `0` means "use the value of `OMP_NUM_THREADS`" and we have now set this environment variable to our liking via the submission script.
 Otherwise, any positive number can directly specify the number of threads to be used in each section of the code.
 
 ```
@@ -937,7 +927,16 @@ SE_Threads=  0      # [OPENMP/GW] Number of threads for self-energy
 
 You can try to run these calculations and compare the timings with the previous GPU-based runs. 
 
-**FIGURE AND EXPLANATION**
+```{figure} img/CPU_scaling.png
+:scale: 80%
+```
+
+We can see that already for this reasonably small and half-converged system the GPU calculation easily reaches a speedup of 2x. The speedup increases enormously in larger systems where the calculations are more demanding, as you can see from the scaling tests below (run on the Juwels Booster machine) on a graphene-cobalt interface supercell.
+
+```{figure} img/grCo_scaling.png
+:scale: 80%
+```
+_Scaling comparison of graphene@Co(0001) interface on CPU (left, 48 cpus per node) and GPU (right, 4 GPUs per node). Tests done by Nicola Spallanzani. Data available at: http://www.gitlab.com/max-centre/Benchmarks_
 
 ```{callout} Note
 - In real-life CPU-based calculations running on {math}`n_{cores} > 100`, as we have seen, it may be a good idea to adopt a hybrid approach. 
