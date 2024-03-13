@@ -28,7 +28,7 @@ Tutorials covered:
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/02-FirstEncounter_II
 
-Introductory slides available here: (TBA).
+Introductory slides available here: :download:`SIESTA-First_encounter.pdf </_static/siesta/SIESTA-First_encounter.pdf>`
 
 Basis sets
 ----------
