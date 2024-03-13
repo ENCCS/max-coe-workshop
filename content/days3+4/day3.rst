@@ -28,14 +28,14 @@ Tutorials covered:
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/02-FirstEncounter_II
 
-Introductory slides available here: :download:`SIESTA-First_encounter.pdf </_static/siesta/SIESTA-First_encounter.pdf>`
+Introductory slides available here: :download:`SIESTA-First_encounter.pdf </_static/siesta/SIESTA-First_encounter.pdf>`.
 
 Basis sets
 ----------
 
 Lecture by Dr. Miguel Pruneda (CINN-CSIC).
 
-Slides available here: :download:`SIESTA-Basis_sets.pdf </_static/siesta/SIESTA-Basis_sets.pdf>`
+Slides available here: :download:`SIESTA-Basis_sets.pdf </_static/siesta/SIESTA-Basis_sets.pdf>`.
 
 
 Basis set optimization
@@ -73,5 +73,5 @@ Tutorials covered:
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/04c-SCF
 
-Introductory slides available here: (TBA).
+Introductory slides available here: :download:`SIESTA-Convergence.pdf </_static/siesta/SIESTA-Convergence.pdf>`.
 
