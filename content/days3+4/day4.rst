@@ -38,7 +38,7 @@ Features available in SIESTA: spin-orbit couplings, TranSIESTA, and others
 
 Lecture by Dr. Nick Papior (Technical University of Denmark).
 
-Slides available here: (TBA).
+Slides available here: :download:`SIESTA-Features.pdf </_static/siesta/SIESTA-Features.pdf>`.
 
 
 Pushing the boundaries of SIESTA: accelerated and massively parallel solvers
