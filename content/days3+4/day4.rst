@@ -38,7 +38,7 @@ Features available in SIESTA: spin-orbit couplings, TranSIESTA, and others
 
 Lecture by Dr. Nick Papior (Technical University of Denmark).
 
-Slides available here: (TBA).
+Slides available here: :download:`SIESTA-Features.pdf </_static/siesta/SIESTA-Features.pdf>`.
 
 
 Pushing the boundaries of SIESTA: accelerated and massively parallel solvers
@@ -48,9 +48,12 @@ Practical session led by Dr. Alberto García (ICMAB-CSIC).
 
 Tutorials covered:
 
-- TBA. Files avilable at::
+- ELSI-ELPA.
+- ELSI-PEXSI.
+
+Files for the tutorial::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/03-SiestaSolvers
 
-Introductory slides available here: (TBA).
+Slides available here: :download:`SIESTA-Solvers.pdf </_static/siesta/SIESTA-Solvers.pdf>`.
 
