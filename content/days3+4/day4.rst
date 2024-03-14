@@ -48,9 +48,12 @@ Practical session led by Dr. Alberto García (ICMAB-CSIC).
 
 Tutorials covered:
 
-- TBA. Files avilable at::
+- ELSI-ELPA.
+- ELSI-PEXSI.
+
+Files for the tutorial::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/03-SiestaSolvers
 
-Introductory slides available here: (TBA).
+Slides available here: :download:`SIESTA-Solvers.pdf </_static/siesta/SIESTA-Solvers.pdf>`.
 
