@@ -16,7 +16,7 @@ Tutorials covered:
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/01-MolecularDynamics
 
-Introductory slides available here: (TBA).
+Introductory slides available here: :download:`SIESTA-MD.pdf </_static/siesta/SIESTA-MD.pdf>`.
 
 
 Analysis tools
@@ -30,13 +30,13 @@ Tutorials covered:
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/02-Analysis
 
-Introductory slides available here: (TBA).
+Introductory slides available here: :download:`SIESTA-Analysis_tools.pdf </_static/siesta/SIESTA-Analysis_tools.pdf>`.
 
 
 Features available in SIESTA: spin-orbit couplings, TranSIESTA, and others
 --------------------------------------------------------------------------
 
-Lecture by Dr. Nick Papior (Technical University of Denmark)
+Lecture by Dr. Nick Papior (Technical University of Denmark).
 
 Slides available here: (TBA).
 
@@ -44,7 +44,7 @@ Slides available here: (TBA).
 Pushing the boundaries of SIESTA: accelerated and massively parallel solvers
 ----------------------------------------------------------------------------
 
-Practical session led by Dr. Alberto García (ICMAB-CSIC)
+Practical session led by Dr. Alberto García (ICMAB-CSIC).
 
 Tutorials covered:
 
