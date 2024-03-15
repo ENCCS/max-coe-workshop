@@ -892,7 +892,7 @@ What can we learn from this plot? In particular, try to answer the following que
 - How can we decide at which point adding more nodes to the calculation becomes a waste of resources?  
 
 ```{callout} Note
-Keep in mind that the MPI scaling we are seeing here is not the true Yambo scaling, but depends on the small size of our tutorial system. In a realistic calculation for a large-sized system, __Yambo has been shown to scale well up to tens of thousands of MPI tasks__!
+Keep in mind that the MPI scaling we are seeing here is not the true Yambo scaling, but depends on the small size of our tutorial system. In a realistic calculation for a large-sized system, __Yambo has been shown to scale well up to tens of thousands of MPI tasks__! (See the next optional box for an example)
 ```
 
 ````{solution} [OPTIONAL] Comparison with CPU calculation with hybrid parallelization strategy
@@ -901,30 +901,23 @@ We have run the same calculation using a version of Yambo compiled in order to r
 
 For a CPU calculation, we can use a hybrid parallel structure with threads. The OPENMP threads are controlled by modifying `cpus-per-task` and `OMP_NUM_THREADS` in the submission file. The product of the number of OpenMP threads and MPI tasks is equal to the total number of CPUs. 
 
-We have adopted two strategies. First, run 4 MPI tasks per node like in the GPU case, while adding also 8 OPENMP threads (`ntasks*nthreads=ncpu=4*8=32`).
-Second, run 32 MPI tasks per node with no multiple threads (`ntasks*nthreads=ncpu=32*1=32`). 
+For our test, we have used larger convergence parameters than in the previous run, and selected a hybrid parallel scheme with 16 MPI tasks per node, with 2 OPENMP threads (`ntasks*nthreads=ncpu=16*2=32`), since it gives the best scaling in this case.
 
+```{callout} Note
+In general (for larger systems) we have tested that the best CPU scaling on Leonardo is actually 4 MPI tasks times 8 OPENMP threads.
+```
 
-For example, in the first case we have:
+Therefore, in the new CPU submission script we have:
 ```bash= 
 #!/bin/bash
 #SBATCH --nodes=4
-#SBATCH --ntasks-per-node=4
-#SBATCH --cpus-per-task=8
+#SBATCH --ntasks-per-node=16
+#SBATCH --cpus-per-task=2
 ...
-export OMP_NUM_THREADS=8
-```
-while in the second case we have:
-```bash= 
-#!/bin/bash
-#SBATCH --nodes=4
-#SBATCH --ntasks-per-node=32
-#SBATCH --cpus-per-task=1
-...
-export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=2
 ```
 
-Actually, we don't need to change the related openMP variables for the yambo input, since the value `0` means "use the value of `OMP_NUM_THREADS`" and we have now set this environment variable to our liking via the submission script.
+Actually, we don't need to change the openMP-related variables appearing in the yambo input, since the value `0` means "use the value of `OMP_NUM_THREADS`" and we have now set this environment variable to our liking via the submission script.
 Otherwise, any positive number can directly specify the number of threads to be used in each section of the code.
 
 ```
@@ -935,9 +928,18 @@ X_Threads=  0       # [OPENMP/X] Number of threads for response functions
 SE_Threads=  0      # [OPENMP/GW] Number of threads for self-energy
 ```
 
-You can try to run these calculations and compare the timings with the previous GPU-based runs. 
+Actively looking for the best scaling on both GPU and CPU for our enlarged MoS2 system we find: 
 
-**FIGURE AND EXPLANATION**
+```{figure} img/CPU_scaling.jpeg
+:scale: 80%
+```
+
+We can see that already for this reasonably small and half-converged system run on a few nodes the GPU calculation easily reaches a speedup of 2x. The speedup vastly increases in larger systems where the calculations are more demanding, as you can see from the scaling tests below (run on the Juwels Booster machine) on a graphene-cobalt interface supercell.
+
+```{figure} img/grCo_scaling.png
+:scale: 40%
+```
+_Scaling comparison of graphene@Co(0001) interface on CPU (left, 48 cpus per node) and GPU (right, 4 GPUs per node). Tests done by Nicola Spallanzani. Data available at: http://www.gitlab.com/max-centre/Benchmarks_
 
 ```{callout} Note
 - In real-life CPU-based calculations running on {math}`n_{cores} > 100`, as we have seen, it may be a good idea to adopt a hybrid approach. 
@@ -1117,4 +1119,4 @@ _Dashed lines: DFT, thick lines: GW._
 
 As you can see, the general result is not too bad, but there are some differences both at the DFT and GW levels. The magnitude of the band gap is too large, and the relative energy of the two conduction band minima is not correct. One obvious issue is the lack of convergence of our tutorial calculations. As we know, we should include more vacuum space and many, many more k-points. Additionally, this is a transition metal dichalcogenide: for this class of systems, the details of the band structure can strongly depend on small variations in the lattice parameters and on the type of pseudopotential used. A great deal of care must be taken when performing these calculations!
 
-In order to learn more about Yambo, we suggest visiting the [Yambo website](https://www.yambo-code.eu/). For technical information and tutorials, you can check ou the [Yambo wiki](https://www.yambo-code.eu/wiki/index.php/Main_Page). If you have issues and questions about installing and running the code, you can write them on the [Yambo forum](https://www.yambo-code.eu/forum/index.php).
+In order to learn more about Yambo, we suggest visiting the [Yambo website](https://www.yambo-code.eu/). For technical information and tutorials, you can check out the [Yambo wiki](https://www.yambo-code.eu/wiki/index.php/Main_Page). If you have issues and questions about installing and running the code, you can write about them on the [Yambo forum](https://www.yambo-code.eu/forum/index.php).
