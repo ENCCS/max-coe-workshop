@@ -41,10 +41,15 @@ The typical workflow for a GW calculation is:
 
 ## Set up a Yambo calculation
 
-Go to your user work directory and download the materials for the tutorial (1.2GB, it may take a couple of minutes):
+Go to your user work directory and copy the material from the shared folder
+```console
+cp $WORK/MoS2_HPC_tutorial_Leonardo.tar.gz .
+```
+(as an alternative you can download the materials for the tutorial, 1.2GB, it may take a couple of minutes):
 ```console
 wget https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial_Leonardo.tar.gz
 ```
+After one of the two commands, just extract the data
 ```console
 tar -xvzf MoS2_HPC_tutorial_Leonardo.tar.gz
 ```
