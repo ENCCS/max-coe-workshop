@@ -90,9 +90,9 @@ previous experience with materials modelling and electronic structure calculatio
    :maxdepth: 1
    :caption: Days 3 and 4 - Siesta
 
-   days3+4/setup
-   days3+4/day3
-   days3+4/day4
+   siesta-setup
+   exercise-day3
+   exercise-day4
 
 .. toctree::
    :maxdepth: 1
