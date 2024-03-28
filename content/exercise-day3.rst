@@ -10,7 +10,7 @@ SIESTA basics
 
 Lecture by Prof. Emilio Artacho (CIC NanoGUNE, Ikerbasque, and University of Cambridge).
 
-Slides available here: :download:`SIESTA-Intro.pdf </_static/siesta/SIESTA-Intro.pdf>`.
+Slides available here: :download:`SIESTA-Intro.pdf </Day-3/SIESTA-Intro.pdf>`.
 
 
 A first contact with SIESTA: inputs, execution and outputs
@@ -28,14 +28,14 @@ Tutorials covered:
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/02-FirstEncounter_II
 
-Introductory slides available here: :download:`SIESTA-First_encounter.pdf </_static/siesta/SIESTA-First_encounter.pdf>`.
+Introductory slides available here: :download:`SIESTA-First_encounter.pdf </Day-3/SIESTA-First_encounter.pdf>`.
 
 Basis sets
 ----------
 
 Lecture by Dr. Miguel Pruneda (CINN-CSIC).
 
-Slides available here: :download:`SIESTA-Basis_sets.pdf </_static/siesta/SIESTA-Basis_sets.pdf>`.
+Slides available here: :download:`SIESTA-Basis_sets.pdf </Day-3/SIESTA-Basis_sets.pdf>`.
 
 
 Basis set optimization
@@ -52,7 +52,7 @@ Files for the tutorial::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/03-BasisSets
 
-Introductory slides available here: :download:`SIESTA-Basis_set_optimization.pdf </_static/siesta/SIESTA-Basis_set_optimization.pdf>`.
+Introductory slides available here: :download:`SIESTA-Basis_set_optimization.pdf </Day-3/SIESTA-Basis_set_optimization.pdf>`.
 
 Convergence (k points, mesh, mixing)
 ------------------------------------
@@ -73,5 +73,5 @@ Tutorials covered:
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/04c-SCF
 
-Introductory slides available here: :download:`SIESTA-Convergence.pdf </_static/siesta/SIESTA-Convergence.pdf>`.
+Introductory slides available here: :download:`SIESTA-Convergence.pdf </Day-3/SIESTA-Convergence.pdf>`.
 
