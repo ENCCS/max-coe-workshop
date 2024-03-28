@@ -78,8 +78,8 @@ previous experience with materials modelling and electronic structure calculatio
    :maxdepth: 1
    :caption: Days 1 and 2 - Quantum ESPRESSO
 
-   lectures-day1
-   lectures-day2
+   day1-lectures
+   day2-lectures
 
 
 .. toctree::
@@ -87,14 +87,14 @@ previous experience with materials modelling and electronic structure calculatio
    :caption: Days 3 and 4 - Siesta
 
    siesta-setup
-   exercise-day3
-   exercise-day4
+   day3-exercises
+   day4-exercises
 
 .. toctree::
    :maxdepth: 1
    :caption: Day 5 - Yambo
 
-   Day-5/yambo-tutorial
+   day5-tutorials
 
 .. toctree::
    :maxdepth: 1
