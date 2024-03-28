@@ -6,7 +6,7 @@ You will compute the quasiparticle corrections to the band structure of a free-s
 
 In the end, you will obtain a quasiparticle band structure based on the simulations, the first step towards the reproduction of an ARPES spectrum. Beware: we will not use fully converged parameters, so the final result should not be considered very accurate.
  
-```{figure} img/mos2.png
+```{figure} Day-5/img/mos2.png
 :scale: 40%
 ```
 
@@ -35,7 +35,7 @@ The energy-dependent dynamical electronic screening {math}`\varepsilon^{-1}(\ome
 In this way, we can compute the "quasiparticle" corrections {math}`E^{QP}_{nk}` to the single-particle Kohn-Sham eigenvalues {math}`\epsilon_{nk}`.
 The typical workflow for a GW calculation is: 
 
-```{figure} img/gwflow.png
+```{figure} Day-5/img/gwflow.png
 :scale: 40%
 ```
 
@@ -635,7 +635,7 @@ scp $USER@$LOGIN:$TUTORIALPATH/MoS2_HPC_tutorial_Leonardo/02_GW_convergence/fig-
 ```
 
 You should get:
-```{figure} img/convergence01.png
+```{figure} Day-5/img/convergence01.png
 :scale: 80%
 ```
 
@@ -691,7 +691,7 @@ For a visual result, proceed to plot them with
 python plot-02.py
 ```
 You should get
-```{figure} img/BG_noBG.png
+```{figure} Day-5/img/BG_noBG.png
 :scale: 80%
 ```
 
@@ -704,7 +704,7 @@ You can see that the terminator does a great job at accelerating convergence, an
 
 We will end the convergence part of the tutorial with an important consideration about k-points convergence. The latter is the most cumbersome and computationally intensive among the various convergence tests, and it involves re-running the DFT step. For this reason (and for this reason only) it was ignored in this tutorial. However, it absolutely cannot be overlooked since it is crucial for the accuracy of the calculated GW corrections. You can read about k-points convergence in GW and, importantly, a very efficient workaround for 2D systems in a recent publication ([here](https://www.nature.com/articles/s41524-023-00989-7)). MoS{math}`_2` was one of the materials studied there, and it shows that our result, obtained with a {math}`6 \times 6 \times 1` k-grid, is simply *off the chart* (blue line).
 
-```{figure} img/ref-Guandalini.png
+```{figure} Day-5/img/ref-Guandalini.png
 :scale: 40%
 ```
 _Guandalini, D’Amico, Ferretti & Varsano. npj Comput Mater 9_
@@ -888,7 +888,7 @@ python parse_ytiming.py run_MPI
 to look for a report file in each `run_MPI*.out` folder. **Make sure you have only one report file per folder.** 
 You can also play with the script to make it print detailed timing information, however you should already see that it produced a png plot showing times-to-completion on y axis against number of MPI tasks (i.e., GPUs in this case) on the x axis.
 
-```{figure} img/gw_scaling.png
+```{figure} Day-5/img/gw_scaling.png
 :scale: 80%
 ```
 
@@ -935,13 +935,13 @@ SE_Threads=  0      # [OPENMP/GW] Number of threads for self-energy
 
 Actively looking for the best scaling on both GPU and CPU for our enlarged MoS2 system we find: 
 
-```{figure} img/CPU_scaling.jpeg
+```{figure} Day-5/img/CPU_scaling.jpeg
 :scale: 80%
 ```
 
 We can see that already for this reasonably small and half-converged system run on a few nodes the GPU calculation easily reaches a speedup of 2x. The speedup vastly increases in larger systems where the calculations are more demanding, as you can see from the scaling tests below (run on the Juwels Booster machine) on a graphene-cobalt interface supercell.
 
-```{figure} img/grCo_scaling.png
+```{figure} Day-5/img/grCo_scaling.png
 :scale: 40%
 ```
 _Scaling comparison of graphene@Co(0001) interface on CPU (left, 48 cpus per node) and GPU (right, 4 GPUs per node). Tests done by Nicola Spallanzani. Data available at: http://www.gitlab.com/max-centre/Benchmarks_
@@ -1111,13 +1111,13 @@ exit
 
 The python script should have produced a `GW_bands.png` file containing the following visualization, which you can copy and open it in your local machine using `scp`:
 
-```{figure} img/gw_bands.png
+```{figure} Day-5/img/gw_bands.png
 :scale: 80%
 ```
 
 You may compare this plot with a converged result from [this paper](https://doi.org/10.1016/j.surfrep.2015.10.001) (also done with Yambo):
 
-```{figure} img/gw_bands_ref.png
+```{figure} Day-5/img/gw_bands_ref.png
 :scale: 50%
 ```
 _Dashed lines: DFT, thick lines: GW._
