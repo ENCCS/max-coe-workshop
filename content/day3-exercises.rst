@@ -20,11 +20,11 @@ Practical session led by Dr. Federico Pedron (ICN2).
 
 Tutorials covered:
 
-- `A First Encounter - Part 1: Running SIESTA <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/first-encounter/index.html>`_.  Files available at::
+- `A First Encounter - Part 1: Running SIESTA <https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/first-encounter/index.html>`_.  Files available at::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/01-FirstEncounter_I
 
-- `A First Encounter - Part 2: Choosing your level of theory <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/first-encounter-theorylevel/index.html>`_. Files available at::
+- `A First Encounter - Part 2: Choosing your level of theory <https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/first-encounter-theorylevel/index.html>`_. Files available at::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/02-FirstEncounter_II
 
@@ -45,8 +45,8 @@ Practical session led by Dr. Federico Pedron (ICN2).
 
 Tutorials covered:
 
-- `Basis set optimization <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/basis-optimization/index.html>`_
-- `Basis sets - Tips and tricks <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/basis-sets/index.html>`_
+- `Basis set optimization <https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/basis-optimization/index.html>`_
+- `Basis sets - Tips and tricks <https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/basis-sets/index.html>`_
 
 Files for the tutorial::
 
@@ -61,15 +61,15 @@ Practical session led by Dr. Catalina Coll (ICN2).
 
 Tutorials covered:
 
-- `The real-space grid <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/grid-convergence/index.html>`_. Files available at::
+- `The real-space grid <https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/grid-convergence/index.html>`_. Files available at::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/04a-GridConvergence
 
-- `Sampling of the BZ with k-points <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/kpoint-convergence/index.html>`_. Files available at::
+- `Sampling of the BZ with k-points <https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/kpoint-convergence/index.html>`_. Files available at::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/04b-KPointConvergence
 
-- `The self-consistent-field cycle <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/scf-convergence/index.html>`_. Files available at::
+- `The self-consistent-field cycle <https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/scf-convergence/index.html>`_. Files available at::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day3-Wed/04c-SCF
 

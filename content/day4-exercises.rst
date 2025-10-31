@@ -12,7 +12,7 @@ Practical session led by Dr. Ernane de Freitas (ICN2).
 
 Tutorials covered:
 
-- `Molecular Dynamics <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/advanced/molecular-dynamics/index.html>`_. Files available at::
+- `Molecular Dynamics <https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/advanced/molecular-dynamics/index.html>`_. Files available at::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/01-MolecularDynamics
 
@@ -26,7 +26,7 @@ Practical session led by Dr. Miguel Pruneda (CINN-CSIC).
 
 Tutorials covered:
 
-- `Analysis tools <https://docs.siesta-project.org/projects/siesta/en/latest/tutorials/basic/analysis-tools/index.html>`_. Files available at::
+- `Analysis tools <https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/analysis-tools/index.html>`_. Files available at::
 
     /leonardo_work/EUHPC_TD02_030/siesta-tutorials/day4-Thu/02-Analysis
 
