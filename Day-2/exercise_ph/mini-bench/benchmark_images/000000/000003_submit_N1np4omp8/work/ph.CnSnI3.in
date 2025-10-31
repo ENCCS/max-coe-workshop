@@ -1,7 +1,0 @@
-&inputph
-	prefix = 'pwscf'
-	fildyn = 'harmdyn_support'
-	tr2_ph = 1d-16
-        outdir = './out'
-/
-0.0	0.0	0.0

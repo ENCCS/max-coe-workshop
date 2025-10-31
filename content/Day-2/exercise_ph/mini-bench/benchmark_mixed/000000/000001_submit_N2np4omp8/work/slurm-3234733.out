@@ -1,0 +1,17 @@
+Unloading profile/base
+  ERROR: Module evaluation aborted
+Loading quantum-espresso/7.2--openmpi--4.1.4--nvhpc--23.1-openblas-cuda-11.8
+  Loading requirement: zlib/1.2.13--gcc--11.3.0
+    openmpi/4.1.4--nvhpc--23.1-cuda-11.8
+    fftw/3.3.10--openmpi--4.1.4--nvhpc--23.1 openblas/0.3.21--nvhpc--23.1
+srun: Warning: can't honor --ntasks-per-node set to 4 which doesn't match the requested tasks 5 with the number of requested nodes 2. Ignoring --ntasks-per-node.
+Warning: ieee_inexact is signaling
+FORTRAN STOP
+Warning: ieee_inexact is signaling
+FORTRAN STOP
+Warning: ieee_inexact is signaling
+FORTRAN STOP
+Warning: ieee_inexact is signaling
+FORTRAN STOP
+Warning: ieee_inexact is signaling
+FORTRAN STOP

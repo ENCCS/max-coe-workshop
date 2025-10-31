@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jube>
+
+    <!-- set of parameters for ausurf case -->
+    <parameterset name="testcaseset">
+      <parameter name="casename">ph.CnSnI3</parameter>
+      <parameter name="fin">$casename.in</parameter>
+      <parameter name="fout">out.0_0</parameter>
+      <parameter name="dirin">inputfiles</parameter>	   
+    </parameterset>
+
+    <!-- input files needed -->
+    <fileset name="inputfiles">
+      <copy>$dirin/*</copy>
+    </fileset>
+
+
+</jube>

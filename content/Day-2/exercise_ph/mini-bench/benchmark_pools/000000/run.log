@@ -1,0 +1,557 @@
+[2024-02-22 07:56:03,272]:DEBUG: Create initial workpackages
+[2024-02-22 07:56:03,273]:DEBUG: Expand parameter templates:
+[2024-02-22 07:56:03,273]:DEBUG:     "taskspernode": 1,2,3,4
+[2024-02-22 07:56:03,278]:DEBUG: Evaluate parameter: pe
+[2024-02-22 07:56:03,279]:DEBUG: Evaluate parameter: ngpus
+[2024-02-22 07:56:03,279]:DEBUG: Evaluate parameter: tasks
+[2024-02-22 07:56:03,279]:DEBUG: Evaluate parameter: cpuspertask
+[2024-02-22 07:56:03,280]:DEBUG: Evaluate parameter: threads
+[2024-02-22 07:56:03,280]:DEBUG: Evaluate parameter: qos
+[2024-02-22 07:56:03,280]:DEBUG: Evaluate parameter: minmem
+[2024-02-22 07:56:03,288]:DEBUG: Evaluate parameter: mapping
+[2024-02-22 07:56:03,289]:DEBUG: Evaluate parameter: args_starter
+[2024-02-22 07:56:03,302]:DEBUG: Evaluate parameter: pe
+[2024-02-22 07:56:03,302]:DEBUG: Evaluate parameter: ngpus
+[2024-02-22 07:56:03,303]:DEBUG: Evaluate parameter: tasks
+[2024-02-22 07:56:03,303]:DEBUG: Evaluate parameter: cpuspertask
+[2024-02-22 07:56:03,303]:DEBUG: Evaluate parameter: threads
+[2024-02-22 07:56:03,303]:DEBUG: Evaluate parameter: qos
+[2024-02-22 07:56:03,304]:DEBUG: Evaluate parameter: minmem
+[2024-02-22 07:56:03,311]:DEBUG: Evaluate parameter: mapping
+[2024-02-22 07:56:03,313]:DEBUG: Evaluate parameter: args_starter
+[2024-02-22 07:56:03,326]:DEBUG: Evaluate parameter: pe
+[2024-02-22 07:56:03,326]:DEBUG: Evaluate parameter: ngpus
+[2024-02-22 07:56:03,326]:DEBUG: Evaluate parameter: tasks
+[2024-02-22 07:56:03,326]:DEBUG: Evaluate parameter: cpuspertask
+[2024-02-22 07:56:03,327]:DEBUG: Evaluate parameter: threads
+[2024-02-22 07:56:03,327]:DEBUG: Evaluate parameter: qos
+[2024-02-22 07:56:03,327]:DEBUG: Evaluate parameter: minmem
+[2024-02-22 07:56:03,335]:DEBUG: Evaluate parameter: mapping
+[2024-02-22 07:56:03,336]:DEBUG: Evaluate parameter: args_starter
+[2024-02-22 07:56:03,349]:DEBUG: Evaluate parameter: pe
+[2024-02-22 07:56:03,349]:DEBUG: Evaluate parameter: ngpus
+[2024-02-22 07:56:03,349]:DEBUG: Evaluate parameter: tasks
+[2024-02-22 07:56:03,350]:DEBUG: Evaluate parameter: cpuspertask
+[2024-02-22 07:56:03,350]:DEBUG: Evaluate parameter: threads
+[2024-02-22 07:56:03,350]:DEBUG: Evaluate parameter: qos
+[2024-02-22 07:56:03,350]:DEBUG: Evaluate parameter: minmem
+[2024-02-22 07:56:03,358]:DEBUG: Evaluate parameter: mapping
+[2024-02-22 07:56:03,360]:DEBUG: Evaluate parameter: args_starter
+[2024-02-22 07:56:03,480]:DEBUG: Store initial workpackage information
+[2024-02-22 07:56:03,491]:DEBUG: Start benchmark run
+[2024-02-22 07:56:03,491]:INFO: ######################################################################
+[2024-02-22 07:56:03,491]:INFO: # benchmark: ph-enccs
+[2024-02-22 07:56:03,491]:INFO: # id: 0
+[2024-02-22 07:56:03,491]:INFO: #
+[2024-02-22 07:56:03,491]:INFO: # Quantum Espresso PWSCF benchmark v7.2
+[2024-02-22 07:56:03,491]:INFO: ######################################################################
+[2024-02-22 07:56:03,493]:DEBUG: ----- submit ( iter:0 | id:0 | parents: | cycle:0 | procs:1 ) -----
+[2024-02-22 07:56:03,495]:DEBUG:   available parameter:
+[2024-02-22 07:56:03,495]:DEBUG:          | parameter             | value                                    |
+[2024-02-22 07:56:03,495]:DEBUG:          |-----------------------|------------------------------------------|
+[2024-02-22 07:56:03,495]:DEBUG:          | accountno             | cin_staff                                |
+[2024-02-22 07:56:03,496]:DEBUG:          | args_executable       | -ni 1 -nk 1 -input ph.CnSnI3.in >        |
+[2024-02-22 07:56:03,496]:DEBUG:          |                       | out.0_0                                  |
+[2024-02-22 07:56:03,496]:DEBUG:          | args_starter          | -n 1 --cpu-bind=cores --cpus-per-        |
+[2024-02-22 07:56:03,496]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:03,496]:DEBUG:          | casename              | ph.CnSnI3                                |
+[2024-02-22 07:56:03,496]:DEBUG:          | cpuspertask           | 32                                       |
+[2024-02-22 07:56:03,496]:DEBUG:          | dirin                 | inputfiles                               |
+[2024-02-22 07:56:03,496]:DEBUG:          | env                   |                                          |
+[2024-02-22 07:56:03,496]:DEBUG:          | executable            | ph.x                                     |
+[2024-02-22 07:56:03,496]:DEBUG:          | fin                   | ph.CnSnI3.in                             |
+[2024-02-22 07:56:03,496]:DEBUG:          | fout                  | out.0_0                                  |
+[2024-02-22 07:56:03,496]:DEBUG:          | gres                  | gpu:1                                    |
+[2024-02-22 07:56:03,496]:DEBUG:          | images                | 1                                        |
+[2024-02-22 07:56:03,496]:DEBUG:          | jube_benchmark_home   | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:03,496]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:03,496]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:03,496]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-22 07:56:03,496]:DEBUG:          |                       | bench                                    |
+[2024-02-22 07:56:03,496]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2024-02-22 07:56:03,496]:DEBUG:          | jube_benchmark_name   | ph-enccs                                 |
+[2024-02-22 07:56:03,496]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2024-02-22 07:56:03,496]:DEBUG:          | jube_benchmark_rundir | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:03,496]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:03,496]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:03,496]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-22 07:56:03,496]:DEBUG:          |                       | bench/benchmark_pools/000000             |
+[2024-02-22 07:56:03,496]:DEBUG:          | jube_benchmark_start  | 2024-02-22T07:56:03                      |
+[2024-02-22 07:56:03,496]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2024-02-22 07:56:03,496]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2024-02-22 07:56:03,496]:DEBUG:          | jube_step_name        | submit                                   |
+[2024-02-22 07:56:03,496]:DEBUG:          | jube_wp_abspath       | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:03,496]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:03,497]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:03,497]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-ben |
+[2024-02-22 07:56:03,497]:DEBUG:          |                       | ch/benchmark_pools/000000/000000_submit_ |
+[2024-02-22 07:56:03,497]:DEBUG:          |                       | N1np1omp8/work                           |
+[2024-02-22 07:56:03,497]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2024-02-22 07:56:03,497]:DEBUG:          | jube_wp_envlist       |                                          |
+[2024-02-22 07:56:03,497]:DEBUG:          | jube_wp_envstr        |                                          |
+[2024-02-22 07:56:03,497]:DEBUG:          | jube_wp_id            | 0                                        |
+[2024-02-22 07:56:03,497]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2024-02-22 07:56:03,497]:DEBUG:          | jube_wp_padid         | 000000                                   |
+[2024-02-22 07:56:03,497]:DEBUG:          | jube_wp_relpath       | benchmark_pools/000000/000000_submit_N1n |
+[2024-02-22 07:56:03,497]:DEBUG:          |                       | p1omp8/work                              |
+[2024-02-22 07:56:03,497]:DEBUG:          | mapping               | --cpu-bind=cores --cpus-per-             |
+[2024-02-22 07:56:03,497]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:03,497]:DEBUG:          | measurement           |                                          |
+[2024-02-22 07:56:03,497]:DEBUG:          | memnodemachine        | 330000                                   |
+[2024-02-22 07:56:03,497]:DEBUG:          | minmem                | 330000                                   |
+[2024-02-22 07:56:03,497]:DEBUG:          | modules               | module load profile/chem-phys quantum-   |
+[2024-02-22 07:56:03,497]:DEBUG:          |                       | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-22 07:56:03,497]:DEBUG:          |                       | 23.1-openblas-cuda-11.8                  |
+[2024-02-22 07:56:03,497]:DEBUG:          | ncores                | 32                                       |
+[2024-02-22 07:56:03,497]:DEBUG:          | ncpus                 | 32                                       |
+[2024-02-22 07:56:03,497]:DEBUG:          | ngpus                 | 1                                        |
+[2024-02-22 07:56:03,497]:DEBUG:          | nodes                 | 1                                        |
+[2024-02-22 07:56:03,497]:DEBUG:          | nsocket               | 1                                        |
+[2024-02-22 07:56:03,497]:DEBUG:          | pe                    | 32                                       |
+[2024-02-22 07:56:03,497]:DEBUG:          | pools                 | 1                                        |
+[2024-02-22 07:56:03,497]:DEBUG:          | postprocess           |                                          |
+[2024-02-22 07:56:03,497]:DEBUG:          | preprocess            |                                          |
+[2024-02-22 07:56:03,497]:DEBUG:          | qos                   | normal                                   |
+[2024-02-22 07:56:03,497]:DEBUG:          | queue                 | boost_usr_prod                           |
+[2024-02-22 07:56:03,497]:DEBUG:          | ready_file            | ready                                    |
+[2024-02-22 07:56:03,497]:DEBUG:          | shared_folder         | shared                                   |
+[2024-02-22 07:56:03,498]:DEBUG:          | shared_job_info       | shared/jobid                             |
+[2024-02-22 07:56:03,498]:DEBUG:          | starter               | srun                                     |
+[2024-02-22 07:56:03,498]:DEBUG:          | submit                | sbatch                                   |
+[2024-02-22 07:56:03,498]:DEBUG:          | submit_script         | submit.job                               |
+[2024-02-22 07:56:03,498]:DEBUG:          | tasks                 | 1                                        |
+[2024-02-22 07:56:03,498]:DEBUG:          | taskspernode          | 1                                        |
+[2024-02-22 07:56:03,498]:DEBUG:          | threads               | 8                                        |
+[2024-02-22 07:56:03,498]:DEBUG:          | threadspertask        | 8                                        |
+[2024-02-22 07:56:03,498]:DEBUG:          | timelimit             | 00:10:00                                 |
+[2024-02-22 07:56:03,498]:DEBUG:          | wrapname              |                                          |
+[2024-02-22 07:56:03,498]:DEBUG:          | wrappost              |                                          |
+[2024-02-22 07:56:03,498]:DEBUG:          | wrappre               |                                          |
+[2024-02-22 07:56:03,498]:DEBUG:   copy "submit.job" -> "submit.job"
+[2024-02-22 07:56:03,517]:DEBUG:   copy "inputfiles/ph.CnSnI3.in" -> "ph.CnSnI3.in"
+[2024-02-22 07:56:03,534]:DEBUG:   copy "inputfiles/out" -> "out"
+[2024-02-22 07:56:04,907]:DEBUG:   substitute submit.job -> submit.job
+[2024-02-22 07:56:04,908]:DEBUG:   substitute:
+[2024-02-22 07:56:04,908]:DEBUG:          | source            | dest                                     |
+[2024-02-22 07:56:04,908]:DEBUG:          |-------------------|------------------------------------------|
+[2024-02-22 07:56:04,908]:DEBUG:          | #BENCHNAME#       | ph-enccs                                 |
+[2024-02-22 07:56:04,908]:DEBUG:          | #QUEUE#           | boost_usr_prod                           |
+[2024-02-22 07:56:04,908]:DEBUG:          | #TIMELIMIT#       | 00:10:00                                 |
+[2024-02-22 07:56:04,908]:DEBUG:          | #PREPROCESS#      |                                          |
+[2024-02-22 07:56:04,908]:DEBUG:          | #POSTPROCESS#     |                                          |
+[2024-02-22 07:56:04,908]:DEBUG:          | #STARTER#         | srun                                     |
+[2024-02-22 07:56:04,908]:DEBUG:          | #ARGS_STARTER#    | -n 1 --cpu-bind=cores --cpus-per-        |
+[2024-02-22 07:56:04,908]:DEBUG:          |                   | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:04,908]:DEBUG:          | #MEASUREMENT#     |                                          |
+[2024-02-22 07:56:04,908]:DEBUG:          | #STDOUTLOGFILE#   | $outlogfile                              |
+[2024-02-22 07:56:04,908]:DEBUG:          | #STDERRLOGFILE#   | $errlogfile                              |
+[2024-02-22 07:56:04,908]:DEBUG:          | #EXECUTABLE#      | ph.x                                     |
+[2024-02-22 07:56:04,909]:DEBUG:          | #ARGS_EXECUTABLE# | -ni 1 -nk 1 -input ph.CnSnI3.in >        |
+[2024-02-22 07:56:04,909]:DEBUG:          |                   | out.0_0                                  |
+[2024-02-22 07:56:04,909]:DEBUG:          | #FLAG#            | touch $done_file                         |
+[2024-02-22 07:56:04,909]:DEBUG:          | #NODES#           | 1                                        |
+[2024-02-22 07:56:04,909]:DEBUG:          | #THREADSPERTASK#  | 8                                        |
+[2024-02-22 07:56:04,909]:DEBUG:          | #TASKSPERNODE#    | 1                                        |
+[2024-02-22 07:56:04,909]:DEBUG:          | #TASKSPERSOCKET#  | $taskspersocket                          |
+[2024-02-22 07:56:04,909]:DEBUG:          | #CPUSPERTASK#     | 32                                       |
+[2024-02-22 07:56:04,909]:DEBUG:          | #PE               | 32                                       |
+[2024-02-22 07:56:04,909]:DEBUG:          | #GRES#            | gpu:1                                    |
+[2024-02-22 07:56:04,909]:DEBUG:          | #ACCOUNT_NO#      | cin_staff                                |
+[2024-02-22 07:56:04,909]:DEBUG:          | #QOS#             | normal                                   |
+[2024-02-22 07:56:04,909]:DEBUG:          | #MODULES#         | module load profile/chem-phys quantum-   |
+[2024-02-22 07:56:04,909]:DEBUG:          |                   | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-22 07:56:04,909]:DEBUG:          |                   | 23.1-openblas-cuda-11.8                  |
+[2024-02-22 07:56:04,909]:DEBUG:          | #WRAPNAME#        |                                          |
+[2024-02-22 07:56:04,909]:DEBUG:          | #WRAPPRE#         |                                          |
+[2024-02-22 07:56:04,909]:DEBUG:          | #WRAPPOST#        |                                          |
+[2024-02-22 07:56:04,909]:DEBUG:          | #READY#           | ready                                    |
+[2024-02-22 07:56:04,911]:DEBUG: >>> sbatch submit.job
+[2024-02-22 07:56:04,912]:DEBUG:     stdout: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000000_submit_N1np1omp8/work/stdout
+[2024-02-22 07:56:04,912]:DEBUG:     stderr: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000000_submit_N1np1omp8/work/stderr
+[2024-02-22 07:56:05,172]:DEBUG: Waiting for file "ready" ...
+[2024-02-22 07:56:05,186]:DEBUG: ----- submit ( iter:0 | id:1 | parents: | cycle:0 | procs:1 ) -----
+[2024-02-22 07:56:05,188]:DEBUG:   available parameter:
+[2024-02-22 07:56:05,189]:DEBUG:          | parameter             | value                                    |
+[2024-02-22 07:56:05,189]:DEBUG:          |-----------------------|------------------------------------------|
+[2024-02-22 07:56:05,189]:DEBUG:          | accountno             | cin_staff                                |
+[2024-02-22 07:56:05,189]:DEBUG:          | args_executable       | -ni 1 -nk 2 -input ph.CnSnI3.in >        |
+[2024-02-22 07:56:05,189]:DEBUG:          |                       | out.0_0                                  |
+[2024-02-22 07:56:05,189]:DEBUG:          | args_starter          | -n 2 --cpu-bind=cores --cpus-per-        |
+[2024-02-22 07:56:05,189]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:05,189]:DEBUG:          | casename              | ph.CnSnI3                                |
+[2024-02-22 07:56:05,189]:DEBUG:          | cpuspertask           | 16                                       |
+[2024-02-22 07:56:05,189]:DEBUG:          | dirin                 | inputfiles                               |
+[2024-02-22 07:56:05,189]:DEBUG:          | env                   |                                          |
+[2024-02-22 07:56:05,189]:DEBUG:          | executable            | ph.x                                     |
+[2024-02-22 07:56:05,189]:DEBUG:          | fin                   | ph.CnSnI3.in                             |
+[2024-02-22 07:56:05,189]:DEBUG:          | fout                  | out.0_0                                  |
+[2024-02-22 07:56:05,189]:DEBUG:          | gres                  | gpu:2                                    |
+[2024-02-22 07:56:05,189]:DEBUG:          | images                | 1                                        |
+[2024-02-22 07:56:05,189]:DEBUG:          | jube_benchmark_home   | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:05,189]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:05,189]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:05,189]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-22 07:56:05,189]:DEBUG:          |                       | bench                                    |
+[2024-02-22 07:56:05,189]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2024-02-22 07:56:05,189]:DEBUG:          | jube_benchmark_name   | ph-enccs                                 |
+[2024-02-22 07:56:05,189]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2024-02-22 07:56:05,189]:DEBUG:          | jube_benchmark_rundir | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:05,189]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:05,189]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:05,189]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-22 07:56:05,189]:DEBUG:          |                       | bench/benchmark_pools/000000             |
+[2024-02-22 07:56:05,189]:DEBUG:          | jube_benchmark_start  | 2024-02-22T07:56:03                      |
+[2024-02-22 07:56:05,189]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2024-02-22 07:56:05,189]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2024-02-22 07:56:05,189]:DEBUG:          | jube_step_name        | submit                                   |
+[2024-02-22 07:56:05,190]:DEBUG:          | jube_wp_abspath       | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:05,190]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:05,190]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:05,190]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-ben |
+[2024-02-22 07:56:05,190]:DEBUG:          |                       | ch/benchmark_pools/000000/000001_submit_ |
+[2024-02-22 07:56:05,190]:DEBUG:          |                       | N1np2omp8/work                           |
+[2024-02-22 07:56:05,190]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2024-02-22 07:56:05,190]:DEBUG:          | jube_wp_envlist       |                                          |
+[2024-02-22 07:56:05,190]:DEBUG:          | jube_wp_envstr        |                                          |
+[2024-02-22 07:56:05,190]:DEBUG:          | jube_wp_id            | 1                                        |
+[2024-02-22 07:56:05,190]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2024-02-22 07:56:05,190]:DEBUG:          | jube_wp_padid         | 000001                                   |
+[2024-02-22 07:56:05,190]:DEBUG:          | jube_wp_relpath       | benchmark_pools/000000/000001_submit_N1n |
+[2024-02-22 07:56:05,190]:DEBUG:          |                       | p2omp8/work                              |
+[2024-02-22 07:56:05,190]:DEBUG:          | mapping               | --cpu-bind=cores --cpus-per-             |
+[2024-02-22 07:56:05,190]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:05,190]:DEBUG:          | measurement           |                                          |
+[2024-02-22 07:56:05,190]:DEBUG:          | memnodemachine        | 330000                                   |
+[2024-02-22 07:56:05,190]:DEBUG:          | minmem                | 330000                                   |
+[2024-02-22 07:56:05,190]:DEBUG:          | modules               | module load profile/chem-phys quantum-   |
+[2024-02-22 07:56:05,190]:DEBUG:          |                       | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-22 07:56:05,190]:DEBUG:          |                       | 23.1-openblas-cuda-11.8                  |
+[2024-02-22 07:56:05,190]:DEBUG:          | ncores                | 32                                       |
+[2024-02-22 07:56:05,190]:DEBUG:          | ncpus                 | 32                                       |
+[2024-02-22 07:56:05,190]:DEBUG:          | ngpus                 | 2                                        |
+[2024-02-22 07:56:05,190]:DEBUG:          | nodes                 | 1                                        |
+[2024-02-22 07:56:05,190]:DEBUG:          | nsocket               | 1                                        |
+[2024-02-22 07:56:05,190]:DEBUG:          | pe                    | 16                                       |
+[2024-02-22 07:56:05,190]:DEBUG:          | pools                 | 2                                        |
+[2024-02-22 07:56:05,190]:DEBUG:          | postprocess           |                                          |
+[2024-02-22 07:56:05,190]:DEBUG:          | preprocess            |                                          |
+[2024-02-22 07:56:05,190]:DEBUG:          | qos                   | normal                                   |
+[2024-02-22 07:56:05,190]:DEBUG:          | queue                 | boost_usr_prod                           |
+[2024-02-22 07:56:05,190]:DEBUG:          | ready_file            | ready                                    |
+[2024-02-22 07:56:05,191]:DEBUG:          | shared_folder         | shared                                   |
+[2024-02-22 07:56:05,191]:DEBUG:          | shared_job_info       | shared/jobid                             |
+[2024-02-22 07:56:05,191]:DEBUG:          | starter               | srun                                     |
+[2024-02-22 07:56:05,191]:DEBUG:          | submit                | sbatch                                   |
+[2024-02-22 07:56:05,191]:DEBUG:          | submit_script         | submit.job                               |
+[2024-02-22 07:56:05,191]:DEBUG:          | tasks                 | 2                                        |
+[2024-02-22 07:56:05,191]:DEBUG:          | taskspernode          | 2                                        |
+[2024-02-22 07:56:05,191]:DEBUG:          | threads               | 16                                       |
+[2024-02-22 07:56:05,191]:DEBUG:          | threadspertask        | 8                                        |
+[2024-02-22 07:56:05,191]:DEBUG:          | timelimit             | 00:10:00                                 |
+[2024-02-22 07:56:05,191]:DEBUG:          | wrapname              |                                          |
+[2024-02-22 07:56:05,191]:DEBUG:          | wrappost              |                                          |
+[2024-02-22 07:56:05,191]:DEBUG:          | wrappre               |                                          |
+[2024-02-22 07:56:05,191]:DEBUG:   copy "submit.job" -> "submit.job"
+[2024-02-22 07:56:05,194]:DEBUG:   copy "inputfiles/ph.CnSnI3.in" -> "ph.CnSnI3.in"
+[2024-02-22 07:56:05,196]:DEBUG:   copy "inputfiles/out" -> "out"
+[2024-02-22 07:56:05,340]:DEBUG:   substitute submit.job -> submit.job
+[2024-02-22 07:56:05,341]:DEBUG:   substitute:
+[2024-02-22 07:56:05,341]:DEBUG:          | source            | dest                                     |
+[2024-02-22 07:56:05,341]:DEBUG:          |-------------------|------------------------------------------|
+[2024-02-22 07:56:05,341]:DEBUG:          | #BENCHNAME#       | ph-enccs                                 |
+[2024-02-22 07:56:05,341]:DEBUG:          | #QUEUE#           | boost_usr_prod                           |
+[2024-02-22 07:56:05,341]:DEBUG:          | #TIMELIMIT#       | 00:10:00                                 |
+[2024-02-22 07:56:05,341]:DEBUG:          | #PREPROCESS#      |                                          |
+[2024-02-22 07:56:05,341]:DEBUG:          | #POSTPROCESS#     |                                          |
+[2024-02-22 07:56:05,341]:DEBUG:          | #STARTER#         | srun                                     |
+[2024-02-22 07:56:05,341]:DEBUG:          | #ARGS_STARTER#    | -n 2 --cpu-bind=cores --cpus-per-        |
+[2024-02-22 07:56:05,341]:DEBUG:          |                   | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:05,341]:DEBUG:          | #MEASUREMENT#     |                                          |
+[2024-02-22 07:56:05,342]:DEBUG:          | #STDOUTLOGFILE#   | $outlogfile                              |
+[2024-02-22 07:56:05,342]:DEBUG:          | #STDERRLOGFILE#   | $errlogfile                              |
+[2024-02-22 07:56:05,342]:DEBUG:          | #EXECUTABLE#      | ph.x                                     |
+[2024-02-22 07:56:05,342]:DEBUG:          | #ARGS_EXECUTABLE# | -ni 1 -nk 2 -input ph.CnSnI3.in >        |
+[2024-02-22 07:56:05,342]:DEBUG:          |                   | out.0_0                                  |
+[2024-02-22 07:56:05,342]:DEBUG:          | #FLAG#            | touch $done_file                         |
+[2024-02-22 07:56:05,342]:DEBUG:          | #NODES#           | 1                                        |
+[2024-02-22 07:56:05,342]:DEBUG:          | #THREADSPERTASK#  | 8                                        |
+[2024-02-22 07:56:05,342]:DEBUG:          | #TASKSPERNODE#    | 2                                        |
+[2024-02-22 07:56:05,342]:DEBUG:          | #TASKSPERSOCKET#  | $taskspersocket                          |
+[2024-02-22 07:56:05,342]:DEBUG:          | #CPUSPERTASK#     | 16                                       |
+[2024-02-22 07:56:05,342]:DEBUG:          | #PE               | 16                                       |
+[2024-02-22 07:56:05,342]:DEBUG:          | #GRES#            | gpu:2                                    |
+[2024-02-22 07:56:05,342]:DEBUG:          | #ACCOUNT_NO#      | cin_staff                                |
+[2024-02-22 07:56:05,342]:DEBUG:          | #QOS#             | normal                                   |
+[2024-02-22 07:56:05,342]:DEBUG:          | #MODULES#         | module load profile/chem-phys quantum-   |
+[2024-02-22 07:56:05,342]:DEBUG:          |                   | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-22 07:56:05,342]:DEBUG:          |                   | 23.1-openblas-cuda-11.8                  |
+[2024-02-22 07:56:05,342]:DEBUG:          | #WRAPNAME#        |                                          |
+[2024-02-22 07:56:05,342]:DEBUG:          | #WRAPPRE#         |                                          |
+[2024-02-22 07:56:05,342]:DEBUG:          | #WRAPPOST#        |                                          |
+[2024-02-22 07:56:05,342]:DEBUG:          | #READY#           | ready                                    |
+[2024-02-22 07:56:05,344]:DEBUG: >>> sbatch submit.job
+[2024-02-22 07:56:05,345]:DEBUG:     stdout: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000001_submit_N1np2omp8/work/stdout
+[2024-02-22 07:56:05,345]:DEBUG:     stderr: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000001_submit_N1np2omp8/work/stderr
+[2024-02-22 07:56:05,598]:DEBUG: Waiting for file "ready" ...
+[2024-02-22 07:56:05,612]:DEBUG: ----- submit ( iter:0 | id:2 | parents: | cycle:0 | procs:1 ) -----
+[2024-02-22 07:56:05,614]:DEBUG:   available parameter:
+[2024-02-22 07:56:05,614]:DEBUG:          | parameter             | value                                    |
+[2024-02-22 07:56:05,614]:DEBUG:          |-----------------------|------------------------------------------|
+[2024-02-22 07:56:05,614]:DEBUG:          | accountno             | cin_staff                                |
+[2024-02-22 07:56:05,614]:DEBUG:          | args_executable       | -ni 1 -nk 3 -input ph.CnSnI3.in >        |
+[2024-02-22 07:56:05,614]:DEBUG:          |                       | out.0_0                                  |
+[2024-02-22 07:56:05,614]:DEBUG:          | args_starter          | -n 3 --cpu-bind=cores --cpus-per-        |
+[2024-02-22 07:56:05,614]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:05,614]:DEBUG:          | casename              | ph.CnSnI3                                |
+[2024-02-22 07:56:05,614]:DEBUG:          | cpuspertask           | 10                                       |
+[2024-02-22 07:56:05,614]:DEBUG:          | dirin                 | inputfiles                               |
+[2024-02-22 07:56:05,614]:DEBUG:          | env                   |                                          |
+[2024-02-22 07:56:05,614]:DEBUG:          | executable            | ph.x                                     |
+[2024-02-22 07:56:05,614]:DEBUG:          | fin                   | ph.CnSnI3.in                             |
+[2024-02-22 07:56:05,614]:DEBUG:          | fout                  | out.0_0                                  |
+[2024-02-22 07:56:05,614]:DEBUG:          | gres                  | gpu:3                                    |
+[2024-02-22 07:56:05,614]:DEBUG:          | images                | 1                                        |
+[2024-02-22 07:56:05,614]:DEBUG:          | jube_benchmark_home   | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:05,614]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:05,614]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | bench                                    |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_benchmark_name   | ph-enccs                                 |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_benchmark_rundir | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | bench/benchmark_pools/000000             |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_benchmark_start  | 2024-02-22T07:56:03                      |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_step_name        | submit                                   |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_wp_abspath       | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-ben |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | ch/benchmark_pools/000000/000002_submit_ |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | N1np3omp8/work                           |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_wp_envlist       |                                          |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_wp_envstr        |                                          |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_wp_id            | 2                                        |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_wp_padid         | 000002                                   |
+[2024-02-22 07:56:05,615]:DEBUG:          | jube_wp_relpath       | benchmark_pools/000000/000002_submit_N1n |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | p3omp8/work                              |
+[2024-02-22 07:56:05,615]:DEBUG:          | mapping               | --cpu-bind=cores --cpus-per-             |
+[2024-02-22 07:56:05,615]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:05,615]:DEBUG:          | measurement           |                                          |
+[2024-02-22 07:56:05,615]:DEBUG:          | memnodemachine        | 330000                                   |
+[2024-02-22 07:56:05,615]:DEBUG:          | minmem                | 330000                                   |
+[2024-02-22 07:56:05,616]:DEBUG:          | modules               | module load profile/chem-phys quantum-   |
+[2024-02-22 07:56:05,616]:DEBUG:          |                       | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-22 07:56:05,616]:DEBUG:          |                       | 23.1-openblas-cuda-11.8                  |
+[2024-02-22 07:56:05,616]:DEBUG:          | ncores                | 32                                       |
+[2024-02-22 07:56:05,616]:DEBUG:          | ncpus                 | 32                                       |
+[2024-02-22 07:56:05,616]:DEBUG:          | ngpus                 | 3                                        |
+[2024-02-22 07:56:05,616]:DEBUG:          | nodes                 | 1                                        |
+[2024-02-22 07:56:05,616]:DEBUG:          | nsocket               | 1                                        |
+[2024-02-22 07:56:05,616]:DEBUG:          | pe                    | 10                                       |
+[2024-02-22 07:56:05,616]:DEBUG:          | pools                 | 3                                        |
+[2024-02-22 07:56:05,616]:DEBUG:          | postprocess           |                                          |
+[2024-02-22 07:56:05,616]:DEBUG:          | preprocess            |                                          |
+[2024-02-22 07:56:05,616]:DEBUG:          | qos                   | normal                                   |
+[2024-02-22 07:56:05,616]:DEBUG:          | queue                 | boost_usr_prod                           |
+[2024-02-22 07:56:05,616]:DEBUG:          | ready_file            | ready                                    |
+[2024-02-22 07:56:05,616]:DEBUG:          | shared_folder         | shared                                   |
+[2024-02-22 07:56:05,616]:DEBUG:          | shared_job_info       | shared/jobid                             |
+[2024-02-22 07:56:05,616]:DEBUG:          | starter               | srun                                     |
+[2024-02-22 07:56:05,616]:DEBUG:          | submit                | sbatch                                   |
+[2024-02-22 07:56:05,616]:DEBUG:          | submit_script         | submit.job                               |
+[2024-02-22 07:56:05,616]:DEBUG:          | tasks                 | 3                                        |
+[2024-02-22 07:56:05,616]:DEBUG:          | taskspernode          | 3                                        |
+[2024-02-22 07:56:05,616]:DEBUG:          | threads               | 24                                       |
+[2024-02-22 07:56:05,616]:DEBUG:          | threadspertask        | 8                                        |
+[2024-02-22 07:56:05,616]:DEBUG:          | timelimit             | 00:10:00                                 |
+[2024-02-22 07:56:05,616]:DEBUG:          | wrapname              |                                          |
+[2024-02-22 07:56:05,616]:DEBUG:          | wrappost              |                                          |
+[2024-02-22 07:56:05,616]:DEBUG:          | wrappre               |                                          |
+[2024-02-22 07:56:05,617]:DEBUG:   copy "submit.job" -> "submit.job"
+[2024-02-22 07:56:05,620]:DEBUG:   copy "inputfiles/ph.CnSnI3.in" -> "ph.CnSnI3.in"
+[2024-02-22 07:56:05,622]:DEBUG:   copy "inputfiles/out" -> "out"
+[2024-02-22 07:56:05,761]:DEBUG:   substitute submit.job -> submit.job
+[2024-02-22 07:56:05,762]:DEBUG:   substitute:
+[2024-02-22 07:56:05,762]:DEBUG:          | source            | dest                                     |
+[2024-02-22 07:56:05,762]:DEBUG:          |-------------------|------------------------------------------|
+[2024-02-22 07:56:05,762]:DEBUG:          | #BENCHNAME#       | ph-enccs                                 |
+[2024-02-22 07:56:05,762]:DEBUG:          | #QUEUE#           | boost_usr_prod                           |
+[2024-02-22 07:56:05,762]:DEBUG:          | #TIMELIMIT#       | 00:10:00                                 |
+[2024-02-22 07:56:05,762]:DEBUG:          | #PREPROCESS#      |                                          |
+[2024-02-22 07:56:05,762]:DEBUG:          | #POSTPROCESS#     |                                          |
+[2024-02-22 07:56:05,762]:DEBUG:          | #STARTER#         | srun                                     |
+[2024-02-22 07:56:05,762]:DEBUG:          | #ARGS_STARTER#    | -n 3 --cpu-bind=cores --cpus-per-        |
+[2024-02-22 07:56:05,762]:DEBUG:          |                   | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:05,762]:DEBUG:          | #MEASUREMENT#     |                                          |
+[2024-02-22 07:56:05,762]:DEBUG:          | #STDOUTLOGFILE#   | $outlogfile                              |
+[2024-02-22 07:56:05,762]:DEBUG:          | #STDERRLOGFILE#   | $errlogfile                              |
+[2024-02-22 07:56:05,762]:DEBUG:          | #EXECUTABLE#      | ph.x                                     |
+[2024-02-22 07:56:05,763]:DEBUG:          | #ARGS_EXECUTABLE# | -ni 1 -nk 3 -input ph.CnSnI3.in >        |
+[2024-02-22 07:56:05,763]:DEBUG:          |                   | out.0_0                                  |
+[2024-02-22 07:56:05,763]:DEBUG:          | #FLAG#            | touch $done_file                         |
+[2024-02-22 07:56:05,763]:DEBUG:          | #NODES#           | 1                                        |
+[2024-02-22 07:56:05,763]:DEBUG:          | #THREADSPERTASK#  | 8                                        |
+[2024-02-22 07:56:05,763]:DEBUG:          | #TASKSPERNODE#    | 3                                        |
+[2024-02-22 07:56:05,763]:DEBUG:          | #TASKSPERSOCKET#  | $taskspersocket                          |
+[2024-02-22 07:56:05,763]:DEBUG:          | #CPUSPERTASK#     | 10                                       |
+[2024-02-22 07:56:05,763]:DEBUG:          | #PE               | 10                                       |
+[2024-02-22 07:56:05,763]:DEBUG:          | #GRES#            | gpu:3                                    |
+[2024-02-22 07:56:05,763]:DEBUG:          | #ACCOUNT_NO#      | cin_staff                                |
+[2024-02-22 07:56:05,763]:DEBUG:          | #QOS#             | normal                                   |
+[2024-02-22 07:56:05,763]:DEBUG:          | #MODULES#         | module load profile/chem-phys quantum-   |
+[2024-02-22 07:56:05,763]:DEBUG:          |                   | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-22 07:56:05,763]:DEBUG:          |                   | 23.1-openblas-cuda-11.8                  |
+[2024-02-22 07:56:05,763]:DEBUG:          | #WRAPNAME#        |                                          |
+[2024-02-22 07:56:05,763]:DEBUG:          | #WRAPPRE#         |                                          |
+[2024-02-22 07:56:05,763]:DEBUG:          | #WRAPPOST#        |                                          |
+[2024-02-22 07:56:05,763]:DEBUG:          | #READY#           | ready                                    |
+[2024-02-22 07:56:05,765]:DEBUG: >>> sbatch submit.job
+[2024-02-22 07:56:05,765]:DEBUG:     stdout: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000002_submit_N1np3omp8/work/stdout
+[2024-02-22 07:56:05,765]:DEBUG:     stderr: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000002_submit_N1np3omp8/work/stderr
+[2024-02-22 07:56:06,021]:DEBUG: Waiting for file "ready" ...
+[2024-02-22 07:56:06,043]:DEBUG: ----- submit ( iter:0 | id:3 | parents: | cycle:0 | procs:1 ) -----
+[2024-02-22 07:56:06,045]:DEBUG:   available parameter:
+[2024-02-22 07:56:06,045]:DEBUG:          | parameter             | value                                    |
+[2024-02-22 07:56:06,045]:DEBUG:          |-----------------------|------------------------------------------|
+[2024-02-22 07:56:06,045]:DEBUG:          | accountno             | cin_staff                                |
+[2024-02-22 07:56:06,045]:DEBUG:          | args_executable       | -ni 1 -nk 4 -input ph.CnSnI3.in >        |
+[2024-02-22 07:56:06,045]:DEBUG:          |                       | out.0_0                                  |
+[2024-02-22 07:56:06,046]:DEBUG:          | args_starter          | -n 4 --cpu-bind=cores --cpus-per-        |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:06,046]:DEBUG:          | casename              | ph.CnSnI3                                |
+[2024-02-22 07:56:06,046]:DEBUG:          | cpuspertask           | 8                                        |
+[2024-02-22 07:56:06,046]:DEBUG:          | dirin                 | inputfiles                               |
+[2024-02-22 07:56:06,046]:DEBUG:          | env                   |                                          |
+[2024-02-22 07:56:06,046]:DEBUG:          | executable            | ph.x                                     |
+[2024-02-22 07:56:06,046]:DEBUG:          | fin                   | ph.CnSnI3.in                             |
+[2024-02-22 07:56:06,046]:DEBUG:          | fout                  | out.0_0                                  |
+[2024-02-22 07:56:06,046]:DEBUG:          | gres                  | gpu:4                                    |
+[2024-02-22 07:56:06,046]:DEBUG:          | images                | 1                                        |
+[2024-02-22 07:56:06,046]:DEBUG:          | jube_benchmark_home   | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | bench                                    |
+[2024-02-22 07:56:06,046]:DEBUG:          | jube_benchmark_id     | 0                                        |
+[2024-02-22 07:56:06,046]:DEBUG:          | jube_benchmark_name   | ph-enccs                                 |
+[2024-02-22 07:56:06,046]:DEBUG:          | jube_benchmark_padid  | 000000                                   |
+[2024-02-22 07:56:06,046]:DEBUG:          | jube_benchmark_rundir | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-    |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | bench/benchmark_pools/000000             |
+[2024-02-22 07:56:06,046]:DEBUG:          | jube_benchmark_start  | 2024-02-22T07:56:03                      |
+[2024-02-22 07:56:06,046]:DEBUG:          | jube_step_cycles      | 1                                        |
+[2024-02-22 07:56:06,046]:DEBUG:          | jube_step_iterations  | 1                                        |
+[2024-02-22 07:56:06,046]:DEBUG:          | jube_step_name        | submit                                   |
+[2024-02-22 07:56:06,046]:DEBUG:          | jube_wp_abspath       | /leonardo_scratch/large/userinternal/lbe |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | llen1/courses/ENCCS/materials-for-max-   |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | coe-enccs-                               |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | workshop-2022/Day-2/exercise_ph/mini-ben |
+[2024-02-22 07:56:06,046]:DEBUG:          |                       | ch/benchmark_pools/000000/000003_submit_ |
+[2024-02-22 07:56:06,047]:DEBUG:          |                       | N1np4omp8/work                           |
+[2024-02-22 07:56:06,047]:DEBUG:          | jube_wp_cycle         | 0                                        |
+[2024-02-22 07:56:06,047]:DEBUG:          | jube_wp_envlist       |                                          |
+[2024-02-22 07:56:06,047]:DEBUG:          | jube_wp_envstr        |                                          |
+[2024-02-22 07:56:06,047]:DEBUG:          | jube_wp_id            | 3                                        |
+[2024-02-22 07:56:06,047]:DEBUG:          | jube_wp_iteration     | 0                                        |
+[2024-02-22 07:56:06,047]:DEBUG:          | jube_wp_padid         | 000003                                   |
+[2024-02-22 07:56:06,047]:DEBUG:          | jube_wp_relpath       | benchmark_pools/000000/000003_submit_N1n |
+[2024-02-22 07:56:06,047]:DEBUG:          |                       | p4omp8/work                              |
+[2024-02-22 07:56:06,047]:DEBUG:          | mapping               | --cpu-bind=cores --cpus-per-             |
+[2024-02-22 07:56:06,047]:DEBUG:          |                       | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:06,047]:DEBUG:          | measurement           |                                          |
+[2024-02-22 07:56:06,047]:DEBUG:          | memnodemachine        | 330000                                   |
+[2024-02-22 07:56:06,047]:DEBUG:          | minmem                | 330000                                   |
+[2024-02-22 07:56:06,047]:DEBUG:          | modules               | module load profile/chem-phys quantum-   |
+[2024-02-22 07:56:06,047]:DEBUG:          |                       | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-22 07:56:06,047]:DEBUG:          |                       | 23.1-openblas-cuda-11.8                  |
+[2024-02-22 07:56:06,047]:DEBUG:          | ncores                | 32                                       |
+[2024-02-22 07:56:06,047]:DEBUG:          | ncpus                 | 32                                       |
+[2024-02-22 07:56:06,047]:DEBUG:          | ngpus                 | 4                                        |
+[2024-02-22 07:56:06,047]:DEBUG:          | nodes                 | 1                                        |
+[2024-02-22 07:56:06,047]:DEBUG:          | nsocket               | 1                                        |
+[2024-02-22 07:56:06,047]:DEBUG:          | pe                    | 8                                        |
+[2024-02-22 07:56:06,047]:DEBUG:          | pools                 | 4                                        |
+[2024-02-22 07:56:06,047]:DEBUG:          | postprocess           |                                          |
+[2024-02-22 07:56:06,047]:DEBUG:          | preprocess            |                                          |
+[2024-02-22 07:56:06,047]:DEBUG:          | qos                   | normal                                   |
+[2024-02-22 07:56:06,047]:DEBUG:          | queue                 | boost_usr_prod                           |
+[2024-02-22 07:56:06,047]:DEBUG:          | ready_file            | ready                                    |
+[2024-02-22 07:56:06,047]:DEBUG:          | shared_folder         | shared                                   |
+[2024-02-22 07:56:06,047]:DEBUG:          | shared_job_info       | shared/jobid                             |
+[2024-02-22 07:56:06,047]:DEBUG:          | starter               | srun                                     |
+[2024-02-22 07:56:06,047]:DEBUG:          | submit                | sbatch                                   |
+[2024-02-22 07:56:06,048]:DEBUG:          | submit_script         | submit.job                               |
+[2024-02-22 07:56:06,048]:DEBUG:          | tasks                 | 4                                        |
+[2024-02-22 07:56:06,048]:DEBUG:          | taskspernode          | 4                                        |
+[2024-02-22 07:56:06,048]:DEBUG:          | threads               | 32                                       |
+[2024-02-22 07:56:06,048]:DEBUG:          | threadspertask        | 8                                        |
+[2024-02-22 07:56:06,048]:DEBUG:          | timelimit             | 00:10:00                                 |
+[2024-02-22 07:56:06,048]:DEBUG:          | wrapname              |                                          |
+[2024-02-22 07:56:06,048]:DEBUG:          | wrappost              |                                          |
+[2024-02-22 07:56:06,048]:DEBUG:          | wrappre               |                                          |
+[2024-02-22 07:56:06,048]:DEBUG:   copy "submit.job" -> "submit.job"
+[2024-02-22 07:56:06,051]:DEBUG:   copy "inputfiles/ph.CnSnI3.in" -> "ph.CnSnI3.in"
+[2024-02-22 07:56:06,053]:DEBUG:   copy "inputfiles/out" -> "out"
+[2024-02-22 07:56:06,192]:DEBUG:   substitute submit.job -> submit.job
+[2024-02-22 07:56:06,193]:DEBUG:   substitute:
+[2024-02-22 07:56:06,193]:DEBUG:          | source            | dest                                     |
+[2024-02-22 07:56:06,193]:DEBUG:          |-------------------|------------------------------------------|
+[2024-02-22 07:56:06,193]:DEBUG:          | #BENCHNAME#       | ph-enccs                                 |
+[2024-02-22 07:56:06,193]:DEBUG:          | #QUEUE#           | boost_usr_prod                           |
+[2024-02-22 07:56:06,193]:DEBUG:          | #TIMELIMIT#       | 00:10:00                                 |
+[2024-02-22 07:56:06,193]:DEBUG:          | #PREPROCESS#      |                                          |
+[2024-02-22 07:56:06,193]:DEBUG:          | #POSTPROCESS#     |                                          |
+[2024-02-22 07:56:06,193]:DEBUG:          | #STARTER#         | srun                                     |
+[2024-02-22 07:56:06,193]:DEBUG:          | #ARGS_STARTER#    | -n 4 --cpu-bind=cores --cpus-per-        |
+[2024-02-22 07:56:06,193]:DEBUG:          |                   | task=$SLURM_CPUS_PER_TASK                |
+[2024-02-22 07:56:06,193]:DEBUG:          | #MEASUREMENT#     |                                          |
+[2024-02-22 07:56:06,193]:DEBUG:          | #STDOUTLOGFILE#   | $outlogfile                              |
+[2024-02-22 07:56:06,194]:DEBUG:          | #STDERRLOGFILE#   | $errlogfile                              |
+[2024-02-22 07:56:06,194]:DEBUG:          | #EXECUTABLE#      | ph.x                                     |
+[2024-02-22 07:56:06,194]:DEBUG:          | #ARGS_EXECUTABLE# | -ni 1 -nk 4 -input ph.CnSnI3.in >        |
+[2024-02-22 07:56:06,194]:DEBUG:          |                   | out.0_0                                  |
+[2024-02-22 07:56:06,194]:DEBUG:          | #FLAG#            | touch $done_file                         |
+[2024-02-22 07:56:06,194]:DEBUG:          | #NODES#           | 1                                        |
+[2024-02-22 07:56:06,194]:DEBUG:          | #THREADSPERTASK#  | 8                                        |
+[2024-02-22 07:56:06,194]:DEBUG:          | #TASKSPERNODE#    | 4                                        |
+[2024-02-22 07:56:06,194]:DEBUG:          | #TASKSPERSOCKET#  | $taskspersocket                          |
+[2024-02-22 07:56:06,194]:DEBUG:          | #CPUSPERTASK#     | 8                                        |
+[2024-02-22 07:56:06,194]:DEBUG:          | #PE               | 8                                        |
+[2024-02-22 07:56:06,194]:DEBUG:          | #GRES#            | gpu:4                                    |
+[2024-02-22 07:56:06,194]:DEBUG:          | #ACCOUNT_NO#      | cin_staff                                |
+[2024-02-22 07:56:06,194]:DEBUG:          | #QOS#             | normal                                   |
+[2024-02-22 07:56:06,194]:DEBUG:          | #MODULES#         | module load profile/chem-phys quantum-   |
+[2024-02-22 07:56:06,194]:DEBUG:          |                   | espresso/7.2--openmpi--4.1.4--nvhpc--    |
+[2024-02-22 07:56:06,194]:DEBUG:          |                   | 23.1-openblas-cuda-11.8                  |
+[2024-02-22 07:56:06,194]:DEBUG:          | #WRAPNAME#        |                                          |
+[2024-02-22 07:56:06,194]:DEBUG:          | #WRAPPRE#         |                                          |
+[2024-02-22 07:56:06,194]:DEBUG:          | #WRAPPOST#        |                                          |
+[2024-02-22 07:56:06,194]:DEBUG:          | #READY#           | ready                                    |
+[2024-02-22 07:56:06,196]:DEBUG: >>> sbatch submit.job
+[2024-02-22 07:56:06,196]:DEBUG:     stdout: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000003_submit_N1np4omp8/work/stdout
+[2024-02-22 07:56:06,197]:DEBUG:     stderr: /leonardo_scratch/large/userinternal/lbellen1/courses/ENCCS/materials-for-max-coe-enccs-workshop-2022/Day-2/exercise_ph/mini-bench/benchmark_pools/000000/000003_submit_N1np4omp8/work/stderr
+[2024-02-22 07:56:06,925]:DEBUG: Waiting for file "ready" ...
+[2024-02-22 07:56:06,939]:INFO:   | stepname | all | open | wait | error | done |
+[2024-02-22 07:56:06,939]:INFO:   |----------|-----|------|------|-------|------|
+[2024-02-22 07:56:06,939]:INFO:   |   submit |   4 |    0 |    4 |     0 |    0 |
+[2024-02-22 07:56:06,939]:INFO: 
+[2024-02-22 07:56:06,939]:INFO: >>>> Benchmark information and further useful commands:
+[2024-02-22 07:56:06,939]:INFO: >>>>       id: 0
+[2024-02-22 07:56:06,939]:INFO: >>>>   handle: benchmark_pools
+[2024-02-22 07:56:06,939]:INFO: >>>>      dir: benchmark_pools/000000
+[2024-02-22 07:56:06,939]:INFO: >>>> continue: jube continue benchmark_pools --id 0
+[2024-02-22 07:56:06,939]:INFO: >>>>  analyse: jube analyse benchmark_pools --id 0
+[2024-02-22 07:56:06,939]:INFO: >>>>   result: jube result benchmark_pools --id 0
+[2024-02-22 07:56:06,939]:INFO: >>>>     info: jube info benchmark_pools --id 0
+[2024-02-22 07:56:06,939]:INFO: >>>>      log: jube log benchmark_pools --id 0
+[2024-02-22 07:56:06,939]:INFO: ######################################################################

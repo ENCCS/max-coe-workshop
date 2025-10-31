@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jube>
+
+  <benchmark name="ph-enccs" outpath="benchmark_mixed">
+    <comment>Quantum Espresso PWSCF benchmark v7.2</comment>    
+
+    <!-- no. of nodes, tasks, etc -->
+    <parameterset name="systemParameter" init_with="platform.xml">
+	    <parameter name="nodes" type="int" mode="python">[1,2,3][$combos]</parameter>
+	    <parameter name="tasks" type="int" mode="python">[4,5,10][$combos]</parameter>
+    <parameter name="combos" type="int">0,1,2</parameter>
+    <parameter name="taskspernode" type="int">4</parameter>
+    <parameter name="threadspertask">8</parameter>
+    <parameter name="pe">8</parameter>
+    <parameter name="cpuspertask">8</parameter>
+    <parameter name="accountno" >cin_staff</parameter>
+    <parameter name="timelimit">00:10:00</parameter>
+    </parameterset>
+
+    <parameterset name="applicationParameter" init_with="application.xml">
+	    <parameter name="pools" mode="python">[2,1,2][$combos]</parameter>
+	    <parameter name="images" mode="python">[2,5,5][$combos]</parameter>
+    </parameterset>
+
+   <!-- running the job, llsubmit, runjob , etc -->
+   <parameterset name="executeset" init_with="platform.xml">
+      <parameter name="starter">srun</parameter>
+      <parameter name="modules">module load profile/chem-phys quantum-espresso/7.2--openmpi--4.1.4--nvhpc--23.1-openblas-cuda-11.8 </parameter>
+    </parameterset>
+
+    <!-- Operation -->
+    <step name="submit" suffix="N${nodes}np${taskspernode}omp$threadspertask" >
+      <use from="workload.xml">testcaseset</use>
+      <use>systemParameter</use>
+      <use>applicationParameter</use>
+      <use>executeset</use>
+      <use from="platform.xml">executesub</use>
+      <use from="platform.xml">jobfiles</use>
+      <use from="workload.xml">inputfiles</use>
+      <do done_file="$ready_file">$submit $submit_script</do> <!-- actual submission directive -->
+      <do>rm -rf $dirout</do>
+    </step>    
+
+    <analyser name="analyse" reduce="true">
+      <use from="application.xml">pattern</use>
+      <analyse step="submit">
+        <file>out.*</file>
+      </analyse>
+    </analyser>
+
+    <result>
+      <use>analyse</use>
+      <include from="application.xml" path="table" />    
+    </result>
+
+  </benchmark>
+</jube>

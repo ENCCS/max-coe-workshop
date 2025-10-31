@@ -1,7 +1,0 @@
-&inputph
-	fildyn = "harmdyn_support"
-	tr2_ph = 1d-16
-	outdir = './out'
-        recover = .true.
-/
-0.0 0.0 0.0

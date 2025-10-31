@@ -1,0 +1,35 @@
+ &control
+    calculation='scf'
+    restart_mode='from_scratch',
+    outdir='./tempdir',
+    prefix='Femag'
+    pseudo_dir="../../pseudo"
+    verbosity='high'
+ /
+ &system
+    nosym           = .true.
+    noinv           = .true.
+    noncolin        = .true.
+    lspinorb        = .false.
+    ibrav           = 3
+    celldm(1)       = 5.406
+    nat             = 1
+    ntyp            = 1
+    ecutwfc         = 40
+    occupations     = 'smearing'
+    smearing        = 'gaussian'
+    degauss         = 0.01
+    starting_magnetization(1) = 0.15
+ /
+ &electrons
+    mixing_beta     = 0.3
+    conv_thr        = 1.d-9
+ /
+ATOMIC_SPECIES
+Fe  55.85   Fe.pz-n-nc.UPF
+ATOMIC_POSITIONS alat
+Fe  0.00000000 0.00000000 0.00000000
+K_POINTS automatic
+ 4 4 4 0 0 0
+
+

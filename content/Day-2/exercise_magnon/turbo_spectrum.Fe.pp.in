@@ -1,0 +1,14 @@
+ &lr_input
+   prefix = 'Femag',
+   outdir = './tempdir',
+   magnons = .true.,
+   units = 3,
+   itermax0 = 5000,
+   itermax = 15000,
+   extrapolation='osc',
+   epsil = 0.5,
+   ipol = 2,
+   start = 0.0d0,
+   increment = 0.1d0,
+   end = 28.0d0
+ /

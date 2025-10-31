@@ -1,9 +1,0 @@
-&inputph
-	prefix = ''
-	fildyn = 'harmdyn_support'
-	amass(1) = 
-        amass(2) = 
-        amass(3) = 
-	tr2_ph = 1d-16
-        outdir = ''
-/
