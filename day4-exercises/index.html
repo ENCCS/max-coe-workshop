@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 4: SIESTA II &mdash; Efficient materials modelling on HPC with Quantum ESPRESSO, Siesta and Yambo  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../_static/overrides.css?v=0572569b" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script data-domain="enccs.github.io/Efficient-materials-modelling-on-HPC" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Yambo tutorial: Quasiparticles in the GW approximation" href="../day5-tutorials/" />
+    <link rel="prev" title="Day 3: SIESTA I" href="../day3-exercises/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Efficient materials modelling on HPC with Quantum ESPRESSO, Siesta and Yambo
+              <img src="../_static/ENCCS.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Days 1 and 2 - Quantum ESPRESSO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../day1-lectures/">Day 1: Quantum ESPRESSO I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day2-lectures/">Day 2: Quantum ESPRESSO II</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Days 3 and 4 - Siesta</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../siesta-setup/">SIESTA setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../day3-exercises/">Day 3: SIESTA I</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Day 4: SIESTA II</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#molecular-dynamics-with-siesta">Molecular Dynamics with SIESTA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analysis-tools">Analysis tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#features-available-in-siesta-spin-orbit-couplings-transiesta-and-others">Features available in SIESTA: spin-orbit couplings, TranSIESTA, and others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pushing-the-boundaries-of-siesta-accelerated-and-massively-parallel-solvers">Pushing the boundaries of SIESTA: accelerated and massively parallel solvers</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Day 5 - Yambo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../day5-tutorials/">Yambo tutorial: Quasiparticles in the GW approximation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://enccs.se/lessons/">All lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://enccs.se/">ENCCS</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Efficient materials modelling on HPC with Quantum ESPRESSO, Siesta and Yambo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Day 4: SIESTA II</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ENCCS/max-coe-workshop/blob/main/content/day4-exercises.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="day-4-siesta-ii">
+<span id="day4-siesta2"></span><h1>Day 4: SIESTA II<a class="headerlink" href="#day-4-siesta-ii" title="Link to this heading"></a></h1>
+<section id="molecular-dynamics-with-siesta">
+<h2>Molecular Dynamics with SIESTA<a class="headerlink" href="#molecular-dynamics-with-siesta" title="Link to this heading"></a></h2>
+<p>Practical session led by Dr. Ernane de Freitas (ICN2).</p>
+<p>Tutorials covered:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/advanced/molecular-dynamics/index.html">Molecular Dynamics</a>. Files available at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day4</span><span class="o">-</span><span class="n">Thu</span><span class="o">/</span><span class="mi">01</span><span class="o">-</span><span class="n">MolecularDynamics</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Introductory slides available here: <a class="reference download internal" download="" href="../_downloads/b27374bb29d89431ef975dacdfa47a40/SIESTA-MD.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-MD.pdf</span></code></a>.</p>
+</section>
+<section id="analysis-tools">
+<h2>Analysis tools<a class="headerlink" href="#analysis-tools" title="Link to this heading"></a></h2>
+<p>Practical session led by Dr. Miguel Pruneda (CINN-CSIC).</p>
+<p>Tutorials covered:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/analysis-tools/index.html">Analysis tools</a>. Files available at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day4</span><span class="o">-</span><span class="n">Thu</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">Analysis</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Introductory slides available here: <a class="reference download internal" download="" href="../_downloads/4833b032ca9e2dda9ce9475fc72813f7/SIESTA-Analysis_tools.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-Analysis_tools.pdf</span></code></a>.</p>
+</section>
+<section id="features-available-in-siesta-spin-orbit-couplings-transiesta-and-others">
+<h2>Features available in SIESTA: spin-orbit couplings, TranSIESTA, and others<a class="headerlink" href="#features-available-in-siesta-spin-orbit-couplings-transiesta-and-others" title="Link to this heading"></a></h2>
+<p>Lecture by Dr. Nick Papior (Technical University of Denmark).</p>
+<p>Slides available here: <a class="reference download internal" download="" href="../_downloads/bfb780742556200574ac8e7efbef836f/SIESTA-Features.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-Features.pdf</span></code></a>.</p>
+</section>
+<section id="pushing-the-boundaries-of-siesta-accelerated-and-massively-parallel-solvers">
+<h2>Pushing the boundaries of SIESTA: accelerated and massively parallel solvers<a class="headerlink" href="#pushing-the-boundaries-of-siesta-accelerated-and-massively-parallel-solvers" title="Link to this heading"></a></h2>
+<p>Practical session led by Dr. Alberto García (ICMAB-CSIC).</p>
+<p>Tutorials covered:</p>
+<ul class="simple">
+<li><p>ELSI-ELPA.</p></li>
+<li><p>ELSI-PEXSI.</p></li>
+</ul>
+<p>Files for the tutorial:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day4</span><span class="o">-</span><span class="n">Thu</span><span class="o">/</span><span class="mi">03</span><span class="o">-</span><span class="n">SiestaSolvers</span>
+</pre></div>
+</div>
+<p>Slides available here: <a class="reference download internal" download="" href="../_downloads/9b7e6df9406693c9325c3809bb2e76ec/SIESTA-Solvers.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-Solvers.pdf</span></code></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../day3-exercises/" class="btn btn-neutral float-left" title="Day 3: SIESTA I" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../day5-tutorials/" class="btn btn-neutral float-right" title="Yambo tutorial: Quasiparticles in the GW approximation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

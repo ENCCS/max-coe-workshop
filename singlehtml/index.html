@@ -1,0 +1,1734 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Efficient materials modelling on HPC with Quantum ESPRESSO, Siesta and Yambo documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_rtd_theme_ext_color_contrast.css" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+      <link rel="stylesheet" type="text/css" href="_static/overrides.css" />
+
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js"></script>
+      <script src="_static/doctools.js"></script>
+      <script src="_static/sphinx_highlight.js"></script>
+      <script src="_static/clipboard.min.js"></script>
+      <script src="_static/copybutton.js"></script>
+      <script src="_static/minipres.js"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="_static/togglebutton.js"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script data-domain="enccs.github.io/Efficient-materials-modelling-on-HPC" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Efficient materials modelling on HPC with Quantum ESPRESSO, Siesta and Yambo
+              <img src="_static/ENCCS.jpg" class="logo" alt="Logo"/>
+          </a>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Days 1 and 2 - Quantum ESPRESSO</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#document-day1-lectures">Day 1: Quantum ESPRESSO I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-day2-lectures">Day 2: Quantum ESPRESSO II</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Days 3 and 4 - Siesta</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#document-siesta-setup">SIESTA setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-day3-exercises">Day 3: SIESTA I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-day4-exercises">Day 4: SIESTA II</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Day 5 - Yambo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#document-day5-tutorials">Yambo tutorial: Quasiparticles in the GW approximation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="#document-quick-reference">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#document-guide">Instructor’s guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://enccs.se/lessons/">All lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://enccs.se/">ENCCS</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Efficient materials modelling on HPC with Quantum ESPRESSO, Siesta and Yambo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Efficient materials modelling on HPC with Quantum ESPRESSO, Siesta and Yambo  documentation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/ENCCS/max-coe-workshop/blob/main/content/index" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="efficient-materials-modelling-on-hpc-with-quantum-espresso-siesta-and-yambo">
+<h1>Efficient materials modelling on HPC with Quantum ESPRESSO, Siesta and Yambo<a class="headerlink" href="#efficient-materials-modelling-on-hpc-with-quantum-espresso-siesta-and-yambo" title="Link to this heading"></a></h1>
+<p>In recent years, computing technologies underlying materials modelling and
+electronic structure calculation have evolved rapidly. High-performance
+computing (HPC) is transitioning from petascale to exascale, while individual
+compute nodes are increasingly based on heterogeneous architectures that every
+year become more diversified due to different vendor choices. In this environment,
+electronic structure codes also have to evolve fast in order to adapt to new
+hardware facilities. Nowadays, state-of-the-art electronic structure codes based
+on modern density functional theory (DFT) methods allow treating realistic
+molecular systems with a very high accuracy. However, due to the increased
+complexity of the codes, some extra skills are required from users in order to
+fully exploit their potential.</p>
+<p>This training material gives a broad overview of important fundamental concepts
+for molecular and materials modelling on HPC, with a focus on three of the most
+modern codes for electronic structure calculations (QUANTUM ESPRESSO, SIESTA and Yambo).
+Theory sections are interleaved with practical demonstrations and hands-on exercises.</p>
+<p><a class="reference external" href="https://www.quantum-espresso.org/">QUANTUM ESPRESSO</a> is one of the most
+popular suites of computer codes for electronic-structure calculations and
+materials modelling at the nanoscale, based on density-functional theory, plane
+waves, and pseudopotentials. It is able to predict and give fundamental insights
+about many properties of materials, molecular systems, micro and nanodevices,
+biological systems, in many fields, providing a huge amount of data for
+data-driven science applications.</p>
+<p><a class="reference external" href="https://siesta-project.org/siesta/">SIESTA</a> is a pseudopotential-based
+DFT software whose strength lies in its use of atomic-like strictly-localised
+basis sets: the use of a “good first approximation” to the full problem
+decreases the number of basis functions needed to achieve a given accuracy, and
+the finite support of the orbitals leads to sparsity in the Hamiltonian and
+overlap matrices, thus enabling the use of reduced-scaling methods. The
+functionalities of SIESTA include, amongst others, the calculation of energies
+and forces, molecular-dynamics simulations, band structures, densities of
+states, spin-orbit couplings, van der Waals functionals, DFT+U for correlated
+systems, real-time TDDFT, and non-equilibrium calculations with TranSIESTA.</p>
+<p><a class="reference external" href="http://www.yambo-code.eu/">YAMBO</a> is an open-source code implementing
+first-principles methods based on Green’s function (GF) theory to describe
+excited-state properties of realistic materials. These methods include the GW
+approximation, the Bethe Salpeter equation, nonequilibrium GF (NEGF) and TDDFT,
+allowing for the prediction of accurate quasiparticle energies (e.g. ARPES band
+structures), linear and non-linear optical properties, capturing the physics of
+excitons, plasmons, and magnons. It is also possible to calculate
+temperature-dependent electronic and optical properties via electron-phonon
+coupling and nonequilibrium and non-linear optical properties via NEGF real-time
+simulations (pump-probe experiments, etc).</p>
+<p><a class="reference external" href="http://www.max-centre.eu/">MAX (MAterials design at the eXascale)</a> is a
+European Centre of Excellence which enables materials modelling, simulations,
+discovery and design at the frontiers of the current and future High-Performance
+Computing (HPC), High Throughput Computing (HTC) and data analytics technologies.
+MaX’s challenge lies in bringing the most successful and widely used open-source,
+community codes in quantum simulations of materials towards exascale and extreme
+scaling performance and make them available for a large and growing base of
+researchers in the materials’ domain.</p>
+<div class="admonition-prerequisites prerequisites admonition" id="prerequisites-0">
+<p class="admonition-title">Prerequisites</p>
+<ul class="simple">
+<li><p>Some familiarity with density functional theory (DFT), self-consistent
+field (SCF) calculations and plane wave basis sets is desirable as the
+workshop will not cover the fundamental theory of these topics.</p></li>
+<li><p>Familiarity with working in a Linux environment and some experience with
+working on an HPC system is needed to participate in the hands-on exercises.</p></li>
+</ul>
+</div>
+<section id="who-is-the-course-for">
+<h2>Who is the course for?<a class="headerlink" href="#who-is-the-course-for" title="Link to this heading"></a></h2>
+<p>This workshop is aimed towards researchers and engineers who already have some
+previous experience with materials modelling and electronic structure calculations.</p>
+<div class="toctree-wrapper compound">
+<span id="document-day1-lectures"></span><section id="day-1-quantum-espresso-i">
+<h3>Day 1: Quantum ESPRESSO I<a class="headerlink" href="#day-1-quantum-espresso-i" title="Link to this heading"></a></h3>
+<section id="lectures">
+<h4>Lectures<a class="headerlink" href="#lectures" title="Link to this heading"></a></h4>
+<p><a class="reference download internal" download="" href="_downloads/59af57de45e6903f4e4175982e061e71/Intro_QE_ENCCS-MaX_School_2024.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Overview</span> <span class="pre">of</span> <span class="pre">Quantum</span> <span class="pre">ESPRESSO</span> <span class="pre">suite</span> <span class="pre">of</span> <span class="pre">codes</span> <span class="pre">and</span> <span class="pre">main</span> <span class="pre">features</span></code></a></p>
+<p><a class="reference download internal" download="" href="_downloads/742ab11aebbb2123596209ded0db2c0b/Handson-Day1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Quantum</span> <span class="pre">ESPRESSO</span> <span class="pre">on</span> <span class="pre">HPC</span> <span class="pre">systems</span></code></a></p>
+</section>
+</section>
+<span id="document-day2-lectures"></span><section id="day-2-quantum-espresso-ii">
+<h3>Day 2: Quantum ESPRESSO II<a class="headerlink" href="#day-2-quantum-espresso-ii" title="Link to this heading"></a></h3>
+<section id="lectures">
+<h4>Lectures<a class="headerlink" href="#lectures" title="Link to this heading"></a></h4>
+<p><a class="reference download internal" download="" href="_downloads/e30421f52a622705ebab93fc7f695d23/dfpt.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Introduction</span> <span class="pre">to</span> <span class="pre">Density</span> <span class="pre">Functional</span> <span class="pre">Perturbation</span> <span class="pre">Theory</span></code></a></p>
+<p><a class="reference download internal" download="" href="_downloads/28e9cc71967b9704b0544e6ebd733c67/TDDFT_lecture_Iurii_Timrov.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Introduction</span> <span class="pre">to</span> <span class="pre">Time</span> <span class="pre">Dependent</span> <span class="pre">Density</span> <span class="pre">Functional</span> <span class="pre">Perturbation</span> <span class="pre">Theory</span></code></a></p>
+<p><a class="reference download internal" download="" href="_downloads/53c73d0ac00cceb7067b879724826e66/day2handson-phonon.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Phonons</span> <span class="pre">for</span> <span class="pre">HPC</span> <span class="pre">and</span> <span class="pre">GPUs</span></code></a></p>
+<p><a class="reference download internal" download="" href="_downloads/32b04ed69cb89e5df92cbb20a810a126/day2handson-tddfpt.pdf"><code class="xref download docutils literal notranslate"><span class="pre">TDDFPT</span> <span class="pre">for</span> <span class="pre">HPC</span> <span class="pre">and</span> <span class="pre">GPUs</span></code></a></p>
+</section>
+</section>
+</div>
+<div class="toctree-wrapper compound">
+<span id="document-siesta-setup"></span><section id="siesta-setup">
+<h3>SIESTA setup<a class="headerlink" href="#siesta-setup" title="Link to this heading"></a></h3>
+<section id="directory-with-tutorials">
+<h4>Directory with tutorials<a class="headerlink" href="#directory-with-tutorials" title="Link to this heading"></a></h4>
+<p>For every practical there is a folder in the shared directory
+<code class="docutils literal notranslate"><span class="pre">/leonardo_work/EUHPC_TD02_030/siesta-tutorials</span></code> that contains all the files
+you will need for said practical. At the start of every tutorial, please copy
+the required files from that shared directory to your scratch folder. For
+example, for the first tutorial:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp -pr /leonardo_work/EUHPC_TD02_030/siesta-tutorials/01-FirstEncounter_I .
+</pre></div>
+</div>
+<p>Please do NOT copy these files before the start of the practical, in case they
+are updated shortly before the practical starts.</p>
+</section>
+<section id="running-siesta">
+<h4>Running SIESTA<a class="headerlink" href="#running-siesta" title="Link to this heading"></a></h4>
+<p>You will find a sample script on how to run SIESTA in
+<code class="docutils literal notranslate"><span class="pre">/leonardo_work/EUHPC_TD02_030/softwares/siesta-5.0beta1/runsample.sh</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J tutorialXX</span>
+<span class="c1">#SBATCH -n 8</span>
+<span class="c1">#SBATCH -t 0:30:00</span>
+<span class="c1">#SBATCH -o %x-%j.out</span>
+<span class="c1">#SBATCH -e %x-%j.err</span>
+<span class="c1">#SBATCH --partition=boost_usr_prod</span>
+<span class="c1">#SBATCH -D .</span>
+
+<span class="c1"># DO NOT CHANGE THIS LINE</span>
+<span class="n">source</span> <span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">softwares</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="mf">5.0</span><span class="n">beta1</span><span class="o">/</span><span class="n">siestarc</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="c1"># EDIT THE CORRECT INPUT AND OUTPUT FILES.</span>
+<span class="n">srun</span> <span class="o">-</span><span class="n">n</span> <span class="mi">8</span> <span class="n">siesta</span> <span class="o">&lt;</span> <span class="nb">input</span><span class="o">.</span><span class="n">fdf</span> <span class="o">&gt;</span> <span class="n">output</span><span class="o">.</span><span class="n">out</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">input.fdf</span></code> and <code class="docutils literal notranslate"><span class="pre">output.out</span></code> are generic input and output file names, for
+each execution of siesta you will need to change them to the actual names of
+your input and output files. It is also convenient to change the name of the job
+(<code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">-J</span> <span class="pre">option</span></code>) to something that allows you to identify (vs. your other
+submissions) when checking the status of the queue.</p>
+</section>
+<section id="suggested-software-for-visualization">
+<h4>Suggested Software for Visualization<a class="headerlink" href="#suggested-software-for-visualization" title="Link to this heading"></a></h4>
+<p>If you run visualizations in your own PC, you may want to have a few of these
+installed. Some are redundant, and will depend on your own preferences.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.gnuplot.info/">gnuplot</a></p></li>
+<li><p><a class="reference external" href="http://www.xcrysden.org/">xcrysden</a></p></li>
+<li><p><a class="reference external" href="https://jp-minerals.org/vesta/en/">vesta</a></p></li>
+<li><p><a class="reference external" href="https://www.ks.uiuc.edu/Research/vmd/">vmd</a></p></li>
+<li><p><a class="reference external" href="https://www.ovito.org/about/">ovito</a></p></li>
+<li><p>Python with matplotlib</p></li>
+</ul>
+</section>
+</section>
+<span id="document-day3-exercises"></span><section id="day-3-siesta-i">
+<span id="day3-siesta1"></span><h3>Day 3: SIESTA I<a class="headerlink" href="#day-3-siesta-i" title="Link to this heading"></a></h3>
+<section id="siesta-basics">
+<h4>SIESTA basics<a class="headerlink" href="#siesta-basics" title="Link to this heading"></a></h4>
+<p>Lecture by Prof. Emilio Artacho (CIC NanoGUNE, Ikerbasque, and University of Cambridge).</p>
+<p>Slides available here: <a class="reference download internal" download="" href="_downloads/91b93b7cf6efbd53238595f55837422a/SIESTA-Intro.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-Intro.pdf</span></code></a>.</p>
+</section>
+<section id="a-first-contact-with-siesta-inputs-execution-and-outputs">
+<h4>A first contact with SIESTA: inputs, execution and outputs<a class="headerlink" href="#a-first-contact-with-siesta-inputs-execution-and-outputs" title="Link to this heading"></a></h4>
+<p>Practical session led by Dr. Federico Pedron (ICN2).</p>
+<p>Tutorials covered:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/first-encounter/index.html">A First Encounter - Part 1: Running SIESTA</a>.  Files available at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day3</span><span class="o">-</span><span class="n">Wed</span><span class="o">/</span><span class="mi">01</span><span class="o">-</span><span class="n">FirstEncounter_I</span>
+</pre></div>
+</div>
+</li>
+<li><p><a class="reference external" href="https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/first-encounter-theorylevel/index.html">A First Encounter - Part 2: Choosing your level of theory</a>. Files available at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day3</span><span class="o">-</span><span class="n">Wed</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">FirstEncounter_II</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Introductory slides available here: <a class="reference download internal" download="" href="_downloads/0680751ce19a46e86ffd56cdf0bd2d71/SIESTA-First_encounter.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-First_encounter.pdf</span></code></a>.</p>
+</section>
+<section id="basis-sets">
+<h4>Basis sets<a class="headerlink" href="#basis-sets" title="Link to this heading"></a></h4>
+<p>Lecture by Dr. Miguel Pruneda (CINN-CSIC).</p>
+<p>Slides available here: <a class="reference download internal" download="" href="_downloads/435a306099a59fb9626f343c25577f13/SIESTA-Basis_sets.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-Basis_sets.pdf</span></code></a>.</p>
+</section>
+<section id="basis-set-optimization">
+<h4>Basis set optimization<a class="headerlink" href="#basis-set-optimization" title="Link to this heading"></a></h4>
+<p>Practical session led by Dr. Federico Pedron (ICN2).</p>
+<p>Tutorials covered:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/basis-optimization/index.html">Basis set optimization</a></p></li>
+<li><p><a class="reference external" href="https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/basis-sets/index.html">Basis sets - Tips and tricks</a></p></li>
+</ul>
+<p>Files for the tutorial:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day3</span><span class="o">-</span><span class="n">Wed</span><span class="o">/</span><span class="mi">03</span><span class="o">-</span><span class="n">BasisSets</span>
+</pre></div>
+</div>
+<p>Introductory slides available here: <a class="reference download internal" download="" href="_downloads/38adb20cda72fb89dfa0ec64a82087aa/SIESTA-Basis_set_optimization.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-Basis_set_optimization.pdf</span></code></a>.</p>
+</section>
+<section id="convergence-k-points-mesh-mixing">
+<h4>Convergence (k points, mesh, mixing)<a class="headerlink" href="#convergence-k-points-mesh-mixing" title="Link to this heading"></a></h4>
+<p>Practical session led by Dr. Catalina Coll (ICN2).</p>
+<p>Tutorials covered:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/grid-convergence/index.html">The real-space grid</a>. Files available at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day3</span><span class="o">-</span><span class="n">Wed</span><span class="o">/</span><span class="mi">04</span><span class="n">a</span><span class="o">-</span><span class="n">GridConvergence</span>
+</pre></div>
+</div>
+</li>
+<li><p><a class="reference external" href="https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/kpoint-convergence/index.html">Sampling of the BZ with k-points</a>. Files available at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day3</span><span class="o">-</span><span class="n">Wed</span><span class="o">/</span><span class="mi">04</span><span class="n">b</span><span class="o">-</span><span class="n">KPointConvergence</span>
+</pre></div>
+</div>
+</li>
+<li><p><a class="reference external" href="https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/scf-convergence/index.html">The self-consistent-field cycle</a>. Files available at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day3</span><span class="o">-</span><span class="n">Wed</span><span class="o">/</span><span class="mi">04</span><span class="n">c</span><span class="o">-</span><span class="n">SCF</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Introductory slides available here: <a class="reference download internal" download="" href="_downloads/530fac328a64f830ad474d045c0b67ca/SIESTA-Convergence.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-Convergence.pdf</span></code></a>.</p>
+</section>
+</section>
+<span id="document-day4-exercises"></span><section id="day-4-siesta-ii">
+<span id="day4-siesta2"></span><h3>Day 4: SIESTA II<a class="headerlink" href="#day-4-siesta-ii" title="Link to this heading"></a></h3>
+<section id="molecular-dynamics-with-siesta">
+<h4>Molecular Dynamics with SIESTA<a class="headerlink" href="#molecular-dynamics-with-siesta" title="Link to this heading"></a></h4>
+<p>Practical session led by Dr. Ernane de Freitas (ICN2).</p>
+<p>Tutorials covered:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/advanced/molecular-dynamics/index.html">Molecular Dynamics</a>. Files available at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day4</span><span class="o">-</span><span class="n">Thu</span><span class="o">/</span><span class="mi">01</span><span class="o">-</span><span class="n">MolecularDynamics</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Introductory slides available here: <a class="reference download internal" download="" href="_downloads/b27374bb29d89431ef975dacdfa47a40/SIESTA-MD.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-MD.pdf</span></code></a>.</p>
+</section>
+<section id="analysis-tools">
+<h4>Analysis tools<a class="headerlink" href="#analysis-tools" title="Link to this heading"></a></h4>
+<p>Practical session led by Dr. Miguel Pruneda (CINN-CSIC).</p>
+<p>Tutorials covered:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.siesta-project.org/projects/siesta/en/5.0/tutorials/basic/analysis-tools/index.html">Analysis tools</a>. Files available at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day4</span><span class="o">-</span><span class="n">Thu</span><span class="o">/</span><span class="mi">02</span><span class="o">-</span><span class="n">Analysis</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Introductory slides available here: <a class="reference download internal" download="" href="_downloads/4833b032ca9e2dda9ce9475fc72813f7/SIESTA-Analysis_tools.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-Analysis_tools.pdf</span></code></a>.</p>
+</section>
+<section id="features-available-in-siesta-spin-orbit-couplings-transiesta-and-others">
+<h4>Features available in SIESTA: spin-orbit couplings, TranSIESTA, and others<a class="headerlink" href="#features-available-in-siesta-spin-orbit-couplings-transiesta-and-others" title="Link to this heading"></a></h4>
+<p>Lecture by Dr. Nick Papior (Technical University of Denmark).</p>
+<p>Slides available here: <a class="reference download internal" download="" href="_downloads/bfb780742556200574ac8e7efbef836f/SIESTA-Features.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-Features.pdf</span></code></a>.</p>
+</section>
+<section id="pushing-the-boundaries-of-siesta-accelerated-and-massively-parallel-solvers">
+<h4>Pushing the boundaries of SIESTA: accelerated and massively parallel solvers<a class="headerlink" href="#pushing-the-boundaries-of-siesta-accelerated-and-massively-parallel-solvers" title="Link to this heading"></a></h4>
+<p>Practical session led by Dr. Alberto García (ICMAB-CSIC).</p>
+<p>Tutorials covered:</p>
+<ul class="simple">
+<li><p>ELSI-ELPA.</p></li>
+<li><p>ELSI-PEXSI.</p></li>
+</ul>
+<p>Files for the tutorial:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">leonardo_work</span><span class="o">/</span><span class="n">EUHPC_TD02_030</span><span class="o">/</span><span class="n">siesta</span><span class="o">-</span><span class="n">tutorials</span><span class="o">/</span><span class="n">day4</span><span class="o">-</span><span class="n">Thu</span><span class="o">/</span><span class="mi">03</span><span class="o">-</span><span class="n">SiestaSolvers</span>
+</pre></div>
+</div>
+<p>Slides available here: <a class="reference download internal" download="" href="_downloads/9b7e6df9406693c9325c3809bb2e76ec/SIESTA-Solvers.pdf"><code class="xref download docutils literal notranslate"><span class="pre">SIESTA-Solvers.pdf</span></code></a>.</p>
+</section>
+</section>
+</div>
+<div class="toctree-wrapper compound">
+<span id="document-day5-tutorials"></span><section id="yambo-tutorial-quasiparticles-in-the-gw-approximation">
+<h3>Yambo tutorial: Quasiparticles in the GW approximation<a class="headerlink" href="#yambo-tutorial-quasiparticles-in-the-gw-approximation" title="Link to this heading"></a></h3>
+<p>In this tutorial you will learn how to run a GW simulation using Yambo on a HPC machine.</p>
+<p>You will compute the quasiparticle corrections to the band structure of a free-standing single layer of MoS<span class="math notranslate nohighlight">\(_2\)</span> while learning about convergence studies, parallel strategies, and GPU calculations.</p>
+<p>In the end, you will obtain a quasiparticle band structure based on the simulations, the first step towards the reproduction of an ARPES spectrum. Beware: we will not use fully converged parameters, so the final result should not be considered very accurate.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/mos2.png"><img alt="_images/mos2.png" src="_images/mos2.png" style="width: 576.0px; height: 307.6px;" />
+</a>
+</figure>
+<p><em>MoS<span class="math notranslate nohighlight">\(_2\)</span> monolayer (top and side views). Gray: Mo atoms, yellow: S atoms.</em></p>
+<section id="many-body-corrections-to-the-dft-band-gap">
+<h4>Many-body corrections to the DFT band gap<a class="headerlink" href="#many-body-corrections-to-the-dft-band-gap" title="Link to this heading"></a></h4>
+<p>We want to describe the electronic energy levels using a better description of electron-electron interactions than DFT is capable of.</p>
+<p>Essentially, we want to solve the non-linear quasiparticle equation at first order in the GW self-energy <span class="math notranslate nohighlight">\(\Sigma\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[E^{QP}_{nk}=\epsilon_{nk}+Z_{nk}[\Sigma]\langle\psi_{nk}|\Sigma(\epsilon_{nk})-V_{xc}|\psi_{nk}\rangle\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\epsilon_{nk}\)</span> and <span class="math notranslate nohighlight">\(\psi_{nk}\)</span> are the Kohn-Sham energies and wavefunctions, respectively, while <span class="math notranslate nohighlight">\(V_{xc}\)</span> is the DFT exchange-correlation potential.</p>
+<p>For each electronic state <span class="math notranslate nohighlight">\(nk\)</span>, the self-energy can be separated into two components: a static, gap-opening term called the exchange self-energy (<span class="math notranslate nohighlight">\(\Sigma^x\)</span>), and an energy-dependent, usually gap-closing term called the correlation self-energy (<span class="math notranslate nohighlight">\(\Sigma^c\)</span>). These contributions are tackled separately by the code:</p>
+<div class="math notranslate nohighlight">
+\[\Sigma_{nk}(\omega)=\Sigma_{nk}^x+\Sigma^c_{nk}(\omega)\]</div>
+<p>The energy-dependent dynamical electronic screening <span class="math notranslate nohighlight">\(\varepsilon^{-1}(\omega)\)</span> is included in <span class="math notranslate nohighlight">\(\Sigma^c\)</span> and must therefore be calculated as well.</p>
+<p>In this way, we can compute the “quasiparticle” corrections <span class="math notranslate nohighlight">\(E^{QP}_{nk}\)</span> to the single-particle Kohn-Sham eigenvalues <span class="math notranslate nohighlight">\(\epsilon_{nk}\)</span>.
+The typical workflow for a GW calculation is:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/gwflow.png"><img alt="_images/gwflow.png" src="_images/gwflow.png" style="width: 360.8px; height: 540.8000000000001px;" />
+</a>
+</figure>
+</section>
+<section id="set-up-a-yambo-calculation">
+<h4>Set up a Yambo calculation<a class="headerlink" href="#set-up-a-yambo-calculation" title="Link to this heading"></a></h4>
+<p>Go to your user work directory and copy the material from the shared folder</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cp $WORK/MoS2_HPC_tutorial_Leonardo.tar.gz .</span>
+</pre></div>
+</div>
+<p>(as an alternative you can download the materials for the tutorial, 1.2GB, it may take a couple of minutes):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget https://media.yambo-code.eu/educational/tutorials/files/MoS2_HPC_tutorial_Leonardo.tar.gz</span>
+</pre></div>
+</div>
+<p>After one of the two commands, just extract the data</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">tar -xvzf MoS2_HPC_tutorial_Leonardo.tar.gz</span>
+</pre></div>
+</div>
+<p>You can now enter the tutorial directory</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd MoS2_HPC_tutorial_Leonardo</span>
+</pre></div>
+</div>
+<section id="yambo-save-folder">
+<h5>Yambo <code class="docutils literal notranslate"><span class="pre">SAVE</span></code> folder<a class="headerlink" href="#yambo-save-folder" title="Link to this heading"></a></h5>
+<p>First of all, we need to convert some of the data produced in a previous non-self-consistent DFT calculation (in this case using Quantum ESPRESSO) into a convenient format for Yambo.</p>
+<p>The QE save folder for MoS<span class="math notranslate nohighlight">\(_2\)</span> is already present at <code class="docutils literal notranslate"><span class="pre">00_QE-DFT</span></code>. We should move inside it and then run the <code class="docutils literal notranslate"><span class="pre">p2y</span></code> executable to generate the uninitialised <code class="docutils literal notranslate"><span class="pre">SAVE</span></code>.</p>
+<p>But first, we need to access a node interactively:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun --nodes=1 --ntasks-per-node=1 --gres=gpu:1 --cpus-per-task=8 --mem=490000 --account=EUHPC_TD02_030 --partition=boost_usr_prod --qos=boost_qos_dbg --time=0:30:00 --pty /bin/bash</span>
+</pre></div>
+</div>
+<p>Then we need to load the yambo-specific modules in in the cluster. On Leonardo Booster, we have</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load profile/chem-phys</span>
+<span class="go">module load yambo/5.2.0--openmpi--4.1.4--nvhpc--23.1</span>
+</pre></div>
+</div>
+<p>Finally:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd 00_QE-DFT/mos2.save</span>
+<span class="go">mpirun -np 1 p2y</span>
+</pre></div>
+</div>
+<p>Now, we need to run the initialization step. Every Yambo run <strong>must</strong> start with this step. This will be automatically performed when you run Yambo on a <code class="docutils literal notranslate"><span class="pre">SAVE</span></code> directory for the first time. Just type</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mpirun -np 1 yambo</span>
+</pre></div>
+</div>
+<p>and then check the yambo log called <code class="docutils literal notranslate"><span class="pre">l_setup</span></code>. The initialization step determines the <span class="math notranslate nohighlight">\(G\)</span>-vector shells and the <span class="math notranslate nohighlight">\(k\)</span>- and <span class="math notranslate nohighlight">\(q\)</span>-point grids based on the DFT calculation. If you check inside the <code class="docutils literal notranslate"><span class="pre">SAVE</span></code> you will see two types of databases. The static ones, starting with <code class="docutils literal notranslate"><span class="pre">ns.*</span></code>, are directly converted in the <code class="docutils literal notranslate"><span class="pre">p2y</span></code> step, while the dynamical ones, <code class="docutils literal notranslate"><span class="pre">ndb.*</span></code> are generated during the initialisation.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ls SAVE/</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ndb.gops       # info on G-vector shells, etc</span>
+<span class="go">ndb.kindx      # info and k and q meshes</span>
+<span class="go">ns.db1         # info on geometry and KS bands</span>
+<span class="go">ns.kb_pp_pwscf # pseudopotential info</span>
+<span class="go">ns.wf          # wave functions info</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>The databases are written in netCDF format.
+Yambo has produced also a human readable output, <code class="docutils literal notranslate"><span class="pre">r_setup</span></code>, reporting relevant information such as lattice parameters, symmetries, atomic positions, k-points, DFT eigenvalues and band gaps. We can have a quick look at the sections.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">vim r_setup</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">[02.01] Unit cells # Lattice geometry info</span>
+<span class="go">==================</span>
+<span class="go">  ...</span>
+<span class="go">[02.02] Symmetries # Symmetry ops. written explicitly</span>
+<span class="go">==================</span>
+<span class="go">  ...</span>
+<span class="go">[02.03] Reciprocal space  # Reciprocal lattice info</span>
+<span class="go">========================</span>
+<span class="go">...</span>
+<span class="go">[02.04] K-grid lattice # k-point coords. written explicitly</span>
+<span class="go">======================</span>
+<span class="go">...</span>
+<span class="go">[02.05] Energies &amp; Occupations # Info on band gaps and occupations</span>
+<span class="go">============================== # DFT eigenvalues</span>
+<span class="go">...</span>
+<span class="go">[03] Transferred momenta grid and indexing # q-points (momentum transfer grid)</span>
+<span class="go">==========================================</span>
+</pre></div>
+</div>
+<p>Finally, let us move the <code class="docutils literal notranslate"><span class="pre">SAVE</span></code> and the report file to the directory where we will run the first GW calculation.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mv SAVE r_setup ../../01_GW_first_run/</span>
+<span class="go">cd ../../01_GW_first_run/</span>
+</pre></div>
+</div>
+</section>
+<section id="yambo-input-file">
+<h5>Yambo input file<a class="headerlink" href="#yambo-input-file" title="Link to this heading"></a></h5>
+<p>Now that we have a working <code class="docutils literal notranslate"><span class="pre">SAVE</span></code>, it is time to generate the input file we will be using for our first GW calculation.</p>
+<p>This can be done by the <code class="docutils literal notranslate"><span class="pre">yambo</span></code> executable via command-line instructions.</p>
+<p>If you type</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">yambo -h</span>
+</pre></div>
+</div>
+<p>You will get a list of the possibile options:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go"> ___ __  _____  __ __  _____   _____</span>
+<span class="go">|   Y  ||  _  ||  Y  ||  _  \ |  _  |</span>
+<span class="go">|   |  ||. |  ||.    ||. |  / |. |  |</span>
+<span class="go"> \   _/ |. _  ||.\ / ||. _  \ |. |  |</span>
+<span class="go">  |: |  |: |  ||: |  ||: |   \|: |  |</span>
+<span class="go">  |::|  |:.|:.||:.|:.||::.   /|::.  |</span>
+<span class="go">  `--&quot;  `-- --&quot;`-- --&quot;`-----&quot; `-----&quot;</span>
+<span class="go"> &#39;A shiny pot of fun and happiness [C.D.Hogan]&#39;</span>
+
+<span class="go"> This is      : yambo</span>
+<span class="go"> Version      : 5.1.0 Revision 21422 Hash fde6e2a07</span>
+<span class="go"> Configuration: MPI+OpenMP+SLK+HDF5_MPI_IO</span>
+
+<span class="go"> Help &amp; version:</span>
+<span class="go"> -help            (-h) &lt;string&gt;   :&lt;string&gt; can be an option (e.g. -h optics)</span>
+<span class="go"> -version                         :Code version &amp; libraries</span>
+
+<span class="go"> Input file &amp; Directories:</span>
+<span class="go"> -Input           (-F) &lt;string&gt;   :Input file</span>
+<span class="go"> -Verbosity       (-V) &lt;string&gt;   :Input file variables verbosity (more with -h Verbosity)</span>
+<span class="go"> -Job             (-J) &lt;string&gt;   :Job string</span>
+<span class="go"> -Idir            (-I) &lt;string&gt;   :Input directory</span>
+<span class="go"> -Odir            (-O) &lt;string&gt;   :I/O directory</span>
+<span class="go"> -Cdir            (-C) &lt;string&gt;   :Communication directory</span>
+
+<span class="go"> Parallel Control:</span>
+<span class="go"> -parenv          (-E) &lt;string&gt;   :Environment Parallel Variables file</span>
+<span class="go"> -nompi                           :Switch off MPI support</span>
+<span class="go"> -noopenmp                        :Switch off OPENMP support</span>
+
+<span class="go"> Initializations:</span>
+<span class="go"> -setup           (-i)            :Initialization</span>
+<span class="go"> -coulomb         (-r)            :Coulomb potential</span>
+
+<span class="go"> Response Functions:</span>
+<span class="go"> -optics          (-o) &lt;string&gt;   :Linear Response optical properties (more with -h optics)</span>
+<span class="go"> -X               (-d) &lt;string&gt;   :Inverse Dielectric Matrix (more with -h X)</span>
+<span class="go"> -dipoles         (-q)            :Oscillator strenghts (or dipoles)</span>
+<span class="go"> -kernel          (-k) &lt;string&gt;   :Kernel (more with -h kernel)</span>
+
+<span class="go"> Self-Energy:</span>
+<span class="go"> -hf              (-x)            :Hartree-Fock</span>
+<span class="go"> -gw0             (-p) &lt;string&gt;   :GW approximation (more with -h gw0)</span>
+<span class="go"> -dyson           (-g) &lt;string&gt;   :Dyson Equation solver (more with -h dyson)</span>
+<span class="go"> -lifetimes       (-l)            :GoWo Quasiparticle lifetimes</span>
+
+<span class="go"> Bethe-Salpeter Equation:</span>
+<span class="go"> -Ksolver         (-y) &lt;string&gt;   :BSE solver (more with -h Ksolver)</span>
+
+<span class="go"> Total Energy:</span>
+<span class="go"> -acfdt                           :ACFDT Total Energy</span>
+
+<span class="go"> Utilites:</span>
+<span class="go"> -Quiet           (-Q)            :Quiet input file creation</span>
+<span class="go"> -fatlog                          :Verbose (fatter) log(s)</span>
+<span class="go"> -DBlist          (-D)            :Databases properties</span>
+<span class="go"> -walltime             &lt;int&gt;      :Walltime (more with -h walltime)</span>
+<span class="go"> -memory               &lt;int&gt;      :Memory (more with -h memory)</span>
+<span class="go"> -slktest                         :ScaLapacK test</span>
+
+<span class="go"> YAMBO developers group (http://www.yambo-code.org)</span>
+</pre></div>
+</div>
+<p>In order to build our input, we need to use the options for a GW calculation. We want to use the plasmon pole approximation for the dynamical screening, solve the quasiparticle equation with the Newton method, and add a truncation of the Coulomb potential which is useful for 2D systems. In addition, we want to set up explicitly the parameters for parallel runs. Therefore we type:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">yambo -gw0 p -g n -r -V par -F gw.in</span>
+</pre></div>
+</div>
+<p>Now we can exit the computing node, since all remaining calculations will be run by submitting jobs with the <code class="docutils literal notranslate"><span class="pre">slurm</span></code> scheduler.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">exit</span>
+</pre></div>
+</div>
+<p>You can now inspect the input file <code class="docutils literal notranslate"><span class="pre">gw.in</span></code> and try to familiarize with some of the parameters. The input will come with default values for many parameters that we might need to change.</p>
+<p>We discuss them below step by step.</p>
+</section>
+<section id="parameters-for-a-gw-calculation">
+<h5>Parameters for a GW calculation<a class="headerlink" href="#parameters-for-a-gw-calculation" title="Link to this heading"></a></h5>
+<p>We start with the runlevels:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gw0</span>                              <span class="c1"># [R] GW approximation</span>
+<span class="n">ppa</span>                              <span class="c1"># [R][Xp] Plasmon Pole Approximation for the Screened Interaction</span>
+<span class="n">el_el_corr</span>                       <span class="c1"># [R] Electron-Electron Correlation</span>
+<span class="n">dyson</span>                            <span class="c1"># [R] Dyson Equation solver</span>
+<span class="n">rim_cut</span>                          <span class="c1"># [R] Coulomb potential</span>
+<span class="n">HF_and_locXC</span>                     <span class="c1"># [R] Hartree-Fock</span>
+<span class="n">em1d</span>                             <span class="c1"># [R][X] Dynamically Screened Interaction</span>
+</pre></div>
+</div>
+<div class="admonition-runlevels callout admonition" id="callout-0">
+<p class="admonition-title">Runlevels</p>
+<ul class="simple">
+<li><p>The <strong>[R]</strong> keyword refers to the runlevels: these flag tell Yambo which parts of the code should be executed. Each runlevel enables its own set of input variables. In particular here we have:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">rim_cut</span></code>: Coulomb potential random integration method and cutoff (enables [RIM] and [CUT] variables).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gw0</span></code>: Yambo learns that it has to run a GW calculation (enables [GW] variables).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HF_and_locXC</span></code>: calculation of exchange part of the self-energy <span class="math notranslate nohighlight">\(\Sigma^x\)</span> (i.e., Hartree-Fock approximation).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">em1d</span></code>: enables the calculation of the dynamical screening of the electrons, i.e. the dielectric matrix ([X] variables). In this way Yambo can go beyond Hartree-Fock and compute <span class="math notranslate nohighlight">\(\Sigma^c\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ppa</span></code>: tells Yambo that the dynamical screening should be computed in the plasmon pole approximation ([Xp] variables).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dyson</span></code>: Yambo will solve the Dyson-like quasiparticle equation.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Going through the file we find:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EXXRLvcs</span><span class="o">=</span>  <span class="mi">37965</span>           <span class="n">RL</span>    <span class="c1"># [XX] Exchange    RL components</span>
+<span class="n">VXCRLvcs</span><span class="o">=</span>  <span class="mi">37965</span>           <span class="n">RL</span>    <span class="c1"># [XC] XCpotential RL components</span>
+</pre></div>
+</div>
+<p>Recall that we have, for the exchange self-energy:</p>
+<div class="math notranslate nohighlight">
+\[\Sigma^x_{nk} = - \sum_G\sum_v \int \frac{d^3q}{2\pi^3} v(q+G)|\rho_{nv}(k,q,G)|^2f_{vk-q}\]</div>
+<div class="admonition-exchange-self-energy callout admonition" id="callout-1">
+<p class="admonition-title">Exchange self-energy</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EXXRLvcs</span></code> controls the number of Reciprocal Lattice vectors (i.e., G-vectors) used to build the exchange self-energy, while <code class="docutils literal notranslate"><span class="pre">VXCRLvcs</span></code> does the same for the exchange-correlation potential reconstructed from DFT. Since these two quantities are to be subtracted, it is important to keep the same values here (and possibly not change the default maximum value).</p></li>
+</ul>
+</div>
+<p>Let us now have a look at the parameters for the calculation of the correlation part of the self-energy. Recall that we have:</p>
+<div class="math notranslate nohighlight">
+\[\Sigma^c_{nk} = i \sum_m \int \frac{d^3q}{2\pi^3} \sum_{GG'} v(q+G) \rho_{nmk}(q,G) \rho^*_{nmk}(q,G') \int d\omega' G^0_{mk-q}(\omega-\omega')\varepsilon^{-1}_{GG'}(q,\omega')\]</div>
+<p>(Here, the <span class="math notranslate nohighlight">\(\rho\)</span>-terms represent the screening matrix elements which are computed separately by yambo and stored in their own database.)</p>
+<p>The calculation is divided in two steps. First, the response function in the plasmon pole approximation (<code class="docutils literal notranslate"><span class="pre">em1d</span> <span class="pre">ppa</span></code>), under the keywords <code class="docutils literal notranslate"><span class="pre">[X]</span></code> and <code class="docutils literal notranslate"><span class="pre">[Xp]</span></code>, i.e., <span class="math notranslate nohighlight">\(\varepsilon^{-1}_{GG'}(q,\omega)\)</span>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Chimod</span><span class="o">=</span> <span class="s2">&quot;HARTREE&quot;</span>                <span class="c1"># [X] IP/Hartree/ALDA/LRC/PF/BSfxc</span>
+<span class="o">%</span> <span class="n">BndsRnXp</span>
+   <span class="mi">1</span> <span class="o">|</span> <span class="mi">300</span> <span class="o">|</span>                     <span class="c1"># [Xp] Polarization function bands</span>
+<span class="o">%</span>
+<span class="n">NGsBlkXp</span><span class="o">=</span> <span class="mi">1</span>                <span class="n">RL</span>    <span class="c1"># [Xp] Response block size</span>
+<span class="o">%</span> <span class="n">LongDrXp</span>
+ <span class="mf">1.000000</span> <span class="o">|</span> <span class="mf">0.000000</span> <span class="o">|</span> <span class="mf">0.000000</span> <span class="o">|</span>        <span class="c1"># [Xp] [cc] Electric Field</span>
+<span class="o">%</span>
+<span class="n">PPAPntXp</span><span class="o">=</span> <span class="mf">27.21138</span>         <span class="n">eV</span>    <span class="c1"># [Xp] PPA imaginary energy</span>
+<span class="n">XTermKind</span><span class="o">=</span> <span class="s2">&quot;none&quot;</span>                <span class="c1"># [X] X terminator (&quot;none&quot;,&quot;BG&quot; Bruneval-Gonze)</span>
+</pre></div>
+</div>
+<div class="admonition-response-function callout admonition" id="callout-2">
+<p class="admonition-title">Response function</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Chimod=</span> <span class="pre">&quot;Hartree&quot;</span></code> indicates that we compute the response function in the Random Phase Approximation (RPA).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BndsRnXp</span></code> represents the electronic states included in the response function <span class="math notranslate nohighlight">\(\varepsilon\)</span>, and is a convergence parameter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NGsBlkXp</span></code> is the number of G-vectors used to calculate the RPA response function <span class="math notranslate nohighlight">\(\varepsilon^{-1}_{GG'}\)</span>. It is a convergence parameter and can be expressed in number of reciprocal lattice vectors (RL) or energy (Ry, suggested).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LongDrXp</span></code> represents the direction of the long-range auxiliary external electric field used to compute <span class="math notranslate nohighlight">\(\varepsilon^{-1}_{GG'}(q)\)</span> at <span class="math notranslate nohighlight">\(q,G\rightarrow 0\)</span>. In general you have to be mindful of the system symmetries. In our case, we will put <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">|</span> <span class="pre">1</span> <span class="pre">|</span> <span class="pre">1</span></code> to cover all directions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PPAPntXp=</span> <span class="pre">27.21138</span> <span class="pre">eV</span></code> is the energy of the plasmon pole. We don’t normally change this.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">XTermKind</span></code> is used to specify a “terminator”: this accelerates numerical convergence with respect to the number of bands <code class="docutils literal notranslate"><span class="pre">BndsRnXp</span></code>.</p></li>
+</ul>
+</div>
+<p>Next, we have the <code class="docutils literal notranslate"><span class="pre">[GW]</span></code> group of parameters controlling the next part of the correlation self-energy calculation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">GbndRnge</span>
+   <span class="mi">1</span> <span class="o">|</span> <span class="mi">300</span> <span class="o">|</span>                         <span class="c1"># [GW] G[W] bands range</span>
+<span class="o">%</span>
+<span class="n">GTermKind</span><span class="o">=</span> <span class="s2">&quot;none&quot;</span>                <span class="c1"># [GW] GW terminator (&quot;none&quot;,&quot;BG&quot; Bruneval-Gonze,&quot;BRS&quot; Berger-Reining-Sottile)</span>
+<span class="n">DysSolver</span><span class="o">=</span> <span class="s2">&quot;n&quot;</span>                   <span class="c1"># [GW] Dyson Equation solver (&quot;n&quot;,&quot;s&quot;,&quot;g&quot;)</span>
+<span class="o">%</span><span class="n">QPkrange</span>                        <span class="c1"># [GW] QP generalized Kpoint/Band indices</span>
+<span class="mi">1</span><span class="o">|</span><span class="mi">7</span><span class="o">|</span><span class="mi">1</span><span class="o">|</span><span class="mi">300</span><span class="o">|</span>
+<span class="o">%</span>
+</pre></div>
+</div>
+<div class="admonition-correlation-self-energy callout admonition" id="callout-3">
+<p class="admonition-title">Correlation self-energy</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GbndRnge</span></code> is the number of bands used to build the correlation self-energy. It is a convergence parameter and can be accelerated with the terminator <code class="docutils literal notranslate"><span class="pre">GTermKind</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DysSolver=&quot;n&quot;</span></code> specifies the method used to solve the linearised quasiparticle equation. In most cases, we use the Newton method <code class="docutils literal notranslate"><span class="pre">&quot;n&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QPkrange</span></code> indicates the range of electronic (nk) states for which the GW correction <span class="math notranslate nohighlight">\(\Sigma_{nk}\)</span> is computed. The first pair of numbers represents the range of k-point indices, the second pair the range of band indices.</p></li>
+</ul>
+</div>
+<p>We now take a look at the parameters relative to the Coulomb interaction at small momenta and for 2D systems, which we should <strong>edit now once and for all</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RandQpts</span><span class="o">=</span><span class="mi">1000000</span>                       <span class="c1"># [RIM] Number of random q-points in the BZ</span>
+<span class="n">RandGvec</span><span class="o">=</span> <span class="mi">100</span>                <span class="n">RL</span>    <span class="c1"># [RIM] Coulomb interaction RS components</span>
+<span class="n">CUTGeo</span><span class="o">=</span> <span class="s2">&quot;slab z&quot;</span>                   <span class="c1"># [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..</span>
+</pre></div>
+</div>
+<div class="admonition-coulomb-potential callout admonition" id="callout-4">
+<p class="admonition-title">Coulomb potential</p>
+<ul class="simple">
+<li><p>The <strong>[RIM]</strong> keyword refers to a Monte Carlo random integration method performed to avoid numerical instabilities close to <span class="math notranslate nohighlight">\(q=0\)</span> and <span class="math notranslate nohighlight">\(G=0\)</span> in the <span class="math notranslate nohighlight">\(q\)</span>-integration of the bare Coulomb interaction - i.e. <span class="math notranslate nohighlight">\(4\pi/(q+G)^2\)</span> - for 2D systems.</p></li>
+<li><p>The <strong>[CUT]</strong> keyword refers to the truncation of the Coulomb interaction to avoid spurious interaction between periodically repeated copies of the simulation supercell along the <span class="math notranslate nohighlight">\(z\)</span>-direction (we are working with a plane-wave code). Keep in mind that the vacuum space between two copies of the system should be converged: here we are using 20 bohr but a value of 40 bohr would be more realistic.</p></li>
+</ul>
+</div>
+<p>Finally, we have the parallel parameters. We are going to discuss them at the end of the parallel section, we can skip them for now.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X_and_IO_CPU</span><span class="o">=</span> <span class="s2">&quot;&quot;</span>                 <span class="c1"># [PARALLEL] CPUs for each role</span>
+<span class="n">X_and_IO_ROLEs</span><span class="o">=</span> <span class="s2">&quot;&quot;</span>               <span class="c1"># [PARALLEL] CPUs roles (q,g,k,c,v)</span>
+<span class="n">X_and_IO_nCPU_LinAlg_INV</span><span class="o">=-</span><span class="mi">1</span>      <span class="c1"># [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)</span>
+<span class="n">X_Threads</span><span class="o">=</span><span class="mi">0</span>                      <span class="c1"># [OPENMP/X] Number of threads for response functions</span>
+<span class="n">DIP_CPU</span><span class="o">=</span> <span class="s2">&quot;&quot;</span>                      <span class="c1"># [PARALLEL] CPUs for each role</span>
+<span class="n">DIP_ROLEs</span><span class="o">=</span> <span class="s2">&quot;&quot;</span>                    <span class="c1"># [PARALLEL] CPUs roles (k,c,v)</span>
+<span class="n">DIP_Threads</span><span class="o">=</span><span class="mi">0</span>                    <span class="c1"># [OPENMP/X] Number of threads for dipoles</span>
+<span class="n">SE_CPU</span><span class="o">=</span> <span class="s2">&quot;&quot;</span>                       <span class="c1"># [PARALLEL] CPUs for each role</span>
+<span class="n">SE_ROLEs</span><span class="o">=</span> <span class="s2">&quot;&quot;</span>                     <span class="c1"># [PARALLEL] CPUs roles (q,qp,b)</span>
+<span class="n">SE_Threads</span><span class="o">=</span><span class="mi">0</span>                     <span class="c1"># [OPENMP/GW] Number of threads for self-energy</span>
+</pre></div>
+</div>
+<p>In a GW calculation, the most important parameters to be numerically converged are:</p>
+<ul class="simple">
+<li><p>kpoint mesh (requires multiple nscf DFT runs)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BndsRnXp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NGsBlkXp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GbndRnge</span></code></p></li>
+<li><p>[2D system]: vacuum separation with Coulomb cutoff (requires multiple scf+nscf DFT runs)</p></li>
+</ul>
+<p>From the above discussion you can easily guess that many-body perturbation theory calculations are much more numerically expensive than DFT calculations.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="the-first-run">
+<h4>The first run<a class="headerlink" href="#the-first-run" title="Link to this heading"></a></h4>
+<p>We will start by running a single GW calculation. Here we will focus on the magnitude of the quasiparticle gap. This means that we only need to calculate two quasi-particle corrections, i.e., valence and conduction bands at the k-point where the minimum gap occurs. This information can be found by inspecting the report file <code class="docutils literal notranslate"><span class="pre">r_setup</span></code> produced when the <code class="docutils literal notranslate"><span class="pre">SAVE</span></code> folder was initialised. Just search for the string ‘Direct Gap’ and you’ll see that the latter occurs at k-point 7 between bands 13 and 14:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="p">[</span><span class="n">X</span><span class="p">]</span> <span class="n">Filled</span> <span class="n">Bands</span>                                  <span class="p">:</span>  <span class="mi">13</span>
+  <span class="p">[</span><span class="n">X</span><span class="p">]</span> <span class="n">Empty</span> <span class="n">Bands</span>                                   <span class="p">:</span>   <span class="mi">14</span>  <span class="mi">300</span>
+  <span class="p">[</span><span class="n">X</span><span class="p">]</span> <span class="n">Direct</span> <span class="n">Gap</span>                                    <span class="p">:</span>  <span class="mf">1.858370</span> <span class="p">[</span><span class="n">eV</span><span class="p">]</span>
+  <span class="p">[</span><span class="n">X</span><span class="p">]</span> <span class="n">Direct</span> <span class="n">Gap</span> <span class="n">localized</span> <span class="n">at</span> <span class="n">k</span>                     <span class="p">:</span>  <span class="mi">7</span>
+</pre></div>
+</div>
+<p>In addition, we will set the number of bands in <code class="docutils literal notranslate"><span class="pre">BndsRnXp</span></code> and <code class="docutils literal notranslate"><span class="pre">GbndRnge</span></code> to a small value, just to have it run fast. Hence, we modify the input file accordingly (check <code class="docutils literal notranslate"><span class="pre">BndsRnXp</span></code>, <code class="docutils literal notranslate"><span class="pre">GbndRnge</span></code>, <code class="docutils literal notranslate"><span class="pre">LongDrXp</span></code>, <code class="docutils literal notranslate"><span class="pre">QPkrange</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rim_cut</span>                          <span class="c1"># [R] Coulomb potential</span>
+<span class="n">gw0</span>                              <span class="c1"># [R] GW approximation</span>
+<span class="n">ppa</span>                              <span class="c1"># [R][Xp] Plasmon Pole Approximation for the Screened Interaction</span>
+<span class="n">dyson</span>                            <span class="c1"># [R] Dyson Equation solver</span>
+<span class="n">HF_and_locXC</span>                     <span class="c1"># [R] Hartree-Fock</span>
+<span class="n">em1d</span>                             <span class="c1"># [R][X] Dynamically Screened Interaction</span>
+<span class="n">X_Threads</span><span class="o">=</span><span class="mi">0</span>                      <span class="c1"># [OPENMP/X] Number of threads for response functions</span>
+<span class="n">DIP_Threads</span><span class="o">=</span><span class="mi">0</span>                    <span class="c1"># [OPENMP/X] Number of threads for dipoles</span>
+<span class="n">SE_Threads</span><span class="o">=</span><span class="mi">0</span>                     <span class="c1"># [OPENMP/GW] Number of threads for self-energy</span>
+<span class="n">RandQpts</span><span class="o">=</span><span class="mi">1000000</span>                 <span class="c1"># [RIM] Number of random q-points in the BZ</span>
+<span class="n">RandGvec</span><span class="o">=</span> <span class="mi">100</span>              <span class="n">RL</span>    <span class="c1"># [RIM] Coulomb interaction RS components</span>
+<span class="n">CUTGeo</span><span class="o">=</span> <span class="s2">&quot;slab z&quot;</span>                   <span class="c1"># [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..</span>
+<span class="o">%</span> <span class="n">CUTBox</span>
+ <span class="mf">0.000000</span> <span class="o">|</span> <span class="mf">0.000000</span> <span class="o">|</span> <span class="mf">0.000000</span> <span class="o">|</span>        <span class="c1"># [CUT] [au] Box sides</span>
+<span class="o">%</span>
+<span class="n">CUTRadius</span><span class="o">=</span> <span class="mf">0.000000</span>              <span class="c1"># [CUT] [au] Sphere/Cylinder radius</span>
+<span class="n">CUTCylLen</span><span class="o">=</span> <span class="mf">0.000000</span>              <span class="c1"># [CUT] [au] Cylinder length</span>
+<span class="n">CUTwsGvec</span><span class="o">=</span> <span class="mf">0.700000</span>              <span class="c1"># [CUT] WS cutoff: number of G to be modified</span>
+<span class="n">EXXRLvcs</span><span class="o">=</span>  <span class="mi">37965</span>           <span class="n">RL</span>    <span class="c1"># [XX] Exchange    RL components</span>
+<span class="n">VXCRLvcs</span><span class="o">=</span>  <span class="mi">37965</span>           <span class="n">RL</span>    <span class="c1"># [XC] XCpotential RL components</span>
+<span class="n">Chimod</span><span class="o">=</span> <span class="s2">&quot;HARTREE&quot;</span>                <span class="c1"># [X] IP/Hartree/ALDA/LRC/PF/BSfxc</span>
+<span class="o">%</span> <span class="n">BndsRnXp</span>
+   <span class="mi">1</span> <span class="o">|</span> <span class="mi">20</span> <span class="o">|</span>                         <span class="c1"># [Xp] Polarization function bands</span>
+<span class="o">%</span>
+<span class="n">NGsBlkXp</span><span class="o">=</span> <span class="mi">1</span>                <span class="n">RL</span>    <span class="c1"># [Xp] Response block size</span>
+<span class="o">%</span> <span class="n">LongDrXp</span>
+ <span class="mf">1.000000</span> <span class="o">|</span> <span class="mf">1.000000</span> <span class="o">|</span> <span class="mf">1.000000</span> <span class="o">|</span>        <span class="c1"># [Xp] [cc] Electric Field</span>
+<span class="o">%</span>
+<span class="n">PPAPntXp</span><span class="o">=</span> <span class="mf">27.21138</span>         <span class="n">eV</span>    <span class="c1"># [Xp] PPA imaginary energy</span>
+<span class="n">XTermKind</span><span class="o">=</span> <span class="s2">&quot;none&quot;</span>                <span class="c1"># [X] X terminator (&quot;none&quot;,&quot;BG&quot; Bruneval-Gonze)</span>
+<span class="o">%</span> <span class="n">GbndRnge</span>
+   <span class="mi">1</span> <span class="o">|</span> <span class="mi">20</span> <span class="o">|</span>                         <span class="c1"># [GW] G[W] bands range</span>
+<span class="o">%</span>
+<span class="n">GTermKind</span><span class="o">=</span> <span class="s2">&quot;none&quot;</span>                <span class="c1"># [GW] GW terminator (&quot;none&quot;,&quot;BG&quot; Bruneval-Gonze,&quot;BRS&quot; Berger-Reining-Sottile)</span>
+<span class="n">DysSolver</span><span class="o">=</span> <span class="s2">&quot;n&quot;</span>                   <span class="c1"># [GW] Dyson Equation solver (&quot;n&quot;,&quot;s&quot;,&quot;g&quot;)</span>
+<span class="o">%</span><span class="n">QPkrange</span>                        <span class="c1"># [GW] QP generalized Kpoint/Band indices</span>
+<span class="mi">7</span><span class="o">|</span><span class="mi">7</span><span class="o">|</span><span class="mi">13</span><span class="o">|</span><span class="mi">14</span><span class="o">|</span>
+<span class="o">%</span>
+</pre></div>
+</div>
+<p>We are now ready to run this calculation. Since you should never run a Yambo calculation on the login node, we will need a submission script to add our job to the queue. A submission script optimized for Leonardo Booster (running on GPUs) is provided as an example. <strong>Modify it to suit your specific machine</strong>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">vim run_first_job.sh</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=2</span>
+<span class="c1">#SBATCH --cpus-per-task=8</span>
+<span class="c1">#SBATCH --partition=boost_usr_prod</span>
+<span class="c1">#SBATCH --time=0:05:00</span>
+<span class="c1">#SBATCH --gres=gpu:2</span>
+<span class="c1">#SBATCH --account=EUHPC_TD02_030</span>
+<span class="c1">#SBATCH --job-name=first_job</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">8</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_PLACES</span><span class="o">=</span>cores
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_PROC_BIND</span><span class="o">=</span>close
+
+<span class="c1"># load yambo</span>
+module<span class="w"> </span>load<span class="w"> </span>profile/chem-phys
+module<span class="w"> </span>load<span class="w"> </span>yambo/5.2.0--openmpi--4.1.4--nvhpc--23.1
+
+<span class="c1"># run yambo</span>
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_NTASKS</span><span class="si">}</span><span class="w"> </span>--map-by<span class="w"> </span>socket:PE<span class="o">=</span><span class="m">8</span><span class="w"> </span>--rank-by<span class="w"> </span>core<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>yambo<span class="w"> </span>-F<span class="w"> </span>gw.in<span class="w"> </span>-J<span class="w"> </span>job_00_first_run<span class="w"> </span>-C<span class="w"> </span>out_00_first_run
+</pre></div>
+</div>
+<p>We will ignore all details regarding parallelization, as it will be covered in the next section. Since there are no lowercase flags after <code class="docutils literal notranslate"><span class="pre">yambo</span></code>, it is not going to generate an input file, but rather, run the one specified by <code class="docutils literal notranslate"><span class="pre">-F</span></code>. Now, go ahead an submit this job</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sbatch run_first_job.sh</span>
+</pre></div>
+</div>
+<p>The status of the jobs can be monitored via:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>squeue -u $USER        # to inspect the status of jobs 
+                       # (hint: make a unix alias, if you like)
+scancel &lt;jobid&gt;        # to delete jobs in the queue
+</pre></div>
+</div>
+<p>The newly generated databases will be stored in the job directory, as specified by <code class="docutils literal notranslate"><span class="pre">-J</span></code>, while the report, log and output files will be stored in the communications directory (<code class="docutils literal notranslate"><span class="pre">-C</span></code>). As this is your first <code class="docutils literal notranslate"><span class="pre">yambo</span></code> run, take a moment to inspect the report and log files, which you can find inside the <code class="docutils literal notranslate"><span class="pre">-C</span></code> directory. In these report and log files, you can see the steps performed by <code class="docutils literal notranslate"><span class="pre">yambo</span></code>. For instance, the code calculates the screening at every k-point and stores it in the PPA database called <code class="docutils literal notranslate"><span class="pre">ndb.pp</span></code>. By opening the report</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">vim out_00_first_run/r-job_00_first_run_HF_and_locXC_gw0_dyson_rim_cut_em1d_ppa</span>
+</pre></div>
+</div>
+<p>you will see</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">07</span><span class="p">]</span> <span class="n">Dynamic</span> <span class="n">Dielectric</span> <span class="n">Matrix</span> <span class="p">(</span><span class="n">PPA</span><span class="p">)</span>
+ <span class="o">====================================</span>
+
+ <span class="p">[</span><span class="n">WR</span><span class="o">./</span><span class="n">job_00_first_run</span><span class="o">//</span><span class="n">ndb</span><span class="o">.</span><span class="n">pp</span><span class="p">]</span><span class="o">-------------------------------</span>
+</pre></div>
+</div>
+<p>Then, the actual GW section will use this calculated dielectric screening to construct the correlation part of the self-energy:</p>
+<div class="highlight-bash= notranslate"><div class="highlight"><pre><span></span>[09.01] G0W0 (W PPA)
+  ====================
+
+  [  GW  ] Bands range     :   1  20
+  [GW/PPA] G damping       :  0.100000 [eV]
+
+
+  QP @ state[ 1 ] K range:   7   7
+  QP @ state[ 1 ] b range:  13  14
+
+  [RD./job_00_first_run//ndb.pp]-------------------------------
+</pre></div>
+</div>
+<p>Now, inspect the output file</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">vim out_00_first_run/o-job_00_first_run.qp </span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vxc  =Slater exchange(X)+Perdew &amp; Zunger(C)</span>
+<span class="c1"># Vnlxc=Hartree-Fock</span>
+<span class="c1">#</span>
+<span class="c1">#    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]</span>
+<span class="c1">#</span>
+         <span class="mi">7</span>                 <span class="mi">13</span>                 <span class="mf">0.000000</span>          <span class="o">-</span><span class="mf">0.025774</span>           <span class="mf">0.543987</span>
+         <span class="mi">7</span>                 <span class="mi">14</span>                 <span class="mf">1.858370</span>           <span class="mf">3.496193</span>          <span class="o">-</span><span class="mf">0.417555</span>
+<span class="c1"># </span>
+</pre></div>
+</div>
+<p>In this file, <code class="docutils literal notranslate"><span class="pre">Eo</span></code> is our starting point (DFT) while <code class="docutils literal notranslate"><span class="pre">E-Eo</span></code> shows the GW correction one should apply to obtain the quasi-particle energies. In order to calculate the gap (automatically from the command line), we’ll use some simple commands. First, we get everything that is not a <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-v</span> <span class="pre">'#'</span></code> and we pass that to another command with a “pipe” <code class="docutils literal notranslate"><span class="pre">|</span></code>. Then, <code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-n</span> <span class="pre">1</span></code>/<code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-n</span> <span class="pre">1</span></code> will retain the first/last line, and <code class="docutils literal notranslate"><span class="pre">awk</span> <span class="pre">'{print</span> <span class="pre">$3+$4}'</span></code> will get us the sum of the third and fourth columns. Altogether, this would be as follows</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">grep -v &#39;#&#39; out_00_first_run/o-job_00_first_run.qp|head -n 1| awk &#39;{print $3+$4}&#39;</span>
+<span class="go">-0.025774</span>
+<span class="go">grep -v &#39;#&#39; out_00_first_run/o-job_00_first_run.qp|tail -n 1| awk &#39;{print $3+$4}&#39;</span>
+<span class="go">5.35456</span>
+</pre></div>
+</div>
+<p>These two commands give us the quasiparticle energies we’ve calculated - their difference is the GW-corrected optical gap.</p>
+</section>
+<hr class="docutils" />
+<section id="gw-convergence">
+<h4>GW convergence<a class="headerlink" href="#gw-convergence" title="Link to this heading"></a></h4>
+<p>In this part of the tutorial, we will study convergence with respect to some of the parameters mentioned above. In order to complete this tutorial within a single hands-on session, we will restrict ourselves to a very coarse <span class="math notranslate nohighlight">\(k\)</span>-point grid.
+Hence, we will perform our convergence studies on top of a DFT calculation done with a <span class="math notranslate nohighlight">\(6 \times 6 \times 1\)</span> k-point grid and without spin-orbit coupling: the <code class="docutils literal notranslate"><span class="pre">SAVE</span></code> we generated earlier.
+While this will speed up calculations and could be run even on a single GPU card, you should be aware that such coarse sampling of the BZ is significantly underconverged and should only be used for educational purposes. In addition, spin-orbit interaction is extremely relevant for the valley physics of MoS2 and should not be neglected in realistic calculations.
+Let’s move into the appropriate directory</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ../02_GW_convergence</span>
+</pre></div>
+</div>
+<section id="response-function-varepsilon-1-gg-bands-and-g-vectors">
+<h5>Response function <span class="math notranslate nohighlight">\(\varepsilon^{-1}_{GG'}\)</span> - Bands and G-vectors<a class="headerlink" href="#response-function-varepsilon-1-gg-bands-and-g-vectors" title="Link to this heading"></a></h5>
+<p>We are now ready to start our convergence tests. We’ll begin with the variables controlling the polarization function, i.e., <code class="docutils literal notranslate"><span class="pre">NGsBlkXp</span></code> for the number of G-vectors and <code class="docutils literal notranslate"><span class="pre">BndsRnXp</span></code> for the number of bands. For this, we will keep <code class="docutils literal notranslate"><span class="pre">GbndRnge</span></code> constant at a reasonably high value - you can inspect the input <code class="docutils literal notranslate"><span class="pre">i01-GW</span></code></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">vim i01-GW</span>
+</pre></div>
+</div>
+<p>and check that you have:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">GbndRnge</span>
+   <span class="mi">1</span> <span class="o">|</span> <span class="mi">80</span> <span class="o">|</span>                         <span class="c1"># [GW] G[W] bands range</span>
+<span class="o">%</span>
+</pre></div>
+</div>
+<p>Since we need to run <code class="docutils literal notranslate"><span class="pre">yambo</span></code> for several values of <code class="docutils literal notranslate"><span class="pre">NGsBlkXp</span></code> and <code class="docutils literal notranslate"><span class="pre">BndsRnXp</span></code>, it makes sense to use two nested loops. That is exactly what we did in the submission script <code class="docutils literal notranslate"><span class="pre">run01_converge_pol.sh</span></code>. Since this will take a few minutes, save time by submitting it straight away and we will have a look at it while it runs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sbatch run01_converge_pol.sh</span>
+</pre></div>
+</div>
+<div class="admonition-monitoring callout admonition" id="callout-5">
+<p class="admonition-title">Monitoring</p>
+<p>You can monitor that the job is running by the squeue command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sbatch squeue -u $USER
+</pre></div>
+</div>
+<p>and also by checking the files created in your folder</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">ltr</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">i01-GW_Xp_20_bands_6_Ry</span>
+<span class="go">job_Xp_20_bands_6_Ry</span>
+<span class="go">out_Xp_20_bands_6_Ry</span>
+<span class="go">i01-GW_Xp_20_bands_8_Ry</span>
+<span class="go">out_Xp_20_bands_8_Ry</span>
+<span class="go">job_Xp_20_bands_8_Ry</span>
+<span class="go">i01-GW_Xp_20_bands_10_Ry</span>
+<span class="go">out_Xp_20_bands_10_Ry</span>
+<span class="go">job_Xp_20_bands_10_Ry</span>
+<span class="go">i01-GW_Xp_20_bands_12_Ry</span>
+<span class="go">out_Xp_20_bands_12_Ry</span>
+<span class="go">job_Xp_20_bands_12_Ry</span>
+<span class="go">summary_01_20bands.txt</span>
+<span class="go">i01-GW_Xp_40_bands_6_Ry</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>Finally you can monitor how runs are proceeding by looking into the log files</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="n">out_Xp_</span><span class="o">*</span><span class="n">_bands_</span><span class="o">*/</span><span class="n">LOG</span><span class="o">/*</span><span class="n">_1</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">==&gt;</span> <span class="n">out_Xp_20_bands_6_Ry</span><span class="o">/</span><span class="n">LOG</span><span class="o">/</span><span class="n">l</span><span class="o">-</span><span class="n">job_Xp_20_bands_6_Ry_HF_and_locXC_gw0_dyson_rim_cut_em1d_ppa_CPU_1</span> <span class="o">&lt;==</span>
+ <span class="o">&lt;</span><span class="mi">15</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">TIMING</span><span class="p">]</span>                                          <span class="n">io_WF</span> <span class="p">:</span>      <span class="mf">1.1353</span><span class="n">s</span> <span class="n">CPU</span> <span class="p">(</span><span class="mi">34</span> <span class="n">calls</span><span class="p">,</span>   <span class="mf">0.033</span> <span class="n">sec</span> <span class="n">avg</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">15</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">TIMING</span><span class="p">]</span>                                    <span class="n">WF_load_FFT</span> <span class="p">:</span>      <span class="mf">1.1538</span><span class="n">s</span> <span class="n">CPU</span> <span class="p">(</span> <span class="mi">7</span> <span class="n">calls</span><span class="p">,</span>   <span class="mf">0.165</span> <span class="n">sec</span> <span class="n">avg</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">15</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">TIMING</span><span class="p">]</span>                                    <span class="n">io_KB_pwscf</span> <span class="p">:</span>      <span class="mf">1.1918</span><span class="n">s</span> <span class="n">CPU</span> <span class="p">(</span> <span class="mi">6</span> <span class="n">calls</span><span class="p">,</span>   <span class="mf">0.199</span> <span class="n">sec</span> <span class="n">avg</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">15</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">TIMING</span><span class="p">]</span>                              <span class="n">DIPOLE_transverse</span> <span class="p">:</span>      <span class="mf">2.4771</span><span class="n">s</span> <span class="n">CPU</span>
+ <span class="o">&lt;</span><span class="mi">15</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">TIMING</span><span class="p">]</span>                                    <span class="n">io_fragment</span> <span class="p">:</span>      <span class="mf">2.6220</span><span class="n">s</span> <span class="n">CPU</span> <span class="p">(</span><span class="mi">46</span> <span class="n">calls</span><span class="p">,</span>   <span class="mf">0.057</span> <span class="n">sec</span> <span class="n">avg</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">15</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">TIMING</span><span class="p">]</span>                                           <span class="n">io_X</span> <span class="p">:</span>      <span class="mf">3.1953</span><span class="n">s</span> <span class="n">CPU</span> <span class="p">(</span><span class="mi">19</span> <span class="n">calls</span><span class="p">,</span>   <span class="mf">0.168</span> <span class="n">sec</span> <span class="n">avg</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">15</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">TIMING</span><span class="p">]</span>                                        <span class="n">Dipoles</span> <span class="p">:</span>      <span class="mf">4.4012</span><span class="n">s</span> <span class="n">CPU</span>
+ <span class="o">&lt;</span><span class="mi">15</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="n">Memory</span> <span class="n">Overview</span>
+ <span class="o">&lt;</span><span class="mi">15</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="n">Game</span> <span class="n">Over</span> <span class="o">&amp;</span> <span class="n">Game</span> <span class="n">summary</span>
+ <span class="o">&lt;</span><span class="mi">15</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">TIMING</span><span class="p">]</span>            <span class="p">[</span><span class="n">Time</span><span class="o">-</span><span class="n">Profile</span><span class="p">]:</span> <span class="mi">15</span><span class="n">s</span>
+
+<span class="o">==&gt;</span> <span class="n">out_Xp_20_bands_8_Ry</span><span class="o">/</span><span class="n">LOG</span><span class="o">/</span><span class="n">l</span><span class="o">-</span><span class="n">job_Xp_20_bands_8_Ry_HF_and_locXC_gw0_dyson_rim_cut_em1d_ppa_CPU_1</span> <span class="o">&lt;==</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="n">X</span><span class="nd">@q</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">|</span>                                        <span class="o">|</span> <span class="p">[</span><span class="mi">000</span><span class="o">%</span><span class="p">]</span> <span class="o">--</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">--</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="n">X</span><span class="nd">@q</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">|</span><span class="c1">########################################| [100%] --(E) --(X)</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">PARALLEL</span> <span class="n">distribution</span> <span class="k">for</span> <span class="n">RL</span> <span class="n">vectors</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="n">on</span> <span class="mi">2</span> <span class="n">CPU</span><span class="p">]</span> <span class="n">Loaded</span><span class="o">/</span><span class="n">Total</span> <span class="p">(</span><span class="n">Percentual</span><span class="p">):</span><span class="mi">31878</span><span class="o">/</span><span class="mi">64009</span><span class="p">(</span><span class="mi">50</span><span class="o">%</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">PARALLEL</span> <span class="n">distribution</span> <span class="k">for</span> <span class="n">RL</span> <span class="n">vectors</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="n">on</span> <span class="mi">2</span> <span class="n">CPU</span><span class="p">]</span> <span class="n">Loaded</span><span class="o">/</span><span class="n">Total</span> <span class="p">(</span><span class="n">Percentual</span><span class="p">):</span><span class="mi">18975</span><span class="o">/</span><span class="mi">64009</span><span class="p">(</span><span class="mi">30</span><span class="o">%</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">X</span><span class="o">-</span><span class="n">CG</span><span class="p">]</span> <span class="n">R</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="n">Tot</span> <span class="n">o</span><span class="o">/</span><span class="n">o</span><span class="p">(</span><span class="n">of</span> <span class="n">R</span><span class="p">):</span>   <span class="mi">153</span>   <span class="mi">504</span>   <span class="mi">100</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="n">Xo</span><span class="nd">@q</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">|</span>                                        <span class="o">|</span> <span class="p">[</span><span class="mi">000</span><span class="o">%</span><span class="p">]</span> <span class="o">--</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">--</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="n">Xo</span><span class="nd">@q</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">|</span><span class="c1">########################################| [100%] --(E) --(X)</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">PARALLEL</span> <span class="n">distribution</span> <span class="k">for</span> <span class="n">X</span> <span class="n">Frequencies</span> <span class="n">on</span> <span class="mi">1</span> <span class="n">CPU</span><span class="p">]</span> <span class="n">Loaded</span><span class="o">/</span><span class="n">Total</span> <span class="p">(</span><span class="n">Percentual</span><span class="p">):</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">(</span><span class="mi">100</span><span class="o">%</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="n">X</span><span class="nd">@q</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">|</span>                                        <span class="o">|</span> <span class="p">[</span><span class="mi">000</span><span class="o">%</span><span class="p">]</span> <span class="o">--</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">--</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="n">X</span><span class="nd">@q</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">|</span><span class="c1">########################################| [100%] --(E) --(X)</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="n">PARALLEL</span> <span class="n">distribution</span> <span class="k">for</span> <span class="n">RL</span> <span class="n">vectors</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="n">on</span> <span class="mi">2</span> <span class="n">CPU</span><span class="p">]</span> <span class="n">Loaded</span><span class="o">/</span><span class="n">Total</span> <span class="p">(</span><span class="n">Percentual</span><span class="p">):</span><span class="mi">31878</span><span class="o">/</span><span class="mi">64009</span><span class="p">(</span><span class="mi">50</span><span class="o">%</span><span class="p">)</span>
+ <span class="o">&lt;</span><span class="mi">11</span><span class="n">s</span><span class="o">&gt;</span> <span class="n">P1</span><span class="p">:</span> <span class="p">[</span><span class="mi">08</span><span class="p">]</span> <span class="n">Local</span> <span class="n">Exchange</span><span class="o">-</span><span class="n">Correlation</span> <span class="o">+</span> <span class="n">Non</span><span class="o">-</span><span class="n">Local</span> <span class="n">Fock</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s now have look into the job we just submitted.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="n">run01_converge_pol</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>First, we defined the double loop and we intialize a summary file for each iteration of the outer loop by printing a header to it. The input file <code class="docutils literal notranslate"><span class="pre">i01-GW</span></code> is used as a template for every calculation in the loops, so we assign it to a variable.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">file0</span><span class="o">=</span><span class="s1">&#39;i01-GW&#39;</span>
+
+<span class="k">for</span><span class="w"> </span>POL_BANDS<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">80</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;NGsBlkXp [Ry]   E_vale [eV]   E_cond [eV]&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>summary_01_<span class="si">${</span><span class="nv">POL_BANDS</span><span class="si">}</span>bands.txt
+
+<span class="k">for</span><span class="w"> </span>NGsBlkXp_Ry<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">12</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+
+<span class="o">(</span>...<span class="o">)</span>
+
+<span class="k">done</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>Inside the loops, we generate some useful labels which will come in handy to distinguish between runs. Then, we pass the variables from the loops to the <code class="docutils literal notranslate"><span class="pre">sed</span></code> command, in order to generate new files in an automated way (<code class="docutils literal notranslate"><span class="pre">sed</span></code> replaces any matching string with whatever is provided by the loop variable). Next, we run <code class="docutils literal notranslate"><span class="pre">yambo</span></code> using the labels to specify different job <code class="docutils literal notranslate"><span class="pre">-J</span></code> and communication <code class="docutils literal notranslate"><span class="pre">-C</span></code> directories every time. Finally, we get the quasiparticle energies with <code class="docutils literal notranslate"><span class="pre">grep</span></code> commands as shown before and append a new line to the summary file. So, inside each loop, we have</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">label</span><span class="o">=</span>Xp_<span class="si">${</span><span class="nv">POL_BANDS</span><span class="si">}</span>_bands_<span class="si">${</span><span class="nv">NGsBlkXp_Ry</span><span class="si">}</span>_Ry
+<span class="nv">jdir</span><span class="o">=</span>job_<span class="si">${</span><span class="nv">label</span><span class="si">}</span>
+<span class="nv">cdir</span><span class="o">=</span>out_<span class="si">${</span><span class="nv">label</span><span class="si">}</span>
+<span class="nv">filein</span><span class="o">=</span>i01-GW_<span class="si">${</span><span class="nv">label</span><span class="si">}</span>
+
+sed<span class="w"> </span><span class="s2">&quot;s/NGsBlkXp=.*/NGsBlkXp=</span><span class="si">${</span><span class="nv">NGsBlkXp_Ry</span><span class="si">}</span><span class="s2"> Ry/;</span>
+<span class="s2">      /% BndsRnXp/{n;s/.*/  1 |  </span><span class="si">${</span><span class="nv">POL_BANDS</span><span class="si">}</span><span class="s2"> |/}&quot;</span><span class="w"> </span><span class="nv">$file0</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$filein</span>
+
+<span class="c1"># run yambo</span>
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_NTASKS</span><span class="si">}</span><span class="w"> </span>--map-by<span class="w"> </span>socket:PE<span class="o">=</span><span class="m">8</span><span class="w"> </span>--rank-by<span class="w"> </span>core<span class="w"> </span>yambo<span class="w"> </span>-F<span class="w"> </span><span class="nv">$filein</span><span class="w"> </span>-J<span class="w"> </span><span class="nv">$jdir</span><span class="w"> </span>-C<span class="w"> </span><span class="nv">$cdir</span>
+
+<span class="nv">E_GW_v</span><span class="o">=</span><span class="sb">`</span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;#&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">cdir</span><span class="si">}</span>/o-<span class="si">${</span><span class="nv">jdir</span><span class="si">}</span>.qp<span class="p">|</span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $3+$4}&#39;</span><span class="sb">`</span>
+<span class="nv">E_GW_c</span><span class="o">=</span><span class="sb">`</span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;#&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">cdir</span><span class="si">}</span>/o-<span class="si">${</span><span class="nv">jdir</span><span class="si">}</span>.qp<span class="p">|</span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $3+$4}&#39;</span><span class="sb">`</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">NGsBlkXp_Ry</span><span class="si">}</span><span class="w"> </span><span class="s1">&#39;        &#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">E_GW_v</span><span class="si">}</span><span class="w"> </span><span class="s1">&#39;        &#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">E_GW_c</span><span class="si">}</span><span class="w">  </span>&gt;&gt;<span class="w"> </span>summary_01_<span class="si">${</span><span class="nv">POL_BANDS</span><span class="si">}</span>bands.txt
+</pre></div>
+</div>
+<p>Finally, let us plot this data. First, check that the job has finished with</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">squeue -u $USER</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[$USER@login01 02_GW_convergence]$ </span>squeue<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+<span class="go">             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="gp">[$USER@login01 02_GW_convergence]$ </span>
+</pre></div>
+</div>
+<p>and verify that the energies were extracted correctly by inspecting the summary files. Remember to load the python module if you haven’t done so yet, and then plot:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load anaconda3/2023.03</span>
+<span class="go">python plot-01.py</span>
+</pre></div>
+</div>
+<p>The plot will produce a <code class="docutils literal notranslate"><span class="pre">fig-01.png</span></code> file.
+You can copy and open it in your local machine with something like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[Run this on another terminal in your local machine, fixing $USER, $LOGIN and $TUTORIALPATH]
+scp $USER@$LOGIN:$TUTORIALPATH/MoS2_HPC_tutorial_Leonardo/02_GW_convergence/fig-01.png ./
+</pre></div>
+</div>
+<p>You should get:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/convergence01.png"><img alt="_images/convergence01.png" src="_images/convergence01.png" style="width: 512.0px; height: 384.0px;" />
+</a>
+</figure>
+<p>For the purpose of the tutorial, we will choose 80 bands and 10 Ry as our converged parameters and move on. An error within 10 meV is usually acceptable. To retain the chosen variables, we’ll make a copy of the corresponding input file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">i01</span><span class="o">-</span><span class="n">GW_Xp_80_bands_10_Ry</span> <span class="n">i02</span><span class="o">-</span><span class="n">GW</span>
+</pre></div>
+</div>
+</section>
+<section id="self-energy-sigma-c-bands">
+<h5>Self-energy <span class="math notranslate nohighlight">\(\Sigma^c\)</span> - Bands<a class="headerlink" href="#self-energy-sigma-c-bands" title="Link to this heading"></a></h5>
+<p>We will now proceed to converge the number of bands for the correlation part of the self-energy, i.e., <code class="docutils literal notranslate"><span class="pre">GbndRnge</span></code>. This step is actually simpler, since it only involves one loop. This is coded in the provided script <code class="docutils literal notranslate"><span class="pre">run02_converge_Gbnds.noBG.sh</span></code>. You can look into it</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="n">run02_converge_Gbnds</span><span class="o">.</span><span class="n">noBG</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>and go ahead and submit it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbatch</span> <span class="n">run02_converge_Gbnds</span><span class="o">.</span><span class="n">noBG</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<div class="admonition-optional-use-the-terminator-to-accelerate-convergence solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">[OPTIONAL]: Use the terminator to accelerate convergence</p>
+<p>While that runs, we’ll have a look at the so-called Bruneval-Gonze (BG) terminator, which is a method to accelerate convergence with respect to empty bands. The variable that controls this for the bands in the correlation self-energy is <code class="docutils literal notranslate"><span class="pre">GTermKind</span></code>. This is currently set to “none” in <code class="docutils literal notranslate"><span class="pre">i02-GW</span></code>, so create a new input file <code class="docutils literal notranslate"><span class="pre">i02-GW_BG</span></code> and set this variable to “BG”. We can do this in the command line by simply typing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sed</span> <span class="s1">&#39;s/GTermKind=.*/GTermKind= &quot;BG&quot;/&#39;</span> <span class="n">i02</span><span class="o">-</span><span class="n">GW</span> <span class="o">&gt;</span> <span class="n">i02</span><span class="o">-</span><span class="n">GW_BG</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">XTermKind</span></code> also offers the same terminator for the sum over bands of the polarization function (we just chose not to use it in the previous section of this excercise, and we will keep it as “none”). Now, copy the last submission script and edit it to run the same convergence test using the BG terminator.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">run02_converge_Gbnds</span><span class="o">.</span><span class="n">noBG</span><span class="o">.</span><span class="n">sh</span> <span class="n">run03_converge_Gbnds</span><span class="o">.</span><span class="n">BG</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Try and do this yourself first, and then continue reading to check your understanding.
+You will have to change the input file template, i.e., use <code class="docutils literal notranslate"><span class="pre">i02-GW_BG</span></code> where the terminator has been activated. Modify also the name of the newly generated input files in order to avoid overwriting. Change the name of the summary file for the same reason and, finally, modify the communications and job directories of <code class="docutils literal notranslate"><span class="pre">yambo</span></code>. Make sure you’ve done all the changes as outlined below.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">file0</span><span class="o">=</span><span class="s1">&#39;i02-GW_BG&#39;</span>
+<span class="nv">summaryfile</span><span class="o">=</span>summary_03_BG.txt
+
+<span class="o">(</span>...<span class="o">)</span>
+
+<span class="nv">label</span><span class="o">=</span>Gbands_<span class="si">${</span><span class="nv">G_BANDS</span><span class="si">}</span>_BG
+<span class="nv">filein</span><span class="o">=</span>i02-GW_<span class="si">${</span><span class="nv">G_BANDS</span><span class="si">}</span>_Gbands_BG
+</pre></div>
+</div>
+<p>Now submit your newly edited script</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbatch</span> <span class="n">run03_converge_Gbnds</span><span class="o">.</span><span class="n">BG</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<p>While this runs, check if the previous job has finished, i.e., you should have a complete <code class="docutils literal notranslate"><span class="pre">summary_02_noBG.txt</span></code> file by now.
+For a visual result, proceed to plot them with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">plot</span><span class="o">-</span><span class="mf">02.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>You should get</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/BG_noBG.png"><img alt="_images/BG_noBG.png" src="_images/BG_noBG.png" style="width: 512.0px; height: 384.0px;" />
+</a>
+</figure>
+<div class="admonition-optional solution important dropdown admonition" id="solution-1">
+<p class="admonition-title">OPTIONAL</p>
+<p>If you also did the optional step, you can compare <code class="docutils literal notranslate"><span class="pre">summary_02_noBG.txt</span></code> with <code class="docutils literal notranslate"><span class="pre">summary_03_BG.txt</span></code> once <code class="docutils literal notranslate"><span class="pre">run03_converge_Gbnds.BG.sh</span></code> has finished - you’ll see the effect of the terminator immediately.
+Just open the <code class="docutils literal notranslate"><span class="pre">plot-02.py</span></code> script and uncomment the line <code class="docutils literal notranslate"><span class="pre">#list_of_files</span> <span class="pre">=</span> <span class="pre">['summary_02_noBG.txt','summary_03_BG.txt']</span></code>, then rerun it with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">plot-02.py</span></code>.
+You can see that the terminator does a great job at accelerating convergence, and it allows us to use 60 bands incurring an error of only 3 meV (while the latter would have been larger than 0.1 eV had we not used the terminator).</p>
+</div>
+<p>We will end the convergence part of the tutorial with an important consideration about k-points convergence. The latter is the most cumbersome and computationally intensive among the various convergence tests, and it involves re-running the DFT step. For this reason (and for this reason only) it was ignored in this tutorial. However, it absolutely cannot be overlooked since it is crucial for the accuracy of the calculated GW corrections. You can read about k-points convergence in GW and, importantly, a very efficient workaround for 2D systems in a recent publication (<a class="reference external" href="https://www.nature.com/articles/s41524-023-00989-7">here</a>). MoS<span class="math notranslate nohighlight">\(_2\)</span> was one of the materials studied there, and it shows that our result, obtained with a <span class="math notranslate nohighlight">\(6 \times 6 \times 1\)</span> k-grid, is simply <em>off the chart</em> (blue line).</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/ref-Guandalini.png"><img alt="_images/ref-Guandalini.png" src="_images/ref-Guandalini.png" style="width: 632.8000000000001px; height: 322.40000000000003px;" />
+</a>
+</figure>
+<p><em>Guandalini, D’Amico, Ferretti &amp; Varsano. npj Comput Mater 9</em></p>
+<div class="admonition-optional-use-the-rim-w-accelerator solution important dropdown admonition" id="solution-2">
+<p class="admonition-title">[OPTIONAL]: Use the RIM-W accelerator</p>
+<p>However you can try to get a reasonable correction via the RIM-W approach. Create a new input file copying a suitable one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">i02</span><span class="o">-</span><span class="n">GW_80_Gbands</span>  <span class="n">i04</span><span class="o">-</span><span class="n">GW_80_Gbands_rimw</span>
+<span class="n">vim</span> <span class="n">i04</span><span class="o">-</span><span class="n">GW_80_Gbands_rimw</span>
+</pre></div>
+</div>
+<p>Then, you just need to add the following two variables to the input file (for example just after the runlevel keywords)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RIM_W</span>
+<span class="n">RandGvecW</span><span class="o">=</span> <span class="mi">15</span>           <span class="n">RL</span>
+</pre></div>
+</div>
+<p>and prepare a submission script</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="n">run02_converge_Gbnds</span><span class="o">.</span><span class="n">noBG</span><span class="o">.</span><span class="n">sh</span>  <span class="n">run04_converge_rimw</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">vim</span> <span class="n">run04_converge_rimw</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Edit it by removing the loop and changing <code class="docutils literal notranslate"><span class="pre">summaryfile</span></code>, <code class="docutils literal notranslate"><span class="pre">label</span></code> and <code class="docutils literal notranslate"><span class="pre">filein</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=4</span>
+<span class="c1">#SBATCH --cpus-per-task=8</span>
+<span class="c1">#SBATCH --partition=boost_usr_prod</span>
+<span class="c1">#SBATCH --time=0:10:00</span>
+<span class="c1">#SBATCH --gres=gpu:4</span>
+<span class="c1">#SBATCH --account=EUHPC_TD02_030</span>
+<span class="c1">#SBATCH --job-name=mos2</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">8</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_PLACES</span><span class="o">=</span>cores
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_PROC_BIND</span><span class="o">=</span>close
+
+<span class="c1"># load yambo</span>
+module<span class="w"> </span>load<span class="w"> </span>profile/chem-phys
+module<span class="w"> </span>load<span class="w"> </span>yambo/5.2.0--openmpi--4.1.4--nvhpc--23.1
+
+<span class="nv">file0</span><span class="o">=</span><span class="s1">&#39;i02-GW&#39;</span>
+<span class="nv">summaryfile</span><span class="o">=</span>summary_04_rimw.txt
+
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;G bands     E_vale [eV]        E_cond [eV]      GAP [eV]&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$summaryfile</span>
+
+<span class="nv">G_BANDS</span><span class="o">=</span><span class="m">80</span>
+
+<span class="nv">label</span><span class="o">=</span>Gbands_<span class="si">${</span><span class="nv">G_BANDS</span><span class="si">}</span>_rimw
+<span class="nv">jdir</span><span class="o">=</span>job_<span class="si">${</span><span class="nv">label</span><span class="si">}</span>
+<span class="nv">cdir</span><span class="o">=</span>out_<span class="si">${</span><span class="nv">label</span><span class="si">}</span>
+<span class="nv">filein</span><span class="o">=</span>i04-GW_<span class="si">${</span><span class="nv">G_BANDS</span><span class="si">}</span>_Gbands_rimw
+
+<span class="c1"># run yambo</span>
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_NTASKS</span><span class="si">}</span><span class="w"> </span>--map-by<span class="w"> </span>socket:PE<span class="o">=</span><span class="m">8</span><span class="w"> </span>--rank-by<span class="w"> </span>core<span class="w"> </span>yambo<span class="w"> </span>-F<span class="w"> </span><span class="nv">$filein</span><span class="w"> </span>-J<span class="w"> </span><span class="nv">$jdir</span><span class="w"> </span>-C<span class="w"> </span><span class="nv">$cdir</span>
+
+<span class="nv">E_GW_v</span><span class="o">=</span><span class="sb">`</span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;#&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">cdir</span><span class="si">}</span>/o-<span class="si">${</span><span class="nv">jdir</span><span class="si">}</span>.qp<span class="p">|</span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $3+$4}&#39;</span><span class="sb">`</span>
+<span class="nv">E_GW_c</span><span class="o">=</span><span class="sb">`</span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;#&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">cdir</span><span class="si">}</span>/o-<span class="si">${</span><span class="nv">jdir</span><span class="si">}</span>.qp<span class="p">|</span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $3+$4}&#39;</span><span class="sb">`</span>
+
+<span class="nv">GAP_GW</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$E_GW_c</span><span class="w"> </span>-<span class="w"> </span><span class="nv">$E_GW_v</span><span class="w"> </span><span class="p">|</span>bc<span class="sb">`</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">G_BANDS</span><span class="si">}</span><span class="w"> </span><span class="s1">&#39;        &#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">E_GW_v</span><span class="si">}</span><span class="w"> </span><span class="s1">&#39;        &#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">E_GW_c</span><span class="si">}</span><span class="w"> </span><span class="s1">&#39;        &#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">GAP_GW</span><span class="si">}</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$summaryfile</span>
+</pre></div>
+</div>
+<p>and then run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbatch</span> <span class="n">run04_converge_rimw</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>How much do you get for the band gap ?</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="gw-parallel-strategies">
+<h4>GW parallel strategies<a class="headerlink" href="#gw-parallel-strategies" title="Link to this heading"></a></h4>
+<section id="mpi-parallelization">
+<h5>MPI parallelization<a class="headerlink" href="#mpi-parallelization" title="Link to this heading"></a></h5>
+<p>For this section, let us enter the <code class="docutils literal notranslate"><span class="pre">03_GW_parallel</span></code> directory. If you were in the <code class="docutils literal notranslate"><span class="pre">02_GW_convegence</span></code> folder just do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="mi">03</span><span class="n">_GW_parallel</span>
+</pre></div>
+</div>
+<p>and inspect the input <code class="docutils literal notranslate"><span class="pre">gw.in</span></code>. You will see that we set low values for most of the convergence parameters except bands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="n">gw</span><span class="o">.</span><span class="ow">in</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FFTGvecs</span><span class="o">=</span> <span class="mi">40</span>       <span class="n">Ry</span>    <span class="c1"># [FFT] Plane-waves</span>
+<span class="n">EXXRLvcs</span><span class="o">=</span> <span class="mi">2</span>        <span class="n">Ry</span>    <span class="c1"># [XX] Exchange RL components</span>
+<span class="n">VXCRLvcs</span><span class="o">=</span> <span class="mi">2</span>        <span class="n">Ry</span>    <span class="c1"># [XC] XCpotential RL components</span>
+<span class="o">%</span> <span class="n">BndsRnXp</span>
+    <span class="mi">1</span> <span class="o">|</span>  <span class="mi">300</span> <span class="o">|</span>               <span class="c1"># [Xp] Polarization function bands</span>
+<span class="o">%</span>
+<span class="n">NGsBlkXp</span><span class="o">=</span> <span class="mi">1</span>            <span class="n">Ry</span>    <span class="c1"># [Xp] Response block size</span>
+<span class="o">%</span> <span class="n">GbndRnge</span>
+    <span class="mi">1</span> <span class="o">|</span>  <span class="mi">300</span> <span class="o">|</span>               <span class="c1"># [GW] G[W] bands range</span>
+<span class="o">%</span>
+<span class="o">%</span><span class="n">QPkrange</span>                    <span class="c1"># [GW] QP generalized Kpoint/Band indices</span>
+  <span class="mi">1</span><span class="o">|</span> <span class="mi">19</span><span class="o">|</span> <span class="mi">23</span><span class="o">|</span> <span class="mi">30</span><span class="o">|</span>
+<span class="o">%</span>
+</pre></div>
+</div>
+<p>Note that we also added <code class="docutils literal notranslate"><span class="pre">FFTGvecs</span></code> to reduce the size of the Fourier transforms (the default corresponds to Quantum ESPRESSO <code class="docutils literal notranslate"><span class="pre">ecutwfc</span></code>, i.e. 60 Ry in this case).</p>
+<p>In addition, we have deleted all the parallel parameters since we will be setting them via the submission script.</p>
+<p>Actually we are now dealing with a heavier system than before: as you can see from the <code class="docutils literal notranslate"><span class="pre">QPkrange</span></code> values, we have switched to a 12x12x1 k-point grid - having 19 points in the irreducible Brillouin zone - and turned spin-orbit coupling on in the DFT calculation (now the top valence band is number 26 instead of 13 because the bands are spin-polarized).</p>
+<p>For this part of the tutorial, we will be using the <code class="docutils literal notranslate"><span class="pre">slurm</span></code> submission script <code class="docutils literal notranslate"><span class="pre">job_parallel.sh</span></code>, which is available in the calculation directory.
+If you inspect it, you will see that the script adds additional variables to the yambo input file.
+These variables control the parallel execution of the code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">DIP_CPU</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1 </span><span class="nv">$ngpu</span><span class="s2"> 1&quot;</span><span class="w">          </span><span class="c1"># [PARALLEL] CPUs for each role</span>
+<span class="nv">DIP_ROLEs</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;k c v&quot;</span><span class="w">            </span><span class="c1"># [PARALLEL] CPUs roles (k,c,v)</span>
+<span class="nv">DIP_Threads</span><span class="o">=</span><span class="w">  </span><span class="m">0</span><span class="w">               </span><span class="c1"># [OPENMP/X] Number of threads for dipoles</span>
+<span class="nv">X_and_IO_CPU</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1 1 1 </span><span class="nv">$ngpu</span><span class="s2"> 1&quot;</span><span class="w"> </span><span class="c1"># [PARALLEL] CPUs for each role</span>
+<span class="nv">X_and_IO_ROLEs</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;q g k c v&quot;</span><span class="w">   </span><span class="c1"># [PARALLEL] CPUs roles (q,g,k,c,v)</span>
+<span class="nv">X_and_IO_nCPU_LinAlg_INV</span><span class="o">=</span><span class="m">1</span><span class="w">    </span><span class="c1"># [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)</span>
+<span class="nv">X_Threads</span><span class="o">=</span><span class="w">  </span><span class="m">0</span><span class="w">                 </span><span class="c1"># [OPENMP/X] Number of threads for response functions</span>
+<span class="nv">SE_CPU</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1 </span><span class="nv">$ngpu</span><span class="s2"> 1&quot;</span><span class="w">           </span><span class="c1"># [PARALLEL] CPUs for each role</span>
+<span class="nv">SE_ROLEs</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;q qp b&quot;</span><span class="w">            </span><span class="c1"># [PARALLEL] CPUs roles (q,qp,b)</span>
+<span class="nv">SE_Threads</span><span class="o">=</span><span class="w">  </span><span class="m">0</span><span class="w">                </span><span class="c1"># [OPENMP/GW] Number of threads for self-energy</span>
+</pre></div>
+</div>
+<p>The keyword <code class="docutils literal notranslate"><span class="pre">DIP</span></code> refers to the calculations of the screening matrix elements (also called “dipoles”) needed for the screening function, <code class="docutils literal notranslate"><span class="pre">X</span></code> is the screening function itself (it stands for <span class="math notranslate nohighlight">\(\chi\)</span> since it is a response function), <code class="docutils literal notranslate"><span class="pre">SE</span></code> the self-energy.
+These three sections of the code can be parallelised independently.</p>
+<p>We are running on GPUs. In particular, each node hosts four GPU cards. Yambo is coded in such a way that each MPI <em>task</em> is run on a single card, therefore <code class="docutils literal notranslate"><span class="pre">ntasks=ngpu</span></code>.</p>
+<div class="admonition-note callout admonition" id="callout-6">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>In this subsection we are mainly concerned with the <strong>[PARALLEL]</strong> variables which refer to MPI <em>tasks</em> (distributed memory).</p></li>
+<li><p>What about <strong>[OPENMP]</strong> parallelisation (i.e., adding <em>threads</em> with shared memory)? When Yambo is run on GPUs, the explicit threading that you can set in the input and submission script only applies to the very few sections of the code that are <em>not</em> run on GPU cards, but stay on the CPUs. Therefore, in a GPU calculation, CPU-only threads are not going to be a relevant factor in the performance of the code. We keep them fixed to 8 since on Leonardo Booster (32 CPUs and 4 GPUs per node) the best hybrid parallel setup <em>for CPUs</em> is 4 tasks times 8 threads. We will see an example of the impact of threads in a CPU-only calculation later.</p></li>
+</ul>
+</div>
+<p>We start by calculating the QP corrections using 4 MPI tasks / GPUs. We leave the number of openMP threads at 8, the optimized value for Yambo on Leonardo. Therefore, edit the submission script as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=4</span>
+...
+<span class="c1">#SBATCH --gres=gpu:4</span>
+</pre></div>
+</div>
+<p>and submit the job</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbatch</span> <span class="n">job_parallel</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This will create a new input file and run it. The calculation databases and the human-readable files will be put in separate directories. Check the location of the report <code class="docutils literal notranslate"><span class="pre">r-*</span></code> file and the log <code class="docutils literal notranslate"><span class="pre">l-*</span></code> files, and inspect them while the calculation runs.
+For simplicity you can just type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="n">run_MPI4_OMP8</span><span class="o">.</span><span class="n">out</span><span class="o">/</span><span class="n">LOG</span><span class="o">/</span><span class="n">l</span><span class="o">-*</span><span class="n">_CPU_1</span>
+</pre></div>
+</div>
+<p>to monitor the progress in the master thread (<code class="docutils literal notranslate"><span class="pre">Ctrl+c</span></code> to exit).
+As you can see, the run takes some time, even though we are using minimal parameters.</p>
+<p>Meanwhile, we can run other jobs increasing the parallelisation. Let’s employ 16 MPI tasks / GPUs (i.e., 4 nodes on Leonardo). To this end modify the <code class="docutils literal notranslate"><span class="pre">job_parallel.sh</span></code> script changing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --nodes=4</span>
+<span class="c1">#SBATCH --ntasks-per-node=4</span>
+...
+<span class="c1">#SBATCH --gres=gpu:4</span>
+</pre></div>
+</div>
+<p>This time the code should be much faster. Once the run is over, try to run the simulation also on 8 MPI tasks by changing <code class="docutils literal notranslate"><span class="pre">nodes</span></code> appropriately. Finally, you can try to produce a scaling plot.</p>
+<p>The timings are contained in the <code class="docutils literal notranslate"><span class="pre">r-*</span></code> report files. You can already have a look at them typing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">Time</span><span class="o">-</span><span class="n">Profile</span> <span class="n">run_MPI</span><span class="o">*/</span><span class="n">r</span><span class="o">-*</span>
+</pre></div>
+</div>
+<p>The python script <code class="docutils literal notranslate"><span class="pre">parse_ytiming.py</span></code> is useful for the post-processing of report files. You can already find it in the directory, together with the reports for the longer calculations with 1 and 2 MPI tasks which have been provided.</p>
+<p>If you didn’t do so already, load the python module</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">anaconda3</span><span class="o">/</span><span class="mf">2023.03</span>
+</pre></div>
+</div>
+<p>Then, after your jobs have finished, run the script as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">parse_ytiming</span><span class="o">.</span><span class="n">py</span> <span class="n">run_MPI</span>
+</pre></div>
+</div>
+<p>to look for a report file in each <code class="docutils literal notranslate"><span class="pre">run_MPI*.out</span></code> folder. <strong>Make sure you have only one report file per folder.</strong>
+You can also play with the script to make it print detailed timing information, however you should already see that it produced a png plot showing times-to-completion on y axis against number of MPI tasks (i.e., GPUs in this case) on the x axis.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/gw_scaling.png"><img alt="_images/gw_scaling.png" src="_images/gw_scaling.png" style="width: 512.0px; height: 384.0px;" />
+</a>
+</figure>
+<p>What can we learn from this plot? In particular, try to answer the following questions:</p>
+<ul class="simple">
+<li><p>Up to which number of MPI tasks our system scales efficiently?</p></li>
+<li><p>How can we decide at which point adding more nodes to the calculation becomes a waste of resources?</p></li>
+</ul>
+<div class="admonition-note callout admonition" id="callout-7">
+<p class="admonition-title">Note</p>
+<p>Keep in mind that the MPI scaling we are seeing here is not the true Yambo scaling, but depends on the small size of our tutorial system. In a realistic calculation for a large-sized system, <strong>Yambo has been shown to scale well up to tens of thousands of MPI tasks</strong>! (See the next optional box for an example)</p>
+</div>
+<div class="admonition-optional-comparison-with-cpu-calculation-with-hybrid-parallelization-strategy solution important dropdown admonition" id="solution-3">
+<p class="admonition-title">[OPTIONAL] Comparison with CPU calculation with hybrid parallelization strategy</p>
+<p>We have run the same calculation using a version of Yambo compiled in order to run on CPUs. This is not the preferred approach in an accelerator-based machine like Leonardo, but it can be instructive.</p>
+<p>For a CPU calculation, we can use a hybrid parallel structure with threads. The OPENMP threads are controlled by modifying <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code> and <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> in the submission file. The product of the number of OpenMP threads and MPI tasks is equal to the total number of CPUs.</p>
+<p>For our test, we have used larger convergence parameters than in the previous run, and selected a hybrid parallel scheme with 16 MPI tasks per node, with 2 OPENMP threads (<code class="docutils literal notranslate"><span class="pre">ntasks*nthreads=ncpu=16*2=32</span></code>), since it gives the best scaling in this case.</p>
+<div class="admonition-note callout admonition" id="callout-8">
+<p class="admonition-title">Note</p>
+<p>In general (for larger systems) we have tested that the best CPU scaling on Leonardo is actually 4 MPI tasks times 8 OPENMP threads.</p>
+</div>
+<p>Therefore, in the new CPU submission script we have:</p>
+<div class="highlight-bash= notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=16
+#SBATCH --cpus-per-task=2
+...
+export OMP_NUM_THREADS=2
+</pre></div>
+</div>
+<p>Actually, we don’t need to change the openMP-related variables appearing in the yambo input, since the value <code class="docutils literal notranslate"><span class="pre">0</span></code> means “use the value of <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code>” and we have now set this environment variable to our liking via the submission script.
+Otherwise, any positive number can directly specify the number of threads to be used in each section of the code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DIP_Threads</span><span class="o">=</span>  <span class="mi">0</span>     <span class="c1"># [OPENMP/X] Number of threads for dipoles</span>
+<span class="o">...</span>
+<span class="n">X_Threads</span><span class="o">=</span>  <span class="mi">0</span>       <span class="c1"># [OPENMP/X] Number of threads for response functions</span>
+<span class="o">...</span>
+<span class="n">SE_Threads</span><span class="o">=</span>  <span class="mi">0</span>      <span class="c1"># [OPENMP/GW] Number of threads for self-energy</span>
+</pre></div>
+</div>
+<p>Actively looking for the best scaling on both GPU and CPU for our enlarged MoS2 system we find:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/CPU_scaling.jpeg"><img alt="_images/CPU_scaling.jpeg" src="_images/CPU_scaling.jpeg" style="width: 431.20000000000005px; height: 284.0px;" />
+</a>
+</figure>
+<p>We can see that already for this reasonably small and half-converged system run on a few nodes the GPU calculation easily reaches a speedup of 2x. The speedup vastly increases in larger systems where the calculations are more demanding, as you can see from the scaling tests below (run on the Juwels Booster machine) on a graphene-cobalt interface supercell.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/grCo_scaling.png"><img alt="_images/grCo_scaling.png" src="_images/grCo_scaling.png" style="width: 770.4000000000001px; height: 285.6px;" />
+</a>
+</figure>
+<p><em>Scaling comparison of graphene&#64;Co(0001) interface on CPU (left, 48 cpus per node) and GPU (right, 4 GPUs per node). Tests done by Nicola Spallanzani. Data available at: http://www.gitlab.com/max-centre/Benchmarks</em></p>
+<div class="admonition-note callout admonition" id="callout-9">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>In real-life CPU-based calculations running on <span class="math notranslate nohighlight">\(n_{cores} &gt; 100\)</span>, as we have seen, it may be a good idea to adopt a hybrid approach.</p></li>
+<li><p>The most efficient scaling can depend both on your system and on the HPC facility you’re running on. For a full CPU node on Leonardo (32 cores), using a large-scale system, we have found that 4 tasks times 8 threads gives the best performance.</p></li>
+<li><p>OpenMP can help lower memory requirements within a node. You can try to increase the OpenMP share of threads if you are getting Out Of Memory errors.</p></li>
+</ul>
+</div>
+</div>
+<p>.</p>
+<div class="admonition-optional-comparing-different-parallelisation-schemes solution important dropdown admonition" id="solution-4">
+<p class="admonition-title">[OPTIONAL]: Comparing different parallelisation schemes</p>
+<p>Up to now we always parallelised over a single parameter, i.e. <code class="docutils literal notranslate"><span class="pre">c</span></code> or <code class="docutils literal notranslate"><span class="pre">qp</span></code>. However, Yambo allows for tuning the parallelisation scheme over several parameters broadly corresponding to “loops” (i.e., summations or discrete integrations) in the code.</p>
+<p>To this end you can open again the <code class="docutils literal notranslate"><span class="pre">run_parallel.sh</span></code> script and modify the section where the yambo input variables are set.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">X_CPU</span></code> sets how the MPI Tasks are distributed in the calculation of the response function. The possibilities are shown in the <code class="docutils literal notranslate"><span class="pre">X_ROLEs</span></code>. The same holds for <code class="docutils literal notranslate"><span class="pre">SE_CPU</span></code> and <code class="docutils literal notranslate"><span class="pre">SE_ROLEs</span></code> which control how MPI Tasks are distributed in the calculation of the self-energy.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>X_CPU= &quot;1 1 1 $ncpu 1&quot;      # [PARALLEL] CPUs for each role
+X_ROLEs= &quot;q g k c v&quot;        # [PARALLEL] CPUs roles (q,g,k,c,v)
+X_nCPU_LinAlg_INV= $ncpu    # [PARALLEL] CPUs for Linear Algebra
+X_Threads=  0               # [OPENMP/X] Number of threads for response functions
+DIP_Threads=  0             # [OPENMP/X] Number of threads for dipoles
+SE_CPU= &quot;1 $ncpu 1&quot;         # [PARALLEL] CPUs for each role
+SE_ROLEs= &quot;q qp b&quot;          # [PARALLEL] CPUs roles (q,qp,b)
+SE_Threads=  0              # [OPENMP/GW] Number of threads for self-energy
+</pre></div>
+</div>
+<p>You can try different parallelization schemes and check the performances of Yambo. In doing so, you should also change the jobname <code class="docutils literal notranslate"><span class="pre">label=MPI${ncpu}_OMP${nthreads}</span></code> in the <code class="docutils literal notranslate"><span class="pre">run_parallel.sh</span></code> script to avoid confusion with previous calculations.</p>
+<p>You may then check how speed, memory and load balance between the CPUs are affected. You could modify the script <code class="docutils literal notranslate"><span class="pre">parse_ytiming.py</span></code> to parse the new data, read and distinguish between more file names, new parallelisation options, etc.</p>
+<div class="admonition-note callout admonition" id="callout-10">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The product of the numbers entering each variable (i.e. <code class="docutils literal notranslate"><span class="pre">X_CPU</span></code> and <code class="docutils literal notranslate"><span class="pre">SE_CPU</span></code>) times the number of threads should always match the total number of cores (unless you want to overload the cores taking advantage of multi-threads).</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">X_Threads</span></code> and <code class="docutils literal notranslate"><span class="pre">SE_Threads</span></code> variables you can think about setting different hybrid schemes between the screening and the self-energy runlevels.</p></li>
+<li><p>Memory scales better if you parallelize on bands (<code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">v</span> <span class="pre">b</span></code>).</p></li>
+<li><p>Parallelization on k-points performs similarly to parallelization on bands, but requires more memory.</p></li>
+<li><p>Parallelization on q-points requires much less communication between the MPI tasks. It may be useful if you run on more than one node and the inter-node connection is slow.</p></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="full-gw-band-structure">
+<h4>Full GW band structure<a class="headerlink" href="#full-gw-band-structure" title="Link to this heading"></a></h4>
+<p>This is the final section of the tutorial, in which we want to compute the full correction to the band structure of single-layer MoS<span class="math notranslate nohighlight">\(_2\)</span>.</p>
+<p>This is a massive calculation, so run it right now and we’ll discuss it in the meantime:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../</span><span class="mi">04</span><span class="n">_GW_bands</span>
+<span class="n">sbatch</span> <span class="n">gpu_job</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>In order to get somewhat realistic results, we will use the larger values for the convergence parameters we have identified in the convergence section. In addition, we also increased the vacuum separation (to 30 au) and the k-point mesh (to 18x18x1) in the DFT calculation, and of course we consider spin-orbit coupling.</p>
+<p>Now we have a heavier calculation, and we have to do it not just for the band gap, but the entire band structure which includes 37 kpoints in the irreducible Brillouin zone, two spin-orbit-split valence bands, and two spin-orbit-split conduction bands. Let us check the new input:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="n">gw</span><span class="o">.</span><span class="ow">in</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">QPkrange</span>                        <span class="c1"># [GW] QP generalized Kpoint/Band indices</span>
+<span class="mi">1</span><span class="o">|</span><span class="mi">37</span><span class="o">|</span><span class="mi">25</span><span class="o">|</span><span class="mi">28</span><span class="o">|</span>
+<span class="o">%</span>
+</pre></div>
+</div>
+<p>After about 3 minutes the calculation should be over and the results collected in folder <code class="docutils literal notranslate"><span class="pre">GW_bnds</span></code>. The quasiparticle corrections are stored in human-readable form in the file <code class="docutils literal notranslate"><span class="pre">o-GW_bnds.QP</span></code>, and in netCDF format in the quasiparticle database <code class="docutils literal notranslate"><span class="pre">ndb.QP</span></code>.</p>
+<p>In order to visualize the results in the form of a GW band structure, we will first interpolate the calculated points - recall that we have just 37 points, few of which lie on high-symmetry lines - with <code class="docutils literal notranslate"><span class="pre">ypp</span></code>, the yambo pre- and post-processing executable.</p>
+<div class="admonition-note callout admonition" id="callout-11">
+<p class="admonition-title">Note</p>
+<p>We also have a python-based interface for advanced treatment of all the Yambo databases, called Yambopy. You can check it out <a class="reference external" href="https://www.yambo-code.eu/wiki/index.php/First_steps_in_Yambopy">here</a> on the Yambo wiki.</p>
+</div>
+<p>Let us enter a computing node interactively</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">--</span><span class="n">nodes</span><span class="o">=</span><span class="mi">1</span> <span class="o">--</span><span class="n">ntasks</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">node</span><span class="o">=</span><span class="mi">1</span> <span class="o">--</span><span class="n">gres</span><span class="o">=</span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span> <span class="o">--</span><span class="n">cpus</span><span class="o">-</span><span class="n">per</span><span class="o">-</span><span class="n">task</span><span class="o">=</span><span class="mi">8</span> <span class="o">--</span><span class="n">mem</span><span class="o">=</span><span class="mi">490000</span> <span class="o">--</span><span class="n">account</span><span class="o">=</span><span class="n">EUHPC_TD02_030</span> <span class="o">--</span><span class="n">partition</span><span class="o">=</span><span class="n">boost_usr_prod</span> <span class="o">--</span><span class="n">qos</span><span class="o">=</span><span class="n">boost_qos_dbg</span> <span class="o">--</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">00</span> <span class="o">--</span><span class="n">pty</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+</pre></div>
+</div>
+<p>and load the yambo module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">profile</span><span class="o">/</span><span class="n">chem</span><span class="o">-</span><span class="n">phys</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">yambo</span><span class="o">/</span><span class="mf">5.2.0</span><span class="o">--</span><span class="n">openmpi</span><span class="o">--</span><span class="mf">4.1.4</span><span class="o">--</span><span class="n">nvhpc</span><span class="o">--</span><span class="mf">23.1</span>
+</pre></div>
+</div>
+<p>We can review the options with <code class="docutils literal notranslate"><span class="pre">ypp</span> <span class="pre">-h</span></code> and generate an input file for band structure interpolation with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ypp</span> <span class="o">-</span><span class="n">s</span> <span class="n">b</span> <span class="o">-</span><span class="n">F</span> <span class="n">ypp_bands</span><span class="o">.</span><span class="ow">in</span>
+</pre></div>
+</div>
+<p>Let us modify the resulting input file by selecting the ‘boltztrap’ approach to interpolation, the last two valence and first two conduction bands, and a path in the Brillouin zone along the the points <span class="math notranslate nohighlight">\(\Gamma-M-K-\Gamma\)</span>. We also set 100 points for each high-symmetry line.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrons</span>                        <span class="c1"># [R] Electronic properties</span>
+<span class="n">bnds</span>                             <span class="c1"># [R] Bands</span>
+<span class="n">PROJECT_mode</span><span class="o">=</span> <span class="s2">&quot;none&quot;</span>             <span class="c1"># Instruct ypp how to project the DOS. ATOM, LINE, PLANE.</span>
+<span class="n">INTERP_mode</span><span class="o">=</span> <span class="s2">&quot;BOLTZ&quot;</span>                <span class="c1"># Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)</span>
+<span class="n">INTERP_Shell_Fac</span><span class="o">=</span> <span class="mf">20.00000</span>       <span class="c1"># The bigger it is a higher number of shells is used</span>
+<span class="n">INTERP_NofNN</span><span class="o">=</span> <span class="mi">1</span>                  <span class="c1"># Number of Nearest sites in the NN method</span>
+<span class="n">OutputAlat</span><span class="o">=</span> <span class="mf">5.90008</span>             <span class="c1"># [a.u.] Lattice constant used for &quot;alat&quot; ouput format</span>
+<span class="n">cooIn</span><span class="o">=</span> <span class="s2">&quot;rlu&quot;</span>                     <span class="c1"># Points coordinates (in) cc/rlu/iku/alat</span>
+<span class="n">cooOut</span><span class="o">=</span> <span class="s2">&quot;rlu&quot;</span>                    <span class="c1"># Points coordinates (out) cc/rlu/iku/alat</span>
+<span class="o">%</span> <span class="n">BANDS_bands</span>
+   <span class="mi">25</span> <span class="o">|</span> <span class="mi">28</span> <span class="o">|</span>                         <span class="c1"># Number of bands</span>
+<span class="o">%</span>
+<span class="n">CIRCUIT_E_DB_path</span><span class="o">=</span> <span class="s2">&quot;none&quot;</span>        <span class="c1"># SAVE obtained from the QE `bands` run (alternative to %BANDS_kpts)</span>
+<span class="n">BANDS_path</span><span class="o">=</span> <span class="s2">&quot;&quot;</span>                   <span class="c1"># High-Symmetry points labels (G,M,K,L...) also using composed positions (0.5xY+0.5xL).</span>
+<span class="n">BANDS_steps</span><span class="o">=</span> <span class="mi">100</span>                  <span class="c1"># Number of divisions</span>
+<span class="c1">#BANDS_built_in                # Print the bands of the generating points of the circuit using the nearest internal point</span>
+<span class="o">%</span><span class="n">BANDS_kpts</span>                      <span class="c1"># K points of the bands circuit</span>
+ <span class="mf">0.00000</span> <span class="o">|</span><span class="mf">0.00000</span> <span class="o">|</span><span class="mf">0.00000</span> <span class="o">|</span>
+ <span class="mf">0.00000</span> <span class="o">|</span><span class="mf">0.50000</span> <span class="o">|</span><span class="mf">0.00000</span> <span class="o">|</span>
+ <span class="mf">0.33333</span> <span class="o">|</span><span class="mf">0.33333</span> <span class="o">|</span><span class="mf">0.00000</span> <span class="o">|</span>
+ <span class="mf">0.00000</span> <span class="o">|</span><span class="mf">0.00000</span> <span class="o">|</span><span class="mf">0.00000</span> <span class="o">|</span>
+<span class="o">%</span>
+</pre></div>
+</div>
+<p>Now, let’s run ypp:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">ypp</span> <span class="o">-</span><span class="n">F</span> <span class="n">ypp_bands</span><span class="o">.</span><span class="ow">in</span>
+</pre></div>
+</div>
+<p>This run will produce the file <code class="docutils literal notranslate"><span class="pre">o.bands_interpolated</span></code>. You can inspect it and see that it contains a plottable band structure, but beware: these are the DFT eigevalues! We didn’t tell <code class="docutils literal notranslate"><span class="pre">ypp</span></code> where to look for the quasiparticle corrections, so it went into the <code class="docutils literal notranslate"><span class="pre">SAVE</span></code> folder and interpolated the DFT data.
+Let’s rename the output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">o</span><span class="o">.</span><span class="n">bands_interpolated</span> <span class="n">o</span><span class="o">.</span><span class="n">DFT_bands</span>
+<span class="n">mkdir</span> <span class="n">DFT_bands</span>
+<span class="n">mv</span> <span class="n">o</span><span class="o">.</span><span class="n">spin</span><span class="o">*</span> <span class="n">o</span><span class="o">.</span><span class="n">magn</span><span class="o">*</span> <span class="n">DFT_bands</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>In order to interpolate the quasiparticle database, we append its location to the <code class="docutils literal notranslate"><span class="pre">ypp</span></code> input:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="n">ypp_bands</span><span class="o">.</span><span class="ow">in</span>
+</pre></div>
+</div>
+<p>add this line at the end</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">GfnQPdb</span><span class="o">=</span> <span class="s2">&quot;E &lt; ./GW_bnds/ndb.QP&quot;</span>
+</pre></div>
+</div>
+<p>and run <code class="docutils literal notranslate"><span class="pre">ypp</span></code> again.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">1</span> <span class="n">ypp</span> <span class="o">-</span><span class="n">F</span> <span class="n">ypp_bands</span><span class="o">.</span><span class="ow">in</span>
+</pre></div>
+</div>
+<p>When it’s done, let’s rename the new output as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">o</span><span class="o">.</span><span class="n">bands_interpolated</span> <span class="n">o</span><span class="o">.</span><span class="n">GW_bands</span>
+<span class="n">mkdir</span> <span class="n">GW_bands</span>
+<span class="n">mv</span> <span class="n">o</span><span class="o">.</span><span class="n">spin</span><span class="o">*</span> <span class="n">o</span><span class="o">.</span><span class="n">magn</span><span class="o">*</span> <span class="n">GW_bands</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Now we are ready to visualize the band structures. In order to do so, you can use the script <code class="docutils literal notranslate"><span class="pre">plt_bands.py</span></code> that should be already available in the directory.</p>
+<p>We load the python module</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">anaconda3</span><span class="o">/</span><span class="mf">2023.03</span>
+</pre></div>
+</div>
+<p>and run the script as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">plt_bands</span><span class="o">.</span><span class="n">py</span> <span class="n">o</span><span class="o">.</span><span class="n">DFT_bands</span> <span class="n">o</span><span class="o">.</span><span class="n">GW_bands</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>Now we can also exit the computing node</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span>
+</pre></div>
+</div>
+<p>The python script should have produced a <code class="docutils literal notranslate"><span class="pre">GW_bands.png</span></code> file containing the following visualization, which you can copy and open it in your local machine using <code class="docutils literal notranslate"><span class="pre">scp</span></code>:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/gw_bands.png"><img alt="_images/gw_bands.png" src="_images/gw_bands.png" style="width: 512.0px; height: 384.0px;" />
+</a>
+</figure>
+<p>You may compare this plot with a converged result from <a class="reference external" href="https://doi.org/10.1016/j.surfrep.2015.10.001">this paper</a> (also done with Yambo):</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/gw_bands_ref.png"><img alt="_images/gw_bands_ref.png" src="_images/gw_bands_ref.png" style="width: 345.0px; height: 635.0px;" />
+</a>
+</figure>
+<p><em>Dashed lines: DFT, thick lines: GW.</em></p>
+<p>As you can see, the general result is not too bad, but there are some differences both at the DFT and GW levels. The magnitude of the band gap is too large, and the relative energy of the two conduction band minima is not correct. One obvious issue is the lack of convergence of our tutorial calculations. As we know, we should include more vacuum space and many, many more k-points. Additionally, this is a transition metal dichalcogenide: for this class of systems, the details of the band structure can strongly depend on small variations in the lattice parameters and on the type of pseudopotential used. A great deal of care must be taken when performing these calculations!</p>
+<p>In order to learn more about Yambo, we suggest visiting the <a class="reference external" href="https://www.yambo-code.eu/">Yambo website</a>. For technical information and tutorials, you can check out the <a class="reference external" href="https://www.yambo-code.eu/wiki/index.php/Main_Page">Yambo wiki</a>. If you have issues and questions about installing and running the code, you can write about them on the <a class="reference external" href="https://www.yambo-code.eu/forum/index.php">Yambo forum</a>.</p>
+</section>
+</section>
+</div>
+<div class="toctree-wrapper compound">
+<span id="document-quick-reference"></span><section id="quick-reference">
+<h3>Quick Reference<a class="headerlink" href="#quick-reference" title="Link to this heading"></a></h3>
+</section>
+<span id="document-guide"></span><section id="instructor-s-guide">
+<h3>Instructor’s guide<a class="headerlink" href="#instructor-s-guide" title="Link to this heading"></a></h3>
+<section id="why-we-teach-this-lesson">
+<h4>Why we teach this lesson<a class="headerlink" href="#why-we-teach-this-lesson" title="Link to this heading"></a></h4>
+</section>
+<section id="intended-learning-outcomes">
+<h4>Intended learning outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Link to this heading"></a></h4>
+</section>
+<section id="timing">
+<h4>Timing<a class="headerlink" href="#timing" title="Link to this heading"></a></h4>
+</section>
+<section id="preparing-exercises">
+<h4>Preparing exercises<a class="headerlink" href="#preparing-exercises" title="Link to this heading"></a></h4>
+<p>e.g. what to do the day before to set up common repositories.</p>
+</section>
+<section id="other-practical-aspects">
+<h4>Other practical aspects<a class="headerlink" href="#other-practical-aspects" title="Link to this heading"></a></h4>
+</section>
+<section id="interesting-questions-you-might-get">
+<h4>Interesting questions you might get<a class="headerlink" href="#interesting-questions-you-might-get" title="Link to this heading"></a></h4>
+</section>
+<section id="typical-pitfalls">
+<h4>Typical pitfalls<a class="headerlink" href="#typical-pitfalls" title="Link to this heading"></a></h4>
+</section>
+</section>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="about-the-course">
+<h2>About the course<a class="headerlink" href="#about-the-course" title="Link to this heading"></a></h2>
+<p>In this workshop, participants will learn how to launch the most common
+types of calculations  (e.g. scf, phonons, quasi-particle energies,
+time-dependent properties) using QE, SIESTA and Yambo, how to prepare input
+files and how to read output files in order to extract the desired properties.</p>
+<p>Best practices for efficient exploitation of HPC resources will be discussed.
+On the QE days, there will be particular emphasis on how to use the different schemes of data
+distribution (e.g. plane waves, pools, images) in combination with the different
+parallelization and acceleration schemes (MPI, OpenMP, GPU-offload) available.
+Regarding SIESTA, participants will learn about its algorithmic efficiency,
+and they will be able to explore its accelerated and massively parallel solvers.</p>
+<section id="schedule">
+<h3>Schedule<a class="headerlink" href="#schedule" title="Link to this heading"></a></h3>
+<p><strong>Day 1, QUANTUM ESPRESSO</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time</p></th>
+<th class="head"><p>Section</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>09:00-09:15</p></td>
+<td><p>Welcome and introduction to ENCCS</p></td>
+</tr>
+<tr class="row-odd"><td><p>09:15-09:30</p></td>
+<td><p>Introduction to Max-CoE and MaX flagship codes</p></td>
+</tr>
+<tr class="row-even"><td><p>09:30-10:00</p></td>
+<td><p>Overview of the QE suite of codes and main features</p></td>
+</tr>
+<tr class="row-odd"><td><p>10:00-10:25</p></td>
+<td><p>Coffee break</p></td>
+</tr>
+<tr class="row-even"><td><p>10:25-13:00</p></td>
+<td><p>PWSCF for HPC and GPU</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day 2, QUANTUM ESPRESSO</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time</p></th>
+<th class="head"><p>Section</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>09:00-09:45</p></td>
+<td><p>Introduction to Density Functional Perturbation Theory</p></td>
+</tr>
+<tr class="row-odd"><td><p>09:45-10:15</p></td>
+<td><p>Introduction to Time Dependent Density Functional Perturbation Theory</p></td>
+</tr>
+<tr class="row-even"><td><p>10:15-10:30</p></td>
+<td><p>Coffee break</p></td>
+</tr>
+<tr class="row-odd"><td><p>10:30-13:00</p></td>
+<td><p>Phonons and time dependent properties on HPC and GPU</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day 3, SIESTA</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time</p></th>
+<th class="head"><p>Section</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>09:00-09:45</p></td>
+<td><p>SIESTA basics</p></td>
+</tr>
+<tr class="row-odd"><td><p>09:45-10:30</p></td>
+<td><p>Hands-on tutorial: A first contact with SIESTA: inputs, execution and outputs</p></td>
+</tr>
+<tr class="row-even"><td><p>10:30-10:45</p></td>
+<td><p>Break</p></td>
+</tr>
+<tr class="row-odd"><td><p>10:45-11:15</p></td>
+<td><p>Basis sets</p></td>
+</tr>
+<tr class="row-even"><td><p>11:15-12:00</p></td>
+<td><p>Hands-on tutorial: Basis set optimization</p></td>
+</tr>
+<tr class="row-odd"><td><p>12:00-13:00</p></td>
+<td><p>Hands-on tutorial: Convergence (k points, mesh, mixing)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day 4, SIESTA</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time</p></th>
+<th class="head"><p>Section</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>09:00-10:00</p></td>
+<td><p>Hands-on tutorial: Moving atoms: geometry optimisation and beyond</p></td>
+</tr>
+<tr class="row-odd"><td><p>10:30-11:00</p></td>
+<td><p>Hands-on tutorial: Analysis tools</p></td>
+</tr>
+<tr class="row-even"><td><p>11:00-11:15</p></td>
+<td><p>Break</p></td>
+</tr>
+<tr class="row-odd"><td><p>11:15-11:45</p></td>
+<td><p>Features available in SIESTA: spin-orbit couplings, TranSIESTA, and others</p></td>
+</tr>
+<tr class="row-even"><td><p>11:45-13:00</p></td>
+<td><p>Hands-on tutorial: Pushing the boundaries of SIESTA: accelerated and massively parallel solvers</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day 5, Yambo</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Time</p></th>
+<th class="head"><p>Section</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>09:00-09:20</p></td>
+<td><p>Overview of the Yambo code and its main features and performance</p></td>
+</tr>
+<tr class="row-odd"><td><p>09:20-10:00</p></td>
+<td><p>Introduction to the GW approximation</p></td>
+</tr>
+<tr class="row-even"><td><p>10:00-10:20</p></td>
+<td><p>Coffee break</p></td>
+</tr>
+<tr class="row-odd"><td><p>10:20-13:00</p></td>
+<td><p>Hands-on tutorial: A guided tour through GW simulations</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>ENCCS: <a class="reference external" href="https://enccs.se/">https://enccs.se/</a></p></li>
+<li><p>MAX-CoE: <a class="reference external" href="http://www.max-centre.eu/">http://www.max-centre.eu/</a></p></li>
+<li><p>Follow ENCCS on <a class="reference external" href="https://www.linkedin.com/company/enccs">LinkedIn</a>, or <a class="reference external" href="https://twitter.com/EuroCC_Sweden">Twitter</a></p></li>
+<li><p>Follow MAX-CoE on <a class="reference external" href="https://www.linkedin.com/company/max-centre/">LinkedIn</a>, or <a class="reference external" href="https://twitter.com/max_center2">Twitter</a>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\]</div>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading"></a></h2>
+<p>Contributors to this workshop:</p>
+<ul class="simple">
+<li><p>Pietro Davide Delugas (SISSA)</p></li>
+<li><p>Ivan Carnimeo (SISSA)</p></li>
+<li><p>Oscar Baseggio (SISSA)</p></li>
+<li><p>Fabrizio Ferrari Ruffino (CNR-IOM)</p></li>
+<li><p>Paolo Giannozzi (CNR-IOM, UniUD)</p></li>
+<li><p>Iurii Timrov (Paul Scherrer Institut)</p></li>
+<li><p>Laura Bellentani (CINECA)</p></li>
+<li><p>Tommaso Gorni (CINECA)</p></li>
+<li><p>Aurora Ponzi (CNR-IOM)</p></li>
+<li><p>Emilio Artacho (CIC NanoGUNE and University of Cambridge)</p></li>
+<li><p>Catalina Coll (ICN2)</p></li>
+<li><p>José Mª Escartín (ICN2)</p></li>
+<li><p>Roberta Farris (ICN2)</p></li>
+<li><p>Ernane de Freitas (ICN2)</p></li>
+<li><p>Alberto García (ICMAB-CSIC)</p></li>
+<li><p>Arnold Kole (Utrecht University)</p></li>
+<li><p>Nick Papior (DTU)</p></li>
+<li><p>Federico Pedron (ICN2)</p></li>
+<li><p>Miguel Pruneda (CINN-CSIC)</p></li>
+<li><p>José Ángel Silva Guillén (IMDEA Nanociencia)</p></li>
+<li><ol class="upperalpha simple" start="4">
+<li><p>Varsano (CNR-NANO)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple">
+<li><p>Ferretti (CNR-NANO)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="4">
+<li><p>Sangalli (CNR-ISM)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple">
+<li><p>Guandalini (Univ. of Rome, La Sapienza)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="6">
+<li><p>Paleari (CNR-NANO)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="13">
+<li><p>D’Alessio (Univ. Modena and Reggio Emilia, CNR-NANO)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="7">
+<li><p>Sesti (CNR-NANO)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="14">
+<li><p>Spallanzani (CNR-NANO)</p></li>
+</ol>
+</li>
+</ul>
+<p>The lesson file structure and browsing layout is inspired by and derived from
+<a class="reference external" href="https://github.com/coderefinery/sphinx-lesson">work</a> by <a class="reference external" href="https://coderefinery.org/">CodeRefinery</a> licensed under the <a class="reference external" href="http://opensource.org/licenses/mit-license.html">MIT license</a>. We have copied and adapted
+most of their license text.</p>
+</section>
+<section id="licenses">
+<h2>Licenses<a class="headerlink" href="#licenses" title="Link to this heading"></a></h2>
+<section id="general">
+<h3>General<a class="headerlink" href="#general" title="Link to this heading"></a></h3>
+<section id="instructional-material">
+<h4>Instructional Material<a class="headerlink" href="#instructional-material" title="Link to this heading"></a></h4>
+<p>Except where otherwise noted,
+this instructional material is made available under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license (CC-BY-4.0)</a>.
+The following is a human-readable summary of (and not a substitute for) the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/legalcode">full legal text of the CC-BY-4.0 license</a>.
+You are free to:</p>
+<ul class="simple">
+<li><p><strong>share</strong> - copy and redistribute the material in any medium or format</p></li>
+<li><p><strong>adapt</strong> - remix, transform, and build upon the material for any purpose,
+even commercially.</p></li>
+</ul>
+<p>The licensor cannot revoke these freedoms as long as you follow these license terms:</p>
+<ul class="simple">
+<li><p><strong>Attribution</strong> - You must give appropriate credit (mentioning that your work
+is derived from work that is Copyright (c) ENCCS and individual contributors and, where practical, linking
+to <a class="reference external" href="https://enccs.github.io/max-coe-workshop">https://enccs.github.io/max-coe-workshop</a>), provide a <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">link to the license</a>, and indicate if changes were
+made. You may do so in any reasonable manner, but not in any way that suggests
+the licensor endorses you or your use.</p></li>
+<li><p><strong>No additional restrictions</strong> - You may not apply legal terms or
+technological measures that legally restrict others from doing anything the
+license permits.</p></li>
+</ul>
+<p>With the understanding that:</p>
+<ul class="simple">
+<li><p>You do not have to comply with the license for elements of the material in
+the public domain or where your use is permitted by an applicable exception
+or limitation.</p></li>
+<li><p>No warranties are given. The license may not give you all of the permissions
+necessary for your intended use. For example, other rights such as
+publicity, privacy, or moral rights may limit how you use the material.</p></li>
+</ul>
+</section>
+<section id="software">
+<h4>Software<a class="headerlink" href="#software" title="Link to this heading"></a></h4>
+<p>Except where otherwise noted, the example programs and other software provided
+with this repository are made available under the <a class="reference external" href="http://opensource.org/">OSI</a>-approved
+<a class="reference external" href="https://opensource.org/licenses/mit-license.html">MIT license</a>.</p>
+</section>
+</section>
+<section id="siesta">
+<h3>SIESTA<a class="headerlink" href="#siesta" title="Link to this heading"></a></h3>
+<p>At the moment, unless otherwise stated, the contents of the SIESTA tutorials are
+copyrighted - all rights reserved.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, The contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
